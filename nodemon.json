@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "server",
+    "public",
+    ".env"
+  ],
+  "ext": "ts",
+  "ignore": [
+    "src/**/__tests__/*",
+    "src/**/__mocks__/*"
+  ],
+  "exec": "npm run dev:start"
+}

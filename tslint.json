@@ -1,0 +1,26 @@
+{
+  "extends": "tslint-config-standard",
+  "rules": {
+    "trailing-comma": {
+      "options": [{
+          "multiline": {
+              "arrays": "always",
+              "objects": "always",
+              "functions": "always",
+              "imports": "always",
+              "exports": "always",
+              "typeLiterals": "never"
+          },
+          "singleline": "never"
+      }],
+      "severity": "default"
+    },
+    "no-console": true
+  },
+  "linterOptions": {
+    "exclude": [
+      "node_modules"
+    ]
+  }
+}
+

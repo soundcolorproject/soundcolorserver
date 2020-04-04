@@ -1,0 +1,15 @@
+
+# npm
+node_modules
+
+# bulit
+dist
+*.pcss.d.ts
+
+# local config
+.env
+.npmrc
+
+# temporary
+tmp
+uglify-cache
