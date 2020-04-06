@@ -1,14 +1,13 @@
 
 import * as React from 'react'
-import { logger } from '../../../shared/logger'
 import { MobxProvider } from '../../state/MobxProvider'
-import { Root } from './Roots'
+import { AppRouter } from '../../AppRouter'
 
 class App extends React.Component {
   public render () {
     return (
       <MobxProvider>
-        <Root />
+        <AppRouter />
       </MobxProvider>
     )
   }

@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/info.css">
-    <title>Sound Color Project</title>
-</head>
+import * as React from 'react'
+import { Link, RouteComponentProps } from '@reach/router'
 
-<body>
+import { infoBody } from './info.pcss'
 
-    <div id="info-body">
+export interface InfoRouteProps extends RouteComponentProps {
+}
+
+export class InfoRoute extends React.Component<InfoRouteProps> {
+  render () {
+    return (
+      <div id={infoBody}>
         <h1>SoundColor</h1>
         <br />
-        <a aria-label="Go to Color System" href="/">Go to Color System</a>
+        <Link aria-label='Go to Color System' to='/'>Go to Color System</Link>
         <br />
         <h2>About</h2>
         <p>Supersonicas is an exploration to enable accessibility to sound through light and color, particularly for people experiencing hearing impairment. Like any form of art, there is not one defined interpretation, but an opportunity for each participant to experience new or familiar feeling in their own way. The color, brightness, tone, and vibrance of light change according to color pattern, volume, scale, and frequency.</p>
@@ -29,9 +29,8 @@
         <p><strong>Adolescence</strong></p>
         <p>Often a form of developing chromesthesia, children are introduced to a variety of colors and musical sounds at the same time. From pianos and xylophones, to light up sound-making toys, toddlers are exposed and begin to relate musical notes to colors while learning and creating coorelations between the two from the earliest of developmental phases.</p>
         <h2>Contact</h2>
-        <p>To learn more about the Sound Color Project, please reach out to Derek Torsani at <a href="mailto:derektorsani@gmail.com">derektorsani@gmail.com</a>.</p>
-    </div>
-
-</body>
-
-</html>
+        <p>To learn more about the Sound Color Project, please reach out to Derek Torsani at <a href='mailto:derektorsani@gmail.com'>derektorsani@gmail.com</a>.</p>
+      </div>
+    )
+  }
+}
