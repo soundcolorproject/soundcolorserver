@@ -17,17 +17,17 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(sessionMiddleware)
 
-// application
+// webpack
 app.use(webpackMiddleware())
 app.use(webpackHotMiddleware())
-app.use(express.static(path.join(__dirname, '../public'), {
-  etag: true,
-  lastModified: true,
-}))
+
+// static assets
 app.use(express.static(path.join(__dirname, '../static'), {
   etag: true,
   lastModified: true,
 }))
+
+// application router (api)
 app.use(router)
 
 // error handler
