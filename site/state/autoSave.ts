@@ -8,20 +8,10 @@ interface SavingStore {
   clearSave: () => void
 }
 
-type ModifySaveFunctions = [
-  IReactionDisposer, // stopSaving()
-  () => void,        // startSaving()
-  () => void         // clearSave()
-]
-
-const STOP_SAVING = 0
-const START_SAVING = 1
-const CLEAR_SAVE = 2
-
 const saveDelay = 1000 // in milliseconds
 const DEBUG = __DEV__ && false // make __DEV__ && true to see debugging output
 
-const disposerMap = new Map<SavingStore, ModifySaveFunctions>()
+const disposerMap = new Map<SavingStore, SavingStore>()
 const storesBeingSaved: SavingStore[] = []
 
 export function stopSavingAllStores () {
@@ -50,21 +40,19 @@ if (__DEV__) {
   global.clearAllSaves = clearAllSaves
 }
 
-function addSaveFunction (savingStore: SavingStore, modifySaveFunctions: ModifySaveFunctions) {
-  Object.defineProperty(savingStore, 'stopSaving', {
-    get (): SavingStore['stopSaving'] { return modifySaveFunctions[STOP_SAVING] },
+function defineSaveProp (savingStore: SavingStore, modifySaveFunctions: SavingStore, key: keyof SavingStore) {
+  Object.defineProperty(savingStore, key, {
+    get (): SavingStore[typeof key] { return modifySaveFunctions[key] },
     enumerable: false,
+    configurable: false,
+    writable: false,
   })
+}
 
-  Object.defineProperty(savingStore, 'startSaving', {
-    get (): SavingStore['startSaving'] { return modifySaveFunctions[START_SAVING] },
-    enumerable: false,
-  })
-
-  Object.defineProperty(savingStore, 'clearSave', {
-    get (): SavingStore['clearSave'] { return modifySaveFunctions[CLEAR_SAVE] },
-    enumerable: false,
-  })
+function addSaveFunction (savingStore: SavingStore, modifySaveFunctions: SavingStore) {
+  defineSaveProp(savingStore, modifySaveFunctions, 'stopSaving')
+  defineSaveProp(savingStore, modifySaveFunctions, 'startSaving')
+  defineSaveProp(savingStore, modifySaveFunctions, 'clearSave')
 }
 
 const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & SavingStore => {
@@ -73,9 +61,9 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
   const savingStore = mobxStore as T & SavingStore
   const localStorageKey = `${name}-store`
 
-  const modifySaveFunctions: ModifySaveFunctions = [] as any
+  const modifySaveFunctions: SavingStore = {} as any
 
-  modifySaveFunctions[START_SAVING] = function startSaving () {
+  modifySaveFunctions.startSaving = function startSaving () {
     if (saving) {
       DEBUG && logger.debug(`Already saving ${name} store.`)
       return
@@ -105,14 +93,14 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
       },
     )
     saving = true
-    modifySaveFunctions[STOP_SAVING] = (() => {
+    modifySaveFunctions.stopSaving = (() => {
       saving = false
       disposer()
     }) as IReactionDisposer
-    modifySaveFunctions[STOP_SAVING].$mobx = disposer.$mobx
+    modifySaveFunctions.stopSaving.$mobx = disposer.$mobx
   }
 
-  modifySaveFunctions[CLEAR_SAVE] = () => {
+  modifySaveFunctions.clearSave = () => {
     localStorage.removeItem(localStorageKey)
   }
 
@@ -136,7 +124,7 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
 
   addSaveFunction(savingStore, modifySaveFunctions)
 
-  modifySaveFunctions[START_SAVING]()
+  modifySaveFunctions.startSaving()
 
   return savingStore
 }
