@@ -1,5 +1,6 @@
 
 import { reaction, set, values, toJS, IReactionDisposer } from 'mobx'
+import { logger } from '../../shared/logger'
 
 interface SavingStore {
   stopSaving: IReactionDisposer
@@ -76,7 +77,7 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
 
   modifySaveFunctions[START_SAVING] = function startSaving () {
     if (saving) {
-      DEBUG && console.debug(`Already saving ${name} store.`)
+      DEBUG && logger.debug(`Already saving ${name} store.`)
       return
     }
 
@@ -84,7 +85,7 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
     const disposer = reaction(
       () => values(mobxStore),
       () => {
-        DEBUG && console.debug(`writing ${name} store...`)
+        DEBUG && logger.debug(`writing ${name} store...`)
 
         let jsonObj = mobxStore
 
@@ -99,7 +100,7 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
         delay: saveDelay,
         name: `${name} saver`,
         onError: (err) => {
-          console.warn(`Failed to save ${name} store:`, err)
+          logger.warn(`Failed to save ${name} store:`, err)
         },
       },
     )
@@ -119,15 +120,15 @@ const autoSave = <Prop>(name: string & keyof Prop) => <T>(mobxStore: T): T & Sav
     return savingStore
   }
 
-  DEBUG && console.log(`inflating ${name} store...`)
+  DEBUG && logger.log(`inflating ${name} store...`)
   // on load check if there's an existing store on localStorage and extend the store
   const existingStore = localStorage.getItem(localStorageKey)
 
   if (existingStore) {
-    DEBUG && console.log(`existing value found for ${name} store`)
+    DEBUG && logger.log(`existing value found for ${name} store`)
     set(mobxStore, JSON.parse(existingStore))
   } else {
-    DEBUG && console.log(`unable to find existing value for ${name} store`)
+    DEBUG && logger.log(`unable to find existing value for ${name} store`)
   }
 
   disposerMap.set(savingStore, modifySaveFunctions)
