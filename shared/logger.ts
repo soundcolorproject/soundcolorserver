@@ -2,10 +2,14 @@
 // tslint:disable: no-console
 import * as ac from 'ansi-colors'
 import { LogLevel, getLogLevel } from './getLogLevel'
+import { isBrowser } from './isBrowser'
+import { browserAnsi } from './browserAnsi'
 
 let colors: typeof ac | null = null
 try {
-  colors = require('ansi-colors')
+  if (!isBrowser()) {
+    colors = require('ansi-colors')
+  }
 } catch (e) {
   // do nothing
 }
@@ -24,19 +28,60 @@ function getStyleFunc (style: StyleName[]): StyleFunc {
   }
 }
 
+function getBrowserAnsi (style: StyleName[]): string {
+  if (style.length === 0) {
+    return ''
+  }
+
+  return style.slice(1).reduce((style, name) => style[name], browserAnsi[style[0]]).toString()
+}
+
+const useStack = typeof new Error().stack === 'string'
 const noop = () => { /* noop */ }
 function createLogFunc (target: LogLevel, expected: LogLevel, logger: LogFunc, prefix: string, style: StyleName[] = []): LogFunc {
-  const styleFn = getStyleFunc(style)
-  if (expected >= target) {
-    if (prefix) {
-      prefix = `${prefix}: `
+  if (expected < target) {
+    return noop
+  }
+
+  if (prefix) {
+    prefix = `${prefix}:`
+  }
+
+  if (isBrowser()) {
+    const styleStr = getBrowserAnsi(style)
+    if (!styleStr) {
+      return (...args: any[]) => {
+        logger(prefix, ...args)
+      }
     }
+    return (...args: any[]) => {
+      let format = `%c${prefix} ` + args.map(arg => {
+        switch (typeof arg) {
+          case 'string':
+            return '%s'
+          case 'number':
+            if (arg % 1 === 0) {
+              return '%d'
+            } else {
+              return '%f'
+            }
+          case 'bigint':
+            return '%d'
+          default:
+            return '%o'
+        }
+      }).join(' ')
+      if (useStack) {
+        format += `\n${new Error().stack?.split('\n')[2]}`
+      }
+      logger(format, styleStr, ...args)
+    }
+  } else {
+    const styleFn = getStyleFunc(style)
     return (...args: any[]) => {
       const str = args.reduce((str, arg) => str + arg.toString(), prefix)
       logger(styleFn(str))
     }
-  } else {
-    return noop
   }
 }
 
@@ -46,10 +91,20 @@ function createLogger () {
     debug: createLogFunc(target, LogLevel.debug, console.debug, 'DEBUG', ['underline']),
     info: createLogFunc(target, LogLevel.info, console.info, 'INFO', ['cyan']),
     log: createLogFunc(target, LogLevel.log, console.log, 'LOG'),
-    warn: createLogFunc(target, LogLevel.log, console.warn, 'WARNING', ['yellow']),
-    error: createLogFunc(target, LogLevel.log, console.error, 'ERROR', ['red', 'bold']),
-    fatal: createLogFunc(target, LogLevel.log, console.error, '🔥 FATAL', ['red', 'bold']),
+    warn: createLogFunc(target, LogLevel.warn, console.warn, 'WARNING', ['yellow']),
+    error: createLogFunc(target, LogLevel.error, console.error, 'ERROR', ['red', 'bold']),
+    fatal: createLogFunc(target, LogLevel.fatal, console.error, '🔥 FATAL', ['red', 'bold']),
   }
 }
 
 export const logger = createLogger()
+
+declare const window: any
+declare const global: any
+if (typeof (globalThis as any) !== 'undefined') {
+  (globalThis as any).logger = logger
+} else if (typeof window !== 'undefined') {
+  window.logger = logger
+} else if (typeof global !== 'undefined') {
+  global.logger = logger
+}

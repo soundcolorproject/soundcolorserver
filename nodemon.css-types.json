@@ -1,0 +1,7 @@
+{
+  "watch": [
+    "site"
+  ],
+  "ext": "pcss",
+  "exec": "npm run build:css-types"
+}

@@ -29,7 +29,7 @@ export const wcag = {
 }
 
 export const defaultColors = {
-  black: '#0E0B16',
+  black: '#0F0E0D',
   white: '#E7DFDD',
   primary: '#007B9C',
   secondary: '#860A3B',

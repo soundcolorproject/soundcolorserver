@@ -13,10 +13,11 @@ export const styleRule = (dev: boolean, onlyTypes = false): webpack.RuleSetRule 
         modules: {
           localIdentName: dev ? '[name]_[local]--[hash:base64:4]' : '[hash:base64:8]',
         },
+        localsConvention: 'camelCase',
         importLoaders: 2,
       },
     },
-    'typed-css-modules-loader?noEmit',
+    'typed-css-modules-loader?noEmit&camelCase',
     {
       loader: 'postcss-loader',
       options: {

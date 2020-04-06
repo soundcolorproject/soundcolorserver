@@ -1,0 +1,12 @@
+
+$breakpointMap: (
+  mobile: 425px,
+  tablet: 768px,
+  laptop: 1024px
+);
+
+@define-mixin breakpoint $name: mobile, $direction: max-width {
+  @media ($(direction): mapGet($breakpointMap, $name)) {
+  @mixin-content;
+  }
+}

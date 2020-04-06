@@ -11,7 +11,7 @@ function getPort () {
   if (process.env.PORT) {
     return parseInt(process.env.PORT, 10)
   } else {
-    return randomPort()
+    return 9000
   }
 }
 
@@ -23,7 +23,8 @@ function startApp (port: number) {
       }
     })
     app.listen(port, () => {
-      logger.log(`Server listening on port ${port}`)
+      // tslint:disable-next-line: no-console
+      console.log(`Server listening on port ${port}`)
       resolve(app)
     })
   })
@@ -43,5 +44,6 @@ async function main () {
 }
 
 main().catch(e => {
-  logger.error(e)
+  logger.fatal(e)
+  process.exit(1)
 })

@@ -1,0 +1,43 @@
+:root {
+  $black: getDefault(black);
+  $white: getDefault(white);
+
+  $primary: getDefault(primary);
+  $secondary: getDefault(secondary);
+  $tertiary: getDefault(tertiary);
+
+  --black: $black;
+  --black-rgb: printRgb($black);
+  --dark-grey: color($black whiteness(+20%));
+  --medium-grey: color($black whiteness(+60%));
+  --light-grey: color($black whiteness(+100%));
+  --white: $white;
+  --white-rgb: printRgb($white);
+
+  --primary: $primary;
+  --primary-rgb: printRgb($primary);
+  --primary-contrast: getContrastingColor($primary);
+  --primary-light: makeCompliant($primary, $black);
+  --primary-light-rgb: printRgb(makeCompliant($primary, $black));
+  --primary-dark: makeCompliant($primary, $white);
+  --primary-dark-rgb: printRgb(makeCompliant($primary, $white));
+
+  --secondary: $secondary;
+  --secondary-rgb: printRgb($secondary);
+  --secondary-contrast: getContrastingColor($secondary);
+  --secondary-light: makeCompliant($secondary, $black);
+  --secondary-light-rgb: printRgb(makeCompliant($secondary, $black));
+  --secondary-dark: makeCompliant($secondary, $white);
+  --secondary-dark-rgb: printRgb(makeCompliant($secondary, $white));
+
+  --tertiary: $tertiary;
+  --tertiary-rgb: printRgb($tertiary);
+  --tertiary-contrast: getContrastingColor($tertiary);
+  --tertiary-light: makeCompliant($tertiary, $black);
+  --tertiary-light-rgb: printRgb(makeCompliant($tertiary, $black));
+  --tertiary-dark: makeCompliant($tertiary, $white);
+  --tertiary-dark-rgb: printRgb(makeCompliant($tertiary, $white));
+
+  --background: var(--black);
+  --foreground: var(--white);
+}

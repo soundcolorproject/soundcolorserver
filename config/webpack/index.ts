@@ -1,8 +1,8 @@
 
 import * as webpack from 'webpack'
-
 import * as path from 'path'
-import * as UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+
+import * as TerserPlugin from 'terser-webpack-plugin'
 import * as OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 
 import { codeRule } from './code'
@@ -25,19 +25,9 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
       constants.entrypoint,
     ].filter(e => e),
     devServer: {
-      host: '0.0.0.0',
-      port: process.env.PORT ? parseInt(process.env.PORT, 10) : 3000,
-      contentBase: [
-        constants.staticDir,
-      ],
       compress: true,
-      clientLogLevel: 'none',
-      watchContentBase: true,
       hot: true,
       historyApiFallback: true,
-      // TODO: remove this once this issue is resolved:
-      // https://github.com/webpack/webpack-dev-server/issues/1604
-      disableHostCheck: true,
     },
     output: {
       path: constants.outputDir,
@@ -99,17 +89,8 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
     },
     optimization: !dev ? {
       minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            output: {
-              beautify: false,
-            },
-          },
-          parallel: true,
-          cache: 'uglify-cache',
-          sourceMap: false,
-        }),
-        new OptimizeCssAssetsPlugin({}),
+        new TerserPlugin(),
+        new OptimizeCssAssetsPlugin(),
       ],
     } : {
       namedModules: true,
