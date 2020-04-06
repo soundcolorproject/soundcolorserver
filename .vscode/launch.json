@@ -3,9 +3,10 @@
   "configurations": [
     {
       "type": "node",
-      "name": "attach",
+      "name": "Attach to server",
       "request": "attach",
-      "port": 32123
+      "port": 32123,
+      "restart": true
     }
   ]
 }
