@@ -13,3 +13,7 @@ dist
 # temporary
 tmp
 uglify-cache
+
+# tooling
+/.vscode/*
+!/.vscode/launch.json

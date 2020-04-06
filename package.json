@@ -9,7 +9,7 @@
     "dev-remote": "USE_REMOTE_API=true npm run dev",
     "dev": "run-p dev:watch dev:open",
     "dev:watch": "nodemon",
-    "dev:start": "DEV=true DEBUG=soundcolorproject PORT=9000 ts-node server/index.ts",
+    "dev:start": "DEV=true DEBUG=soundcolorproject PORT=9000 node --inspect=32123 server/dev.js",
     "dev:open": "npm run dev:open:wait; open-cli 'http://localhost:9000/'",
     "dev:open:wait": "bash -c \"while ! curl 'http://localhost:9000/' --fail &>/dev/null; do sleep 1; done\"",
     "prebuild": "rm -rf dist",
