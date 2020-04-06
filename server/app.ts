@@ -6,7 +6,7 @@ import * as compression from 'compression'
 import { router } from './routes'
 import { errorHandler } from './middleware/errorHandler'
 import { sessionMiddleware } from './middleware/session'
-import { webpackMiddleware, webpackHotMiddleware } from './middleware/webpack'
+import { webpackMiddleware, webpackHotMiddleware, html5Fallback } from './middleware/webpack'
 
 export const app = express()
 
@@ -16,6 +16,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cookieParser())
 app.use(sessionMiddleware)
+
+// application router (api)
+app.use(router)
 
 // webpack
 app.use(webpackMiddleware())
@@ -27,8 +30,8 @@ app.use(express.static(path.join(__dirname, '../static'), {
   lastModified: true,
 }))
 
-// application router (api)
-app.use(router)
+// html5 fallback routing
+app.use(html5Fallback())
 
 // error handler
 app.use(errorHandler)
