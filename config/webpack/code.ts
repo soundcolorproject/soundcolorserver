@@ -23,5 +23,5 @@ export const codeRule = (dev: boolean): webpack.RuleSetRule => ({
         ].filter(p => p),
       },
     },
-  ].filter(l => l),
+  ],
 })

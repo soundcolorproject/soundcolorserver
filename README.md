@@ -6,6 +6,20 @@
 This is the Philips Hue integrated soundcolorproject implementation.
 
 * [Getting started]
+  * [Quickstart]
 
 [Getting started]: #getting-started
 ## Getting started
+
+[Quickstart]: #quickstart
+### Quickstart
+To get the application running in development mode, simply:
+
+```bash
+npm i # installs the dependencies
+npm run dev # runs the app in development mode
+```
+
+When running in development mode:
+* any changes to backend code (living in the `server` directory) causes a server restart.
+* any changes to frontend code (living in the `site` directory) causes webpack to 
