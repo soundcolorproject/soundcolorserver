@@ -17,3 +17,7 @@ if (config.remoteApi) {
     }
   }))
 }
+
+router.get('/foo', (req, res) => {
+  res.send('foo')
+})

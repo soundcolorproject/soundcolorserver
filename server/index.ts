@@ -39,6 +39,7 @@ function startServerOnPort (port: number, create: () => Server) {
   })
 }
 
+const MAX_FAILS = config.dev ? 10 : 1
 async function startServer () {
   let failCount = 0
   const serverCreator = config.localSsl ?
@@ -47,16 +48,19 @@ async function startServer () {
       key: readFileSync(join(__dirname, '../local/server.key')),
     }) :
     () => createServer()
-  while (failCount < 10) {
+  while (failCount < MAX_FAILS) {
     try {
       // this has to be awaited in order to be able to catch the error
       const server = await startServerOnPort(failCount === 0 ? getPort() : randomPort(), serverCreator)
       return server
     } catch (e) {
+      if (!config.dev) {
+        new FatalError(2, `Port ${getPort()} cannot be opened!`)
+      }
       failCount++
     }
   }
-  throw new FatalError(2, 'Could not find an open port!')
+  throw new FatalError(3, 'Could not find an open port!')
 }
 
 async function main () {
@@ -66,14 +70,16 @@ async function main () {
   if (module.hot) {
     let currentApp = app
     module.hot.accept('./app', () => {
-      server.removeListener('request', currentApp)
-      import('./app').then(({ app: newApp }) => {
+      try {
+        logger.info('New module for server/app')
+        const { app: newApp } = require('./app')
+        server.removeListener('request', currentApp)
         currentApp = newApp
         server.on('request', newApp)
         logger.info('Express app reloaded!')
-      }).catch(err => {
+      } catch (err) {
         logger.error('Failed to reload express app:', err)
-      })
+      }
     })
   }
 }

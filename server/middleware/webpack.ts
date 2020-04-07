@@ -5,13 +5,24 @@ import * as wp from 'webpack'
 import * as wdm from 'webpack-dev-middleware'
 import * as whm from 'webpack-hot-middleware'
 
-let compiler: wp.Compiler
+let compiler: wp.Compiler | null = null
+let compilerError: Error | null = null
 function getCompiler () {
-  if (!compiler) {
-    const webpack = require('webpack') as typeof wp
-    compiler = webpack(require('../../config/webpack').default())
-    // tslint:disable-next-line: no-console
-    console.info('Using webpack middleware')
+  if (compilerError) {
+    throw compilerError
+  } else if (!compiler) {
+    try {
+      const webpack = require('webpack') as typeof wp
+      compiler = webpack(require('../../config/webpack').default())
+      // tslint:disable-next-line: no-console
+      console.info('Using webpack middleware')
+    } catch (e) {
+      compilerError = e
+      // tslint:disable-next-line: no-console
+      console.info('Using precompiled assets')
+
+      throw e
+    }
   }
 
   return compiler
@@ -25,8 +36,6 @@ export function webpackMiddleware (): express.RequestHandler {
 
       webpackMiddlewareInstance = webpackDevMiddleware(getCompiler())
     } catch (e) {
-      // tslint:disable-next-line: no-console
-      console.info('Using precompiled assets')
 
       // fall back to build assets
       webpackMiddlewareInstance = express.static(path.join(__dirname, '../../public'), {
