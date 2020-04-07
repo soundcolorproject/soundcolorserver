@@ -1,6 +1,7 @@
 /// <reference path="./globals.d.ts" />
 
-import { createServer } from 'https'
+import { createServer, Server } from 'http'
+import { createServer as createHttpsServer } from 'https'
 import { join } from 'path'
 import { readFileSync } from 'fs'
 import { app } from './app'
@@ -15,47 +16,66 @@ function randomPort () {
 function getPort () {
   if (process.env.PORT) {
     return parseInt(process.env.PORT, 10)
+  } else if (config.localSsl) {
+    return 443
   } else {
     return 9000
   }
 }
 
-function startApp (port: number) {
-  return new Promise((resolve, reject) => {
+function startServerOnPort (port: number, create: () => Server) {
+  return new Promise<Server>((resolve, reject) => {
     app.once('error', (err) => {
       if (err.code === 'EADDRINUSE') {
         reject(err)
       }
     })
-    app.listen(port, () => {
+    const server = create()
+    server.listen(port, () => {
       // tslint:disable-next-line: no-console
       console.log(`Server listening on port ${port}`)
-      resolve(app)
+      resolve(server)
     })
   })
 }
 
-async function main () {
+async function startServer () {
   let failCount = 0
-  if (config.localSsl) {
-    const server = createServer({
+  const serverCreator = config.localSsl ?
+    () => createHttpsServer({
       cert: readFileSync(join(__dirname, '../local/server.cert')),
       key: readFileSync(join(__dirname, '../local/server.key')),
-    }, app).listen(443, '127.0.0.1', () => {
-      // tslint:disable-next-line: no-console
-      console.log('Server listening over https')
-    })
-    return
-  }
+    }) :
+    () => createServer()
   while (failCount < 10) {
     try {
-      await startApp(failCount === 0 ? getPort() : randomPort())
-      return
+      // this has to be awaited in order to be able to catch the error
+      const server = await startServerOnPort(failCount === 0 ? getPort() : randomPort(), serverCreator)
+      return server
     } catch (e) {
       failCount++
     }
   }
   throw new FatalError(2, 'Could not find an open port!')
+}
+
+async function main () {
+  const server = await startServer()
+  server.on('request', app)
+
+  if (module.hot) {
+    let currentApp = app
+    module.hot.accept('./app', () => {
+      server.removeListener('request', currentApp)
+      import('./app').then(({ app: newApp }) => {
+        currentApp = newApp
+        server.on('request', newApp)
+        logger.info('Express app reloaded!')
+      }).catch(err => {
+        logger.error('Failed to reload express app:', err)
+      })
+    })
+  }
 }
 
 main().catch(e => {
