@@ -9,10 +9,20 @@ import { logger } from '../shared/logger'
 import { config } from './config'
 import { FatalError } from './errors/FatalError'
 
+/**
+ * generates a random port number between 5000 - 49999
+ */
 function randomPort () {
   return 5000 + Math.floor(Math.random() * 35000)
 }
 
+/**
+ * Gets the port to use
+ *
+ * - If the $PORT env var is set, uses that
+ * - Else if in localSsl mode, it uses 443
+ * - Otherwise, it uses 9000
+ */
 function getPort () {
   if (process.env.PORT) {
     return parseInt(process.env.PORT, 10)
@@ -55,7 +65,7 @@ async function startServer () {
       return server
     } catch (e) {
       if (!config.dev) {
-        new FatalError(2, `Port ${getPort()} cannot be opened!`)
+        throw new FatalError(2, `Port ${getPort()} cannot be opened!`)
       }
       failCount++
     }
