@@ -4,13 +4,25 @@ import { config } from '../config'
 import { ApiError } from 'node-hue-api'
 import { HueErrorCode } from '../hue/HueErrorCode'
 import { logger } from '../../shared/logger'
+import { ServerError, DEFAULT_ERROR_MESSAGE } from '../errors/ServerError'
+import { RedirectError } from '../errors/RedirectError'
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   let status = 500
   let data: { message: any } | null = null
-  let message: any = 'Something went wrong, please try again later'
+  let message = DEFAULT_ERROR_MESSAGE
 
-  if (err instanceof ApiError) {
+  if (err instanceof RedirectError && req.accepts('text/html')) {
+    return res.redirect(err.redirectTo)
+  } else if (err instanceof ServerError) {
+    status = err.statusCode
+    data = err.errorData
+    message = err.errorMessage
+    logger.info(`${status} -- ${message}`)
+    if (data) {
+      logger.info(JSON.stringify(data, null, 2))
+    }
+  } else if (err instanceof ApiError) {
     const hueError = err.getHueError()
 
     logger.warn(err.stack)
@@ -34,7 +46,7 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
     }
   } else if (config.dev) {
     if (err instanceof Error) {
-      message = err.stack
+      message = err.stack || err.message
     } else {
       message = err.toString()
     }
@@ -42,6 +54,11 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
 
   if (!data) {
     data = { message }
+  } else if (!data.message) {
+    data = {
+      ...data,
+      message,
+    }
   }
   res.status(status).send(data)
 }

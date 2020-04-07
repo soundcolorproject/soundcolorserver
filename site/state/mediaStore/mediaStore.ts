@@ -50,7 +50,11 @@ async function updateDevices () {
   }
 }
 
-navigator.mediaDevices.addEventListener('devicechange', updateDevices)
+if (navigator.mediaDevices) {
+  navigator.mediaDevices.addEventListener('devicechange', () => updateDevices().catch(e => {
+    logger.error('Failed to fetch media devices:', e)
+  }))
+}
 
 updateDevices().catch(e => {
   logger.error('Failed to fetch media devices:', e)

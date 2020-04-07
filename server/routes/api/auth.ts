@@ -1,12 +1,26 @@
 
 import { Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { config } from '../../../config'
-import { createApiFromAccessCode, getLocalApi } from '../../../hue-helpers/getApi'
-import { sessionStateCache } from '../../../hue-helpers/cache'
-import { logger } from '../../../../shared/logger'
+import { config } from '../../config'
+import { createApiFromAccessCode, getLocalApi, getApi } from '../../hue-helpers/getApi'
+import { sessionStateCache } from '../../hue-helpers/cache'
+import { logger } from '../../../shared/logger'
 
 export const authRouter = Router()
+
+authRouter.get('/status', asyncHandler(async (req, res) => {
+  let authenticated: boolean
+  try {
+    await getApi(req.getSessionId())
+    authenticated = true
+  } catch (e) {
+    authenticated = false
+  }
+
+  res.send({
+    authenticated,
+  })
+}))
 
 if (config.remoteApi) {
   authRouter.get('/callback', asyncHandler(async (req, res) => {

@@ -1,18 +1,9 @@
 
 import { RequestHandler } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { randomBytes } from 'crypto'
-import { promisify } from 'util'
 import { config } from '../config'
 import { logger } from '../../shared/logger'
-
-const randomBytesAsync = promisify(randomBytes)
-async function randomString (length: number) {
-  length = Math.max(1, length)
-  const byteLength = Math.ceil(length * 6 / 8)
-  const byteBuffer = await randomBytesAsync(byteLength)
-  return byteBuffer.toString('base64').substring(0, length)
-}
+import { randomString } from '../helpers/random'
 
 export const sessionMiddleware: RequestHandler = config.remoteApi
 ? asyncHandler(async (req, res, next) => {

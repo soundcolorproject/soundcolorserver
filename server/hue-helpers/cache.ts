@@ -1,7 +1,7 @@
 
 import * as Cache from 'node-cache'
 import { HueApi } from '../hue/api'
-import { OAuthTokens } from '../hue/api/remote'
+import { OAuthTokens, RemoteCredentials } from '../hue/api/remote'
 
 const localCache = new Cache({
   checkperiod: 30,  // check for expired items every 30 seconds
@@ -75,7 +75,7 @@ function makeAccessors<T> (prefix: string, ttl: number) {
 
 // access tokens expire after 3 days
 const CLIENT_TOKEN_TTL = 60 * 60 * 24 * 3
-export const oauthTokensCache = makeAccessors<OAuthTokens>('oauthTokens', CLIENT_TOKEN_TTL)
+export const remoteCredentialsCache = makeAccessors<RemoteCredentials>('remoteCredentials', CLIENT_TOKEN_TTL)
 
 // api objects expire after 15 minutes
 const API_TTL = 60 * 15

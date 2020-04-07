@@ -2,13 +2,14 @@
 # npm
 node_modules
 
-# bulit
+# built
 dist
 *.pcss.d.ts
 
 # local config
 .env
 .npmrc
+local
 
 # temporary
 tmp
