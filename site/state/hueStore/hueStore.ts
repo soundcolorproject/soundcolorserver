@@ -17,5 +17,3 @@ export class HueStore {
   readonly remoteApi = !__REMOTE_API__
   @observable authenticated = false
 }
-
-

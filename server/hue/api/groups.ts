@@ -49,32 +49,32 @@ export interface GroupLightState {
 
 export interface GroupsApi {
   // GET
-  getAll(): Promise<AnyGroup[]>
-  getGroup(id: number): Promise<AnyGroup>
-  getGroupByName(name: string): Promise<AnyGroup[]>
-  getLightGroups(): Promise<LightGroup[]>
-  getRooms(): Promise<Room[]>
-  getZones(): Promise<Zone[]>
-  getEntertainment(): Promise<Entertainment[]>
+  getAll (): Promise<AnyGroup[]>
+  getGroup (id: number): Promise<AnyGroup>
+  getGroupByName (name: string): Promise<AnyGroup[]>
+  getLightGroups (): Promise<LightGroup[]>
+  getRooms (): Promise<Room[]>
+  getZones (): Promise<Zone[]>
+  getEntertainment (): Promise<Entertainment[]>
 
   // CREATE
-  createGroup(group: LightGroup): Promise<LightGroup>
-  createGroup(group: Room): Promise<Room>
-  createGroup(group: Zone): Promise<Zone>
-  createGroup(group: Entertainment): Promise<Entertainment>
+  createGroup (group: LightGroup): Promise<LightGroup>
+  createGroup (group: Room): Promise<Room>
+  createGroup (group: Zone): Promise<Zone>
+  createGroup (group: Entertainment): Promise<Entertainment>
 
   // UPDATE
-  updateGroupAttributes(group: LightGroup): Promise<LightGroup>
-  updateGroupAttributes(group: Room): Promise<Room>
-  updateGroupAttributes(group: Zone): Promise<Zone>
-  updateGroupAttributes(group: Entertainment): Promise<Entertainment>
+  updateGroupAttributes (group: LightGroup): Promise<LightGroup>
+  updateGroupAttributes (group: Room): Promise<Room>
+  updateGroupAttributes (group: Zone): Promise<Zone>
+  updateGroupAttributes (group: Entertainment): Promise<Entertainment>
 
   // DELETE
-  deleteGroup(id: number): Promise<boolean>
+  deleteGroup (id: number): Promise<boolean>
 
   // OPTIONS
-  getGroupState(id: number): Promise<GroupLightState>
-  setGroupState(id: number, state: GroupLightState): Promise<GroupLightState>
+  getGroupState (id: number): Promise<GroupLightState>
+  setGroupState (id: number, state: GroupLightState): Promise<GroupLightState>
 }
 
 export type GroupClass =

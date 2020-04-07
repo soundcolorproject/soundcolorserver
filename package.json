@@ -2,7 +2,7 @@
   "name": "soundcolorserver",
   "version": "0.0.1",
   "description": "The server for using sound to drive color changing lights",
-  "main": "dist/index.js",
+  "main": "dist/server/index.js",
   "private": true,
   "scripts": {
     "start": "node dist/server/index.js",
@@ -22,7 +22,11 @@
     "build:static": "cp -r static dist",
     "lint": "tslint --project .",
     "test": "jest --passWithNoTests",
-    "check": "run-s lint build test"
+    "verify-build": "./verify-build.sh true",
+    "verify-build-ci": "./verify-build.sh",
+    "check": "run-s lint build test verify-build",
+    "check-simple": "run-s lint build test",
+    "check-ci": "run-s lint build test verify-build-ci"
   },
   "license": "ISC",
   "dependencies": {
