@@ -71,7 +71,7 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
         return <h2>Please select a color pattern to begin</h2>
       }
       if (!showColors) {
-        return <h2>Press enter again to resume the color pattern</h2>
+        return <h2>Color pattern stopped.</h2>
       }
 
       return (

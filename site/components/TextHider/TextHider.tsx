@@ -1,9 +1,9 @@
 
 import * as React from 'react'
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { RenderStateProp } from '../../state/renderStateStore/index'
+import { RenderStateProp } from '../../state/renderStateStore'
 
-import { textHider, hidden } from './textHider.pcss'
+import { clickReshow, textHider, hidden } from './textHider.pcss'
 
 interface OwnProps {
 }
@@ -15,12 +15,18 @@ export type TextHiderProps = OwnProps & StateProps
 export const TextHider = injectAndObserve<StateProps, OwnProps>(
   ({ renderState }) => ({ renderState }),
   class TextHider extends React.Component<TextHiderProps> {
+    reshow = () => {
+      this.props.renderState.showText = true
+    }
     render () {
       const { children, renderState: { showText } } = this.props
       return (
-        <div id={textHider} className={showText ? '' : hidden}>
-          {children}
-        </div>
+        <>
+          { showText || <div id={clickReshow} onClick={this.reshow} /> }
+          <div id={textHider} className={showText ? '' : hidden}>
+            {children}
+          </div>
+        </>
       )
     }
   },
