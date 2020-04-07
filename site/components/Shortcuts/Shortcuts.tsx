@@ -99,5 +99,5 @@ export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
         </div>
       )
     }
-  }
+  },
 )
