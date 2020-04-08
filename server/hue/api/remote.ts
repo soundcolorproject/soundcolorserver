@@ -6,20 +6,21 @@ export interface OAuthTokens {
   refresh_expires_at: number
 }
 
+export interface Token {
+  value: string
+  expiresAt: number
+}
+
+export interface Tokens {
+  access: Token
+  refresh: Token
+}
+
 export interface RemoteCredentials {
   clientId: string
   clientSecret: string
   username: string
-  tokens: {
-    access: {
-      value: string
-      expiresAt: number
-    }
-    refresh: {
-      value: string
-      expiresAt: number
-    }
-  }
+  tokens: Tokens
 }
 
 export interface UnauthenticatedRemoteApi {

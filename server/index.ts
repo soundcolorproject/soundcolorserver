@@ -7,7 +7,8 @@ import { readFileSync } from 'fs'
 import { app } from './app'
 import { logger } from '../shared/logger'
 import { config } from './config'
-import { FatalError } from './errors/FatalError'
+import { FatalError, FatalErrorCode } from './errors/FatalError'
+import { initDb } from './initDb'
 
 /**
  * generates a random port number between 5000 - 49999
@@ -65,17 +66,26 @@ async function startServer () {
       return server
     } catch (e) {
       if (!config.dev) {
-        throw new FatalError(2, `Port ${getPort()} cannot be opened!`)
+        throw new FatalError(
+          FatalErrorCode.EXPECTED_PORT_FAILED_TO_OPEN,
+          `Port ${getPort()} cannot be opened!`,
+        )
       }
       failCount++
     }
   }
-  throw new FatalError(3, 'Could not find an open port!')
+  throw new FatalError(
+    FatalErrorCode.NO_AVAILABLE_PORTS,
+    'Could not find an open port!',
+  )
 }
 
 async function main () {
+  await initDb()
   const server = await startServer()
   server.on('request', app)
+  // tslint:disable-next-line: no-console
+  console.log('Server ready')
 
   if (module.hot) {
     let currentApp = app
@@ -97,6 +107,10 @@ async function main () {
 main().catch(e => {
   logger.fatal(e)
   if (e instanceof FatalError) {
+    if (e.cause) {
+      logger.fatal('caused by:', e.cause)
+    }
+
     process.exit(e.exitCode)
   } else {
     process.exit(1)

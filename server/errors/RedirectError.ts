@@ -1,11 +1,17 @@
 
-import { ServerError } from './ServerError'
+import { ServerError, ServerErrorCode } from './ServerError'
 
-export class RedirectError extends ServerError {
+export class RedirectError extends ServerError<{ redirectTo: string }> {
   constructor (
     public readonly redirectTo: string,
     fallbackError?: string,
+    errorCode = ServerErrorCode.REDIRECTING,
   ) {
-    super(fallbackError, { redirectTo }, 302)
+    super(
+      errorCode,
+      fallbackError,
+      { redirectTo },
+      401,
+    )
   }
 }

@@ -3,6 +3,10 @@ declare namespace Express {
   interface Request {
     getSessionId(): string
   }
+
+  interface Response {
+    clearSession(): Promise<void>
+  }
 }
 
 declare interface HotModule {

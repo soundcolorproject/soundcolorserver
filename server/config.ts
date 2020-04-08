@@ -34,6 +34,7 @@ export const config = {
   clientId: process.env.HUE_CLIENT_ID || '',
   clientSecret: process.env.HUE_CLIENT_SECRET || '',
   appId: process.env.HUE_APP_ID || '',
+  mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/soundcolor',
   toJSON: () => { throw new CannotStringifyError('config file') },
 }
 

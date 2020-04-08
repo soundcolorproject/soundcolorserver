@@ -73,14 +73,6 @@ function makeAccessors<T> (prefix: string, ttl: number) {
   }
 }
 
-// access tokens expire after 3 days
-const CLIENT_TOKEN_TTL = 60 * 60 * 24 * 3
-export const remoteCredentialsCache = makeAccessors<RemoteCredentials>('remoteCredentials', CLIENT_TOKEN_TTL)
-
 // api objects expire after 15 minutes
 const API_TTL = 60 * 15
 export const apiCache = makeAccessors<HueApi>('api', API_TTL)
-
-// session state strings expire after 5 minutes
-const SESSION_STATE_TTL = 60 * 5
-export const sessionStateCache = makeAccessors<string>('sessionState', SESSION_STATE_TTL)

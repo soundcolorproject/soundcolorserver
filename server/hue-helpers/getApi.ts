@@ -3,7 +3,7 @@ import { hostname } from 'os'
 
 import { v3 } from '../hue'
 import { config } from '../config'
-import { apiCache, remoteCredentialsCache, sessionStateCache } from './cache'
+import { apiCache } from './cache'
 import { BridgeInfo } from '../hue/discovery'
 import { NewUser } from '../hue/api/users'
 import { writeJsonFile, readJsonFile, dataFileExists } from './appData'
@@ -13,6 +13,8 @@ import { logger } from '../../shared/logger'
 import { RedirectError } from '../errors/RedirectError'
 import { randomString, randomLetter } from '../helpers/random'
 import { NoLocalBridgesError } from '../errors/NoLocalBridgesError'
+import { saveRemoteCredentials, getRemoteCredentials, deleteRemoteCredentials, CredentialData } from '../db/remoteCredentials'
+import { generateOauthState } from '../db/oauthState'
 
 function bridgeUserFile (bridge: BridgeInfo) {
   return `user.${bridge.name}.${bridge.ipaddress}.${bridge.modelid}.json`
@@ -31,39 +33,52 @@ function localUserFileExists (bridge: BridgeInfo) {
 }
 
 function createAccess () {
-  return v3.api.createRemote(config.clientId, config.clientSecret)
+  return v3.api.createRemote(
+    config.clientId,
+    config.clientSecret,
+  )
 }
 
-async function getRedirectUrl (session: string) {
-  const state = await sessionStateCache.getOrExecute(session, async () => (
-    (await randomString(24)).replace(/[^a-zA-Z]/g, randomLetter)
-  ))
+export async function getHueRedirectUrl (session: string) {
+  const state = await generateOauthState(session, 'hue')
   const access = createAccess()
   return access.getAuthCodeUrl(hostname(), config.appId, state)
 }
 
+const FIFTEEN_SECONDS = 1000 * 15
 async function getRemoteApi (session: string) {
-  const api = await apiCache.getOrExecute(session, async () => {
-    const credentials = remoteCredentialsCache.get(session)
-    if (!credentials) {
-      throw new RedirectError(await getRedirectUrl(session), 'No OAuth tokens found for the current session')
-    }
+  let credentials: CredentialData | null = null
 
+  const api = await apiCache.getOrExecute(session, async () => {
+    credentials = await getRemoteCredentials(session)
+    if (!credentials) {
+      throw new RedirectError(await getHueRedirectUrl(session), 'No OAuth tokens found for the current session')
+    }
     const { tokens: { access, refresh }, username } = credentials
 
     if (refresh.expiresAt < Date.now()) {
-      remoteCredentialsCache.del(session)
-      throw new RedirectError(await getRedirectUrl(session), 'OAuth tokens for the current session have expired')
+      await deleteRemoteCredentials(session)
+      throw new RedirectError(await getHueRedirectUrl(session), 'OAuth tokens for the current session have expired')
     }
 
-    return createAccess().connectWithTokens(access.value, refresh.value, username)
+    const api = await createAccess().connectWithTokens(
+      access.value,
+      refresh.value,
+      username,
+      FIFTEEN_SECONDS,
+      'web_server',
+    )
+    return api
   })
 
-  const { tokens: { access } } = api.remote.getRemoteAccessCredentials()
-  if (access.expiresAt < Date.now()) {
+  if (!credentials) {
+    credentials = await getRemoteCredentials(session)
+  }
+
+  if (credentials && credentials.tokens.access.expiresAt < Date.now()) {
     await api.remote.refreshTokens()
     const newCreds = api.remote.getRemoteAccessCredentials()
-    remoteCredentialsCache.set(session, newCreds)
+    await saveRemoteCredentials(session, newCreds)
   }
 
   return api
@@ -109,7 +124,7 @@ export async function createApiFromAccessCode (session: string, accessCode: stri
   logger.info(`The Access Token is valid until:  ${new Date(remoteCredentials.tokens.access.expiresAt)}`)
   logger.info(`The Refresh Token is valid until: ${new Date(remoteCredentials.tokens.refresh.expiresAt)}`)
 
-  remoteCredentialsCache.set(session, remoteCredentials)
+  await saveRemoteCredentials(session, remoteCredentials)
   apiCache.set(session, api)
 
   return api

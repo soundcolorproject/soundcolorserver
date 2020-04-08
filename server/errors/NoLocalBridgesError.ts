@@ -1,8 +1,11 @@
 
-import { ServerError } from './ServerError'
+import { ServerError, ServerErrorCode } from './ServerError'
 
 export class NoLocalBridgesError extends ServerError {
   constructor () {
-    super('No hue bridges found on the current local network.')
+    super(
+      ServerErrorCode.NO_LOCAL_BRIDGES,
+      'No hue bridges found on the current local network.',
+    )
   }
 }
