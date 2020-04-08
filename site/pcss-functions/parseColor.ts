@@ -2,7 +2,7 @@
 import { SRGBa } from './toSRgb'
 import { HSLa } from './toHsl'
 
-import { Color } from './types'
+import { Color, ParsedColor } from './types'
 
 const hexDigit = '[0-9a-f]'
 const num = '[\-+]?[0-9\.]+'
@@ -14,7 +14,7 @@ const colorRgbaRgx = new RegExp(`^rgba\((${num}), *(${num}), *(${num}), *(${num}
 const colorHslRgx = new RegExp(`^hsl\((${num}), *(${num})%, *(${num})%\)$`, 'i')
 const colorHslaRgx = new RegExp(`^hsla\((${num}), *(${num})%, *(${num})%, *(${num})\)$`, 'i')
 
-export function parseColor (color: string): Color {
+export function parseColor (color: string): ParsedColor {
   color = color.trim()
   if (color256Rgx.test(color)) {
     const [, r, g, b] = color256Rgx.exec(color)!.map(c => parseInt(c, 16) / 255)

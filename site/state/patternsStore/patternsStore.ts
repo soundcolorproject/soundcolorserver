@@ -31,7 +31,13 @@ export type ColorMap = { [key in Note]: HSVa }
 function getCustomColorValue (name: string, note: Note) {
   const storageVal = localStorage.getItem(`custom:${name}:${note}`)
   if (storageVal) {
-    return JSON.parse(storageVal)
+    try {
+      return toHsv(storageVal)
+    } catch (e) {
+      const color = defaultCustomColors[note]
+      saveCustommColorValue(name, note, color)
+      return color
+    }
   } else {
     return defaultCustomColors[note]
   }

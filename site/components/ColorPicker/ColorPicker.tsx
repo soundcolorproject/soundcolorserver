@@ -4,6 +4,7 @@ import Pickr from '@simonwep/pickr'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { PatternsProp, Note } from '../../state/patternsStore'
 import { toHsv } from '../../pcss-functions/toHsv'
+import { getContrastingColor } from '../../pcss-functions'
 
 interface OwnProps {
   note: Note
@@ -57,13 +58,19 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
         ? `${note[0]} Sharp`
         : note
 
+      const background = customColors[note]
+      const foreground = getContrastingColor(background)
+
       return (
         <button
           ref={this.createPicker}
           type='button'
           role='button'
           aria-label={`custom color for note ${noteDesc}`}
-          style={{ background: customColors[note].toString() }}
+          style={{
+            color: foreground.toString(),
+            backgroundColor: background.toString(),
+          }}
         >
           {note}
         </button>

@@ -9,7 +9,7 @@ const VAR_WHITE = 'var(--white)'
 const TRUE_BLACK = '#000'
 const TRUE_WHITE = '#fff'
 
-export function getContrastingColor (color: Color, useTrue = true) {
+export function getContrastingColor (color: Color, useTrue = false) {
   const lum = getLuminance(color)
   if (lum < colorConversion.centralLum) {
     return useTrue ? TRUE_WHITE : VAR_WHITE

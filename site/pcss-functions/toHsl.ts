@@ -11,7 +11,7 @@ export function toHsl (color: Color): HSLa {
     color = parseColor(color)
   }
 
-  if (color instanceof HSLa) {
+  if (color.type === 'HSLa') {
     return color
   }
 
@@ -19,6 +19,8 @@ export function toHsl (color: Color): HSLa {
 }
 
 export class HSLa {
+  readonly type = 'HSLa'
+
   constructor (
     public h: number,
     public s: number,

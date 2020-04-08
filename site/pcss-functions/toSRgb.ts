@@ -13,7 +13,7 @@ export function toSRgb (color: Color): SRGBa {
     color = parseColor(color)
   }
 
-  if (color instanceof SRGBa) {
+  if (color.type === 'SRGBa') {
     return color
   }
 
@@ -31,6 +31,8 @@ function toHex (num: number) {
 }
 
 export class SRGBa {
+  readonly type = 'SRGBa'
+  
   constructor (
     public r: number,
     public g: number,

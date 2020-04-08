@@ -13,15 +13,15 @@ export function toRgb (color: Color): RGBa {
     color = parseColor(color)
   }
 
-  if (color instanceof RGBa) {
+  if (color.type === 'RGBa') {
     return color
   }
 
-  if (color instanceof HSLa) {
+  if (color.type === 'HSLa') {
     return RGBa.fromHSL(color)
   }
 
-  if (color instanceof HSVa) {
+  if (color.type === 'HSVa') {
     return RGBa.fromHSV(color)
   }
 
@@ -29,6 +29,8 @@ export function toRgb (color: Color): RGBa {
 }
 
 export class RGBa {
+  readonly type = 'RGBa'
+
   constructor (
     public r: number,
     public g: number,

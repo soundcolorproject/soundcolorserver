@@ -11,7 +11,7 @@ export function toHsv (color: Color): HSVa {
     color = parseColor(color)
   }
 
-  if (color instanceof HSVa) {
+  if (color.type === 'HSVa') {
     return color
   }
 
@@ -19,6 +19,8 @@ export function toHsv (color: Color): HSVa {
 }
 
 export class HSVa {
+  readonly type = 'HSVa'
+  
   constructor (
     public h: number,
     public s: number,
