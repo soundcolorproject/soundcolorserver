@@ -23,7 +23,7 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
   class SoundDetails extends React.Component<SoundDetailsProps> {
     renderDetails = ({ dB, frequency, note: { note, cents, octave } }: ToneInfo, idx: number) => {
       return (
-        <div id={soundDetails}>
+        <>
           <div className={detail}>
             <span className={name}>Tone volume: </span>
             <span className={value}>{dB.toFixed(0)} dB</span>
@@ -40,27 +40,27 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
             <span className={name}>Cents ♭: </span>
             <span className={value}>{cents.toFixed(2)}</span>
           </div>
-        </div>
+        </>
       )
     }
 
     renderEmptyDetails = () => (
       <>
-        <div>
-          <span className='name'>Tone volume: </span>
-          <span className='value'>•</span>
+        <div className={detail}>
+          <span className={name}>Tone volume: </span>
+          <span className={value}>•</span>
         </div>
-        <div>
-          <span className='name'>Frequency: </span>
-          <span className='value'>•</span>
+        <div className={detail}>
+          <span className={name}>Frequency: </span>
+          <span className={value}>•</span>
         </div>
-        <div>
-          <span className='name'>Note: </span>
-          <span className='value'>•</span>
+        <div className={detail}>
+          <span className={name}>Note: </span>
+          <span className={value}>•</span>
         </div>
-        <div>
-          <span className='name'>Cents ♭: </span>
-          <span className='value'>•</span>
+        <div className={detail}>
+          <span className={name}>Cents ♭: </span>
+          <span className={value}>•</span>
         </div>
       </>
     )
@@ -75,26 +75,30 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
       }
 
       return (
-        <div id='sound-details'>
+        <div id={soundDetails}>
           {
             Number.isFinite(noise)
               ? (
-                <div className='detail'>
-                  <span className='name'>Noise volume: </span>
-                  <span className='value'>{noise.toFixed(0)} dB</span>
+                <>
+                  <div className={detail}>
+                    <span className={name}>Noise volume: </span>
+                    <span className={value}>{noise.toFixed(0)} dB</span>
+                  </div>
                   {
                     tones.length > 0
                       ? this.renderDetails(tones[0], 0)
                       : this.renderEmptyDetails()
                   }
-                </div>
+                </>
               )
             : (
-                <div className='detail'>
-                  <span className='name'>Noise volume: </span>
-                  <span className='value'>•</span>
+                <>
+                  <div className={detail}>
+                    <span className={name}>Noise volume: </span>
+                    <span className={value}>•</span>
+                  </div>
                   {this.renderEmptyDetails()}
-                </div>
+                </>
               )
           }
         </div>

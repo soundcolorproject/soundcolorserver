@@ -31,7 +31,7 @@ export const PatternPicker = injectAndObserve<StateProps, OwnProps>(
           <div id={customColors}>
             {
               this.props.patterns.notes.map(note => (
-                <ColorPicker note={note} />
+                <ColorPicker key={note} note={note} />
               ))
             }
             <button
