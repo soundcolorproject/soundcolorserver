@@ -1,11 +1,11 @@
 
-import { toRgb, Rgba } from './toRgb'
+import { toRgb, RGBa } from './toRgb'
 import { toSRgb } from './toSRgb'
 
 import { Color } from './types'
 
 export function getLuminance (color: Color) {
-  if (!(color instanceof Rgba)) {
+  if (!(color instanceof RGBa)) {
     color = toRgb(toSRgb(color))
   }
 

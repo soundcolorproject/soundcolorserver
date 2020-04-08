@@ -2,8 +2,8 @@
 import * as React from 'react'
 import Pickr from '@simonwep/pickr'
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { hexToHsv, hsvToHex } from '../../color/colorHelpers'
 import { PatternsProp, Note } from '../../state/patternsStore'
+import { toHsv } from '../../pcss-functions/toHsv'
 
 interface OwnProps {
   note: Note
@@ -26,7 +26,7 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
         el: el,
         theme: 'nano',
         useAsButton: true,
-        default: hsvToHex(customColors[note]),
+        default: customColors[note].toString(),
         components: {
           palette: false,
           preview: true,
@@ -45,7 +45,7 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
       })
 
       this.picker.on('save', (color: Pickr.HSVaColor, instance: Pickr) => {
-        customColors[note] = hexToHsv(color.toHEXA().toString())
+        customColors[note] = toHsv(color.toHEXA().toString())
         instance.hide()
       })
     }
@@ -63,7 +63,7 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
           type='button'
           role='button'
           aria-label={`custom color for note ${noteDesc}`}
-          style={{ background: hsvToHex(customColors[note]) }}
+          style={{ background: customColors[note].toString() }}
         >
           {note}
         </button>

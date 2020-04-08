@@ -2,7 +2,7 @@
 import { printDigits } from '../helpers/numbers'
 import { parseColor } from './parseColor'
 
-import { toRgb, Rgba } from './toRgb'
+import { toRgb, RGBa } from './toRgb'
 
 import { Color } from './types'
 
@@ -50,8 +50,8 @@ export class HSLa {
     return [this.h,this.s,this.l,this.a]
   }
 
-  static fromRgb (orig: Rgba) {
-    if (!(orig instanceof Rgba)) {
+  static fromRgb (orig: RGBa) {
+    if (!(orig instanceof RGBa)) {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 
@@ -75,7 +75,9 @@ export class HSLa {
     }
 
     let H
-    if (R === max) {
+    if (delta === 0) {
+      H = 0
+    } else if (R === max) {
       H = (G - B) / delta
       H = H < 0 ? H + 6 : H
     } else if (G === max) {

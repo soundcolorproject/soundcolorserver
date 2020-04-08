@@ -1,6 +1,7 @@
 
+import { HSVa } from './toHsv'
 import { HSLa } from './toHsl'
-import { Rgba } from './toRgb'
-import { Srgba } from './toSRgb'
+import { RGBa } from './toRgb'
+import { SRGBa } from './toSRgb'
 
-export type Color = HSLa | Rgba | Srgba | string
+export type Color = HSVa | HSLa | RGBa | SRGBa | string

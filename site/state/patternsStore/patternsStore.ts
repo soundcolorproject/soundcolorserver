@@ -1,22 +1,22 @@
 
 import { observable, reaction } from 'mobx'
-import { hexToHsv, HSV } from '../../color/colorHelpers'
 import { getAnalyser } from '../../audio/analyzer'
 import { getMiniAnalyser } from '../../audio/miniAnalyser'
+import { toHsv, HSVa } from '../../pcss-functions/toHsv'
 
 const defaultCustomColors = {
-  'C': hexToHsv('#E2CF0B'),
-  'C#': hexToHsv('#FFE50C'),
-  'D': hexToHsv('#35C80B'),
-  'D#': hexToHsv('#0B33A5'),
-  'E': hexToHsv('#19BDA2'),
-  'F': hexToHsv('#835BD9'),
-  'F#': hexToHsv('#774ACB'),
-  'G': hexToHsv('#E4C5DD'),
-  'G#': hexToHsv('#E0BFD7'),
-  'A': hexToHsv('#A30008'),
-  'A#': hexToHsv('#9B1A6F'),
-  'B': hexToHsv('#BA000A'),
+  'C': toHsv('#E2CF0B'),
+  'C#': toHsv('#FFE50C'),
+  'D': toHsv('#35C80B'),
+  'D#': toHsv('#0B33A5'),
+  'E': toHsv('#19BDA2'),
+  'F': toHsv('#835BD9'),
+  'F#': toHsv('#774ACB'),
+  'G': toHsv('#E4C5DD'),
+  'G#': toHsv('#E0BFD7'),
+  'A': toHsv('#A30008'),
+  'A#': toHsv('#9B1A6F'),
+  'B': toHsv('#BA000A'),
 }
 
 export type PatternsStore = typeof patternsStore
@@ -26,7 +26,7 @@ export interface PatternsProp {
 }
 
 export type Note = keyof typeof defaultCustomColors
-export type ColorMap = { [key in Note]: HSV }
+export type ColorMap = { [key in Note]: HSVa }
 
 function getCustomColorValue (name: string, note: Note) {
   const storageVal = localStorage.getItem(`custom:${name}:${note}`)
@@ -37,8 +37,8 @@ function getCustomColorValue (name: string, note: Note) {
   }
 }
 
-function saveCustommColorValue (name: string, note: Note, value: HSV) {
-  localStorage.setItem(`custom:${name}:${note}`, JSON.stringify(value))
+function saveCustommColorValue (name: string, note: Note, value: HSVa) {
+  localStorage.setItem(`custom:${name}:${note}`, value.toString())
 }
 
 type CustomColorMap = ColorMap & {
@@ -86,86 +86,86 @@ export const patternsStore = observable({
     chakras: {
       label: 'Chakras',
       colors: {
-        'C': hexToHsv('#EC472D'),
-        'C#': hexToHsv('#EC5F2D'),
-        'D': hexToHsv('#EC972D'),
-        'D#': hexToHsv('#F6AB0B'),
-        'E': hexToHsv('#F6D70B'),
-        'F': hexToHsv('#40C070'),
-        'F#': hexToHsv('#40C0AD'),
-        'G': hexToHsv('#0080FF'),
-        'G#': hexToHsv('#1369EB'),
-        'A': hexToHsv('#204ADA'),
-        'A#': hexToHsv('#5C22ED'),
-        'B': hexToHsv('#9D32F5'),
+        'C': toHsv('#EC472D'),
+        'C#': toHsv('#EC5F2D'),
+        'D': toHsv('#EC972D'),
+        'D#': toHsv('#F6AB0B'),
+        'E': toHsv('#F6D70B'),
+        'F': toHsv('#40C070'),
+        'F#': toHsv('#40C0AD'),
+        'G': toHsv('#0080FF'),
+        'G#': toHsv('#1369EB'),
+        'A': toHsv('#204ADA'),
+        'A#': toHsv('#5C22ED'),
+        'B': toHsv('#9D32F5'),
       },
     },
     chromesthesia: {
       label: 'Chromesthesia',
       colors: {
-        'C': hexToHsv('#B2B9CD'),
-        'C#': hexToHsv('#8D3B4C'),
-        'D': hexToHsv('#E1BF5C'),
-        'D#': hexToHsv('#BA64E1'),
-        'E': hexToHsv('#3793B4'),
-        'F': hexToHsv('#A0A883'),
-        'F#': hexToHsv('#69B777'),
-        'G': hexToHsv('#F56A4E'),
-        'G#': hexToHsv('#8B2F64'),
-        'A': hexToHsv('#EC9F40'),
-        'A#': hexToHsv('#D3BD8D'),
-        'B': hexToHsv('#D3BED9'),
+        'C': toHsv('#B2B9CD'),
+        'C#': toHsv('#8D3B4C'),
+        'D': toHsv('#E1BF5C'),
+        'D#': toHsv('#BA64E1'),
+        'E': toHsv('#3793B4'),
+        'F': toHsv('#A0A883'),
+        'F#': toHsv('#69B777'),
+        'G': toHsv('#F56A4E'),
+        'G#': toHsv('#8B2F64'),
+        'A': toHsv('#EC9F40'),
+        'A#': toHsv('#D3BD8D'),
+        'B': toHsv('#D3BED9'),
       },
     },
     emotion: {
       label: 'Emotion',
       colors: {
-        'C': hexToHsv('#0E74D9'),
-        'C#': hexToHsv('#4BB0FF'),
-        'D': hexToHsv('#C80006'),
-        'D#': hexToHsv('#0F7102'),
-        'E': hexToHsv('#17AA05'),
-        'F': hexToHsv('#FD6809'),
-        'F#': hexToHsv('#3F31FF'),
-        'G': hexToHsv('#0000BD'),
-        'G#': hexToHsv('#FC0007'),
-        'A': hexToHsv('#FFE744'),
-        'A#': hexToHsv('#FFFF43'),
-        'B': hexToHsv('#D400D6'),
+        'C': toHsv('#0E74D9'),
+        'C#': toHsv('#4BB0FF'),
+        'D': toHsv('#C80006'),
+        'D#': toHsv('#0F7102'),
+        'E': toHsv('#17AA05'),
+        'F': toHsv('#FD6809'),
+        'F#': toHsv('#3F31FF'),
+        'G': toHsv('#0000BD'),
+        'G#': toHsv('#FC0007'),
+        'A': toHsv('#FFE744'),
+        'A#': toHsv('#FFFF43'),
+        'B': toHsv('#D400D6'),
       },
     },
     chromotherapy: {
       label: 'Chromotherapy',
       colors: {
-        'C': hexToHsv('#46680e'),
-        'C#': hexToHsv('#4a996b'),
-        'D': hexToHsv('#23778f'),
-        'D#': hexToHsv('#2c3358'),
-        'E': hexToHsv('#e37081'),
-        'F': hexToHsv('#934682'),
-        'F#': hexToHsv('#40C0AD'),
-        'G': hexToHsv('#fc5719'),
-        'G#': hexToHsv('#a43a11'),
-        'A': hexToHsv('#fd7d0f'),
-        'A#': hexToHsv('#fd9f18'),
-        'B': hexToHsv('#fdb217'),
+        'C': toHsv('#46680e'),
+        'C#': toHsv('#4a996b'),
+        'D': toHsv('#23778f'),
+        'D#': toHsv('#2c3358'),
+        'E': toHsv('#e37081'),
+        'F': toHsv('#934682'),
+        'F#': toHsv('#40C0AD'),
+        'G': toHsv('#fc5719'),
+        'G#': toHsv('#a43a11'),
+        'A': toHsv('#fd7d0f'),
+        'A#': toHsv('#fd9f18'),
+        'B': toHsv('#fdb217'),
       },
     },
     adolescence: {
       label: 'Adolescence',
       colors: {
-        'C': hexToHsv('#E2CF0B'),
-        'C#': hexToHsv('#FFE50C'),
-        'D': hexToHsv('#35C80B'),
-        'D#': hexToHsv('#0B33A5'),
-        'E': hexToHsv('#19BDA2'),
-        'F': hexToHsv('#835BD9'),
-        'F#': hexToHsv('#774ACB'),
-        'G': hexToHsv('#E4C5DD'),
-        'G#': hexToHsv('#E0BFD7'),
-        'A': hexToHsv('#A30008'),
-        'A#': hexToHsv('#9B1A6F'),
-        'B': hexToHsv('#BA000A'),
+        'C': toHsv('#E2CF0B'),
+        'C#': toHsv('#FFE50C'),
+        'D': toHsv('#35C80B'),
+        'D#': toHsv('#0B33A5'),
+        'E': toHsv('#19BDA2'),
+        'F': toHsv('#835BD9'),
+        'F#': toHsv('#774ACB'),
+        'G': toHsv('#E4C5DD'),
+        'G#': toHsv('#E0BFD7'),
+        'A': toHsv('#A30008'),
+        'A#': toHsv('#9B1A6F'),
+        'B': toHsv('#BA000A'),
       },
     },
     custom: {

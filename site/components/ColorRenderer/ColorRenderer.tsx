@@ -1,13 +1,14 @@
 
 import * as React from 'react'
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { hsvToHex, hsvToRgb, rgbToHsv, RGB, HSV } from '../../color/colorHelpers'
 import { dBtoVolume, Analysis } from '../../audio/getAnalysis'
 import { PatternsProp, ColorMap, PatternsStore } from '../../state/patternsStore'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { AnalysisProp } from '../../state/analysisStore'
 
 import { backgroundColors, color } from './colorRenderer.pcss'
+import { HSVa, toHsv } from '../../pcss-functions/toHsv'
+import { RGBa, toRgb } from '../../pcss-functions/toRgb'
 
 const smoothValues = {
   s: 0,
@@ -17,13 +18,14 @@ const smoothValues = {
   b: 0,
 }
 
-function smooth (color: RGB | HSV, key: keyof typeof smoothValues, delta: number, speed: number) {
+function smooth (color: RGBa | HSVa, key: keyof typeof smoothValues, delta: number, speed: number) {
   const smoothingVal = (1 - speed) ** (delta)
-  return smoothValues[key] = smoothValues[key] * smoothingVal + (color as typeof smoothValues)[key] * (1 - smoothingVal)
+  return smoothValues[key] = smoothValues[key] * smoothingVal + (color as any)[key] * (1 - smoothingVal)
 }
 
 let lastTime = Date.now()
-function getColorsFromAnalysis (colorMap: ColorMap, { noise, tones }: Analysis, { transitionSpeed, noiseMultiplier, vibranceMultiplier, monochrome }: PatternsStore): string[] {
+function getColorsFromAnalysis ({ noise, tones }: Analysis, { transitionSpeed, noiseMultiplier, vibranceMultiplier, monochrome, currentPattern, patternData }: PatternsStore): string[] {
+  const colorMap = patternData[currentPattern].colors
   noiseMultiplier = noiseMultiplier >= 0 ? 2 ** noiseMultiplier : 0
   vibranceMultiplier = 2 ** vibranceMultiplier
   const saturationMult = Math.max(0, Math.min(1 - (dBtoVolume(noise) * noiseMultiplier), 1))
@@ -32,22 +34,22 @@ function getColorsFromAnalysis (colorMap: ColorMap, { noise, tones }: Analysis, 
   lastTime = newTime
   return tones.map(({ dB, note: { note } }) => {
     const valueMult = Math.max(0, Math.min(dBtoVolume(dB) * vibranceMultiplier, 1))
-    const hsv = { ...colorMap[note] }
+    const hsv = colorMap[note].clone()
     hsv.s *= saturationMult
     hsv.v *= valueMult
 
-    const rgb = hsvToRgb(hsv)
-    const { h } = rgbToHsv({
-      r: smooth(rgb, 'r', delta, transitionSpeed),
-      g: smooth(rgb, 'g', delta, transitionSpeed),
-      b: smooth(rgb, 'b', delta, transitionSpeed),
-    })
+    const rgb = toRgb(hsv)
+    const { h } = toHsv(new RGBa(
+      smooth(rgb, 'r', delta, transitionSpeed),
+      smooth(rgb, 'g', delta, transitionSpeed),
+      smooth(rgb, 'b', delta, transitionSpeed),
+    ))
 
-    return hsvToHex({
-      h: h,
-      s: monochrome ? 0 : smooth(hsv, 's', delta, transitionSpeed),
-      v: smooth(hsv, 'v', delta, transitionSpeed),
-    })
+    return new HSVa(
+      h,
+      monochrome ? 0 : smooth(hsv, 's', delta, transitionSpeed),
+      smooth(hsv, 'v', delta, transitionSpeed),
+    ).toString()
   })
 }
 
@@ -75,16 +77,11 @@ export const ColorRenderer = injectAndObserve<StateProps, OwnProps>(
       if (!pattern) {
         return <div id={backgroundColors} />
       }
-      const colorMap = pattern.colors
-      const colors = getColorsFromAnalysis(colorMap, analysis, patterns)
+      const colors = getColorsFromAnalysis(analysis, patterns)
 
       return (
         <div id={backgroundColors}>
-          {
-            colors.map((bgColor, idx) => (
-              <div className={color} key={idx} style={{ background: bgColor }} />
-            ))
-          }
+          <div className={color} style={{ background: colors[0] }} />
         </div>
       )
     }

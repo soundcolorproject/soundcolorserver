@@ -3,21 +3,21 @@ import { printDigits } from '../helpers/numbers'
 import { colorConversion } from './constants'
 import { parseColor } from './parseColor'
 
-import { toRgb, Rgba } from './toRgb'
+import { toRgb, RGBa } from './toRgb'
 import { HSLa } from './toHsl'
 
 import { Color } from './types'
 
-export function toSRgb (color: Color): Srgba {
+export function toSRgb (color: Color): SRGBa {
   if (typeof color === 'string') {
     color = parseColor(color)
   }
 
-  if (color instanceof Srgba) {
+  if (color instanceof SRGBa) {
     return color
   }
 
-  return Srgba.fromRgb(toRgb(color))
+  return SRGBa.fromRgb(toRgb(color))
 }
 
 function toHex (num: number) {
@@ -30,7 +30,7 @@ function toHex (num: number) {
   }
 }
 
-export class Srgba {
+export class SRGBa {
   constructor (
     public r: number,
     public g: number,
@@ -61,12 +61,12 @@ export class Srgba {
     return [this.r, this.g, this.b, this.a]
   }
 
-  static fromRgb (orig: Rgba) {
-    if (!(orig instanceof Rgba)) {
+  static fromRgb (orig: RGBa) {
+    if (!(orig instanceof RGBa)) {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 
-    return new Srgba(...orig.map(c => {
+    return new SRGBa(...orig.map(c => {
       if (c <= colorConversion.sRgbCutoff / colorConversion.lowRatio) {
         return c * colorConversion.lowRatio
       }
@@ -80,6 +80,6 @@ export class Srgba {
       throw new Error('input to fromHsl must be of type HSLa')
     }
 
-    return Srgba.fromRgb(toRgb(orig))
+    return SRGBa.fromRgb(toRgb(orig))
   }
 }

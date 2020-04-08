@@ -3,27 +3,32 @@ import { colorConversion } from './constants'
 import { parseColor } from './parseColor'
 
 import { HSLa } from './toHsl'
-import { toSRgb, Srgba } from './toSRgb'
+import { toSRgb, SRGBa } from './toSRgb'
 
 import { Color } from './types'
+import { HSVa } from './toHsv'
 
-export function toRgb (color: Color): Rgba {
+export function toRgb (color: Color): RGBa {
   if (typeof color === 'string') {
     color = parseColor(color)
   }
 
-  if (color instanceof Rgba) {
+  if (color instanceof RGBa) {
     return color
   }
 
   if (color instanceof HSLa) {
-    return Rgba.fromHSL(color)
+    return RGBa.fromHSL(color)
   }
 
-  return Rgba.fromSRgb(toSRgb(color))
+  if (color instanceof HSVa) {
+    return RGBa.fromHSV(color)
+  }
+
+  return RGBa.fromSRgb(toSRgb(color))
 }
 
-export class Rgba {
+export class RGBa {
   constructor (
     public r: number,
     public g: number,
@@ -43,12 +48,12 @@ export class Rgba {
     return [this.r,this.g,this.b,this.a]
   }
 
-  static fromSRgb (orig: Srgba) {
-    if (!(orig instanceof Srgba)) {
+  static fromSRgb (orig: SRGBa) {
+    if (!(orig instanceof SRGBa)) {
       throw new Error('input to fromSRgb must be of type Srgba')
     }
 
-    return new Rgba(...orig.map(c => {
+    return new RGBa(...orig.map(c => {
       if (c <= colorConversion.sRgbCutoff) {
         return c / colorConversion.lowRatio
       }
@@ -66,7 +71,7 @@ export class Rgba {
     const L = orig.l
 
     if (S === 0) {
-      return new Rgba(L, L, L, orig.a)
+      return new RGBa(L, L, L, orig.a)
     }
 
     const q = L < 0.5 ? L * (1 + S) : L + S - L * S
@@ -84,6 +89,47 @@ export class Rgba {
       return p
     })
 
-    return new Rgba(r, g, b, orig.a)
+    return new RGBa(r, g, b, orig.a)
+  }
+
+  static fromHSV (orig: HSVa) {
+    const H = orig.h
+    const S = orig.s
+    const V = orig.v
+
+    const min = V - (V * S)
+    const max = V * S + min
+    const mid = V * S * (1 - Math.abs(((H / 60) % 2) - 1)) + min
+
+    let R
+    let G
+    let B
+    if (H < 60) {
+      R = max
+      G = mid
+      B = min
+    } else if (H < 120) {
+      R = mid
+      G = max
+      B = min
+    } else if (H < 180) {
+      R = min
+      G = max
+      B = mid
+    } else if (H < 240) {
+      R = min
+      G = mid
+      B = max
+    } else if (H < 300) {
+      R = mid
+      G = min
+      B = max
+    } else {
+      R = max
+      G = min
+      B = mid
+    }
+
+    return new RGBa(R, G, B, orig.a)
   }
 }
