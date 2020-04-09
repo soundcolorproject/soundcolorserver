@@ -15,6 +15,7 @@ import { TextHider } from '../../components/TextHider'
 import { MediaProp } from '../../state/mediaStore'
 
 import { detailsView, spreader, info } from './root.pcss'
+import { LightGroupChooser } from '../../components/LightGroupChooser'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -36,6 +37,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
               <h1>SoundColor</h1>
               <p>Select a color pattern:</p>
               <PatternPicker/>
+              <LightGroupChooser/>
               <SoundDetails/>
               <MiniAnalyser/>
               <div id={spreader} />

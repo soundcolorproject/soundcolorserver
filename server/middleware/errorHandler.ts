@@ -4,13 +4,15 @@ import { config } from '../config'
 import { ApiError } from 'node-hue-api'
 import { HueErrorCode } from '../hue/HueErrorCode'
 import { logger } from '../../shared/logger'
-import { ServerError, DEFAULT_ERROR_MESSAGE, ServerErrorCode } from '../errors/ServerError'
+import { ServerError, DEFAULT_ERROR_MESSAGE } from '../errors/ServerError'
 import { RedirectError } from '../errors/RedirectError'
+import { ServerErrorCode } from '../../shared/ServerErrorCode'
+import { ServerErrorResponse } from '../../shared/ServerErrorResponse'
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   let status = 500
   let errorCode = ServerErrorCode.UNKNOWN_ERROR
-  let data: any = {}
+  let data: ServerErrorResponse | null = null
   let message = DEFAULT_ERROR_MESSAGE
 
   if (err instanceof RedirectError && req.accepts('text/html')) {
@@ -35,12 +37,16 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
       res.clearSession().catch(e => {
         logger.warn('Failed to clear session data for session.', e)
       })
-      return res.redirect('/login')
+      if (req.accepts('text/html')) {
+        return res.redirect('/login')
+      }
     }
 
     if (config.dev) {
       data = hueError.payload
-      delete data.type
+      if (data) {
+        delete data.type
+      }
     } else {
       message = hueError.message
     }

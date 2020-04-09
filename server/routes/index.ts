@@ -25,7 +25,3 @@ if (config.remoteApi) {
     res.redirect('/')
   }))
 }
-
-router.get('/foo', (req, res) => {
-  res.send('foo')
-})

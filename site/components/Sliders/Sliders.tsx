@@ -69,7 +69,7 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
           <label>
             Noise Desaturation
             <input
-              type='range' min='-0.01' step='0.01' max='10'
+              type='range' min='0' step='0.01' max='10'
               value={noiseMultiplier}
               onChange={this.setValue('noiseMultiplier')}
             />

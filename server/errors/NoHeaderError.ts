@@ -1,5 +1,6 @@
 
-import { ServerError, ServerErrorCode } from './ServerError'
+import { ServerError } from './ServerError'
+import { ServerErrorCode } from '../../shared/ServerErrorCode'
 
 export class NoHeaderError extends ServerError<{ headerName: string }> {
   constructor (

@@ -1,5 +1,5 @@
 
-export interface LightStateSetters<T extends LightStateSetters<any>> {
+export class LightStateSetters<T extends LightStateSetters<any>> {
   /**
    * Sets the state of the light (on or off)
    */
@@ -139,7 +139,7 @@ export type LightPopulation = {
   [key in keyof LightStateSetters<any>]?: Arg<LightStateSetters<any>[key]>
 }
 
-export interface CommonLightState<T extends CommonLightState<any>> extends LightStateSetters<CommonLightState<T>> {
+export class CommonLightState<T extends CommonLightState<any>> extends LightStateSetters<T> {
   reset (): T
   getPayload (): any
   populate (population: LightPopulation): T
@@ -179,16 +179,22 @@ export interface CommonLightState<T extends CommonLightState<any>> extends Light
   alertLong (): T
 }
 
-export interface LightState extends CommonLightState<LightState> {
+export class LightState extends CommonLightState<LightState> {
   white (temp: number, brightness: number): LightState
   hsb (hue: number, saturation: number, brightness: number): LightState
   hsl (hue: number, saturation: number, luminosity: number): LightState
   rgb (red: number, green: number, blue: number): LightState
 }
 
-export interface SceneLightState extends CommonLightState<SceneLightState> {
+export class SceneLightState extends CommonLightState<SceneLightState> {
 }
 
-export interface GroupLightState extends CommonLightState<GroupLightState> {
+export class GroupLightState extends CommonLightState<GroupLightState> {
   scene (name: string): GroupLightState
+}
+
+export interface LightStateApi {
+  LightState: typeof LightState
+  SceneLightState: typeof SceneLightState
+  GroupLightState: typeof GroupLightState
 }

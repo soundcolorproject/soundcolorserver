@@ -1,4 +1,6 @@
 
+import { GroupLightState } from '../LightState'
+
 type GroupAction = any
 type GroupState = any
 
@@ -42,10 +44,6 @@ export interface Entertainment extends Group {
 
 export type AnyGroup = LightGroup | Room | Zone | Entertainment
 export type GroupType = AnyGroup['type']
-
-export interface GroupLightState {
-
-}
 
 export interface GroupsApi {
   // GET

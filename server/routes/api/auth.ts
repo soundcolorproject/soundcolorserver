@@ -19,7 +19,7 @@ authRouter.get('/status', asyncHandler(async (req, res) => {
     authenticated = false
   }
 
-  res.send({
+  res.json({
     authenticated,
   })
 }))
@@ -68,8 +68,20 @@ if (config.remoteApi) {
 } else {
   authRouter.get('/connect', asyncHandler(async (req, res) => {
     await getLocalApi()
-    res.send({
+    res.json({
       status: 'connected',
     })
   }))
 }
+
+authRouter.get('/loggedIn', asyncHandler(async (req, res) => {
+  let loggedIn: boolean
+  try {
+    const api = await getApi(req.getSessionId())
+    loggedIn = !!api
+  } catch (e) {
+    loggedIn = false
+  }
+
+  res.json(loggedIn)
+}))

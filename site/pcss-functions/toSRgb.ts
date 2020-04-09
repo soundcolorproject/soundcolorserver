@@ -32,7 +32,7 @@ function toHex (num: number) {
 
 export class SRGBa {
   readonly type = 'SRGBa'
-  
+
   constructor (
     public r: number,
     public g: number,

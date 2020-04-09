@@ -20,7 +20,7 @@ export function toHsv (color: Color): HSVa {
 
 export class HSVa {
   readonly type = 'HSVa'
-  
+
   constructor (
     public h: number,
     public s: number,
