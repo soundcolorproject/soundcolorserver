@@ -24,21 +24,22 @@ authRouter.get('/status', asyncHandler(async (req, res) => {
   })
 }))
 
-const HUE_REFERER = /^https:\/\/\w+\.meethue\.com/
-function getOauthProvider (req: Request): OAuthProvider {
-  if (!req.headers) {
-    throw new NoHeaderError('referer')
-  }
-  const referer = req.headers.referer
-  if (!referer) {
-    throw new NoHeaderError('referer')
-  }
+// const HUE_REFERER = /^https:\/\/\w+\.meethue\.com/
+function getOauthProvider (_req: Request): OAuthProvider {
+  return 'hue'
+  // if (!req.headers) {
+  //   throw new NoHeaderError('referer')
+  // }
+  // const referer = req.headers.referer
+  // if (!referer) {
+  //   throw new NoHeaderError('referer')
+  // }
 
-  if (HUE_REFERER.test(referer)) {
-    return 'hue'
-  }
+  // if (HUE_REFERER.test(referer)) {
+  //   return 'hue'
+  // }
 
-  throw new InvalidOauthCallbackError()
+  // throw new InvalidOauthCallbackError()
 }
 
 if (config.remoteApi) {

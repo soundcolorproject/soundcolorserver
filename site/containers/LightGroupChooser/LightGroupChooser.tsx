@@ -2,10 +2,10 @@
 import * as React from 'react'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { ApiStatusProp } from '../../state/apiStatusStore'
-import { ApiGroupInfo } from '../../../shared/apiTypes/hue'
+import { ApiGroupInfo, GroupColorMode } from '../../../shared/apiTypes/hue'
 import { getGroups } from '../../api/groups'
 
-import { lightGroupChooser } from './lightGroupChooser.pcss'
+import { lightGroupChooser, choice } from './lightGroupChooser.pcss'
 
 interface OwnProps {
 
@@ -72,6 +72,12 @@ export const LightGroupChooser = injectAndObserve<StateProps, OwnProps>(
       }
     }
 
+    onModeChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
+      const { apiStatus } = this.props
+
+      apiStatus.transmitMode = ev.target.value as GroupColorMode
+    }
+
     toggleTransmitting = () => {
       const { apiStatus } = this.props
       apiStatus.transmitToLightGroup = !apiStatus.transmitToLightGroup
@@ -124,7 +130,7 @@ export const LightGroupChooser = injectAndObserve<StateProps, OwnProps>(
 
       return (
         <div id={lightGroupChooser}>
-          <label>
+          <label className={choice}>
             Light Group <br/>
             <select value={apiStatus.lightGroupId} onChange={this.onGroupChange}>
               <option value=''>Select a group</option>
@@ -133,6 +139,13 @@ export const LightGroupChooser = injectAndObserve<StateProps, OwnProps>(
                   <option key={id} value={id}>({type}) {name} -- {lightCount} lights</option>
                 ))
               }
+            </select>
+          </label>
+          <label className={choice}>
+            Transmit Mode <br/>
+            <select value={apiStatus.transmitMode} onChange={this.onModeChange}>
+              <option value='group'>Group mode (1s delay)</option>
+              <option value='round-robin'>Round-robin mode (1 light every 0.1s)</option>
             </select>
           </label>
           <div>

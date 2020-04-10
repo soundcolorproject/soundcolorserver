@@ -12,11 +12,16 @@ export interface ApiSelectGroup {
   groupId: number
 }
 
+export interface LightColor {
+  h: number
+  s: number
+  v: number
+}
+
+export type GroupColorMode = 'group' | 'round-robin'
+
 export interface ApiSetGroupColor {
   groupId: number
-  color: {
-    h: number
-    s: number
-    v: number
-  }
+  color: LightColor
+  mode?: GroupColorMode
 }

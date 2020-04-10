@@ -4,6 +4,7 @@ import { isLoggedIn } from '../../api/isLoggedIn'
 import { logger } from '../../../shared/logger'
 import { selectGroup, setColor } from '../../api/groups'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
+import { GroupColorMode } from '../../../shared/apiTypes/hue'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore
@@ -26,6 +27,7 @@ export class ApiStatusStore {
       () => ({
         groupId: this.lightGroupId,
         transmit: this.transmitToLightGroup,
+        mode: this.transmitMode,
       }),
       this._transmitColorData,
     )
@@ -42,6 +44,7 @@ export class ApiStatusStore {
   @observable offline = false
   @observable lightGroupId: number | undefined = undefined
   @observable transmitToLightGroup = false
+  @observable transmitMode: GroupColorMode = 'group'
 
   private _onlineTester: any = null
   private _testOnlineStatus = (offline: boolean) => {
@@ -74,9 +77,10 @@ export class ApiStatusStore {
     })
   }
 
+  private _lastMode: GroupColorMode = 'group'
   private _transmitter: any = null
   private _transmitColorData = (
-    { groupId, transmit }: { groupId: number | undefined, transmit: boolean },
+    { groupId, transmit, mode }: { groupId: number | undefined, transmit: boolean, mode: GroupColorMode },
   ) => {
     if (groupId === undefined || !transmit) {
       if (this._transmitter) {
@@ -86,17 +90,27 @@ export class ApiStatusStore {
       return
     }
 
+    if (mode !== this._lastMode && this._transmitter) {
+      clearInterval(this._transmitter)
+      this._transmitter = null
+    }
+
     if (!this._transmitter) {
+      const rate = mode === 'group'
+        ? 1000
+        : 250
+      const startTime = Date.now()
       this._transmitter = setInterval(() => {
         const [hsv] = getColorsFromAnalysis()
         const color = hsv
           ? { h: hsv.h, s: hsv.s, v: hsv.v }
           : { h: 0, s: 0, v: 0 }
 
-        setColor({ groupId, color }).catch(e => {
+        logger.info(`Setting color (${Date.now() - startTime})`)
+        setColor({ groupId, color, mode }).catch(e => {
           logger.info('Failed to set group color:', e)
         })
-      }, 1000)
+      }, rate)
     }
   }
 }

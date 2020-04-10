@@ -11,7 +11,6 @@ import { HueApi } from '../hue/api'
 import { getLocalBridges } from './getLocalBridges'
 import { logger } from '../../shared/logger'
 import { RedirectError } from '../errors/RedirectError'
-import { randomString, randomLetter } from '../helpers/random'
 import { NoLocalBridgesError } from '../errors/NoLocalBridgesError'
 import { saveRemoteCredentials, getRemoteCredentials, deleteRemoteCredentials, CredentialData } from '../db/remoteCredentials'
 import { generateOauthState } from '../db/oauthState'
@@ -50,25 +49,25 @@ async function getRemoteApi (session: string) {
   let credentials: CredentialData | null = null
 
   const api = await apiCache.getOrExecute(session, async () => {
-    credentials = await getRemoteCredentials(session)
-    if (!credentials) {
-      throw new RedirectError(await getHueRedirectUrl(session), 'No OAuth tokens found for the current session')
-    }
-    const { tokens: { access, refresh }, username } = credentials
+  credentials = await getRemoteCredentials(session)
+  if (!credentials) {
+    throw new RedirectError(await getHueRedirectUrl(session), 'No OAuth tokens found for the current session')
+  }
+  const { tokens: { access, refresh }, username } = credentials
 
-    if (refresh.expiresAt < Date.now()) {
-      await deleteRemoteCredentials(session)
-      throw new RedirectError(await getHueRedirectUrl(session), 'OAuth tokens for the current session have expired')
-    }
+  if (refresh.expiresAt < Date.now()) {
+    await deleteRemoteCredentials(session)
+    throw new RedirectError(await getHueRedirectUrl(session), 'OAuth tokens for the current session have expired')
+  }
 
-    const api = await createAccess().connectWithTokens(
-      access.value,
-      refresh.value,
-      username,
-      FIFTEEN_SECONDS,
-      'web_server',
-    )
-    return api
+  const api = await createAccess().connectWithTokens(
+    access.value,
+    refresh.value,
+    username,
+    FIFTEEN_SECONDS,
+    'web_server',
+  )
+  return api
   })
 
   if (!credentials) {

@@ -7,7 +7,7 @@ type GroupState = any
 export interface Group {
   readonly id: number
   name: string
-  readonly lights: number[]
+  readonly lights: string[]
   readonly action: GroupAction
   readonly recycle: boolean
   readonly sensors: number[]
