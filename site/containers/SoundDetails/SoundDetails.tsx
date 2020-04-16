@@ -66,16 +66,32 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
     )
 
     render () {
-      const { analysis: { noise, tones }, patterns: { currentPattern }, renderState: { showColors } } = this.props
-      if (!currentPattern) {
-        return <h2>Please select a color pattern to begin</h2>
-      }
-      if (!showColors) {
-        return <h2>Color pattern stopped.</h2>
+      const { analysis, patterns, renderState } = this.props
+      if (!patterns || !renderState) {
+        return <div className={soundDetails}>Loading...</div>
       }
 
+      const { currentPattern } = patterns
+      const { showColors } = renderState
+      if (!currentPattern) {
+        return (
+          <div className={soundDetails}>
+            <h2>Hit play or select a color pattern to begin</h2>
+          </div>
+        )
+      }
+      if (!showColors || !analysis) {
+        return (
+          <div className={soundDetails}>
+            <h2>Color pattern stopped.</h2>
+          </div>
+        )
+      }
+
+      const { noise, tones } = analysis
+
       return (
-        <div id={soundDetails}>
+        <div className={soundDetails}>
           {
             Number.isFinite(noise)
               ? (

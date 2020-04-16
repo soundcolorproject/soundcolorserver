@@ -13,6 +13,7 @@ import {
   transition,
   transitionBack,
 } from './panel.pcss'
+import { MobxProvider } from '../../state/MobxProvider'
 
 export interface PanelProps {
   children: React.ReactElement
@@ -20,6 +21,7 @@ export interface PanelProps {
   className?: string
   style?: React.CSSProperties
   transitionSpeed?: number
+  recompute?: any
 }
 
 export function Panel (props: PanelProps) {
@@ -32,6 +34,7 @@ export function Panel (props: PanelProps) {
   const width = ownRef.current
     ? ownRef.current.clientWidth - 48
     : window.innerWidth - 48
+  // const height = useHeight(<MobxProvider>{children}</MobxProvider>, width, 0) + 48
   const height = useHeight(children, width, 0) + 48
   if (!prevChildren) {
     return (

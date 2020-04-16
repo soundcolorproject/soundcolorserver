@@ -4,18 +4,13 @@ import { render } from 'react-dom'
 import { raf } from './useTransition'
 
 export function useHeight (child: React.ReactElement, width?: number, defaultVal = 100): number {
-  const [{ child: calcForChild, width: calcForWidth }, setCalcFor] = React.useState({ child, width })
+  // const [{ child: calcForChild, width: calcForWidth }, setCalcFor] = React.useState({ child, width })
   const [height, setHeight] = React.useState(defaultVal)
-  const [done, setDone] = React.useState(false)
-  let cleanup = false
+  // const [done, setDone] = React.useState(false)
 
-  function doCleanup () {
-    cleanup = true
-  }
-
-  if (done && calcForChild === child && calcForWidth === width) {
-    return height
-  }
+  // if (done && calcForChild === child && calcForWidth === width) {
+  //   return height
+  // }
 
   const div = document.createElement('div')
   div.style.opacity = '0'
@@ -28,16 +23,14 @@ export function useHeight (child: React.ReactElement, width?: number, defaultVal
   }
   document.body.appendChild(div)
   requestAnimationFrame(() => {
-    if (cleanup) {
-      return
-    }
     render(child, div, () => {
-      if (cleanup) {
+      const newHeight = div.clientHeight
+      if (newHeight === height) {
         return
       }
-      setCalcFor({ child, width })
+      // setCalcFor({ child, width })
       setHeight(div.clientHeight)
-      setDone(true)
+      // setDone(true)
       div.remove()
     })
   })

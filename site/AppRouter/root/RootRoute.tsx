@@ -21,11 +21,17 @@ import { Panel } from '../../components/Panel/Panel'
 import { HomeRow } from '../../components/HomeRow'
 import { RoutingProp, PanelRoute } from '../../state/routingStore'
 import { logger } from '../../../shared/logger'
+import { RenderStateProp } from '../../state/renderStateStore'
+import { PatternsProp } from '../../state/patternsStore'
 
 interface OwnProps extends RouteComponentProps {
 }
 
-type StateProps = MediaProp & RoutingProp
+type StateProps =
+  & MediaProp
+  & PatternsProp
+  & RenderStateProp
+  & RoutingProp
 
 export type RootProps = OwnProps & StateProps
 
@@ -45,7 +51,7 @@ const settingsRoute = (
 )
 
 const homeRoute = (
-  <div>Home goes here</div>
+  <SoundDetails />
 )
 
 const filtersRoute = (
@@ -57,7 +63,7 @@ const paletteRoute = (
 )
 
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
-  ({ media, routing }) => ({ media, routing }),
+  ({ media, patterns, renderState, routing }) => ({ media, patterns, renderState, routing }),
   class Root extends React.Component<RootProps> {
     renderPanelChild = () => {
       const { routing } = this.props
@@ -69,6 +75,18 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
         case 'palette': return paletteRoute
         default: return homeRoute
       }
+    }
+
+    panelRecompute = () => {
+      const { renderState, patterns } = this.props
+      if (!renderState || !patterns) {
+        return ''
+      }
+
+      let value = ''
+      if (renderState.showColors) value += 'sc:'
+      if (patterns.currentPattern) value += `${patterns.currentPattern}:`
+      return value
     }
 
     setPanelRoute = (route: PanelRoute) => {
@@ -99,7 +117,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                 }
                 postSpacer={
                   <>
-                    <Panel back={routing.isBack}>
+                    <Panel recompute={this.panelRecompute()} back={routing.isBack}>
                       {this.renderPanelChild()}
                     </Panel>
                     <HomeRow
