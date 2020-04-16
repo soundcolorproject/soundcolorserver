@@ -14,13 +14,18 @@ export function raf (count: number) {
   })
 }
 
-export function useTransition (children: React.ReactElement): [React.ReactElement | null, boolean] {
+export function useTransition (children: React.ReactElement, transitionTime: number): [React.ReactElement | null, boolean] {
   const [prev1, setPrev1] = React.useState(children)
   const [prev2, setPrev2] = React.useState(children)
+  const [timer, setTimer] = React.useState<any>(null)
   const [transition, setTransition] = React.useState(false)
 
   React.useEffect(() => {
     if (prev1 !== children) {
+      if (timer) {
+        clearTimeout(timer)
+        setTimer(null)
+      }
       setPrev2(prev1)
       setPrev1(children)
 
@@ -34,6 +39,10 @@ export function useTransition (children: React.ReactElement): [React.ReactElemen
     if (prev2 !== children && !transition) {
       raf(2).then(() => {
         setTransition(true)
+        setTimer(setTimeout(() => {
+          setPrev2(children)
+          setTimer(null)
+        }, transitionTime))
       }).catch()
     }
   }, [prev1])

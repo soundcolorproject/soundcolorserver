@@ -2,14 +2,53 @@
 :root {
   --panel-padding: 24px;
   --panel-default-width: 216px;
+  --panel-width: 100vw;
 }
 
 .panel {
   color: var(--black);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: var(--panel-padding);
   min-width: var(--panel-default-width);
   background: var(--white);
+  position: relative;
+  overflow: hidden;
+  
+  .swapper {
+    position: relative;
+    max-height: 80vh;
+    transition: right 0s, height 0.5s;
+    right: 0;
+
+    .prev {
+      position: absolute;
+      padding: var(--panel-padding);
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+
+    .next {
+      position: absolute;
+      padding: var(--panel-padding);
+      right: -100%; /*calc(-1 * var(--panel-layout-width));*/
+      left: 100%; /*var(--panel-layout-width);*/
+      top: 0;
+    }
+
+    &.transition {
+      right: 100%; /*var(--panel-layout-width);*/
+      transition: right 0.5s, height 0.5s;
+    }
+
+    &.transition-back {
+      right: -100%; /*calc(-1 * var(--panel-layout-width));*/
+      transition: right 0.5s, height 0.5s;
+
+      .next {
+        position: absolute;
+        right: 100%; /*var(--panel-layout-width);*/
+        left: -100%; /*calc(-1 * var(--panel-layout-width));*/
+        top: 0;
+      }
+    }
+  }
 }
