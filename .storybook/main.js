@@ -9,7 +9,7 @@ const origConfig = require('../config/webpack').default()
 const { definePlugin } = require('../config/webpack/plugins')
 
 module.exports = {
-  stories: ['../site/**/*.stories.[j|t]sx'],
+  stories: ['./includes.ts', '../site/**/*.stories.[j|t]sx'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
@@ -18,6 +18,7 @@ module.exports = {
   webpackFinal: (config) => {
     return {
       ...config,
+      devtool: 'eval-source-map',
       resolve: {
         ...config.resolve,
         extensions: [

@@ -16,6 +16,9 @@ import { MediaProp } from '../../state/mediaStore'
 
 import { detailsView, spreader, info } from './root.pcss'
 import { LightGroupChooser } from '../../containers/LightGroupChooser'
+import { PanelLayout } from '../../components/PanelLayout'
+import { Panel } from '../../components/Panel/Panel'
+import { HomeRow } from '../../components/HomeRow'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -34,7 +37,30 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
           <div id={detailsView}>
             <ColorRenderer/>
             <TextHider>
-              <h1>SoundColor</h1>
+              <PanelLayout
+                preSpacer={
+                  <div>hyup</div>
+                }
+                postSpacer={
+                  <>
+                    <Panel>
+                      Stuff
+                    </Panel>
+                    <HomeRow
+                      selected='home'
+                      buttons={{
+                        info: 'info',
+                        settings: 'settings',
+                        home: 'home',
+                        filters: 'tune',
+                        palette: 'palette',
+                      }}
+                      onChange={() => null}
+                    />
+                  </>
+                }
+              />
+              {/* <h1>SoundColor</h1>
               <p>Select a color pattern:</p>
               <PatternPicker/>
               <LightGroupChooser/>
@@ -48,7 +74,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
               </Footer>
               <div id={info}>
                 <Link aria-label='About Sound Color Project' to='/info'>Info</Link>
-              </div>
+              </div> */}
             </TextHider>
           </div>
         )

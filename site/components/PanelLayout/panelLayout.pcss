@@ -1,0 +1,89 @@
+
+@import '../../global-css/mixins.pcss';
+
+body {
+  margin: 0;
+}
+
+:root {
+  --panel-layout-width: 320px;
+  --panel-layout-round: 8px;
+
+  @mixin breakpoint mobile {
+    --panel-layout-width: 100vw;
+    --panel-layout-round: 0px;
+  }
+}
+
+.panel-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100vh;
+
+  .layout-column {
+    display: flex;
+    flex-direction: column;
+    width: var(--panel-layout-width);
+    align-items: stretch;
+
+    .layout-spacer {
+      flex-grow: 0;
+
+      @mixin breakpoint mobile {
+        flex-grow: 1;
+      }
+    }
+
+    .after-spacer {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--panel-layout-round);
+
+      .swapper {
+        position: relative;
+        max-height: 80vh;
+        transition: right 0s, height 0.5s;
+        right: 0;
+        overflow: visible;
+
+        .prev {
+          position: absolute;
+          width: var(--panel-layout-width);
+          left: 0;
+          right: 0;
+          top: 0;
+        }
+
+        .next {
+          position: absolute;
+          right: calc(-1 * var(--panel-layout-width));
+          left: var(--panel-layout-width);
+          top: 0;
+        }
+
+        &.transition {
+          right: var(--panel-layout-width);
+          transition: right 0.5s, height 0.5s;
+        }
+
+        &.transition-back {
+          right: calc(-1 * var(--panel-layout-width));
+          transition: right 0.5s, height 0.5s;
+
+          .next {
+            position: absolute;
+            right: var(--panel-layout-width);
+            left: calc(-1 * var(--panel-layout-width));
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @mixin breakpoint mobile {
+    align-items: stretch;
+  }
+}
