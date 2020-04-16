@@ -1,11 +1,17 @@
 
 #shortcuts {
-  button {
-    padding: 4px;
-  }
+  display: flex;
+  flex-direction: row;
 
-  p {
-    display: inline-block;
-    margin-right: 8px;
+  .icon-button {
+    padding: 20px;
+    --icon-color: var(--white);
+    background: transparent;
+    border: none;
+    flex: 1;
+
+    &:hover {
+      --icon-color: #CFCFCF;
+    }
   }
 }

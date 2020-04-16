@@ -28,7 +28,7 @@ export function HomeRow<T extends HomeRowButtons> (props: HomeRowProps<T>) {
             onChange(id)
           }
           return (
-            <button className={cn({ [homeRowButton]: true, [selected]: isSelected })} onClick={onClick}>
+            <button key={id as string} className={cn({ [homeRowButton]: true, [selected]: isSelected })} onClick={onClick}>
               <Icon
                 name={buttons[id]}
               />

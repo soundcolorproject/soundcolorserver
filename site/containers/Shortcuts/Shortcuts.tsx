@@ -4,8 +4,9 @@ import { injectAndObserve } from '../../state/injectAndObserve'
 import { RenderStateProp, toggleFullscreen, togglePattern } from '../../state/renderStateStore'
 import { PatternsProp } from '../../state/patternsStore'
 
-import { shortcuts } from './shortcuts.pcss'
+import { shortcuts, iconButton } from './shortcuts.pcss'
 import { logger } from '../../../shared/logger'
+import { IconName, Icon } from '../../components/Icon'
 
 interface OwnProps {
 }
@@ -30,6 +31,18 @@ const stopBubblingEnterAndSpace = (handler: () => void) => (ev: React.KeyboardEv
 export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
   ({ renderState, patterns }) => ({ renderState, patterns }),
   class Shortcuts extends React.Component<ShortcutsProps> {
+    private renderIconButton = (icon: IconName, action: (ev: React.KeyboardEvent | React.MouseEvent) => void) => (
+      <button
+        className={iconButton}
+        type='button'
+        role='button'
+        onClick={action}
+        onKeyDown={action}
+      >
+        <Icon name={icon} />
+      </button>
+    )
+
     hideText = stopBubblingEnterAndSpace(() => {
       const { renderState } = this.props
       renderState.showText = !renderState.showText
@@ -56,46 +69,16 @@ export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
 
       return (
         <div id={shortcuts}>
-          <div>
-            <p><span>'space'</span> = show/hide details</p>
-            <button
-              type='button'
-              role='button'
-              aria-label='Hide page details'
-              onClick={this.hideText}
-              onKeyDown={this.hideText}
-            >
-              Hide Details
-            </button>
-          </div>
-          <div>
-            <p><span>'enter'</span> = stop/start color pattern</p>
-            <button
-              type='button'
-              role='button'
-              aria-label={`${changePatternText} the color pattern`}
-              onClick={this.togglePattern}
-              onKeyDown={this.togglePattern}
-            >
-              {changePatternText} Color Pattern
-            </button>
-          </div>
-            {
-              document.fullscreenEnabled
-                ? <>
-                    <p><span>'f'</span> = enter/leave fullscreen</p>
-                    <button
-                      type='button'
-                      role='button'
-                      aria-label={`${fullscreenText} fullscreen mode`}
-                      onClick={this.toggleFullscreen}
-                      onKeyDown={this.toggleFullscreen}
-                    >
-                      {fullscreenText} Fullscreen
-                    </button>
-                  </>
-                : ''
-            }
+          {
+            this.renderIconButton('play', this.togglePattern)
+          }
+          {
+            this.renderIconButton('visibility_off', this.hideText)
+          }
+          {
+            document.fullscreenEnabled
+            && this.renderIconButton('fullscreen', this.toggleFullscreen)
+          }
         </div>
       )
     }

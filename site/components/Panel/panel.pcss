@@ -3,6 +3,7 @@
   --panel-padding: 24px;
   --panel-default-width: 216px;
   --panel-width: 100vw;
+  --panel-transition-time: 0.5s;
 }
 
 .panel {
@@ -15,7 +16,7 @@
   .swapper {
     position: relative;
     max-height: 80vh;
-    transition: right 0s, height 0.5s;
+    transition: right 0s, height var(--panel-transition-time);
     right: 0;
 
     .prev {
@@ -36,12 +37,12 @@
 
     &.transition {
       right: 100%; /*var(--panel-layout-width);*/
-      transition: right 0.5s, height 0.5s;
+      transition: right var(--panel-transition-time), height var(--panel-transition-time);
     }
 
     &.transition-back {
       right: -100%; /*calc(-1 * var(--panel-layout-width));*/
-      transition: right 0.5s, height 0.5s;
+      transition: right var(--panel-transition-time), height var(--panel-transition-time);
 
       .next {
         position: absolute;

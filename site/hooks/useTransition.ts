@@ -19,8 +19,17 @@ export function useTransition (children: React.ReactElement, transitionTime: num
   const [prev2, setPrev2] = React.useState(children)
   const [timer, setTimer] = React.useState<any>(null)
   const [transition, setTransition] = React.useState(false)
+  let cleanup = false
+
+  function doCleanup () {
+    cleanup = true
+    clearTimeout(timer)
+  }
 
   React.useEffect(() => {
+    if (cleanup) {
+      return doCleanup
+    }
     if (prev1 !== children) {
       if (timer) {
         clearTimeout(timer)
@@ -33,18 +42,30 @@ export function useTransition (children: React.ReactElement, transitionTime: num
         setTransition(false)
       }
     }
+    return doCleanup
   }, [children])
 
   React.useEffect(() => {
+    if (cleanup) {
+      return doCleanup
+    }
     if (prev2 !== children && !transition) {
       raf(2).then(() => {
+        if (cleanup) {
+          return
+        }
+
         setTransition(true)
         setTimer(setTimeout(() => {
+          if (cleanup) {
+            return
+          }
           setPrev2(children)
           setTimer(null)
         }, transitionTime))
       }).catch()
     }
+    return doCleanup
   }, [prev1])
 
   if (prev2 === children) {

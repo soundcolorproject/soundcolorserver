@@ -15,20 +15,27 @@ import {
 } from './panel.pcss'
 
 export interface PanelProps {
-  back?: boolean
   children: React.ReactElement
+  back?: boolean
+  className?: string
+  style?: React.CSSProperties
+  transitionSpeed?: number
 }
 
-export function Panel ({ back, children }: PanelProps) {
+export function Panel (props: PanelProps) {
+  const { children, back, className, style, transitionSpeed = 500 } = props
   const ownRef = React.useRef<HTMLDivElement>(null)
-  const [prevChildren, shouldTransition] = useTransition(children, 1000)
+  if (ownRef.current && props.transitionSpeed !== undefined) {
+    ownRef.current.style.setProperty('--panel-transition-time', `${(transitionSpeed / 1000).toFixed(2)}s`)
+  }
+  const [prevChildren, shouldTransition] = useTransition(children, transitionSpeed + 200)
   const width = ownRef.current
     ? ownRef.current.clientWidth - 48
     : window.innerWidth - 48
   const height = useHeight(children, width, 0) + 48
   if (!prevChildren) {
     return (
-      <div ref={ownRef} className={panel}>
+      <div ref={ownRef} className={cn(panel, className)} style={style}>
         <div className={swapper} style={{ height }}>
           <div className={prev}>
             {children}
@@ -39,7 +46,7 @@ export function Panel ({ back, children }: PanelProps) {
   }
 
   return (
-    <div ref={ownRef} className={panel}>
+    <div ref={ownRef} className={cn(panel, className)} style={style}>
       <div className={cn({
         [swapper]: true,
         [transition]: shouldTransition && !back,

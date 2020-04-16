@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import { Link, RouteComponentProps } from '@reach/router'
+import { Link, RouteComponentProps, navigate } from '@reach/router'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { ColorRenderer } from '../../containers/ColorRenderer'
 import { DeviceChooser } from '../../containers/DeviceChooser'
@@ -19,35 +19,91 @@ import { LightGroupChooser } from '../../containers/LightGroupChooser'
 import { PanelLayout } from '../../components/PanelLayout'
 import { Panel } from '../../components/Panel/Panel'
 import { HomeRow } from '../../components/HomeRow'
+import { RoutingProp, PanelRoute } from '../../state/routingStore'
+import { logger } from '../../../shared/logger'
 
 interface OwnProps extends RouteComponentProps {
 }
 
-type StateProps = MediaProp
+type StateProps = MediaProp & RoutingProp
 
 export type RootProps = OwnProps & StateProps
 
+const routeOrder: { [key in PanelRoute]: number } = {
+  'info': 0,
+  'settings': 1,
+  'home': 2,
+  'filters': 3,
+  'palette': 4,
+}
+
+const infoRoute = (
+  <div>Info goes here</div>
+)
+const settingsRoute = (
+  <div>Settings go here</div>
+)
+
+const homeRoute = (
+  <div>Home goes here</div>
+)
+
+const filtersRoute = (
+  <div>Filters go here</div>
+)
+
+const paletteRoute = (
+  <div>Palettes go here</div>
+)
+
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
-  ({ media }) => ({ media }),
+  ({ media, routing }) => ({ media, routing }),
   class Root extends React.Component<RootProps> {
+    renderPanelChild = () => {
+      const { routing } = this.props
+      switch (routing.panelRoute) {
+        case 'info': return infoRoute
+        case 'settings': return settingsRoute
+        case 'home': return homeRoute
+        case 'filters': return filtersRoute
+        case 'palette': return paletteRoute
+        default: return homeRoute
+      }
+    }
+
+    setPanelRoute = (route: PanelRoute) => {
+      if (route === 'info') {
+        this.props.navigate!('/info').catch(e => {
+          logger.error('Could not route to `/info`', e)
+        })
+        return
+      }
+      const { routing } = this.props
+      if (route === routing.panelRoute) {
+        return
+      }
+
+      const isBack = routeOrder[route] < routeOrder[routing.panelRoute]
+      routing.setPanelRoute(route, isBack)
+    }
+
     render () {
-      const { media } = this.props
+      const { media, routing } = this.props
       if (media.ready) {
         return (
           <div id={detailsView}>
-            <ColorRenderer/>
             <TextHider>
               <PanelLayout
                 preSpacer={
-                  <div>hyup</div>
+                  <Shortcuts />
                 }
                 postSpacer={
                   <>
-                    <Panel>
-                      Stuff
+                    <Panel back={routing.isBack}>
+                      {this.renderPanelChild()}
                     </Panel>
                     <HomeRow
-                      selected='home'
+                      selected={routing.panelRoute}
                       buttons={{
                         info: 'info',
                         settings: 'settings',
@@ -55,7 +111,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                         filters: 'tune',
                         palette: 'palette',
                       }}
-                      onChange={() => null}
+                      onChange={this.setPanelRoute}
                     />
                   </>
                 }

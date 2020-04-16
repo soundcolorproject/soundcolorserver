@@ -7,6 +7,11 @@ export function useHeight (child: React.ReactElement, width?: number, defaultVal
   const [{ child: calcForChild, width: calcForWidth }, setCalcFor] = React.useState({ child, width })
   const [height, setHeight] = React.useState(defaultVal)
   const [done, setDone] = React.useState(false)
+  let cleanup = false
+
+  function doCleanup () {
+    cleanup = true
+  }
 
   if (done && calcForChild === child && calcForWidth === width) {
     return height
@@ -22,11 +27,19 @@ export function useHeight (child: React.ReactElement, width?: number, defaultVal
     div.style.width = `${width}px`
   }
   document.body.appendChild(div)
-  render(child, div, () => {
-    setCalcFor({ child, width })
-    setHeight(div.clientHeight)
-    setDone(true)
-    div.remove()
+  requestAnimationFrame(() => {
+    if (cleanup) {
+      return
+    }
+    render(child, div, () => {
+      if (cleanup) {
+        return
+      }
+      setCalcFor({ child, width })
+      setHeight(div.clientHeight)
+      setDone(true)
+      div.remove()
+    })
   })
 
   return height

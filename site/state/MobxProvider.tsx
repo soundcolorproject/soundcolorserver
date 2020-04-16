@@ -7,6 +7,7 @@ import { ApiStatusProp, apiStatusStore } from './apiStatusStore'
 import { MediaProp, mediaStore } from './mediaStore'
 import { PatternsProp, patternsStore } from './patternsStore'
 import { RenderStateProp, renderStateStore } from './renderStateStore'
+import { RoutingProp, routingStore } from './routingStore'
 
 interface Props {
   children?: React.ReactNode
@@ -18,6 +19,7 @@ export type MobxProviderProps =
   & MediaProp
   & PatternsProp
   & RenderStateProp
+  & RoutingProp
 
 const stores: MobxProviderProps = {
   analysis: analysisStore,
@@ -25,6 +27,7 @@ const stores: MobxProviderProps = {
   media: mediaStore,
   patterns: patternsStore,
   renderState: renderStateStore,
+  routing: routingStore,
 }
 
 export function MobxProvider ({ children }: Props) {

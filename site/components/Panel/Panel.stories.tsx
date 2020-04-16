@@ -14,6 +14,19 @@ const style = {
   color: 'white',
 }
 
+function getTransitionSpeed () {
+  const name = select('transition speed', ['instant', '0.1s', '0.3s', '0.5s', '1s', '2s'], '0.5s')
+  switch (name) {
+    case 'instant': return 0
+    case '0.1s': return 100
+    case '0.3s': return 300
+    case '0.5s': return 500
+    case '1s': return 1000
+    case '2s': return 2000
+    default: return 500
+  }
+}
+
 function getContent () {
   const val = select('content', ['one', 'two', 'three', 'lorem ipsum'], 'one')
   if (val === 'one') {
@@ -27,8 +40,29 @@ function getContent () {
   }
 }
 
-export const withText = () => (
-  <Panel back={boolean('back', false)}>
+export const withDefaultSize = () => (
+  <Panel
+    back={boolean('back', false)}
+    transitionSpeed={getTransitionSpeed()}
+  >
     {getContent()}
   </Panel>
+)
+
+export const withSetSize = () => (
+  <div style={{
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  }}>
+    <Panel
+      back={boolean('back', false)}
+      transitionSpeed={getTransitionSpeed()}
+      style={{ width: 320 }}
+    >
+      {getContent()}
+    </Panel>
+  </div>
 )
