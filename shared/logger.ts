@@ -4,7 +4,6 @@ import * as ac from 'ansi-colors'
 import { LogLevel, getLogLevel } from './getLogLevel'
 import { isBrowser } from './isBrowser'
 import { browserAnsi } from './browserAnsi'
-import { ApiError } from 'node-hue-api'
 
 let colors: typeof ac | null = null
 try {
@@ -82,7 +81,7 @@ function createLogFunc (target: LogLevel, expected: LogLevel, logger: LogFunc, p
     return (...args: any[]) => {
       const str = args.reduce((str, arg) => {
         if (typeof arg === 'object') {
-          if (arg instanceof ApiError) {
+          if (arg.constructor.name === 'ApiError') {
             const err = arg.getHueError()
             arg = `${arg.message} ${JSON.stringify(err.payload, null, 2)}`
           } else if (arg instanceof Error) {

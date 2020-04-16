@@ -1,0 +1,24 @@
+
+#home-row {
+  display: flex;
+  flex-direction: row;
+  
+  .home-row-button {
+    background: #3F3E3D;
+    flex-grow: 1;
+    padding: 20px;
+    border: none;
+
+    svg {
+      fill: #9F9F9E;
+    }
+
+    &.selected {
+      background: var(--black);
+
+      svg {
+        fill: var(--white);
+      }
+    }
+  }
+}

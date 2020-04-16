@@ -12,18 +12,20 @@ import { Constants } from './constants'
 
 import { config } from '../../server/config'
 
+export const definePlugin = new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+  '__REMOTE_API__': JSON.stringify(config.remoteApi),
+  '__LOG_LEVEL__': JSON.stringify(config.logLevel),
+  '__DEV__': JSON.stringify(config.dev),
+})
+
 export function buildPlugins (dev: boolean, constants: Constants) {
   let plugins = [
     new HtmlWebpackPlugin({
       inject: 'body',
       template: constants.htmlPath,
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-      '__REMOTE_API__': JSON.stringify(config.remoteApi),
-      '__LOG_LEVEL__': JSON.stringify(config.logLevel),
-      '__DEV__': JSON.stringify(config.dev),
-    }),
+    definePlugin,
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

@@ -43,5 +43,5 @@ export interface LightsApi {
   rename (id: number, name: string): Promise<void>
 
   // DELETE
-  deleteLight(id: number | Light): Promise<boolean>
+  deleteLight (id: number | Light): Promise<boolean>
 }

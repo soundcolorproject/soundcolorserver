@@ -66,7 +66,16 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
             codeRule(dev),
             styleRule(dev),
             {
-              exclude: /\.(js|jsx|mjs|ts|tsx|html|json|css|pcss)$/,
+              test: /\.svg$/,
+              exclude: /node_modules/,
+              use: [
+                {
+                  loader: 'raw-loader',
+                },
+              ],
+            },
+            {
+              exclude: /\.(ejs|js|jsx|mjs|ts|tsx|svg|html|json|css|pcss)$/,
               loader: require.resolve('file-loader'),
               options: {
                 name: 'static/media/[name].[hash:8].[ext]',
@@ -77,13 +86,6 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
       ],
     },
     plugins: buildPlugins(dev, constants),
-    node: {
-      dgram: 'empty',
-      fs: 'empty',
-      net: 'empty',
-      tls: 'empty',
-      child_process: 'empty',
-    },
     performance: {
       hints: dev ? false : 'warning',
     },

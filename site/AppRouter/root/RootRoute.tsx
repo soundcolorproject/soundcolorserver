@@ -2,20 +2,20 @@
 import * as React from 'react'
 import { Link, RouteComponentProps } from '@reach/router'
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { ColorRenderer } from '../../components/ColorRenderer'
-import { DeviceChooser } from '../../components/DeviceChooser'
-import { Footer } from '../../components/Footer'
-import { MiniAnalyser } from '../../components/MiniAnalyser'
-import { PatternPicker } from '../../components/PatternPicker'
-import { Shortcuts } from '../../components/Shortcuts'
-import { Sliders } from '../../components/Sliders'
-import { SoundDetails } from '../../components/SoundDetails'
+import { ColorRenderer } from '../../containers/ColorRenderer'
+import { DeviceChooser } from '../../containers/DeviceChooser'
+import { Footer } from '../../containers/Footer'
+import { MiniAnalyser } from '../../containers/MiniAnalyser'
+import { PatternPicker } from '../../containers/PatternPicker'
+import { Shortcuts } from '../../containers/Shortcuts'
+import { Sliders } from '../../containers/Sliders'
+import { SoundDetails } from '../../containers/SoundDetails'
 import { TextHider } from '../../components/TextHider'
 
 import { MediaProp } from '../../state/mediaStore'
 
 import { detailsView, spreader, info } from './root.pcss'
-import { LightGroupChooser } from '../../components/LightGroupChooser'
+import { LightGroupChooser } from '../../containers/LightGroupChooser'
 
 interface OwnProps extends RouteComponentProps {
 }
