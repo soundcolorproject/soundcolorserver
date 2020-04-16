@@ -25,6 +25,7 @@ import { RenderStateProp } from '../../state/renderStateStore'
 import { PatternsProp } from '../../state/patternsStore'
 import { Settings } from '../../containers/Settings'
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
+import { PatternSelector } from '../../containers/PatternSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -45,10 +46,7 @@ const routeOrder: { [key in PanelRoute]: number } = {
   'palette': 4,
 }
 
-const audioSourceRoute = (
-  <AudioSourceSelector />
-)
-
+// ROUTES
 const settingsRoute = (
   <Settings />
 )
@@ -62,7 +60,16 @@ const filtersRoute = (
 )
 
 const paletteRoute = (
-  <div>Palettes go here</div>
+  <PatternSelector />
+)
+
+// SUB-ROUTES
+const audioSourceRoute = (
+  <AudioSourceSelector />
+)
+
+const customPaletteRoute = (
+  <div>Custom palette goes here</div>
 )
 
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
@@ -73,6 +80,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
       if (subRoutes.length > 0) {
         switch (subRoutes[0]) {
           case 'audioSource': return audioSourceRoute
+          case 'customPalette': return customPaletteRoute
           default: break
         }
       }
