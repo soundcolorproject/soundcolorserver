@@ -1,10 +1,10 @@
 
-import { observable, reaction } from 'mobx'
+import { observable, reaction, action } from 'mobx'
 import { isLoggedIn } from '../../api/isLoggedIn'
 import { logger } from '../../../shared/logger'
-import { selectGroup, setColor } from '../../api/groups'
+import { selectGroup, setColor, getGroups } from '../../api/groups'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
-import { GroupColorMode } from '../../../shared/apiTypes/hue'
+import { GroupColorMode, ApiGroupInfo } from '../../../shared/apiTypes/hue'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore
@@ -34,6 +34,11 @@ export class ApiStatusStore {
 
     isLoggedIn().then(loggedIn => {
       this.authenticated = loggedIn
+      if (loggedIn) {
+        this.fetchLightGroups().catch(e => {
+          logger.error('Failed to fetch light groups:', e)
+        })
+      }
     }).catch(e => {
       logger.warn('Failed to check if the user is logged in:', e)
     })
@@ -42,9 +47,42 @@ export class ApiStatusStore {
   readonly remoteApi = !__REMOTE_API__
   @observable authenticated = false
   @observable offline = false
+
+  @observable loadingLightGroups = false
+  @observable lightGroups: ApiGroupInfo[] | null = null
   @observable lightGroupId: number | undefined = undefined
+  @observable lightGroupFetchError: Error | null = null
+
   @observable transmitToLightGroup = false
   @observable transmitMode: GroupColorMode = 'group'
+
+  @action
+  fetchLightGroups = async () => {
+    if (this.loadingLightGroups || this.lightGroups) {
+      return
+    }
+
+    this.lightGroupFetchError = null
+    this.loadingLightGroups = true
+
+    try {
+      this._setLightGroups(await getGroups())
+    } catch (error) {
+      this._setLightGroupError(error)
+    }
+  }
+
+  @action
+  private _setLightGroups = (lightGroups: ApiGroupInfo[]) => {
+    this.lightGroups = lightGroups
+    this.loadingLightGroups = false
+  }
+
+  @action
+  private _setLightGroupError = (error: Error | null) => {
+    this.lightGroupFetchError = error
+    this.loadingLightGroups = false
+  }
 
   private _onlineTester: any = null
   private _testOnlineStatus = (offline: boolean) => {
@@ -67,8 +105,8 @@ export class ApiStatusStore {
     }, TEN_SECONDS)
   }
 
-  private _setLightGroup = (groupId: number | null) => {
-    if (groupId === null) {
+  private _setLightGroup = (groupId: number | undefined) => {
+    if (groupId === undefined) {
       return
     }
 

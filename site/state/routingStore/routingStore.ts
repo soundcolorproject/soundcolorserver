@@ -1,5 +1,5 @@
 
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 export interface RoutingProp {
   routing: RoutingStore
@@ -12,6 +12,21 @@ export type PanelRoute =
   | 'filters'
   | 'palette'
 
+export type SubRoute =
+  | 'audioSource'
+  | 'hueRoot'
+  | 'hueGroupSelector'
+  | 'customPalette'
+  | 'favoriteCusom'
+
+const routeNames: { [key in SubRoute]: string } = {
+  audioSource: 'Audio Source',
+  hueRoot: 'Philips Hue',
+  hueGroupSelector: 'Light Group',
+  customPalette: 'Custom',
+  favoriteCusom: 'Favorites',
+}
+
 export class RoutingStore {
   constructor () {
     window.addEventListener('popstate', () => {
@@ -20,36 +35,34 @@ export class RoutingStore {
   }
 
   @observable panelRoute: PanelRoute = 'home'
+  @observable subRoutes: SubRoute[] = []
   @observable isBack = false
+
+  getSubRouteName () {
+    if (this.subRoutes.length === 0) {
+      return ''
+    }
+    return routeNames[this.subRoutes[0]]
+  }
 
   @action
   setPanelRoute = (route: PanelRoute, isBack = false) => {
+    this.subRoutes = []
     this.panelRoute = route
     this.isBack = isBack
+  }
+
+  @action
+  popSubroute = () => {
+    this.subRoutes.shift()
+    this.isBack = true
+  }
+
+  @action
+  goToSubroute = (route: SubRoute) => {
+    this.subRoutes.unshift(route)
+    this.isBack = false
   }
 }
 
 export const routingStore = new RoutingStore()
-
-type HistoryFn = 'back' | 'forward' | 'go' | 'pushState' | 'replaceState'
-function replaceHistoryFn<N extends HistoryFn> (name: N, isBack: boolean | ((...args: Parameters<History[N]>) => boolean)) {
-  const orig = history[name]
-  if (typeof isBack === 'function') {
-    const isBackFn = isBack as Function
-    history[name] = (...args: any[]) => {
-      routingStore.isBack = isBackFn(...args)
-      orig.call(history, ...args as [any, any])
-    }
-  } else {
-    history[name] = (...args: any[]) => {
-      routingStore.isBack = isBack
-      orig.call(history, ...args as [any, any])
-    }
-  }
-}
-
-replaceHistoryFn('back', true)
-replaceHistoryFn('forward', false)
-replaceHistoryFn('go', (count) => !!count && count < 0)
-replaceHistoryFn('pushState', false)
-replaceHistoryFn('replaceState', false)

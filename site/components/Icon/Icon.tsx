@@ -33,7 +33,7 @@ export function Icon ({ name, color, size = 'med' }: IconProps) {
       width={iconSizes[size]}
       height={iconSizes[size]}
     >
-      <use href={iconOptions[name]} />
+      <use href={iconOptions[name]} fill={color} />
     </svg>
   )
 }

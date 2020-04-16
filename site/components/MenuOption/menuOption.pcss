@@ -1,0 +1,27 @@
+
+.menu-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 12px 24px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 12px;
+  width: 100%;
+  text-align: left;
+
+  &.clickable {
+    &:hover {
+      background: var(--grey-20);
+      cursor: pointer;
+    }
+    &:active {
+      background: var(--grey-30);
+      color: var(--black);
+    }
+  }
+}

@@ -10,16 +10,17 @@ import {
 
 export interface PanelLayoutProps {
   preSpacer: React.ReactElement
+  inSpacer?: React.ReactElement
   postSpacer: React.ReactElement
 }
 
 export function PanelLayout (props: PanelLayoutProps) {
-  const { preSpacer, postSpacer } = props
+  const { preSpacer, inSpacer, postSpacer } = props
   return (
     <div className={panelLayout}>
       <div className={layoutColumn}>
         {preSpacer}
-        <div className={layoutSpacer} />
+        <div className={layoutSpacer}>{inSpacer}</div>
         <div className={afterSpacer}>
           {postSpacer}
         </div>

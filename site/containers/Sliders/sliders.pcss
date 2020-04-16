@@ -2,11 +2,28 @@
 #sliders {
   display: flex;
   flex-direction: column;
+  padding: var(--panel-padding);
 
   > label {
     display: flex;
     flex-direction: column;
     margin-bottom: 8px;
+    font-size: 12px;
+
+    .detail {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .value {
+        font-weight: bold;
+      }
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   input {

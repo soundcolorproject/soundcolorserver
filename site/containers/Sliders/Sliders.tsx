@@ -4,7 +4,7 @@ import { action } from 'mobx'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { PatternsProp, PatternsStore } from '../../state/patternsStore'
 
-import { sliders } from './sliders.pcss'
+import { sliders, detail, value } from './sliders.pcss'
 
 interface OwnProps {
 }
@@ -51,7 +51,12 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
       return (
         <div id={sliders}>
           <label>
-            Color Transition Speed
+            <div className={detail}>
+              <div>Color Transition Speed</div>
+              <div className={value}>
+                {((transitionSpeed - 0.1) / 0.9).toFixed(2)}
+              </div>
+            </div>
             <input
               type='range' min='0.1' step='0.01' max='1'
               value={transitionSpeed}
@@ -59,7 +64,25 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
             />
           </label>
           <label>
-            Brightness
+            <div className={detail}>
+              <div>Time Smoothing</div>
+              <div className={value}>
+                {(timeSmoothing / 0.99).toFixed(2)}
+              </div>
+            </div>
+            <input
+              type='range' min='0' step='0.01' max='0.99'
+              value={timeSmoothing}
+              onChange={this.setValue('timeSmoothing')}
+            />
+          </label>
+          <label>
+            <div className={detail}>
+              <div>Brightness</div>
+              <div className={value}>
+                {(vibranceMultiplier / 5).toFixed(2)}
+              </div>
+            </div>
             <input
               type='range' min='0' step='0.01' max='5'
               value={vibranceMultiplier}
@@ -67,7 +90,12 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
             />
           </label>
           <label>
-            Noise Desaturation
+            <div className={detail}>
+              <div>Noise Desaturation</div>
+              <div className={value}>
+                {(noiseMultiplier / 10).toFixed(2)}
+              </div>
+            </div>
             <input
               type='range' min='0' step='0.01' max='10'
               value={noiseMultiplier}
@@ -75,21 +103,18 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
             />
           </label>
           {/*<label>
-            Required tone strength
+            <div className={detail}>
+              <div>Required tone strength</div>
+              <div className={value}>
+                {(timeSmoothing / 10).toFixed(2)}
+              </div>
+            </div>
             <input
               type='range' min='0' step='0.01' max='10'
               value={toneSigma}
               onChange={this.setValue('toneSigma')}
             />
           </label>*/}
-          <label>
-            Time Smoothing
-            <input
-              type='range' min='0' step='0.01' max='0.99'
-              value={timeSmoothing}
-              onChange={this.setValue('timeSmoothing')}
-            />
-          </label>
         </div>
       )
     }

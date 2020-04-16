@@ -1,16 +1,9 @@
 
 import * as React from 'react'
 import { render } from 'react-dom'
-import { raf } from './useTransition'
 
 export function useHeight (child: React.ReactElement, width?: number, defaultVal = 100): number {
-  // const [{ child: calcForChild, width: calcForWidth }, setCalcFor] = React.useState({ child, width })
   const [height, setHeight] = React.useState(defaultVal)
-  // const [done, setDone] = React.useState(false)
-
-  // if (done && calcForChild === child && calcForWidth === width) {
-  //   return height
-  // }
 
   const div = document.createElement('div')
   div.style.opacity = '0'
@@ -25,13 +18,12 @@ export function useHeight (child: React.ReactElement, width?: number, defaultVal
   requestAnimationFrame(() => {
     render(child, div, () => {
       const newHeight = div.clientHeight
+      div.remove()
       if (newHeight === height) {
         return
       }
-      // setCalcFor({ child, width })
-      setHeight(div.clientHeight)
-      // setDone(true)
-      div.remove()
+
+      setHeight(newHeight)
     })
   })
 

@@ -2,6 +2,7 @@
 import * as React from 'react'
 import * as cn from 'classnames'
 
+import { MobxProvider } from '../../state/MobxProvider'
 import { useTransition } from '../../hooks/useTransition'
 import { useHeight } from '../../hooks/useHeight'
 
@@ -13,7 +14,6 @@ import {
   transition,
   transitionBack,
 } from './panel.pcss'
-import { MobxProvider } from '../../state/MobxProvider'
 
 export interface PanelProps {
   children: React.ReactElement
@@ -32,10 +32,9 @@ export function Panel (props: PanelProps) {
   }
   const [prevChildren, shouldTransition] = useTransition(children, transitionSpeed + 200)
   const width = ownRef.current
-    ? ownRef.current.clientWidth - 48
-    : window.innerWidth - 48
-  // const height = useHeight(<MobxProvider>{children}</MobxProvider>, width, 0) + 48
-  const height = useHeight(children, width, 0) + 48
+    ? ownRef.current.clientWidth
+    : window.innerWidth
+  const height = useHeight(<MobxProvider>{children}</MobxProvider>, width, 0)
   if (!prevChildren) {
     return (
       <div ref={ownRef} className={cn(panel, className)} style={style}>

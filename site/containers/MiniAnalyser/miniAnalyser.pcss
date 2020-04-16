@@ -1,17 +1,22 @@
 
+@import '../../global-css/mixins.pcss';
+
 #mini-analyser {
   position: fixed;
   z-index: -1;
   bottom: 0;
   left: 0;
   right: 0;
-  /* top: 0; */
   height: 500px;
   max-height: 100vh;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-end;
+
+  @mixin breakpoint mobile {
+    position: absolute;
+  }
 
   .bar {
     background: rgba(128, 128, 128, 0.75);

@@ -23,6 +23,8 @@ import { RoutingProp, PanelRoute } from '../../state/routingStore'
 import { logger } from '../../../shared/logger'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { PatternsProp } from '../../state/patternsStore'
+import { Settings } from '../../containers/Settings'
+import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -43,11 +45,12 @@ const routeOrder: { [key in PanelRoute]: number } = {
   'palette': 4,
 }
 
-const infoRoute = (
-  <div>Info goes here</div>
+const audioSourceRoute = (
+  <AudioSourceSelector />
 )
+
 const settingsRoute = (
-  <div>Settings go here</div>
+  <Settings />
 )
 
 const homeRoute = (
@@ -55,7 +58,7 @@ const homeRoute = (
 )
 
 const filtersRoute = (
-  <div>Filters go here</div>
+  <Sliders />
 )
 
 const paletteRoute = (
@@ -66,9 +69,16 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
   ({ media, patterns, renderState, routing }) => ({ media, patterns, renderState, routing }),
   class Root extends React.Component<RootProps> {
     renderPanelChild = () => {
+      const { subRoutes } = this.props.routing
+      if (subRoutes.length > 0) {
+        switch (subRoutes[0]) {
+          case 'audioSource': return audioSourceRoute
+          default: break
+        }
+      }
+
       const { routing } = this.props
       switch (routing.panelRoute) {
-        case 'info': return infoRoute
         case 'settings': return settingsRoute
         case 'home': return homeRoute
         case 'filters': return filtersRoute
@@ -115,6 +125,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                 preSpacer={
                   <Shortcuts />
                 }
+                inSpacer={<MiniAnalyser/>}
                 postSpacer={
                   <>
                     <Panel recompute={this.panelRecompute()} back={routing.isBack}>

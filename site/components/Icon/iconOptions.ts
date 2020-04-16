@@ -28,6 +28,9 @@ function buildSvgContainer (name: string) {
 export type IconName = keyof typeof iconOptions
 
 export const iconOptions = {
+  arrow_back: buildSvgContainer('arrow_back'),
+  arrow_forward: buildSvgContainer('arrow_forward'),
+  delete: buildSvgContainer('delete'),
   favorite_border: buildSvgContainer('favorite_border'),
   favorite: buildSvgContainer('favorite'),
   fullscreen: buildSvgContainer('fullscreen'),
@@ -36,6 +39,7 @@ export const iconOptions = {
   launch: buildSvgContainer('launch'),
   palette: buildSvgContainer('palette'),
   play: buildSvgContainer('play'),
+  refresh: buildSvgContainer('refresh'),
   settings: buildSvgContainer('settings'),
   tune: buildSvgContainer('tune'),
   visibility_off: buildSvgContainer('visibility_off'),
