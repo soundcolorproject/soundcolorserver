@@ -7,6 +7,8 @@ import { toHsv } from '../../pcss-functions/toHsv'
 import { getContrastingColor } from '../../pcss-functions'
 
 interface OwnProps {
+  className?: string
+  style?: React.CSSProperties
   note: Note
 }
 
@@ -16,6 +18,10 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
   ({ patterns }) => ({ patterns }),
   class ColorPicker extends React.Component<ColorPickerProps> {
     private picker: Pickr
+
+    componentWillUnmount () {
+      this.picker?.destroyAndRemove()
+    }
 
     createPicker = (el: HTMLElement | null) => {
       if (this.picker || !el) {
@@ -52,7 +58,7 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
     }
 
     render () {
-      const { note, patterns } = this.props
+      const { note, patterns, className, style } = this.props
       const customColors = patterns.patternData.custom.colors
       const noteDesc = note.indexOf('#') > 1
         ? `${note[0]} Sharp`
@@ -66,8 +72,10 @@ export const ColorPicker = injectAndObserve<PatternsProp, OwnProps>(
           ref={this.createPicker}
           type='button'
           role='button'
+          className={className}
           aria-label={`custom color for note ${noteDesc}`}
           style={{
+            ...style,
             color: foreground.toString(),
             backgroundColor: background.toString(),
           }}

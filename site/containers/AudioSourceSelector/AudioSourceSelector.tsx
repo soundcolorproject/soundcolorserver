@@ -10,6 +10,8 @@ import { audioSourceSelector } from './audioSourceSelector.pcss'
 import { RoutingProp } from '../../state/routingStore'
 
 interface OwnProps {
+  height?: number
+  domRef?: React.Ref<HTMLDivElement>
 }
 
 type StateProps = MediaProp & RoutingProp
@@ -31,9 +33,9 @@ export const AudioSourceSelector = injectAndObserve<StateProps, OwnProps>(
     )
 
     render () {
-      const { media: { possibleDevices } } = this.props
+      const { media: { possibleDevices }, domRef } = this.props
       return (
-        <div className={audioSourceSelector}>
+        <div ref={domRef} className={audioSourceSelector}>
           <BackOption name='Audio Source' />
           {
             possibleDevices.map(this.renderDevice)

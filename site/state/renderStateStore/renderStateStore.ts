@@ -1,9 +1,10 @@
 
-import { observable, action } from 'mobx'
+import { observable, action, reaction } from 'mobx'
 import { resume } from '../../audio/context'
 
 import { patternsStore, PatternsStore } from '../patternsStore'
 import { logger } from '../../../shared/logger'
+import { startAnalysis, pauseAnalysis } from '../analysisStore'
 
 export type RenderStateStore = typeof renderStateStore
 
@@ -16,6 +17,17 @@ export const renderStateStore = observable({
   showColors: false,
   isFullscreen: false,
 })
+
+reaction(
+  () => renderStateStore.showColors,
+  (show) => {
+    if (show) {
+      startAnalysis()
+    } else {
+      pauseAnalysis()
+    }
+  }
+)
 
 export const toggleFullscreen = action(function toggleFullscreen (
   renderState: RenderStateStore = renderStateStore,

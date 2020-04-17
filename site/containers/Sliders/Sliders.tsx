@@ -7,6 +7,8 @@ import { PatternsProp, PatternsStore } from '../../state/patternsStore'
 import { sliders, detail, value } from './sliders.pcss'
 
 interface OwnProps {
+  height?: number
+  domRef?: React.Ref<HTMLDivElement>
 }
 
 type StateProps = PatternsProp
@@ -46,10 +48,11 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
           toneSigma,
           timeSmoothing,
         },
+        domRef,
       } = this.props
 
       return (
-        <div id={sliders}>
+        <div ref={domRef} id={sliders}>
           <label>
             <div className={detail}>
               <div>Color Transition Speed</div>

@@ -5,7 +5,7 @@ import { injectAndObserve } from '../../state/injectAndObserve'
 import { ColorRenderer } from '../../containers/ColorRenderer'
 import { DeviceChooser } from '../../containers/DeviceChooser'
 import { Footer } from '../../containers/Footer'
-import { MiniAnalyser } from '../../containers/MiniAnalyser'
+import { MiniAnalyser, CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
 import { PatternPicker } from '../../containers/PatternPicker'
 import { Shortcuts } from '../../containers/Shortcuts'
 import { Sliders } from '../../containers/Sliders'
@@ -26,6 +26,7 @@ import { PatternsProp } from '../../state/patternsStore'
 import { Settings } from '../../containers/Settings'
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { PatternSelector } from '../../containers/PatternSelector'
+import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -48,7 +49,7 @@ const routeOrder: { [key in PanelRoute]: number } = {
 
 // ROUTES
 const settingsRoute = (
-  <Settings />
+  <Settings height={140} />
 )
 
 const homeRoute = (
@@ -69,7 +70,7 @@ const audioSourceRoute = (
 )
 
 const customPaletteRoute = (
-  <div>Custom palette goes here</div>
+  <CustomPatternSelector height={300} />
 )
 
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
@@ -133,24 +134,24 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                 preSpacer={
                   <Shortcuts />
                 }
-                inSpacer={<MiniAnalyser/>}
+                inSpacer={<CanvasMiniAnalyser/>}
                 postSpacer={
-                  <>
-                    <Panel recompute={this.panelRecompute()} back={routing.isBack}>
-                      {this.renderPanelChild()}
-                    </Panel>
-                    <HomeRow
-                      selected={routing.panelRoute}
-                      buttons={{
-                        info: 'info',
-                        settings: 'settings',
-                        home: 'home',
-                        filters: 'tune',
-                        palette: 'palette',
-                      }}
-                      onChange={this.setPanelRoute}
-                    />
-                  </>
+                  <Panel recompute={this.panelRecompute()} back={routing.isBack}>
+                    {this.renderPanelChild()}
+                  </Panel>
+                }
+                footer={
+                  <HomeRow
+                    selected={routing.panelRoute}
+                    buttons={{
+                      info: 'info',
+                      settings: 'settings',
+                      home: 'home',
+                      filters: 'tune',
+                      palette: 'palette',
+                    }}
+                    onChange={this.setPanelRoute}
+                  />
                 }
               />
               {/* <h1>SoundColor</h1>

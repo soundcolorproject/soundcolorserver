@@ -10,6 +10,8 @@ import { settings, overUnder, over, under } from './settings.pcss'
 import { RoutingProp } from '../../state/routingStore'
 
 interface OwnProps {
+  height?: number
+  domRef?: React.Ref<HTMLDivElement>
 }
 
 type StateProps =
@@ -136,8 +138,9 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
     }
 
     render () {
+      const { domRef } = this.props
       return (
-        <div className={settings}>
+        <div ref={domRef} className={settings}>
           {this.renderDeviceOption()}
           {this.renderHueOption()}
         </div>

@@ -1,14 +1,16 @@
 
 import * as React from 'react'
 import * as cn from 'classnames'
+// import useDimensions from 'react-use-dimensions'
 
-import { MobxProvider } from '../../state/MobxProvider'
 import { useTransition } from '../../hooks/useTransition'
-import { useHeight } from '../../hooks/useHeight'
+import { useDimensions } from '../../hooks/useDimensions'
 
 import {
   panel,
   swapper,
+  scrollable,
+  current,
   prev,
   next,
   transition,
@@ -25,22 +27,31 @@ export interface PanelProps {
 }
 
 export function Panel (props: PanelProps) {
-  const { children, back, className, style, transitionSpeed = 500 } = props
-  const ownRef = React.useRef<HTMLDivElement>(null)
-  if (ownRef.current && props.transitionSpeed !== undefined) {
-    ownRef.current.style.setProperty('--panel-transition-time', `${(transitionSpeed / 1000).toFixed(2)}s`)
-  }
+  const { children, back, className, style, recompute, transitionSpeed = 500 } = props
   const [prevChildren, shouldTransition] = useTransition(children, transitionSpeed + 200)
-  const width = ownRef.current
-    ? ownRef.current.clientWidth
-    : window.innerWidth
-  const height = useHeight(<MobxProvider>{children}</MobxProvider>, width, 0)
+
+  const [ref, dimensions] = useDimensions<HTMLDivElement>(recompute)
+  const height = dimensions?.height
+  // const height = typeof children.props.height === 'number'
+  //   ? children.props.height as number
+  //   : undefined
+
+  const rebuiltChildren = React.Children.map(children, child => (
+    React.createElement(
+      child.type,
+      { ...child.props, domRef: ref },
+      ...(child.props.children || []),
+    )
+  ))
+
   if (!prevChildren) {
     return (
-      <div ref={ownRef} className={cn(panel, className)} style={style}>
+      <div className={cn(panel, className)} style={style}>
         <div className={swapper} style={{ height }}>
-          <div className={prev}>
-            {children}
+          <div className={`${scrollable} ${current}`}>
+            <div key='current' ref={ref}>
+              {children}
+            </div>
           </div>
         </div>
       </div>
@@ -48,17 +59,21 @@ export function Panel (props: PanelProps) {
   }
 
   return (
-    <div ref={ownRef} className={cn(panel, className)} style={style}>
+    <div className={cn(panel, className)} style={style}>
       <div className={cn({
         [swapper]: true,
         [transition]: shouldTransition && !back,
         [transitionBack]: shouldTransition && back,
       })} style={{ height }}>
-        <div className={prev}>
-          {prevChildren}
+        <div className={`${scrollable} ${prev}`}>
+          <div key='prev'>
+            {prevChildren}
+          </div>
         </div>
-        <div className={next}>
-          {children}
+        <div className={`${scrollable} ${next}`}>
+          <div ref={ref} key={`next-${recompute}`}>
+            {children}
+          </div>
         </div>
       </div>
     </div>

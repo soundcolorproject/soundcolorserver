@@ -31,6 +31,8 @@ body {
     flex-direction: column;
     width: var(--panel-layout-width);
     align-items: stretch;
+    justify-content: flex-end;
+    height: 100%;
 
     .layout-spacer {
       flex-grow: 0;
@@ -42,8 +44,18 @@ body {
     }
 
     .after-spacer {
-      border-radius: var(--panel-layout-round);
+      flex-shrink: 1;
+      border-top-left-radius: var(--panel-layout-round);
+      border-top-right-radius: var(--panel-layout-round);
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .layout-footer {
+      flex-shrink: 0;
       overflow: hidden;
+      border-bottom-left-radius: var(--panel-layout-round);
+      border-bottom-right-radius: var(--panel-layout-round);
     }
   }
 

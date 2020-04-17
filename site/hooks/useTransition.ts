@@ -50,7 +50,7 @@ export function useTransition (children: React.ReactElement, transitionTime: num
       return doCleanup
     }
     if (prev2 !== children && !transition) {
-      raf(2).then(() => {
+      setTimeout(() => {
         if (cleanup) {
           return
         }
@@ -63,7 +63,7 @@ export function useTransition (children: React.ReactElement, transitionTime: num
           setPrev2(children)
           setTimer(null)
         }, transitionTime))
-      }).catch()
+      }, 10)
     }
     return doCleanup
   }, [prev1])

@@ -9,6 +9,8 @@ import { ToneInfo } from '../../audio/getAnalysis'
 import { soundDetails, detail, name, value } from './soundDetails.pcss'
 
 interface OwnProps {
+  height?: number
+  domRef?: React.Ref<HTMLDivElement>
 }
 
 type StateProps =
@@ -66,7 +68,7 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
     )
 
     render () {
-      const { analysis, patterns, renderState } = this.props
+      const { analysis, patterns, renderState, domRef } = this.props
       if (!patterns || !renderState) {
         return <div className={soundDetails}>Loading...</div>
       }
@@ -75,14 +77,14 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
       const { showColors } = renderState
       if (!currentPattern) {
         return (
-          <div className={soundDetails}>
+          <div ref={domRef} className={soundDetails}>
             <h2>Hit play or select a color pattern to begin</h2>
           </div>
         )
       }
       if (!showColors || !analysis) {
         return (
-          <div className={soundDetails}>
+          <div ref={domRef} className={soundDetails}>
             <h2>Color pattern stopped.</h2>
           </div>
         )
@@ -91,7 +93,7 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
       const { noise, tones } = analysis
 
       return (
-        <div className={soundDetails}>
+        <div ref={domRef} className={soundDetails}>
           {
             Number.isFinite(noise)
               ? (

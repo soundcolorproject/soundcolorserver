@@ -9,10 +9,11 @@ export interface AnalysisProp {
   analysis: AnalysisStore
 }
 
-export const analysisStore = observable<Analysis & { miniFft: Float32Array }>({
+export const analysisStore = observable<Analysis & { miniFft: Float32Array, paused: boolean }>({
   noise: 0,
   tones: [],
   miniFft: new Float32Array(0),
+  paused: false,
 })
 
 const setAnalysis = action('setAnalysis', ({ noise, tones }: Analysis, miniFft: Float32Array) => {
@@ -21,11 +22,21 @@ const setAnalysis = action('setAnalysis', ({ noise, tones }: Analysis, miniFft: 
   analysisStore.miniFft = miniFft
 })
 
-async function requestAnalysis () {
-  setAnalysis(getAnalysis(), getMiniFft())
-  requestAnimationFrame(requestAnalysis)
+let animationFrame = 0
+export function startAnalysis () {
+  analysisStore.paused = false
+  requestAnalysis()
 }
 
-requestAnalysis().catch(e => {
-  logger.warn('Failed to request analysis:', e)
-})
+export function pauseAnalysis () {
+  analysisStore.paused = true
+  cancelAnimationFrame(animationFrame)
+}
+
+function requestAnalysis () {
+  if (analysisStore.paused) {
+    return
+  }
+  setAnalysis(getAnalysis(), getMiniFft())
+  animationFrame = requestAnimationFrame(requestAnalysis)
+}

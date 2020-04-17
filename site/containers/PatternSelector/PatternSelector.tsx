@@ -11,6 +11,8 @@ import { RoutingProp } from '../../state/routingStore'
 import { patternSelector, patternOption, selected } from './patternSelector.pcss'
 
 interface OwnProps {
+  height?: number
+  domRef?: React.Ref<HTMLDivElement>
 }
 
 type StateProps = PatternsProp & RoutingProp
@@ -21,9 +23,6 @@ export const PatternSelector = injectAndObserve<StateProps, OwnProps>(
   ({ patterns, routing }) => ({ patterns, routing }),
   class PatternSelector extends React.Component<PatternSelectorProps> {
     setPattern = (pattern: PatternName) => {
-      resume().catch(e => {
-        logger.error('Failed to resume audio analysis:', e)
-      })
       this.props.patterns.currentPattern = pattern
       if (pattern === 'custom') {
         this.props.routing.goToSubroute('customPalette')
@@ -34,6 +33,7 @@ export const PatternSelector = injectAndObserve<StateProps, OwnProps>(
       const { patterns: { patternData, currentPattern } } = this.props
       return (
         <button
+          key={pattern}
           type='button'
           role='button'
           className={cn({
@@ -51,10 +51,10 @@ export const PatternSelector = injectAndObserve<StateProps, OwnProps>(
     }
 
     render () {
-      const { patterns: { patternData } } = this.props
+      const { patterns: { patternData }, domRef } = this.props
       const possiblePatterns = Object.keys(patternData) as PatternName[]
       return (
-        <div className={patternSelector}>
+        <div ref={domRef} className={patternSelector}>
           {
             possiblePatterns.map(this.renderPatternOption)
           }
