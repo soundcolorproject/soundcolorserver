@@ -26,7 +26,7 @@ reaction(
     } else {
       pauseAnalysis()
     }
-  }
+  },
 )
 
 export const toggleFullscreen = action(function toggleFullscreen (
