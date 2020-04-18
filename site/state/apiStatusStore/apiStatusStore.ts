@@ -37,11 +37,9 @@ export class ApiStatusStore {
     isLoggedIn().then(loggedIn => {
       this.authenticated = loggedIn
       if (loggedIn) {
-        setTimeout(() => (
-          this.fetchLightGroups().catch(e => {
-            logger.error('Failed to fetch light groups:', e)
-          })
-        ), 5000)
+        this.fetchLightGroups().catch(e => {
+          logger.error('Failed to fetch light groups:', e)
+        })
       }
     }).catch(e => {
       logger.warn('Failed to check if the user is logged in:', e)
