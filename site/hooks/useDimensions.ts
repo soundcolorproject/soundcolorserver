@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState, RefObject } from 'react'
+import { useLayoutEffect, useRef, useState, RefObject } from 'react'
 import { logger } from '../../shared/logger'
 
 export interface DimensionObject {
@@ -30,14 +30,21 @@ export function useDimensions<T extends HTMLElement> (recompute?: any): [RefObje
   const ref = useRef<T>(null)
   const [dimensions, setDimensions] = useState<DimensionObject>(defaultDims)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const cur = ref.current
     if (cur) {
       requestAnimationFrame(() => {
         setDimensions(cur.getBoundingClientRect().toJSON())
       })
     }
-  }, [recompute, ref.current, ref.current?.firstChild])
+  }, [
+    recompute,
+    ref.current,
+    ref.current?.clientHeight,
+    ref.current?.clientWidth,
+    ref.current?.clientLeft,
+    ref.current?.clientTop,
+  ])
 
   prevRef = ref.current
   prevDim = dimensions

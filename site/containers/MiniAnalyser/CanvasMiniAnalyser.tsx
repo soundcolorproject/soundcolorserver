@@ -13,6 +13,7 @@ type StateProps = AnalysisProp & RenderStateProp
 
 export type CanvasMiniAnalyserProps = OwnProps & StateProps
 
+const BASE = 2
 function renderAnalyser (context: CanvasRenderingContext2D, miniFft: Float32Array, width: number, height: number) {
   const heights = [...miniFft].map(dB => height - (BASE ** (dB / 10)) * height)
   context.clearRect(0, 0, width, height)
@@ -44,7 +45,6 @@ function useContext (): [React.RefObject<HTMLCanvasElement>, CanvasRenderingCont
   return [ref, context]
 }
 
-const BASE = 1.5
 export const CanvasMiniAnalyser = injectAndObserve<StateProps, OwnProps>(
   ({ analysis, renderState }) => ({ analysis, renderState }),
   function CanvasMiniAnalyser (props: CanvasMiniAnalyserProps) {

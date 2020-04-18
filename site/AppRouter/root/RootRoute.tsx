@@ -1,32 +1,34 @@
 
 import * as React from 'react'
-import { Link, RouteComponentProps, navigate } from '@reach/router'
+import { Link, RouteComponentProps } from '@reach/router'
+
+import { logger } from '../../../shared/logger'
+
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { ColorRenderer } from '../../containers/ColorRenderer'
-import { DeviceChooser } from '../../containers/DeviceChooser'
-import { Footer } from '../../containers/Footer'
-import { MiniAnalyser, CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
-import { PatternPicker } from '../../containers/PatternPicker'
+import { MediaProp } from '../../state/mediaStore'
+import { PatternsProp } from '../../state/patternsStore'
+import { RenderStateProp } from '../../state/renderStateStore'
+import { RoutingProp, PanelRoute } from '../../state/routingStore'
+
+import { HomeRow } from '../../components/HomeRow'
+import { Panel } from '../../components/Panel'
+import { PanelLayout } from '../../components/PanelLayout'
+
+import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
+import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
+import { HueRoot } from '../../containers/HueRoot'
+import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
+import { PatternSelector } from '../../containers/PatternSelector'
+import { Settings } from '../../containers/Settings'
 import { Shortcuts } from '../../containers/Shortcuts'
 import { Sliders } from '../../containers/Sliders'
 import { SoundDetails } from '../../containers/SoundDetails'
+
+// Should be a container
 import { TextHider } from '../../components/TextHider'
 
-import { MediaProp } from '../../state/mediaStore'
-
 import { detailsView, spreader, info } from './root.pcss'
-import { LightGroupChooser } from '../../containers/LightGroupChooser'
-import { PanelLayout } from '../../components/PanelLayout'
-import { Panel } from '../../components/Panel/Panel'
-import { HomeRow } from '../../components/HomeRow'
-import { RoutingProp, PanelRoute } from '../../state/routingStore'
-import { logger } from '../../../shared/logger'
-import { RenderStateProp } from '../../state/renderStateStore'
-import { PatternsProp } from '../../state/patternsStore'
-import { Settings } from '../../containers/Settings'
-import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
-import { PatternSelector } from '../../containers/PatternSelector'
-import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
+import { HueGroupSelector } from '../../containers/HueGroupSelector/HueGroupSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -73,6 +75,14 @@ const customPaletteRoute = (
   <CustomPatternSelector height={300} />
 )
 
+const hueRootRoute = (
+  <HueRoot />
+)
+
+const hueGroupRoute = (
+  <HueGroupSelector />
+)
+
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
   ({ media, patterns, renderState, routing }) => ({ media, patterns, renderState, routing }),
   class Root extends React.Component<RootProps> {
@@ -82,6 +92,9 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
         switch (subRoutes[0]) {
           case 'audioSource': return audioSourceRoute
           case 'customPalette': return customPaletteRoute
+          case 'hueRoot': return hueRootRoute
+          case 'hueGroupSelector': return hueGroupRoute
+          case 'favoriteCusom':
           default: break
         }
       }
@@ -154,21 +167,6 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                   />
                 }
               />
-              {/* <h1>SoundColor</h1>
-              <p>Select a color pattern:</p>
-              <PatternPicker/>
-              <LightGroupChooser/>
-              <SoundDetails/>
-              <MiniAnalyser/>
-              <div id={spreader} />
-              <DeviceChooser/>
-              <Footer>
-                <Shortcuts/>
-                <Sliders/>
-              </Footer>
-              <div id={info}>
-                <Link aria-label='About Sound Color Project' to='/info'>Info</Link>
-              </div> */}
             </TextHider>
           </div>
         )

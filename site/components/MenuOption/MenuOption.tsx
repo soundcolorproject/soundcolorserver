@@ -4,10 +4,17 @@ import * as cn from 'classnames'
 
 import { IconName, Icon } from '../Icon'
 
-import { menuOption, clickable } from './menuOption.pcss'
+import {
+  menuOption,
+  clickable,
+  menuButton,
+  menuButtonLabel,
+  menuButtonIcon,
+} from './menuOption.pcss'
+import { logger } from '../../../shared/logger'
 
 export interface MenuOptionProps {
-  children: React.ReactElement
+  children: React.ReactElement | string
   icon?: IconName
 }
 
@@ -26,6 +33,36 @@ export function MenuOption (props: MenuOptionProps) {
 
 export interface ClickableMenuOptionProps extends MenuOptionProps {
   onClick: () => void
+}
+
+export function ButtonOption (props: ClickableMenuOptionProps) {
+  const { children, icon, onClick } = props
+
+  function handleClick (ev: React.MouseEvent) {
+    ev.preventDefault()
+    onClick()
+  }
+
+  logger.log('ButtonOption', icon)
+
+  return (
+    <div
+      className={menuOption}
+    >
+      <button className={menuButton} onClick={handleClick}>
+        <span className={menuButtonLabel}>
+          {children}
+        </span>
+        {
+          icon && <Icon
+            className={menuButtonIcon}
+            color='var(--white)'
+            name={icon}
+          />
+        }
+      </button>
+    </div>
+  )
 }
 
 export function ClickableMenuOption (props: ClickableMenuOptionProps) {

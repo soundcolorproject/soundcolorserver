@@ -5,6 +5,8 @@ import { logger } from '../../../shared/logger'
 import { selectGroup, setColor, getGroups } from '../../api/groups'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
 import { GroupColorMode, ApiGroupInfo } from '../../../shared/apiTypes/hue'
+import { patternsStore } from '../patternsStore'
+import { renderStateStore } from '../renderStateStore'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore
@@ -35,9 +37,11 @@ export class ApiStatusStore {
     isLoggedIn().then(loggedIn => {
       this.authenticated = loggedIn
       if (loggedIn) {
-        this.fetchLightGroups().catch(e => {
-          logger.error('Failed to fetch light groups:', e)
-        })
+        setTimeout(() => (
+          this.fetchLightGroups().catch(e => {
+            logger.error('Failed to fetch light groups:', e)
+          })
+        ), 5000)
       }
     }).catch(e => {
       logger.warn('Failed to check if the user is logged in:', e)
@@ -139,6 +143,9 @@ export class ApiStatusStore {
         : 250
       const startTime = Date.now()
       this._transmitter = setInterval(() => {
+        if (!patternsStore.currentPattern || !renderStateStore.showColors) {
+          return
+        }
         const [hsv] = getColorsFromAnalysis()
         const color = hsv
           ? { h: hsv.h, s: hsv.s, v: hsv.v }

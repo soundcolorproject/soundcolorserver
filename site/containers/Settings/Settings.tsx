@@ -3,11 +3,11 @@ import * as React from 'react'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { ApiStatusProp } from '../../state/apiStatusStore'
 import { MediaProp } from '../../state/mediaStore'
-import { logger } from '../../../shared/logger'
 import { ClickableMenuOption, MenuOption, LinkMenuOption } from '../../components/MenuOption'
 
-import { settings, overUnder, over, under } from './settings.pcss'
+import { settings } from './settings.pcss'
 import { RoutingProp } from '../../state/routingStore'
+import { OverUnder } from '../../components/OverUnder'
 
 interface OwnProps {
   height?: number
@@ -29,12 +29,10 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
       if (possibleDevices.length < 1) {
         return (
           <MenuOption>
-            <div className={overUnder}>
-              <div className={over}>Audio Source</div>
-              <div className={under}>
-                Looking for devices...
-              </div>
-            </div>
+            <OverUnder
+              over='Audio Source'
+              under='Looking for devices...'
+            />
           </MenuOption>
         )
       }
@@ -46,18 +44,16 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
           icon='arrow_forward'
           onClick={() => routing.goToSubroute('audioSource')}
         >
-          <div className={overUnder}>
-            <div className={over}>Audio Source</div>
-            <div className={under}>
-              {currentDevice?.label || 'Select a source'}
-            </div>
-          </div>
+          <OverUnder
+            over='Audio Source'
+            under={currentDevice?.label || 'Select a source'}
+          />
         </ClickableMenuOption>
       )
     }
 
     renderHueOption = () => {
-      const { apiStatus } = this.props
+      const { apiStatus, routing } = this.props
       const {
         authenticated,
         loadingLightGroups,
@@ -69,70 +65,82 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
       if (!authenticated) {
         return (
           <LinkMenuOption icon='launch' href='/login'>
-            <div className={overUnder}>
-              <div className={over}>Philips Hue</div>
-              <div className={under}>
-                Log in
-              </div>
-            </div>
+            <OverUnder
+              over='Philips Hue'
+              under='Log in'
+            />
           </LinkMenuOption>
         )
       }
 
-      if (loadingLightGroups) {
+      if (lightGroupFetchError) {
         return (
-          <MenuOption>
-            <div className={overUnder}>
-              <div className={over}>Philips Hue</div>
-              <div className={under}>
-                Finding light groups...
-              </div>
-            </div>
-          </MenuOption>
+          <ClickableMenuOption
+            icon='arrow_forward'
+            onClick={() => routing.goToSubroute('hueRoot')}
+          >
+            <OverUnder
+              over='Philips Hue'
+              under='Failed to fetch lights!'
+            />
+          </ClickableMenuOption>
         )
       }
 
-      if (lightGroupFetchError || !lightGroups) {
+      if (loadingLightGroups || !lightGroups) {
         return (
           <MenuOption>
-            <div className={overUnder}>
-              <div className={over}>Philips Hue</div>
-              <div className={under}>
-                Failed to fetch lights!
-              </div>
-            </div>
+            <OverUnder
+              over='Philips Hue'
+              under='Finding light groups...'
+            />
           </MenuOption>
         )
       }
 
       if (lightGroups.length < 1) {
         return (
-          <MenuOption>
-            <div className={overUnder}>
-              <div className={over}>Philips Hue</div>
-              <div className={under}>
-                No light groups found!
-              </div>
-            </div>
-          </MenuOption>
+          <ClickableMenuOption
+            icon='arrow_forward'
+            onClick={() => routing.goToSubroute('hueRoot')}
+          >
+            <OverUnder
+              over='Philips Hue'
+              under='No light groups found!'
+            />
+          </ClickableMenuOption>
         )
       }
+
       const lightGroup = lightGroups.find(g => g.id === lightGroupId)
+
+      if (!lightGroup) {
+        return (
+          <ClickableMenuOption
+            icon='arrow_forward'
+            onClick={() => routing.goToSubroute('hueGroupSelector')}
+          >
+            <OverUnder
+              over='Philips Hue'
+              under='Select a light group'
+            />
+          </ClickableMenuOption>
+        )
+      }
+
       return (
         <ClickableMenuOption
           icon='arrow_forward'
-          onClick={() => logger.log('hue')}
+          onClick={() => routing.goToSubroute('hueRoot')}
         >
-          <div className={overUnder}>
-            <div className={over}>Philips Hue</div>
-            <div className={under}>
-              {
-                lightGroup
-                  ? `${lightGroup.name} -- ${lightGroup.lightCount} lights`
-                  : 'Select a light group'
-              }
-            </div>
-          </div>
+          <OverUnder
+            over='Philips Hue'
+            under={
+              lightGroup
+                ? `${lightGroup.name} -- ${lightGroup.lightCount} lights`
+                : 'Select a light group'
+            }
+          />
         </ClickableMenuOption>
       )
     }

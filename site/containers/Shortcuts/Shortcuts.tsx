@@ -59,18 +59,14 @@ export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
 
     render () {
       const { renderState } = this.props
-      const changePatternText = renderState.showColors
-        ? 'Stop'
-        : 'Start'
-
-      const fullscreenText = renderState.isFullscreen
-        ? 'Leave'
-        : 'Enter'
 
       return (
         <div id={shortcuts}>
           {
-            this.renderIconButton('play', this.togglePattern)
+            this.renderIconButton(
+              renderState.showColors ? 'pause_circle' : 'play_circle',
+              this.togglePattern,
+            )
           }
           {
             this.renderIconButton('visibility_off', this.hideText)

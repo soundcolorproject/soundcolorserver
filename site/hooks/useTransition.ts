@@ -1,19 +1,6 @@
 
 import * as React from 'react'
 
-export function raf (count: number) {
-  return new Promise(resolve => {
-    function next () {
-      if (count-- > 0) {
-        requestAnimationFrame(next)
-      } else {
-        resolve()
-      }
-    }
-    requestAnimationFrame(next)
-  })
-}
-
 export function useTransition (children: React.ReactElement, transitionTime: number): [React.ReactElement | null, boolean] {
   const [prev1, setPrev1] = React.useState(children)
   const [prev2, setPrev2] = React.useState(children)
