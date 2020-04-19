@@ -1,8 +1,9 @@
 
-import { observable, reaction } from 'mobx'
+import { observable, reaction, action } from 'mobx'
 import { getAnalyser } from '../../audio/analyzer'
 import { getMiniAnalyser } from '../../audio/miniAnalyser'
 import { toHsv, HSVa } from '../../pcss-functions/toHsv'
+import { randStr } from '../../helpers/random'
 
 const defaultCustomColors = {
   'C': toHsv('#E2CF0B'),
@@ -35,7 +36,7 @@ function getCustomColorValue (name: string, note: Note) {
       return toHsv(storageVal)
     } catch (e) {
       const color = defaultCustomColors[note]
-      saveCustommColorValue(name, note, color)
+      saveCustomColorValue(name, note, color)
       return color
     }
   } else {
@@ -43,7 +44,89 @@ function getCustomColorValue (name: string, note: Note) {
   }
 }
 
-function saveCustommColorValue (name: string, note: Note, value: HSVa) {
+interface Favorite {
+  key: string
+  created: Date
+}
+function getFavoriteList (): Favorite[] {
+  const faveStr = localStorage.getItem(`custom:favorites`)
+  if (!faveStr) {
+    return []
+  }
+
+  try {
+    const faves = JSON.parse(faveStr) as Favorite[]
+    return faves.map(({ key, created }) => ({
+      key,
+      created: new Date(created),
+    }))
+  } catch (e) {
+    return []
+  }
+}
+
+function addFavoriteToList (key: string) {
+  const faves = getFavoriteList()
+  faves.push({
+    key,
+    created: new Date(),
+  })
+  localStorage.setItem(`custom:favorites`, JSON.stringify(faves))
+
+  return faves
+}
+
+function deleteFavorite (key: string) {
+  const faves = getFavoriteList().filter(fave => (
+    fave.key !== key
+  ))
+
+  notes.forEach(note => {
+    localStorage.removeItem(`custom:${key}:${note}`)
+  })
+
+  localStorage.setItem(`custom:favorites`, JSON.stringify(faves))
+}
+
+function saveFavorite () {
+  const name = randStr()
+
+  const colors = patternsStore.patternData.custom.colors
+  notes.forEach(note => {
+    saveCustomColorValue(name, note, colors[note])
+  })
+
+  addFavoriteToList(name)
+
+  return name
+}
+
+export interface FavoriteData {
+  created: Date
+  colors: typeof defaultCustomColors
+}
+export interface Favorites {
+  [key: string]: FavoriteData
+}
+function getFavorites (): Favorites {
+  const favorites: Favorites = {}
+  const faveNames = getFavoriteList()
+
+  faveNames.forEach(({ key, created }) => {
+    const values = favorites[key] = {
+      created,
+      colors: {},
+    } as FavoriteData
+
+    notes.forEach(note => {
+      values.colors[note] = getCustomColorValue(key, note)
+    })
+  })
+
+  return favorites
+}
+
+function saveCustomColorValue (name: string, note: Note, value: HSVa) {
   localStorage.setItem(`custom:${name}:${note}`, value.toString())
 }
 
@@ -60,7 +143,7 @@ function getCustomColors (name = 'current') {
   Object.keys(defaultCustomColors).forEach((note: Note) => (
     disposers.push(reaction(
       () => colors[note],
-      (value) => saveCustommColorValue(name, note, value),
+      (value) => saveCustomColorValue(name, note, value),
     ))
   ))
   colors.clearReactions = () => disposers.forEach(d => d())
@@ -79,6 +162,10 @@ export type PatternName =
   | 'chromotherapy'
   | 'adolescence'
   | 'custom'
+
+export const notes = Object.freeze<Note[]>([
+  'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#',
+])
 
 export const patternsStore = observable({
   transitionSpeed: 0.9,
@@ -179,8 +266,36 @@ export const patternsStore = observable({
       colors: getCustomColors(),
     },
   },
-  notes: ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'] as Note[],
+  favorites: getFavorites(),
+  saveFavorite: action('saveFavorite', () => {
+    patternsStore.favoriteKey = saveFavorite()
+    patternsStore.favorites = getFavorites()
+    patternsStore.hasNewFavorite = true
+  }),
+  deleteFavorite: action('deleteFavorite', (key: string) => {
+    deleteFavorite(key)
+    if (patternsStore.favoriteKey === key) {
+      patternsStore.favoriteKey = null
+    }
+    patternsStore.favorites = getFavorites()
+  }),
+  loadFavorite: action('loadFavorite', (key: string) => {
+    patternsStore.patternData.custom.colors = getCustomColors(key)
+    patternsStore.favoriteKey = key
+  }),
+  hasNewFavorite: false,
+  favoriteKey: null as string | null,
+  notes,
 })
+
+reaction(
+  () => notes.map(note => (
+    patternsStore.patternData.custom.colors[note]
+  )),
+  () => {
+    patternsStore.favoriteKey = null
+  },
+)
 
 reaction(
   () => patternsStore.timeSmoothing,

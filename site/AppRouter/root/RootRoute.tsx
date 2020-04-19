@@ -29,6 +29,7 @@ import { TextHider } from '../../components/TextHider'
 
 import { detailsView, spreader, info } from './root.pcss'
 import { HueGroupSelector } from '../../containers/HueGroupSelector/HueGroupSelector'
+import { FavoriteSelector } from '../../containers/FavoriteSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -83,6 +84,10 @@ const hueGroupRoute = (
   <HueGroupSelector />
 )
 
+const favoritesRoute = (
+  <FavoriteSelector />
+)
+
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
   ({ media, patterns, renderState, routing }) => ({ media, patterns, renderState, routing }),
   class Root extends React.Component<RootProps> {
@@ -94,7 +99,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
           case 'customPalette': return customPaletteRoute
           case 'hueRoot': return hueRootRoute
           case 'hueGroupSelector': return hueGroupRoute
-          case 'favoriteCusom':
+          case 'favoriteCusom': return favoritesRoute
           default: break
         }
       }

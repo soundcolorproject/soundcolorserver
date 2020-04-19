@@ -8,6 +8,7 @@ import { ClickableMenuOption, MenuOption, LinkMenuOption } from '../../component
 import { settings } from './settings.pcss'
 import { RoutingProp } from '../../state/routingStore'
 import { OverUnder } from '../../components/OverUnder'
+import { PatternsProp } from '../../state/patternsStore'
 
 interface OwnProps {
   height?: number
@@ -17,12 +18,13 @@ interface OwnProps {
 type StateProps =
   & ApiStatusProp
   & MediaProp
+  & PatternsProp
   & RoutingProp
 
 export type SettingsProps = OwnProps & StateProps
 
 export const Settings = injectAndObserve<StateProps, OwnProps>(
-  ({ apiStatus, media, routing }) => ({ apiStatus, media, routing }),
+  ({ apiStatus, media, patterns, routing }) => ({ apiStatus, media, patterns, routing }),
   class Settings extends React.Component<SettingsProps> {
     renderDeviceOption = () => {
       const { media: { possibleDevices, currentDeviceId }, routing } = this.props
@@ -145,12 +147,41 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
       )
     }
 
+    renderFavoritesOption = () => {
+      const { patterns, routing } = this.props
+      const hasFavorites = Object.keys(patterns.favorites).length > 0
+
+      if (hasFavorites) {
+        return (
+          <ClickableMenuOption
+            icon='arrow_forward'
+            onClick={() => routing.goToSubroute('favoriteCusom')}
+          >
+            <OverUnder
+              over='Favorites'
+              under='Select a Favorite Custom Pattern'
+            />
+          </ClickableMenuOption>
+        )
+      } else {
+        return (
+          <MenuOption>
+            <OverUnder
+              over='Favorites'
+              under='No Custom Patterns Favorited'
+            />
+          </MenuOption>
+        )
+      }
+    }
+
     render () {
       const { domRef } = this.props
       return (
         <div ref={domRef} className={settings}>
           {this.renderDeviceOption()}
           {this.renderHueOption()}
+          {this.renderFavoritesOption()}
         </div>
       )
     }

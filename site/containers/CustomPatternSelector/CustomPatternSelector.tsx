@@ -33,6 +33,16 @@ export const CustomPatternSelector = injectAndObserve<StateProps, OwnProps>(
       this.props.routing.popSubroute()
     }
 
+    toggleFavorite = (ev: React.MouseEvent) => {
+      const { patterns } = this.props
+      ev.preventDefault()
+      if (patterns.favoriteKey === null) {
+        this.props.patterns.saveFavorite()
+      } else {
+        patterns.deleteFavorite(patterns.favoriteKey)
+      }
+    }
+
     resetColors = (ev: React.MouseEvent) => {
       ev.preventDefault()
       this.props.patterns.patternData.custom.colors.reset()
@@ -47,6 +57,21 @@ export const CustomPatternSelector = injectAndObserve<StateProps, OwnProps>(
           onClick={this.goBack}
         >
           <Icon color='var(--black)' name='arrow_back' />
+        </button>
+        <button
+          type='button'
+          role='button'
+          className={navigationButton}
+          onClick={this.toggleFavorite}
+        >
+          <Icon
+            color='var(--black)'
+            name={
+              this.props.patterns.favoriteKey === null
+                ? 'favorite_border'
+                : 'favorite'
+            }
+          />
         </button>
         <button
           type='button'

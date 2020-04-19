@@ -1,0 +1,47 @@
+
+.favorite-selector {
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+
+  .favorite-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .favorite-data {
+      display: flex;
+      flex-direction: column;
+
+      .favorite-date {
+        font-weight: bold;
+      }
+
+      .favorite-colors {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        .favorite-color {
+          height: 16px;
+          width: 16px;
+        }
+      }
+    }
+
+    .delete-favorite {
+      margin: -8px;
+      padding: 8px;
+      border-radius: 48px;
+      background: var(--white);
+
+      &:hover {
+        background: var(--grey-10);
+      }
+
+      &:active {
+        background: var(--grey-20);
+      }
+    }
+  }
+}

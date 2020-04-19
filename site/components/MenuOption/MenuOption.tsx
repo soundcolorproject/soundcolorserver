@@ -14,16 +14,17 @@ import {
 import { logger } from '../../../shared/logger'
 
 export interface MenuOptionProps {
+  className?: string
   children: React.ReactElement | string
   icon?: IconName
 }
 
 export function MenuOption (props: MenuOptionProps) {
-  const { children, icon } = props
+  const { className, children, icon } = props
 
   return (
     <div
-      className={menuOption}
+      className={cn(menuOption, className)}
     >
       {children}
       {icon && <Icon color='var(--black)' name={icon} />}
@@ -35,8 +36,33 @@ export interface ClickableMenuOptionProps extends MenuOptionProps {
   onClick: () => void
 }
 
-export function ButtonOption (props: ClickableMenuOptionProps) {
-  const { children, icon, onClick } = props
+export function ClickableMenuOption (props: ClickableMenuOptionProps) {
+  const { className, children, onClick, icon } = props
+
+  function handleClick (ev: React.MouseEvent) {
+    ev.preventDefault()
+    onClick()
+  }
+
+  return (
+    <button
+      type='button'
+      role='button'
+      className={cn(menuOption, clickable, className)}
+      onClick={handleClick}
+    >
+      {children}
+      {icon && <Icon color='var(--black)' name={icon} />}
+    </button>
+  )
+}
+
+export interface ButtonMenuOptionProps extends ClickableMenuOptionProps {
+  buttonClass?: string
+}
+
+export function ButtonOption (props: ButtonMenuOptionProps) {
+  const { className, buttonClass, children, icon, onClick } = props
 
   function handleClick (ev: React.MouseEvent) {
     ev.preventDefault()
@@ -47,9 +73,9 @@ export function ButtonOption (props: ClickableMenuOptionProps) {
 
   return (
     <div
-      className={menuOption}
+      className={cn(menuOption, className)}
     >
-      <button className={menuButton} onClick={handleClick}>
+      <button className={cn(menuButton, buttonClass)} onClick={handleClick}>
         <span className={menuButtonLabel}>
           {children}
         </span>
@@ -65,37 +91,16 @@ export function ButtonOption (props: ClickableMenuOptionProps) {
   )
 }
 
-export function ClickableMenuOption (props: ClickableMenuOptionProps) {
-  const { children, onClick, icon } = props
-
-  function handleClick (ev: React.MouseEvent) {
-    ev.preventDefault()
-    onClick()
-  }
-
-  return (
-    <button
-      type='button'
-      role='button'
-      className={cn(menuOption, clickable)}
-      onClick={handleClick}
-    >
-      {children}
-      {icon && <Icon color='var(--black)' name={icon} />}
-    </button>
-  )
-}
-
 export interface LinkMenuOptionProps extends MenuOptionProps {
   href: string
 }
 
 export function LinkMenuOption (props: LinkMenuOptionProps) {
-  const { children, href, icon } = props
+  const { className, children, href, icon } = props
 
   return (
     <a
-      className={cn(menuOption, clickable)}
+      className={cn(menuOption, clickable, className)}
       href={href}
     >
       {children}
