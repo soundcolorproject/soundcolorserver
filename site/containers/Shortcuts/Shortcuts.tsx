@@ -73,7 +73,10 @@ export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
           }
           {
             document.fullscreenEnabled
-            && this.renderIconButton('fullscreen', this.toggleFullscreen)
+            && this.renderIconButton(
+              renderState.isFullscreen ? 'minimize' : 'fullscreen',
+              this.toggleFullscreen,
+            )
           }
         </div>
       )

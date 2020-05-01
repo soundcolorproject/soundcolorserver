@@ -2,7 +2,7 @@
 #home-row {
   display: flex;
   flex-direction: row;
-  
+
   .home-row-button {
     background: var(--grey-80);
     flex-grow: 1;
@@ -12,6 +12,22 @@
 
     svg {
       fill: var(--grey-40);
+    }
+
+    &:hover {
+      background: var(--grey-70);
+
+      svg {
+        fill: var(--grey-30);
+      }
+    }
+
+    &:active {
+      background: var(--grey-60);
+
+      svg {
+        fill: var(--grey-20);
+      }
     }
 
     &.selected {

@@ -103,7 +103,6 @@ export const HueRoot = injectAndObserve<StateProps, OwnProps>(
             />
           </ClickableMenuOption>
           <ButtonOption
-            icon={transmitting ? 'pause' : 'play'}
             onClick={this.toggleHueIntegration}
           >
             <>

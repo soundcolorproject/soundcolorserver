@@ -73,7 +73,7 @@ export const FavoriteSelector = injectAndObserve<StateProps, OwnProps>(
               onClick={this.deleteFavorite(key)}
             >
               <Icon
-                color='var(--black)'
+                color='var(--grey-60)'
                 name='delete'
               />
             </span>

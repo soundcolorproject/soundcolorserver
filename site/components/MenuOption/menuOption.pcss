@@ -9,20 +9,20 @@
   margin: 0;
   padding: 12px 24px;
   background: var(--white);
-  color: var(--black);
+  color: var(--grey-90);
   font-size: 12px;
   text-align: left;
   flex: 1;
 
   &.clickable {
     &:hover {
-      background: var(--grey-20);
+      background: var(--grey-10);
       cursor: pointer;
     }
 
     &:active {
-      background: var(--grey-30);
-      color: var(--black);
+      background: var(--grey-20);
+      color: var(--grey-90);
     }
   }
 
@@ -32,17 +32,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 12px;
-    border-radius: 40px;
+    height: 48px;
+    border-radius: 4px;
     background: var(--grey-90);
     color: var(--white);
 
     .menu-button-label {
       flex-grow: 1;
-    }
-
-    .menu-button-icon {
-      margin: -12px 0;
     }
 
     &:hover {

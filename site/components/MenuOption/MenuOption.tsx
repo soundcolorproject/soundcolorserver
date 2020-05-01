@@ -27,7 +27,7 @@ export function MenuOption (props: MenuOptionProps) {
       className={cn(menuOption, className)}
     >
       {children}
-      {icon && <Icon color='var(--black)' name={icon} />}
+      {icon && <Icon color='var(--grey-60)' name={icon} />}
     </div>
   )
 }
@@ -52,7 +52,7 @@ export function ClickableMenuOption (props: ClickableMenuOptionProps) {
       onClick={handleClick}
     >
       {children}
-      {icon && <Icon color='var(--black)' name={icon} />}
+      {icon && <Icon color='var(--grey-60)' name={icon} />}
     </button>
   )
 }
@@ -104,7 +104,7 @@ export function LinkMenuOption (props: LinkMenuOptionProps) {
       href={href}
     >
       {children}
-      {icon && <Icon color='var(--black)' name={icon} />}
+      {icon && <Icon color='var(--grey-60)' name={icon} />}
     </a>
   )
 }

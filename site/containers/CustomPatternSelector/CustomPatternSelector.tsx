@@ -56,7 +56,7 @@ export const CustomPatternSelector = injectAndObserve<StateProps, OwnProps>(
           className={navigationButton}
           onClick={this.goBack}
         >
-          <Icon color='var(--black)' name='arrow_back' />
+          <Icon color='var(--grey-60)' name='arrow_back' />
         </button>
         <button
           type='button'
@@ -65,7 +65,7 @@ export const CustomPatternSelector = injectAndObserve<StateProps, OwnProps>(
           onClick={this.toggleFavorite}
         >
           <Icon
-            color='var(--black)'
+            color='var(--grey-60)'
             name={
               this.props.patterns.favoriteKey === null
                 ? 'favorite_border'
@@ -79,7 +79,7 @@ export const CustomPatternSelector = injectAndObserve<StateProps, OwnProps>(
           className={navigationButton}
           onClick={this.resetColors}
         >
-          <Icon color='var(--black)' name='refresh' />
+          <Icon color='var(--grey-60)' name='refresh' />
         </button>
       </div>
     )

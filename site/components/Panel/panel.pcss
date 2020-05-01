@@ -4,7 +4,7 @@
 :root {
   --panel-default-width: 216px;
   --panel-width: 100vw;
-  --panel-transition-time: 0.75s;
+  --panel-transition-time: 0.625s;
   --panel-max-height: 100vh;
 
   @mixin breakpoint mobile {
@@ -13,12 +13,12 @@
 }
 
 .panel {
-  color: var(--black);
+  color: var(--grey-90);
   min-width: var(--panel-default-width);
   background: var(--white);
   position: relative;
   flex-shrink: 1;
-  
+
   .swapper {
     position: relative;
     max-height: calc(var(--panel-max-height) - 134px - var(--panel-layout-margin));
@@ -30,7 +30,7 @@
       overflow-y: auto;
       -ms-overflow-style: none;
       scrollbar-width: none;
-      
+
       &::-webkit-scrollbar {
         width: 0px;
         background: transparent;

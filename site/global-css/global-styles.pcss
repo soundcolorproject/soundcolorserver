@@ -12,6 +12,12 @@ body {
   padding: 0;
 }
 
+* {
+    &:focus {
+        outline: rgba(159,159,158,0.5) solid 3px;
+    }
+}
+
 :root {
   font-size: 16px;
   --panel-padding: 24px;
@@ -41,7 +47,7 @@ h2 {
 }
 
 span {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 li {
@@ -49,14 +55,13 @@ li {
 }
 
 button, :global(.btn) {
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 4px 4px 0;
   padding: 8px;
   background-color: var(--white);
   border: none;
-  border-radius: 2px;
   display: inline-block;
-  color: var(--black);
+  color: var(--grey-90);
   font-size: 0.8rem;
   font-family: 'Inter', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
@@ -69,7 +74,7 @@ button, :global(.btn) {
     color: var(--white);
     background-color: var(--grey-80);
   }
-  
+
   &:disabled {
     cursor: not-allowed;
     color: rgba(0,0,0,0.5);

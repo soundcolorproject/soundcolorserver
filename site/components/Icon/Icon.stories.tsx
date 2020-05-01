@@ -10,5 +10,5 @@ export default {
 }
 
 export const specificIcon = () => (
-  <Icon color='var(--black)' name={select('icon', iconNames, 'favorite_border')} />
+  <Icon color='var(--grey-90)' name={select('icon', iconNames, 'favorite_border')} />
 )
