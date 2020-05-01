@@ -27,7 +27,7 @@ export interface PanelProps {
 }
 
 export function Panel (props: PanelProps) {
-  const { children, back, className, style, recompute, transitionSpeed = 500 } = props
+  const { children, back, className, style, recompute, transitionSpeed = 750 } = props
   const [prevChildren, shouldTransition] = useTransition(children, transitionSpeed + 200)
 
   const [ref, dimensions] = useDimensions<HTMLDivElement>(recompute)
