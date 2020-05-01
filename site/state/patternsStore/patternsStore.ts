@@ -6,18 +6,18 @@ import { toHsv, HSVa } from '../../pcss-functions/toHsv'
 import { randStr } from '../../helpers/random'
 
 const defaultCustomColors = {
-  'C': toHsv('#E2CF0B'),
-  'C#': toHsv('#FFE50C'),
-  'D': toHsv('#35C80B'),
-  'D#': toHsv('#0B33A5'),
-  'E': toHsv('#19BDA2'),
-  'F': toHsv('#835BD9'),
-  'F#': toHsv('#774ACB'),
-  'G': toHsv('#E4C5DD'),
-  'G#': toHsv('#E0BFD7'),
-  'A': toHsv('#A30008'),
-  'A#': toHsv('#9B1A6F'),
-  'B': toHsv('#BA000A'),
+  'C': toHsv('#B4BBCC'),
+  'C#': toHsv('#A1B4CE'),
+  'D': toHsv('#8EADD0'),
+  'D#': toHsv('#7AA7D2'),
+  'E': toHsv('#67A0D4'),
+  'F': toHsv('#5499D6'),
+  'F#': toHsv('#4192D8'),
+  'G': toHsv('#2D8BDA'),
+  'G#': toHsv('#1A84DC'),
+  'A': toHsv('#EED0C6'),
+  'A#': toHsv('#DBC9C8'),
+  'B': toHsv('#C7C2CA'),
 }
 
 export type PatternsStore = typeof patternsStore
