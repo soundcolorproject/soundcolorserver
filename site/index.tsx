@@ -1,15 +1,15 @@
 
 import './global-css/index.pcss'
+import { registerGlobalHandlers } from './registerGlobalHandlers'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import App from './containers/App'
-import { registerGlobalHandlers } from './registerGlobalHandlers'
+
+registerGlobalHandlers()
 
 ReactDOM.render(
   <App />,
   document.getElementById('root'),
 )
-
-registerGlobalHandlers()

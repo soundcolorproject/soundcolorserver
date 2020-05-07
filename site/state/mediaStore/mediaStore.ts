@@ -42,7 +42,7 @@ async function updateDevices () {
   mediaStore.possibleDevices = possibleDevices
   const currentDeviceId = mediaStore.currentDeviceId
   if (!devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
-    mediaStore.currentDeviceId = devices[0].deviceId
+    mediaStore.currentDeviceId = 'default'
   } else {
     const deviceId = mediaStore.currentDeviceId
     setDevice(deviceId).catch(e => {

@@ -1,5 +1,16 @@
 
 import { renderStateStore, togglePattern, toggleFullscreen } from './state/renderStateStore'
+import { logger } from '../shared/logger'
+
+window.addEventListener('unhandledrejection', (evt) => {
+  logger.error('Unhandled rejection:', evt.reason)
+})
+
+window.addEventListener('error', (evt) => {
+  logger.error('Uncaught exceptionnnnn', evt.error)
+  console.dir(evt)
+  // logger.error(`  ${evt.filename}`)
+})
 
 export function registerGlobalHandlers () {
   if (!document) {
