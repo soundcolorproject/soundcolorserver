@@ -31,6 +31,7 @@ export const config = {
   dev: process.env.DEV === 'true',
   localSsl: process.env.LOCAL_SSL === 'true',
   remoteApi: process.env.USE_REMOTE_API === 'true',
+  disableBlink: process.env.DISABLE_BLINK === 'true',
   clientId: process.env.HUE_CLIENT_ID || '',
   clientSecret: process.env.HUE_CLIENT_SECRET || '',
   appId: process.env.HUE_APP_ID || '',

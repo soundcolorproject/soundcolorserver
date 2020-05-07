@@ -16,6 +16,7 @@ import {
 import { logger } from '../../../shared/logger'
 import { getNextLightId, setupRoundRobin } from '../../db/groupRoundRobin'
 import { DbWriteError } from '../../errors/DbWriteError'
+import { config } from '../../config'
 
 export const hueRouter = Router()
 
@@ -50,8 +51,10 @@ hueRouter.post('/groups/select', asyncHandler(async (req, res) => {
     ])
   }
 
-  const state = new GroupLightState().alertShort()
-  await api.groups.setGroupState(body.groupId, state)
+  if (!config.disableBlink) {
+    const state = new GroupLightState().alertShort()
+    await api.groups.setGroupState(body.groupId, state)
+  }
   res.status(204).end()
 }))
 
