@@ -37,11 +37,12 @@ getUserMedia().then(() => {
 
 async function updateDevices () {
   const devices = await navigator.mediaDevices.enumerateDevices()
+  logger.debug('audio devices', devices)
   const possibleDevices = devices.filter(({ kind }) => kind === 'audioinput')
   mediaStore.possibleDevices = possibleDevices
   const currentDeviceId = mediaStore.currentDeviceId
   if (!devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
-    mediaStore.currentDeviceId = 'default'
+    mediaStore.currentDeviceId = devices[0].deviceId
   } else {
     const deviceId = mediaStore.currentDeviceId
     setDevice(deviceId).catch(e => {

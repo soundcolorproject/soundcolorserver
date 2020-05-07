@@ -26,9 +26,9 @@ export const AudioSourceSelector = injectAndObserve<StateProps, OwnProps>(
       this.props.routing.popSubroute()
     }
 
-    renderDevice = (device: MediaDeviceInfo) => (
+    renderDevice = (device: MediaDeviceInfo, index: number) => (
       <ClickableMenuOption key={device.deviceId} onClick={this.onClick(device.deviceId)}>
-        <>{device.label}</>
+        <>{device.label || `Device ${index}`}</>
       </ClickableMenuOption>
     )
 
