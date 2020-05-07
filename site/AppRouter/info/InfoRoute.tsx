@@ -64,7 +64,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
       return (
         <div key={name} className={colorPattern}>
           <div className={patternTitle}>
-            <div className={patternHighlight} style={{ background: patternColors[name]}} />
+            <div className={patternHighlight} style={{ background: patternColors[name] }} />
             <span>Color Pattern</span>
             <p>{pattern.label}</p>
           </div>
@@ -77,7 +77,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
       )
     }
 
-    render() {
+    render () {
       return (
         <div className={infoBody}>
 
