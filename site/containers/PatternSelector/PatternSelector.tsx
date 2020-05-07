@@ -2,10 +2,9 @@
 import * as React from 'react'
 import * as cn from 'classnames'
 
-import { logger } from '../../../shared/logger'
-import { resume } from '../../audio/context'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { PatternsProp, PatternName } from '../../state/patternsStore'
+import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
 import { RoutingProp } from '../../state/routingStore'
 
 import { patternSelector, patternOption, selected } from './patternSelector.pcss'
@@ -15,17 +14,24 @@ interface OwnProps {
   domRef?: React.Ref<HTMLDivElement>
 }
 
-type StateProps = PatternsProp & RoutingProp
+type StateProps =
+  & PatternsProp
+  & RenderStateProp
+  & RoutingProp
 
 export type PatternSelectorProps = OwnProps & StateProps
 
 export const PatternSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ patterns, routing }) => ({ patterns, routing }),
+  ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
   class PatternSelector extends React.Component<PatternSelectorProps> {
     setPattern = (pattern: PatternName) => {
-      this.props.patterns.currentPattern = pattern
+      const { patterns, renderState, routing } = this.props
+      patterns.currentPattern = pattern
       if (pattern === 'custom') {
-        this.props.routing.goToSubroute('customPalette')
+        routing.goToSubroute('customPalette')
+      }
+      if (!renderState.showColors) {
+        togglePattern(patterns, renderState)
       }
     }
 
