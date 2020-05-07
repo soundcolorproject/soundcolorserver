@@ -10,6 +10,10 @@ window.addEventListener('error', (evt) => {
   logger.error('Uncaught exception', evt.error)
 })
 
+function shortcutsDisabled () {
+  return location.pathname.startsWith('/info')
+}
+
 export function registerGlobalHandlers () {
   if (!document) {
     return
@@ -20,6 +24,7 @@ export function registerGlobalHandlers () {
   })
 
   document.body.addEventListener('keypress', (ev) => {
+    if (shortcutsDisabled()) return
     if (ev.key === ' ') {
       renderStateStore.showText = !renderStateStore.showText
     } else if (ev.key === 'Enter') {

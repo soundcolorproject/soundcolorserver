@@ -13,8 +13,11 @@ import { HomeRow } from '../../components/HomeRow'
 import { Panel } from '../../components/Panel'
 import { PanelLayout } from '../../components/PanelLayout'
 
+import { ColorRenderer } from '../../containers/ColorRenderer'
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
+import { FavoriteSelector } from '../../containers/FavoriteSelector'
+import { HueGroupSelector } from '../../containers/HueGroupSelector'
 import { HueRoot } from '../../containers/HueRoot'
 import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
 import { PatternSelector } from '../../containers/PatternSelector'
@@ -27,8 +30,6 @@ import { SoundDetails } from '../../containers/SoundDetails'
 import { TextHider } from '../../components/TextHider'
 
 import { detailsView, spreader, info } from './root.pcss'
-import { HueGroupSelector } from '../../containers/HueGroupSelector/HueGroupSelector'
-import { FavoriteSelector } from '../../containers/FavoriteSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -144,6 +145,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
       const { routing } = this.props
       return (
         <div id={detailsView}>
+          <ColorRenderer/>
           <TextHider>
             <PanelLayout
               preSpacer={

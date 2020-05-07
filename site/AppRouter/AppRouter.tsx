@@ -9,7 +9,6 @@ export class AppRouter extends React.Component {
   render () {
     return (
       <div>
-        <ColorRenderer/>
         <Router>
           <RootRoute path='/' />
           <InfoRoute path='/info' />
