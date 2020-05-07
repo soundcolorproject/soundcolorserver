@@ -1,11 +1,240 @@
-
 .info-body {
-  width: 100%;
-  max-width: 344px;
-  margin: 32px;
+    background: var(--grey-05);
+    padding: 40px;
+    width: calc(100vw - 80px);
+    height: auto;
+    line-height: 1.6;
 
-  .pattern-name {
-    font-weight: 600;
-  }
+    * {
+        color: var(--grey-80);
+    }
+
+    @media only screen and (max-width: 480px) {
+        .desktop {
+            display: none;
+        }
+        .mobile {
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width: 481px) {
+        .desktop {
+            display: block;
+        }
+        .mobile {
+            display: none;
+        }
+    }
+
+    a {
+        color: var(--grey-80);
+        background: var(--grey-10);
+        box-sizing: border-box;
+        display: inline-block;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 10px 20px;
+
+        &:hover {
+            background: var(--grey-20);
+            border-color: transparent;
+        }
+
+        &:active {
+            background: var(--grey-30);
+        }
+    }
+
+    h1 {
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-transform: none;
+    }
+
+    h2 {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--grey-60);
+    }
+
+    h3 {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    .nav {
+        margin-top: 16px;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            color: var(--white);
+            background: var(--grey-80);
+            border-color: transparent;
+
+            &:hover {
+                background: var(--grey-70);
+            }
+
+            &:active {
+                background: var(--grey-60);
+            }
+        }
+    }
+
+    .header, .section, .footer {
+        width: 100%;
+        max-width: 344px;
+        text-align: center;
+        margin: 144px auto;
+
+        @media only screen and (max-width: 480px) {
+            margin: 104px auto;
+            text-align: left;
+            max-width: 480px;
+        }
+    }
+
+    .color-pattern {
+        display: flex;
+        width: 100%;
+        max-width: 528px;
+        margin: 56px auto;
+
+        @media only screen and (max-width: 599px) {
+            display: block;
+        }
+
+        .pattern-title {
+            width: 100%;
+            max-width: 192px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-right: 48px;
+
+            @media only screen and (max-width: 599px) {
+                max-width: 100%;
+                align-items: flex-start;
+                margin-bottom: 16px;
+            }
+
+            .pattern-highlight {
+                width: 58px;
+                height: 2px;
+                right: 0;
+                margin-bottom: 8px;
+            }
+
+            #chromesthesia {
+                background: #E1BF5C;
+            }
+
+            #chakras {
+                background: #9D32F5;
+            }
+
+            #emotion {
+                background: #0E74D9;
+            }
+
+            #chromotherapy {
+                background: #E37081;
+            }
+
+            #adolescence {
+                background: #19BDA2;
+            }
+
+            #custom {
+                background: #EED0C6;
+            }
+
+            span {
+                font-size: 9px;
+                font-weight: 500;
+                color: var(--grey-60);
+            }
+
+            p {
+                font-size: 21px;
+                font-weight: 600;
+                color: var(--grey-80);
+                margin: 0;
+            }
+
+        }
+
+        .pattern-description {
+            width: 100%;
+            max-width: 288px;
+
+            @media only screen and (max-width: 599px) {
+                max-width: 100%;
+            }
+
+            .pattern-bar {
+                width: 100%;
+                height: 4px;
+                background: var(--grey-60);
+            }
+
+            a {
+                margin-top: 8px;
+            }
+
+            p {
+                font-size: 11px;
+            }
+        }
+    }
+
+    .section {
+        a {
+            margin-top: 24px;
+            display: inline-flex;
+
+            svg {
+                padding-right: 8px;
+            }
+        }
+
+        .divider {
+            width: 16px;
+            height: 2px;
+            background: var(--grey-20);
+            margin: 24px auto 32px;
+
+            @media only screen and (max-width: 480px) {
+                margin: 24px 0 32px;
+            }
+        }
+
+        textarea {
+            display: block;
+            width: 100%;
+            background: var(--white);
+            border: 1px solid var(--grey-10);
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 32px;
+            resize: vertical;
+            min-height: 80px;
+            box-sizing: border-box;
+        }
+    }
+
+    .origins {
+        text-align: left;
+    }
+
+    .footer {
+        p {
+            color: var(--grey-40);
+        }
+    }
+
 }
-

@@ -158,8 +158,8 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
             onClick={() => routing.goToSubroute('favoriteCusom')}
           >
             <OverUnder
-              over='Favorites'
-              under='Select a Favorite Custom Pattern'
+              over='Saved Custom Patterns'
+              under='Select a Saved Custom Pattern'
             />
           </ClickableMenuOption>
         )
@@ -167,8 +167,8 @@ export const Settings = injectAndObserve<StateProps, OwnProps>(
         return (
           <MenuOption>
             <OverUnder
-              over='Favorites'
-              under='No Custom Patterns Favorited'
+              over='Saved Custom Patterns'
+              under='None yet'
             />
           </MenuOption>
         )
