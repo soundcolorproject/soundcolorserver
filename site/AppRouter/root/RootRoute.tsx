@@ -5,7 +5,6 @@ import { Link, RouteComponentProps } from '@reach/router'
 import { logger } from '../../../shared/logger'
 
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { MediaProp } from '../../state/mediaStore'
 import { PatternsProp } from '../../state/patternsStore'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { RoutingProp, PanelRoute } from '../../state/routingStore'
@@ -35,7 +34,6 @@ interface OwnProps extends RouteComponentProps {
 }
 
 type StateProps =
-  & MediaProp
   & PatternsProp
   & RenderStateProp
   & RoutingProp
@@ -89,7 +87,7 @@ const favoritesRoute = (
 )
 
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
-  ({ media, patterns, renderState, routing }) => ({ media, patterns, renderState, routing }),
+  ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
   class Root extends React.Component<RootProps> {
     renderPanelChild = () => {
       const { subRoutes } = this.props.routing
@@ -143,62 +141,37 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
     }
 
     render () {
-      const { media, routing } = this.props
-      if (media.ready) {
-        return (
-          <div id={detailsView}>
-            <TextHider>
-              <PanelLayout
-                preSpacer={
-                  <Shortcuts />
-                }
-                inSpacer={<CanvasMiniAnalyser/>}
-                postSpacer={
-                  <Panel recompute={this.panelRecompute()} back={routing.isBack}>
-                    {this.renderPanelChild()}
-                  </Panel>
-                }
-                footer={
-                  <HomeRow
-                    selected={routing.panelRoute}
-                    buttons={{
-                      info: 'info',
-                      settings: 'settings',
-                      home: 'home',
-                      filters: 'tune',
-                      palette: 'palette',
-                    }}
-                    onChange={this.setPanelRoute}
-                  />
-                }
-              />
-            </TextHider>
-          </div>
-        )
-      } else if (media.error) {
-        return (
-          <div id={detailsView}>
-            <h1>SoundColor</h1>
-            <p>Something went wrong while initializing your microphone.</p>
-            <p>Please allow microphone access and refresh the page.</p>
-            <div id={spreader} />
-            <div id={info}>
-              <Link aria-label='About Sound Color Project' to='/info'>Info</Link>
-            </div>
-          </div>
-        )
-      } else {
-        return (
-          <div id={detailsView}>
-            <h1>SoundColor</h1>
-            <p>Please allow microphone access to begin.</p>
-            <div id={spreader} />
-            <div id={info}>
-              <Link aria-label='About Sound Color Project' to='/info'>Info</Link>
-            </div>
-          </div>
-        )
-      }
+      const { routing } = this.props
+      return (
+        <div id={detailsView}>
+          <TextHider>
+            <PanelLayout
+              preSpacer={
+                <Shortcuts />
+              }
+              inSpacer={<CanvasMiniAnalyser/>}
+              postSpacer={
+                <Panel recompute={this.panelRecompute()} back={routing.isBack}>
+                  {this.renderPanelChild()}
+                </Panel>
+              }
+              footer={
+                <HomeRow
+                  selected={routing.panelRoute}
+                  buttons={{
+                    info: 'info',
+                    settings: 'settings',
+                    home: 'home',
+                    filters: 'tune',
+                    palette: 'palette',
+                  }}
+                  onChange={this.setPanelRoute}
+                />
+              }
+            />
+          </TextHider>
+        </div>
+      )
     }
   },
 )
