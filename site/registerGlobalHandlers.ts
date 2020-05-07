@@ -7,8 +7,7 @@ window.addEventListener('unhandledrejection', (evt) => {
 })
 
 window.addEventListener('error', (evt) => {
-  logger.error('Uncaught exceptionnnnn', evt.error)
-  console.dir(evt)
+  logger.error('Uncaught exception', evt.error)
   // logger.error(`  ${evt.filename}`)
 })
 
