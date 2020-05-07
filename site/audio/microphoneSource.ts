@@ -4,7 +4,7 @@ import { context, resumePromise } from './context'
 export async function getUserMedia (deviceId = 'default') {
   return navigator.mediaDevices.getUserMedia({
     audio: {
-      deviceId: { exact: deviceId },
+      deviceId: deviceId !== 'default' ? { exact: deviceId } : undefined,
       echoCancellation: false,
       autoGainControl: false,
       noiseSuppression: false,
