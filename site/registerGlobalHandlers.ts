@@ -8,7 +8,6 @@ window.addEventListener('unhandledrejection', (evt) => {
 
 window.addEventListener('error', (evt) => {
   logger.error('Uncaught exception', evt.error)
-  // logger.error(`  ${evt.filename}`)
 })
 
 export function registerGlobalHandlers () {

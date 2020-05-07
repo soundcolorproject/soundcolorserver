@@ -167,6 +167,10 @@ export const notes = Object.freeze<Note[]>([
   'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#',
 ])
 
+function formatDescription (desc: string) {
+  return desc.replace(/\n/g, '').replace(/\s+/g, ' ')
+}
+
 export const patternsStore = observable({
   transitionSpeed: 0.9,
   noiseMultiplier: 1,
@@ -178,6 +182,14 @@ export const patternsStore = observable({
   patternData: {
     chakras: {
       label: 'Chakras',
+      description: formatDescription(`
+        Referencing the points of the energy in the body, they are often used to find spiritual or concious balance
+        through meditation.Each chakra — root, sacral, solar plexus, heart, throat, third eye, and crown — are
+        represented by the colors of the rainbow, starting at the bottom (root) of the body with red to the top (crown)
+        with violet. Every chakra, or energy in the body, is also in tune with a specific frequency or note, commonly
+        connected to through instruments like singing bowls. The spectrum of color in the rainbow depicts the order in
+        the body in which we are to return through the practice of attention on the inner self.
+      `),
       colors: {
         'C': toHsv('#EC472D'),
         'C#': toHsv('#EC5F2D'),
@@ -195,6 +207,13 @@ export const patternsStore = observable({
     },
     chromesthesia: {
       label: 'Chromesthesia',
+      description: formatDescription(`
+        Also known as sound-color synesthesia, this pattern is based on phenomenon in which those who experience it
+        (less than 1 in every 2,000 people) hear sounds and see colors. It has been described as a sort of 'film of
+        color' in front of ones field of vision. Typically, those who experience chromesthesia also have perfect pitch,
+        meaning they can hear a note audibly, and know exactly what note that is. This is likely because they know what
+        color represents every note.
+      `),
       colors: {
         'C': toHsv('#B2B9CD'),
         'C#': toHsv('#8D3B4C'),
@@ -212,6 +231,12 @@ export const patternsStore = observable({
     },
     emotion: {
       label: 'Emotion',
+      description: formatDescription(`
+        Using Robert Plutchik's emotion wheel, colors are directly related to human emotions. In a similar way
+        different genres of music often portray the same emotions. By looking at what genres commonly evoke certain
+        emotions, and seeing what are the most frequently used notes and keys in those genres, the colors on the
+        emotion wheel can roughly coorelate to musical notes.
+      `),
       colors: {
         'C': toHsv('#0E74D9'),
         'C#': toHsv('#4BB0FF'),
@@ -229,6 +254,11 @@ export const patternsStore = observable({
     },
     chromotherapy: {
       label: 'Chromotherapy',
+      description: formatDescription(`
+        Through early research and calculations around chromotherapy, Dinshah Ghadiali experimented exposing colored
+        light to people as a form of healing. Using the measurement of electromagnetic waves, the visible spectrum can
+        be converted to sound waves, causing colors to correspond to closely relating notes.
+      `),
       colors: {
         'C': toHsv('#46680e'),
         'C#': toHsv('#4a996b'),
@@ -246,6 +276,12 @@ export const patternsStore = observable({
     },
     adolescence: {
       label: 'Adolescence',
+      description: formatDescription(`
+        Some times a route to developing chromesthesia, children are introduced to a variety of colors and musical
+        sounds at the same time. From pianos and xylophones, to light up sound-making toys, toddlers are exposed and
+        begin to relate musical notes to colors while learning and creating coorelations between the two from the
+        earliest of developmental phases.
+      `),
       colors: {
         'C': toHsv('#E2CF0B'),
         'C#': toHsv('#FFE50C'),
@@ -263,6 +299,10 @@ export const patternsStore = observable({
     },
     custom: {
       label: 'Custom',
+      description: formatDescription(`
+        We all experience sound and color differently, uniquely in our own ways. Creating our own custom color patterns
+        enables us to express ourselves in the way we hear and see.
+      `),
       colors: getCustomColors(),
     },
   },
