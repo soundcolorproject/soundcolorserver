@@ -175,6 +175,7 @@ export const patternsStore = observable({
   transitionSpeed: 0.9,
   noiseMultiplier: 1,
   vibranceMultiplier: 2.5,
+  minimumBrightness: 0,
   toneSigma: 0,
   timeSmoothing: 0.8,
   monochrome: false,

@@ -20,6 +20,7 @@ type SliderName =
   | 'vibranceMultiplier'
   | 'noiseMultiplier'
   | 'timeSmoothing'
+  | 'minimumBrightness'
 
 export const Sliders = injectAndObserve<StateProps, OwnProps>(
   ({ patterns }) => ({ patterns }),
@@ -45,7 +46,7 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
           transitionSpeed,
           noiseMultiplier,
           vibranceMultiplier,
-          toneSigma,
+          minimumBrightness,
           timeSmoothing,
         },
         domRef,
@@ -103,6 +104,19 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
               type='range' min='0' step='0.01' max='10'
               value={noiseMultiplier}
               onChange={this.setValue('noiseMultiplier')}
+            />
+          </label>
+          <label>
+            <div className={detail}>
+              <div>Minimum Brightness</div>
+              <div className={value}>
+                {minimumBrightness.toFixed(2)}
+              </div>
+            </div>
+            <input
+              type='range' min='0' step='0.01' max='1'
+              value={minimumBrightness}
+              onChange={this.setValue('minimumBrightness')}
             />
           </label>
           {/*<label>

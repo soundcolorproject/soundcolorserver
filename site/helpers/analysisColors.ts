@@ -33,6 +33,7 @@ export function getColorsFromAnalysis (
     monochrome,
     currentPattern,
     patternData,
+    minimumBrightness,
   } = patterns
 
   const colorMap = patternData[currentPattern].colors
@@ -47,6 +48,9 @@ export function getColorsFromAnalysis (
     const hsv = colorMap[note].clone()
     hsv.s *= saturationMult
     hsv.v *= valueMult
+
+    hsv.s = (1 - minimumBrightness) * hsv.s
+    hsv.v = 1 - ((1 - minimumBrightness) * (1 - hsv.v))
 
     const rgb = toRgb(hsv)
     const { h } = toHsv(new RGBa(
