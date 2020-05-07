@@ -134,6 +134,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
       }
       const { routing } = this.props
       if (route === routing.panelRoute) {
+        routing.popSubrouteToRoot()
         return
       }
 
