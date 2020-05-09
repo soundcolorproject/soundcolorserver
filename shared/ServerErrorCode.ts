@@ -18,4 +18,9 @@ export enum ServerErrorCode {
 
   // Hue errors
   NO_LOCAL_BRIDGES = 400,
+
+  // Email errors
+  EMAIL_CREDENTIALS_NOT_FOUND = 500,
+  EMAIL_TRANSPORT_FAILED_TO_INITIALIZE = 501,
+  EMAIL_FAILED_TO_SEND = 502,
 }
