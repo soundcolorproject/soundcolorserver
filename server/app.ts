@@ -10,6 +10,10 @@ import { webpackMiddleware, webpackHotMiddleware, html5Fallback } from './middle
 
 export const app = express()
 
+// express configuration
+app.enable('trust proxy')
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
+
 // middlewares
 app.use(compression())
 app.use(express.urlencoded({ extended: true }))

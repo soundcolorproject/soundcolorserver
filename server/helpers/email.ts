@@ -3,33 +3,36 @@ import { createTransport, Transporter } from 'nodemailer'
 import { EmailCredentialsNotFoundError } from '../errors/EmailCredentialsNotFoundError'
 import { logger } from '../../shared/logger'
 import { EmailFailedToSendError } from '../errors/EmailFailedToSendError'
+import { config } from '../config'
 
 let emailTransport: Transporter
 function getEmailTransport () {
   if (!emailTransport) {
     if (
-      !process.env.EMAIL_SMTP_SERVER ||
-      !process.env.EMAIL_USER ||
-      !process.env.EMAIL_PASS
+      !config.emailServer ||
+      !config.emailUser ||
+      !config.emailPass ||
+      !config.emailRecipient
     ) {
       logger.error('Failed to find email credentials')
-      logger.error('EMAIL_SMTP_SERVER', process.env.EMAIL_SMTP_SERVER)
-      logger.error('EMAIL_USER', process.env.EMAIL_USER)
-      logger.error('EMAIL_PASS', process.env.EMAIL_PASS)
+      logger.error('config.emailServer', !!config.emailServer)
+      logger.error('config.emailUser', !!config.emailUser)
+      logger.error('config.emailPass', !!config.emailPass)
+      logger.error('config.emailRecipient', !!config.emailRecipient)
       throw new EmailCredentialsNotFoundError()
     }
 
     try {
       emailTransport = createTransport({
-        host: process.env.EMAIL_SMTP_SERVER,
+        host: config.emailServer,
         auth: {
           type: 'login',
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
+          user: config.emailUser,
+          pass: config.emailPass,
         },
         from: {
           name: 'Sound Color Notifier',
-          address: process.env.EMAIL_USER,
+          address: config.emailUser,
         },
       })
     } catch (e) {
@@ -42,7 +45,7 @@ function getEmailTransport () {
 }
 
 export interface SimpleEmailOpts {
-  to: string
+  to?: string
   subject: string
   message: string
   throwOnFailure?: boolean
@@ -53,7 +56,14 @@ export type SimpleEmailResult = {
   success: false,
   error: Error
 }
-export async function sendSimpleEmail ({ to, subject, message, throwOnFailure = false }: SimpleEmailOpts): Promise<SimpleEmailResult> {
+export async function sendSimpleEmail (opts: SimpleEmailOpts): Promise<SimpleEmailResult> {
+  const {
+    to = config.emailRecipient,
+    subject,
+    message,
+    throwOnFailure = false,
+  } = opts
+
   const transport = getEmailTransport()
   try {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'

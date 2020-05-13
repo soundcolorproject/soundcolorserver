@@ -17,7 +17,7 @@ export const PatternBar = injectAndObserve<StateProps, OwnProps>(
   ({ patterns }) => ({ patterns }),
   class PatternBar extends React.Component<BackOptionPropps> {
     renderNote = (colors: ColorMap) => (note: Note) => (
-      <div className={colorItem} style={{ background: colors[note].toString() }} />
+      <div key={note} className={colorItem} style={{ background: colors[note].toString() }} />
     )
 
     render () {

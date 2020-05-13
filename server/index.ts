@@ -17,23 +17,6 @@ function randomPort () {
   return 5000 + Math.floor(Math.random() * 35000)
 }
 
-/**
- * Gets the port to use
- *
- * - If the $PORT env var is set, uses that
- * - Else if in localSsl mode, it uses 443
- * - Otherwise, it uses 9000
- */
-function getPort () {
-  if (process.env.PORT) {
-    return parseInt(process.env.PORT, 10)
-  } else if (config.localSsl) {
-    return 443
-  } else {
-    return 9000
-  }
-}
-
 function startServerOnPort (port: number, create: () => Server) {
   return new Promise<Server>((resolve, reject) => {
     app.once('error', (err) => {
@@ -62,13 +45,13 @@ async function startServer () {
   while (failCount < MAX_FAILS) {
     try {
       // this has to be awaited in order to be able to catch the error
-      const server = await startServerOnPort(failCount === 0 ? getPort() : randomPort(), serverCreator)
+      const server = await startServerOnPort(failCount === 0 ? config.port : randomPort(), serverCreator)
       return server
     } catch (e) {
       if (!config.dev) {
         throw new FatalError(
           FatalErrorCode.EXPECTED_PORT_FAILED_TO_OPEN,
-          `Port ${getPort()} cannot be opened!`,
+          `Port ${config.port} cannot be opened!`,
         )
       }
       failCount++
