@@ -1,19 +1,29 @@
 
 import * as React from 'react'
 import { action } from 'mobx'
+
+import { ClickableMenuOption } from '../../components/MenuOption'
+import { OverUnder } from '../../components/OverUnder'
+
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { PatternsProp } from '../../state/patternsStore'
+import { RenderStateProp } from '../../state/renderStateStore'
+import { RoutingProp } from '../../state/routingStore'
 
 import { sliders, content } from './sliders.pcss'
 import { Checkbox } from '../../components/Checkbox'
 import { Slider } from '../../components/Slider'
+import { shaderInfo } from '../ShaderCanvas'
 
 interface OwnProps {
   height?: number
   domRef?: React.Ref<HTMLDivElement>
 }
 
-type StateProps = PatternsProp
+type StateProps =
+  & PatternsProp
+  & RenderStateProp
+  & RoutingProp
 
 export type SlidersProps = OwnProps & StateProps
 
@@ -62,7 +72,7 @@ const SLIDER_INFO: { [name in SliderName]: SliderInfo } = {
 const SLIDER_NAMES = Object.keys(SLIDER_INFO) as SliderName[]
 
 export const Sliders = injectAndObserve<StateProps, OwnProps>(
-  ({ patterns }) => ({ patterns }),
+  ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
   class Sliders extends React.Component<SlidersProps> {
     private _setters: {
       [key in SliderName]?: (value: number) => void
@@ -99,14 +109,27 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
       )
     }
 
+    goToShaderDetails = () => {
+      this.props.routing.goToSubroute('shaderSliders')
+    }
+
     render () {
       const {
         domRef,
         patterns,
+        renderState: {
+          shader,
+        },
       } = this.props
 
       return (
         <div ref={domRef} id={sliders}>
+          <ClickableMenuOption onClick={this.goToShaderDetails} icon='arrow_forward'>
+            <OverUnder
+              over='Shader'
+              under={shaderInfo[shader].label}
+            />
+          </ClickableMenuOption>
           <div className={content}>
             {
               SLIDER_NAMES.map(this.renderSlider)

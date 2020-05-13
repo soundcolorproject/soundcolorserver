@@ -17,4 +17,4 @@ uglify-cache
 
 # tooling
 /.vscode/*
-!/.vscode/launch.json
+!/.vscode/*.example.json

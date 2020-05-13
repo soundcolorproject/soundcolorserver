@@ -1,9 +1,10 @@
 
 import { observable, action, reaction } from 'mobx'
 import { resume } from '../../audio/context'
+import { logger } from '../../../shared/logger'
+import { DEFAULT_SHADER, shaderNames } from '../../containers/ShaderCanvas'
 
 import { patternsStore, PatternsStore } from '../patternsStore'
-import { logger } from '../../../shared/logger'
 import { startAnalysis, pauseAnalysis } from '../analysisStore'
 
 export type RenderStateStore = typeof renderStateStore
@@ -16,6 +17,10 @@ export const renderStateStore = observable({
   showText: true,
   showColors: false,
   isFullscreen: false,
+  shader: DEFAULT_SHADER,
+  shaderSliders: {} as {
+    [name: string]: number | undefined
+  },
 })
 
 reaction(

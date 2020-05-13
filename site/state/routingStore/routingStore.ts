@@ -18,6 +18,8 @@ export type SubRoute =
   | 'hueGroupSelector'
   | 'customPalette'
   | 'favoriteCusom'
+  | 'shaderSliders'
+  | 'shaderSelector'
 
 const routeNames: { [key in SubRoute]: string } = {
   audioSource: 'Audio Source',
@@ -25,6 +27,8 @@ const routeNames: { [key in SubRoute]: string } = {
   hueGroupSelector: 'Light Group',
   customPalette: 'Custom',
   favoriteCusom: 'Favorites',
+  shaderSliders: 'Shader',
+  shaderSelector: 'Select Shader',
 }
 
 export class RoutingStore {

@@ -7,3 +7,13 @@ declare module '*.svg' {
   const result: any
   export = result
 }
+
+declare module '*.frag' {
+  const result: string
+  export default result
+}
+
+declare module '*.vert' {
+  const result: string
+  export default result
+}

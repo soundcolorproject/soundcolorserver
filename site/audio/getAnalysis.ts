@@ -162,8 +162,6 @@ function getTones (strengths: ToneStrength[]): ToneInfo[] {
     })
   )).slice(0, MAX_TONES)
 
-  logger.info('getTones output', tones)
-
   return tones
 }
 
