@@ -14,8 +14,8 @@ type StateProps = AnalysisProp & RenderStateProp
 export type CanvasMiniAnalyserProps = OwnProps & StateProps
 
 const BASE = 2
-function renderAnalyser (context: CanvasRenderingContext2D, miniFft: Float32Array, width: number, height: number) {
-  const heights = [...miniFft].map(dB => height - (BASE ** (dB / 10)) * height)
+function renderAnalyser (context: CanvasRenderingContext2D, fft: Float32Array, width: number, height: number) {
+  const heights = fft.map(dB => height - (BASE ** (dB / 10)) * height)
   context.clearRect(0, 0, width, height)
   const path = new Path2D()
   path.moveTo(0, heights[0])

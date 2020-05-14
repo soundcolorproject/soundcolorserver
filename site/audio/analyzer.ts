@@ -47,6 +47,7 @@ export function getFft () {
   }
 
   analyser.getFloatFrequencyData(fftArray)
+  logger.info('fft', analyser.frequencyBinCount, fftSize)
   return fftArray
 }
 

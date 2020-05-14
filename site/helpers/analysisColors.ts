@@ -1,23 +1,59 @@
 
-import { dBtoVolume } from '../audio/getAnalysis'
+import { dBtoVolume, MAX_TONES, ToneInfo } from '../audio/getAnalysis'
 import { patternsStore } from '../state/patternsStore'
 import { HSVa, toHsv } from '../pcss-functions/toHsv'
 import { RGBa, toRgb } from '../pcss-functions/toRgb'
 import { getLuminance } from '../pcss-functions'
 import { HSLa } from '../pcss-functions/toHsl'
 import { analysisStore } from '../state/analysisStore'
+import { logger } from '../../shared/logger'
 
-const smoothValues = {
-  s: 0,
-  v: 0,
-  r: 0,
-  g: 0,
-  b: 0,
+interface SmoothValues {
+  s: number
+  v: number
+  r: number
+  g: number
+  b: number
 }
 
-function smooth (color: RGBa | HSVa, key: keyof typeof smoothValues, delta: number, speed: number) {
-  const smoothingVal = (1 - speed) ** (delta)
-  return smoothValues[key] = smoothValues[key] * smoothingVal + (color as any)[key] * (1 - smoothingVal)
+interface Smoother {
+  (color: RGBa | HSVa, key: keyof SmoothValues, delta: number, speed: number): number
+}
+
+function makeSmoother (): Smoother {
+  const values: SmoothValues = {
+    s: 0,
+    v: 0,
+    r: 0,
+    g: 0,
+    b: 0,
+  }
+  return function smooth (color, key, delta, speed) {
+    const smoothingVal = (1 - speed) ** (delta)
+    return values[key] = values[key] * smoothingVal + (color as any)[key] * (1 - smoothingVal)
+  }
+}
+
+let smoothers: Smoother[]
+function getSmoothers () {
+  if (!smoothers) {
+    smoothers = Array.from(Array(MAX_TONES)).map(makeSmoother)
+  }
+
+  return smoothers
+}
+
+function fillTones (tones: ToneInfo[]): ToneInfo[] {
+  if (tones.length === 0) {
+    return []
+  }
+
+  let output = [...tones]
+  while (output.length < MAX_TONES) {
+    output = [...output, ...tones]
+  }
+
+  return output.slice(0, MAX_TONES)
 }
 
 let lastTime = Date.now()
@@ -43,9 +79,11 @@ export function getColorsFromAnalysis (
   const newTime = Date.now()
   const delta = (newTime - lastTime) / 1000
   lastTime = newTime
-  return tones.map(({ dB, note: { note } }) => {
+  return fillTones(tones).map(({ dB, note: { note } }, idx) => {
+    const smooth = getSmoothers()[idx]
     const valueMult = Math.max(0, Math.min(dBtoVolume(dB) * vibranceMultiplier, 1))
     const hsv = colorMap[note].clone()
+
     hsv.s *= saturationMult
     hsv.v *= valueMult
 

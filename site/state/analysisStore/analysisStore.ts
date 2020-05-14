@@ -13,13 +13,15 @@ export const analysisStore = observable<Analysis & { miniFft: Float32Array, paus
   noise: 0,
   tones: [],
   miniFft: new Float32Array(0),
+  fft: new Float32Array(0),
   paused: false,
 })
 
-const setAnalysis = action('setAnalysis', ({ noise, tones }: Analysis, miniFft: Float32Array) => {
+const setAnalysis = action('setAnalysis', ({ noise, tones, fft }: Analysis, miniFft: Float32Array) => {
   analysisStore.noise = noise
   analysisStore.tones = tones
   analysisStore.miniFft = miniFft
+  analysisStore.fft = fft
 })
 
 let animationFrame = 0
