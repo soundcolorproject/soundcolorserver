@@ -5,7 +5,7 @@ import { PatternsProp } from '../../state/patternsStore'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { AnalysisProp } from '../../state/analysisStore'
 
-import { backgroundColors, color } from './colorRenderer.pcss'
+import { backgroundColors, color, empty } from './colorRenderer.pcss'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
 
 interface OwnProps {
@@ -24,19 +24,18 @@ export const ColorRenderer = injectAndObserve<StateProps, OwnProps>(
   class ColorRenderer extends React.Component<ColorRendererProps> {
     render () {
       const { analysis, patterns, renderState: { showColors } } = this.props
-      if (!showColors) {
-        return null
-      }
       const { currentPattern, patternData } = patterns
+
       const pattern = patternData[currentPattern]
-      if (!pattern) {
+      if (!pattern || !showColors || !analysis) {
         return <div id={backgroundColors} />
       }
       const [backgroundColor] = getColorsFromAnalysis(analysis, patterns)
 
       return (
         <div id={backgroundColors}>
-          <div className={color} style={{ background: backgroundColor?.toString() || '#000' }} />
+          <div className={color} style={{ background: backgroundColor?.toString() || '#000' }}>
+          </div>
         </div>
       )
     }

@@ -10,6 +10,7 @@ import {
 } from './panelLayout.pcss'
 
 export interface PanelLayoutProps {
+  above?: React.ReactElement
   preSpacer: React.ReactElement
   inSpacer?: React.ReactElement
   postSpacer: React.ReactElement
@@ -17,12 +18,16 @@ export interface PanelLayoutProps {
 }
 
 export function PanelLayout (props: PanelLayoutProps) {
-  const { preSpacer, inSpacer, postSpacer, footer } = props
+  const { above, preSpacer, inSpacer, postSpacer, footer } = props
   return (
     <div className={panelLayout}>
       <div className={layoutColumn}>
+        <div className='gt-mobile grow'>{above}</div>
         {preSpacer}
-        <div className={layoutSpacer}>{inSpacer}</div>
+        <div className={layoutSpacer}>
+          {inSpacer}
+          <div className='lt-mobile grow'>{above}</div>
+        </div>
         <div className={afterSpacer}>
           {postSpacer}
         </div>

@@ -30,6 +30,7 @@ import { SoundDetails } from '../../containers/SoundDetails'
 import { TextHider } from '../../components/TextHider'
 
 import { detailsView, spreader, info } from './root.pcss'
+import { NoColorNotification } from '../../containers/NoColorNotification'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -149,9 +150,8 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
           <ColorRenderer/>
           <TextHider>
             <PanelLayout
-              preSpacer={
-                <Shortcuts />
-              }
+              above={<NoColorNotification />}
+              preSpacer={<Shortcuts />}
               inSpacer={<CanvasMiniAnalyser/>}
               postSpacer={
                 <Panel recompute={this.panelRecompute()} back={routing.isBack}>

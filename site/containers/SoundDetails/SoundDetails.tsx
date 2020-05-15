@@ -15,13 +15,11 @@ interface OwnProps {
 
 type StateProps =
   & AnalysisProp
-  & PatternsProp
-  & RenderStateProp
 
 export type SoundDetailsProps = OwnProps & StateProps
 
 export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
-  ({ analysis, patterns, renderState }) => ({ analysis, patterns, renderState }),
+  ({ analysis }) => ({ analysis }),
   class SoundDetails extends React.Component<SoundDetailsProps> {
     renderDetails = ({ dB, frequency, note: { note, cents, octave } }: ToneInfo, idx: number) => {
       return (
@@ -68,56 +66,25 @@ export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
     )
 
     render () {
-      const { analysis, patterns, renderState, domRef } = this.props
-      if (!patterns || !renderState) {
-        return <div className={soundDetails}>Loading...</div>
-      }
-
-      const { currentPattern } = patterns
-      const { showColors } = renderState
-      if (!currentPattern) {
-        return (
-          <div ref={domRef} className={soundDetails}>
-            <h2>Hit play or select a color pattern to begin</h2>
-          </div>
-        )
-      }
-      if (!showColors || !analysis) {
-        return (
-          <div ref={domRef} className={soundDetails}>
-            <h2>Color pattern stopped.</h2>
-          </div>
-        )
-      }
-
+      const { analysis, domRef } = this.props
       const { noise, tones } = analysis
 
       return (
         <div ref={domRef} className={soundDetails}>
+          <div className={detail}>
+            <span className={name}>Noise volume: </span>
+            <span className={value}>
+              {
+                Number.isFinite(noise) && noise !== 0
+                  ? `${noise.toFixed(0)} dB`
+                  : '•'
+              }
+            </span>
+          </div>
           {
-            Number.isFinite(noise)
-              ? (
-                <>
-                  <div className={detail}>
-                    <span className={name}>Noise volume: </span>
-                    <span className={value}>{noise.toFixed(0)} dB</span>
-                  </div>
-                  {
-                    tones.length > 0
-                      ? this.renderDetails(tones[0], 0)
-                      : this.renderEmptyDetails()
-                  }
-                </>
-              )
-            : (
-                <>
-                  <div className={detail}>
-                    <span className={name}>Noise volume: </span>
-                    <span className={value}>•</span>
-                  </div>
-                  {this.renderEmptyDetails()}
-                </>
-              )
+            tones.length > 0
+              ? this.renderDetails(tones[0], 0)
+              : this.renderEmptyDetails()
           }
         </div>
       )
