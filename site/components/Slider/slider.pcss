@@ -1,0 +1,35 @@
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-size: 12px;
+
+  .slider-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: ew-resize;
+    font-weight: 500;
+
+    .slider-value {
+      font-weight: 600;
+      cursor: text;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .slider-input {
+    cursor: grab;
+    height: 16px;
+    margin-top: 4px;
+
+    :active {
+      cursor: grabbing;
+    }
+  }
+}

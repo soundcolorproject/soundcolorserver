@@ -32,17 +32,6 @@ export function Panel (props: PanelProps) {
 
   const [ref, dimensions] = useDimensions<HTMLDivElement>(recompute)
   const height = dimensions?.height
-  // const height = typeof children.props.height === 'number'
-  //   ? children.props.height as number
-  //   : undefined
-
-  const rebuiltChildren = React.Children.map(children, child => (
-    React.createElement(
-      child.type,
-      { ...child.props, domRef: ref },
-      ...(child.props.children || []),
-    )
-  ))
 
   if (!prevChildren) {
     return (

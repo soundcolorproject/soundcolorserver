@@ -2,9 +2,10 @@
 import * as React from 'react'
 import { action } from 'mobx'
 import { injectAndObserve } from '../../state/injectAndObserve'
-import { PatternsProp, PatternsStore } from '../../state/patternsStore'
+import { PatternsProp } from '../../state/patternsStore'
 
-import { sliders, detail, value } from './sliders.pcss'
+import { sliders, content } from './sliders.pcss'
+import { Slider } from '../../components/Slider'
 
 interface OwnProps {
   height?: number
@@ -22,116 +23,89 @@ type SliderName =
   | 'timeSmoothing'
   | 'minimumBrightness'
 
+interface SliderInfo {
+  label: string
+  min: number
+  max: number
+  step?: number
+}
+
+const SLIDER_INFO: { [name in SliderName]: SliderInfo } = {
+  transitionSpeed: {
+    label: 'Color Transition Speed',
+    min: 0.1,
+    max: 1,
+  },
+  timeSmoothing: {
+    label: 'Time Smoothing',
+    min: 0,
+    max: 0.99,
+  },
+  vibranceMultiplier: {
+    label: 'Brightness',
+    min: 0,
+    max: 5,
+  },
+  noiseMultiplier: {
+    label: 'Noise Desaturation',
+    min: 0,
+    max: 10,
+  },
+  minimumBrightness: {
+    label: 'Minimum Brightness',
+    min: 0,
+    max: 1,
+  },
+}
+
+const SLIDER_NAMES = Object.keys(SLIDER_INFO) as SliderName[]
+
 export const Sliders = injectAndObserve<StateProps, OwnProps>(
   ({ patterns }) => ({ patterns }),
   class Sliders extends React.Component<SlidersProps> {
     private _setters: {
-      [key in SliderName]?: (ev: React.ChangeEvent<HTMLInputElement>) => void
+      [key in SliderName]?: (value: number) => void
     } = {}
 
     setValue = (name: SliderName) => {
       if (!this._setters[name]) {
-        const func = (ev: React.ChangeEvent<HTMLInputElement>) => {
-          this.props.patterns[name] = parseFloat(ev.target.value)
+        const func = (value: number) => {
+          this.props.patterns[name] = value
         }
         this._setters[name] = action(`set:${name}`, func)
       }
 
-      return this._setters[name]
+      return this._setters[name]!
+    }
+
+    renderSlider = (name: SliderName) => {
+      const value = this.props.patterns[name]
+      const { label, min, max, step } = SLIDER_INFO[name]
+
+      return (
+        <Slider
+          label={label}
+          value={value}
+          onChange={this.setValue(name)}
+          min={min}
+          max={max}
+          step={step}
+        />
+      )
     }
 
     render () {
       const {
-        patterns: {
-          transitionSpeed,
-          noiseMultiplier,
-          vibranceMultiplier,
-          minimumBrightness,
-          timeSmoothing,
-        },
         domRef,
       } = this.props
 
       return (
         <div ref={domRef} id={sliders}>
-          <label>
-            <div className={detail}>
-              <div>Color Transition Speed</div>
-              <div className={value}>
-                {((transitionSpeed - 0.1) / 0.9).toFixed(2)}
-              </div>
-            </div>
-            <input
-              type='range' min='0.1' step='0.01' max='1'
-              value={transitionSpeed}
-              onChange={this.setValue('transitionSpeed')}
-            />
-          </label>
-          <label>
-            <div className={detail}>
-              <div>Time Smoothing</div>
-              <div className={value}>
-                {(timeSmoothing / 0.99).toFixed(2)}
-              </div>
-            </div>
-            <input
-              type='range' min='0' step='0.01' max='0.99'
-              value={timeSmoothing}
-              onChange={this.setValue('timeSmoothing')}
-            />
-          </label>
-          <label>
-            <div className={detail}>
-              <div>Brightness</div>
-              <div className={value}>
-                {(vibranceMultiplier / 5).toFixed(2)}
-              </div>
-            </div>
-            <input
-              type='range' min='0' step='0.01' max='5'
-              value={vibranceMultiplier}
-              onChange={this.setValue('vibranceMultiplier')}
-            />
-          </label>
-          <label>
-            <div className={detail}>
-              <div>Noise Desaturation</div>
-              <div className={value}>
-                {(noiseMultiplier / 10).toFixed(2)}
-              </div>
-            </div>
-            <input
-              type='range' min='0' step='0.01' max='10'
-              value={noiseMultiplier}
-              onChange={this.setValue('noiseMultiplier')}
-            />
-          </label>
-          <label>
-            <div className={detail}>
-              <div>Minimum Brightness</div>
-              <div className={value}>
-                {minimumBrightness.toFixed(2)}
-              </div>
-            </div>
-            <input
-              type='range' min='0' step='0.01' max='1'
-              value={minimumBrightness}
-              onChange={this.setValue('minimumBrightness')}
-            />
-          </label>
-          {/*<label>
-            <div className={detail}>
-              <div>Required tone strength</div>
-              <div className={value}>
-                {(timeSmoothing / 10).toFixed(2)}
-              </div>
-            </div>
-            <input
-              type='range' min='0' step='0.01' max='10'
-              value={toneSigma}
-              onChange={this.setValue('toneSigma')}
-            />
-          </label>*/}
+          <div className={content}>
+            {
+              SLIDER_NAMES.map(this.renderSlider)
+            }
+          </div>
         </div>
       )
     }
