@@ -7,6 +7,7 @@ import { router } from './routes'
 import { errorHandler } from './middleware/errorHandler'
 import { sessionMiddleware } from './middleware/session'
 import { webpackMiddleware, webpackHotMiddleware, html5Fallback } from './middleware/webpack'
+import { hstsMiddleware } from './middleware/hsts'
 
 export const app = express()
 
@@ -15,6 +16,7 @@ app.enable('trust proxy')
 app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
 
 // middlewares
+app.use(hstsMiddleware)
 app.use(compression())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
