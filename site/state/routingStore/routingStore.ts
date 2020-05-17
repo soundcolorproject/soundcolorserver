@@ -34,7 +34,7 @@ export class RoutingStore {
     })
   }
 
-  @observable panelRoute: PanelRoute = 'home'
+  @observable panelRoute: PanelRoute = 'palette'
   @observable subRoutes: SubRoute[] = []
   @observable isBack = false
 

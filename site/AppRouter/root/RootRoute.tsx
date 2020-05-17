@@ -44,10 +44,10 @@ export type RootProps = OwnProps & StateProps
 
 const routeOrder: { [key in PanelRoute]: number } = {
   'info': 0,
-  'settings': 1,
+  'palette': 1,
   'home': 2,
   'filters': 3,
-  'palette': 4,
+  'settings': 4,
 }
 
 // ROUTES
@@ -163,10 +163,10 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                   selected={routing.panelRoute}
                   buttons={{
                     info: 'info',
-                    settings: 'settings',
+                    palette: 'palette',
                     home: 'home',
                     filters: 'tune',
-                    palette: 'palette',
+                    settings: 'settings',
                   }}
                   onChange={this.setPanelRoute}
                 />
