@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as cn from 'classnames'
 
 import {
-  slider,
+  sliderLabel,
   sliderDetails,
   sliderValue,
   sliderInput,
@@ -40,7 +40,7 @@ export function Slider (props: SliderProps) {
   }, [onChange])
 
   return (
-    <label className={cn(slider, className)}>
+    <label className={cn(sliderLabel, className)}>
       <div className={sliderDetails}>
         <div>{label}</div>
         <div className={sliderValue}>

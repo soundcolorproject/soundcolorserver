@@ -5,6 +5,7 @@ import { injectAndObserve } from '../../state/injectAndObserve'
 import { PatternsProp } from '../../state/patternsStore'
 
 import { sliders, content } from './sliders.pcss'
+import { Checkbox } from '../../components/Checkbox'
 import { Slider } from '../../components/Slider'
 
 interface OwnProps {
@@ -78,6 +79,10 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
       return this._setters[name]!
     }
 
+    setMonochrome = (monochrome: boolean) => {
+      this.props.patterns.monochrome = monochrome
+    }
+
     renderSlider = (name: SliderName) => {
       const value = this.props.patterns[name]
       const { label, min, max, step } = SLIDER_INFO[name]
@@ -97,6 +102,7 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
     render () {
       const {
         domRef,
+        patterns,
       } = this.props
 
       return (
@@ -105,6 +111,11 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
             {
               SLIDER_NAMES.map(this.renderSlider)
             }
+            <Checkbox
+              label='Monochromatic'
+              checked={patterns.monochrome}
+              onChange={this.setMonochrome}
+            />
           </div>
         </div>
       )
