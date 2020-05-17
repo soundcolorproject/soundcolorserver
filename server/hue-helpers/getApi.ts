@@ -67,6 +67,11 @@ async function getRemoteApi (session: string) {
       FIFTEEN_SECONDS,
       'web_server',
     )
+
+    api._getTransport().configureLimiter({
+      maxConcurrent: 10,
+      minTime: 0,
+    })
     return api
   })
 
@@ -91,6 +96,7 @@ async function getLocalUser (bridge: BridgeInfo) {
     }
   }
   const api = await v3.api.createLocal(bridge.ipaddress).connect()
+
   const user = await api.users.createUser('soundcolorproject', hostname())
 
   await writeLocalUser(bridge, user)
@@ -113,11 +119,23 @@ export async function getLocalApi () {
   const { username, clientkey } = await getLocalUser(bridge)
 
   localApi = await v3.api.createLocal(bridge.ipaddress).connect(username, clientkey)
+
+  localApi._getTransport().configureLimiter({
+    maxConcurrent: 10,
+    minTime: 0,
+  })
+
   return localApi
 }
 
 export async function createApiFromAccessCode (session: string, accessCode: string) {
   const api = await createAccess().connectWithCode(accessCode)
+
+  api._getTransport().configureLimiter({
+    maxConcurrent: 10,
+    minTime: 0,
+  })
+
   const remoteCredentials = api.remote.getRemoteAccessCredentials()
   logger.info(`Remote API Access Credentials:\n ${JSON.stringify(remoteCredentials, null, 2)}\n`)
   logger.info(`The Access Token is valid until:  ${new Date(remoteCredentials.tokens.access.expiresAt)}`)
