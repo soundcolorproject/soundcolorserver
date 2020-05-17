@@ -323,6 +323,7 @@ export const patternsStore = observable({
   loadFavorite: action('loadFavorite', (key: string) => {
     patternsStore.patternData.custom.colors = getCustomColors(key)
     patternsStore.favoriteKey = key
+    patternsStore.currentPattern = 'custom'
   }),
   hasNewFavorite: false,
   favoriteKey: null as string | null,

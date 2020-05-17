@@ -59,19 +59,23 @@ export class RoutingStore {
   }
 
   @action
-  popSubrouteToRoot = () => {
+  popSubrouteToRoot = (route?: SubRoute, isBack = true) => {
     this.subRoutes = []
-    this.isBack = true
+    this.isBack = isBack
+
+    if (route) {
+      this.subRoutes.push(route)
+    }
   }
 
   @action
-  popSubrouteTo = (route: SubRoute) => {
+  popSubrouteTo = (route: SubRoute, isBack = true) => {
     const index = this.subRoutes.indexOf(route)
     if (index === 0) {
       return
     }
 
-    this.isBack = true
+    this.isBack = isBack
     if (index > 0) {
       this.subRoutes.splice(0, index)
     } else {

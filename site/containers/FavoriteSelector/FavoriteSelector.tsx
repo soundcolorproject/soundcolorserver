@@ -16,21 +16,30 @@ import {
 } from './favoriteSelector.pcss'
 import { logger } from '../../../shared/logger'
 import { BackOption } from '../BackOption'
+import { RoutingProp } from '../../state/routingStore'
+import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
 
 interface OwnProps {
 }
 
 type StateProps =
   & PatternsProp
+  & RenderStateProp
+  & RoutingProp
 
 export type FavoriteSelectorProps = OwnProps & StateProps
 
 export const FavoriteSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ patterns }) => ({ patterns }),
+  ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
   class FavoriteSelector extends React.Component<FavoriteSelectorProps> {
     loadFavorite = (key: string) => () => {
+      const { patterns, renderState, routing } = this.props
       logger.log('loadFavorite')
-      this.props.patterns.loadFavorite(key)
+      patterns.loadFavorite(key)
+      routing.goToSubroute('customPalette')
+      if (!renderState.showColors) {
+        togglePattern(patterns, renderState)
+      }
     }
 
     deleteFavorite = (key: string) => (ev: React.MouseEvent) => {
