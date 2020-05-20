@@ -76,10 +76,10 @@ export const ShaderSliders = injectAndObserve<StateProps, OwnProps>(
 
       return (
         <div ref={domRef} className={sliders}>
-          <BackOption name='Shader' />
+          <BackOption name='Visualization Options' />
           <ClickableMenuOption onClick={this.goToShaderSelection} icon='arrow_forward'>
             <OverUnder
-              over='Select Shader'
+              over='Visualization'
               under={info.label}
             />
           </ClickableMenuOption>

@@ -53,7 +53,7 @@ const SLIDER_INFO: { [name in SliderName]: SliderInfo } = {
     max: 0.99,
   },
   vibranceMultiplier: {
-    label: 'Brightness',
+    label: 'Vibrance',
     min: 0,
     max: 5,
   },
@@ -126,7 +126,7 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
         <div ref={domRef} id={sliders}>
           <ClickableMenuOption onClick={this.goToShaderDetails} icon='arrow_forward'>
             <OverUnder
-              over='Shader'
+              over='Visualization Options'
               under={shaderInfo[shader].label}
             />
           </ClickableMenuOption>

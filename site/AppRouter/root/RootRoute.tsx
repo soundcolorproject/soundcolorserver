@@ -177,7 +177,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                   buttons={{
                     info: 'info',
                     palette: 'palette',
-                    home: 'home',
+                    home: 'music_note',
                     filters: 'tune',
                     settings: 'settings',
                   }}

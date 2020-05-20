@@ -28,7 +28,7 @@ const routeNames: { [key in SubRoute]: string } = {
   customPalette: 'Custom',
   favoriteCusom: 'Favorites',
   shaderSliders: 'Shader',
-  shaderSelector: 'Select Shader',
+  shaderSelector: 'Visualization',
 }
 
 export class RoutingStore {

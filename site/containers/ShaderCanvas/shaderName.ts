@@ -35,11 +35,11 @@ function multiplyTime (speed: number) {
 
 export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
   flat: {
-    label: 'Flat Color',
+    label: 'Flat',
     description: '',
     sliders: {
       u_noise: {
-        label: 'Color Noise',
+        label: 'Texture',
         description: '',
         defaultValue: 1,
         min: 0,
@@ -48,11 +48,11 @@ export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
     },
   },
   lights: {
-    label: 'Circulating Lights',
+    label: 'Circulator',
     description: '',
     sliders: {
       u_lightRotation: {
-        label: 'Light Rotation Speed',
+        label: 'Rotation Speed',
         description: '',
         defaultValue: 1 / 3,
         min: 0,
@@ -60,14 +60,14 @@ export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
         mapper: multiplyTime,
       },
       u_diffusion: {
-        label: 'Light Distance',
+        label: 'Spread',
         description: '',
         defaultValue: 1,
         min: 0,
         max: 3,
       },
       u_noise: {
-        label: 'Color Noise',
+        label: 'Texture',
         description: '',
         defaultValue: 0.1,
         min: 0,

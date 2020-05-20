@@ -85,6 +85,12 @@ export class Feedback extends React.PureComponent<FeedbackProps, FeedbackState> 
 
     return (
       <>
+        <input
+            placeholder='Full Name'
+        />
+        <input
+            placeholder='Email Address'
+        />
         <textarea
           placeholder='Tell us about your idea...'
           onChange={this.setFeedback}

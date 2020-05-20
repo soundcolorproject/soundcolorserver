@@ -44,7 +44,7 @@ export const ShaderSelector = injectAndObserve<StateProps, OwnProps>(
     render () {
       return (
         <div className={shaderSelector}>
-          <BackOption name='Select Shader' />
+          <BackOption name='Visualization' />
           {this.renderContent()}
         </div>
       )

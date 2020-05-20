@@ -38,6 +38,7 @@ export const iconOptions = {
   info: buildSvgContainer('info'),
   launch: buildSvgContainer('launch'),
   minimize: buildSvgContainer('minimize'),
+  music_note: buildSvgContainer('music_note'),
   palette: buildSvgContainer('palette'),
   pause_circle: buildSvgContainer('pause_circle'),
   pause: buildSvgContainer('pause'),

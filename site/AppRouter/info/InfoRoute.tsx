@@ -89,7 +89,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
           </div>
 
           <div className={header}>
-            <h1>Exploring accessibility to sound through color and light.</h1>
+            <h1>Exploring accessibility to sound through color, light, and texture.</h1>
             <h2>Offering an opportunity to experience the sound spectrum visually.</h2>
           </div>
 
@@ -128,7 +128,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
             <h1>Origins</h1>
             <div className={divider}></div>
             <div className={origins}>
-              <h2>Sound Color Project began as a way to offer people who experience hearing impairment a way to experience the feeling of music.</h2>
+              <h2>Sound Color Project began as a way to offer people who experience hearing impairment an opportunity to experience the feeling of music.</h2>
               <h2>Like any form of art, there is not one defined interpretation, but an opportunity for each participant to visualize the music in their own way.</h2>
               <h2>Using a device microphone, audio interface, or MIDI controller, sound waves are converted to color, through the translation based on different color patterns. Brightness, tone, and vibrance of light change according to volume, note, and frequency and are then customizable along with transition speed and the ability to see all colors in monochromacy.</h2>
               <h2>The color patterns derive from research in how the audible spectrum translates to the visible spectrum through forms connecting to emotion, sprituality, and memory. Color is only visible with the presence of light. With different amounts of light and the dependence of surroundings, colors can appear differently. Since we all see these colors differently, an option to create a custom color pattern is made available.</h2>
