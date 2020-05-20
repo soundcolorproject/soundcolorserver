@@ -13,7 +13,7 @@ import { HomeRow } from '../../components/HomeRow'
 import { Panel } from '../../components/Panel'
 import { PanelLayout } from '../../components/PanelLayout'
 
-import { ColorRenderer } from '../../containers/ColorRenderer'
+import { ShaderCanvas } from '../../containers/ShaderCanvas'
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
 import { FavoriteSelector } from '../../containers/FavoriteSelector'
@@ -22,6 +22,7 @@ import { HueRoot } from '../../containers/HueRoot'
 import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
 import { PatternSelector } from '../../containers/PatternSelector'
 import { Settings } from '../../containers/Settings'
+import { ShaderSliders } from '../../containers/ShaderSliders'
 import { Shortcuts } from '../../containers/Shortcuts'
 import { Sliders } from '../../containers/Sliders'
 import { SoundDetails } from '../../containers/SoundDetails'
@@ -29,8 +30,9 @@ import { SoundDetails } from '../../containers/SoundDetails'
 // Should be a container
 import { TextHider } from '../../components/TextHider'
 
-import { detailsView, spreader, info } from './root.pcss'
+import { detailsView } from './root.pcss'
 import { NoColorNotification } from '../../containers/NoColorNotification'
+import { ShaderSelector } from '../../containers/ShaderSelector'
 
 interface OwnProps extends RouteComponentProps {
 }
@@ -88,6 +90,14 @@ const favoritesRoute = (
   <FavoriteSelector />
 )
 
+const shaderSlidersRoute = (
+  <ShaderSliders />
+)
+
+const shaderSelectorRoute = (
+  <ShaderSelector />
+)
+
 export const RootRoute = injectAndObserve<StateProps, OwnProps>(
   ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
   class Root extends React.Component<RootProps> {
@@ -100,6 +110,8 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
           case 'hueRoot': return hueRootRoute
           case 'hueGroupSelector': return hueGroupRoute
           case 'favoriteCusom': return favoritesRoute
+          case 'shaderSliders': return shaderSlidersRoute
+          case 'shaderSelector': return shaderSelectorRoute
           default: break
         }
       }
@@ -144,10 +156,11 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
     }
 
     render () {
-      const { routing } = this.props
+      const { routing, renderState } = this.props
       return (
         <div id={detailsView}>
-          <ColorRenderer/>
+          {/* <ColorRenderer/> */}
+          <ShaderCanvas shaderName={renderState.shader} />
           <TextHider>
             <PanelLayout
               above={<NoColorNotification />}

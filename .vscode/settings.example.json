@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    "tmp": true,
+    "uglify-cache": true
+  },
+  "glsllint.glslangValidatorPath": "./glslangValidator"
+}

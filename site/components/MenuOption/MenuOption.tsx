@@ -9,7 +9,6 @@ import {
   clickable,
   menuButton,
   menuButtonLabel,
-  menuButtonIcon,
 } from './menuOption.pcss'
 import { logger } from '../../../shared/logger'
 
@@ -81,7 +80,6 @@ export function ButtonOption (props: ButtonMenuOptionProps) {
         </span>
         {
           icon && <Icon
-            className={menuButtonIcon}
             color='var(--white)'
             name={icon}
           />

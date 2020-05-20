@@ -5,7 +5,7 @@ import * as path from 'path'
 import * as TerserPlugin from 'terser-webpack-plugin'
 import * as OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 
-import { codeRule } from './code'
+import { codeRule, glslRule } from './code'
 import { styleRule } from './styles'
 import { buildConstants } from './constants'
 import { buildPlugins } from './plugins'
@@ -64,6 +64,7 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
         {
           oneOf: [
             codeRule(dev),
+            glslRule(),
             styleRule(dev),
             {
               test: /\.svg$/,

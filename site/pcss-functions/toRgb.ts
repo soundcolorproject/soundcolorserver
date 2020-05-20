@@ -38,6 +38,10 @@ export class RGBa {
     public a = 1,
   ) {}
 
+  toArray (): [number, number, number, number] {
+    return [this.r, this.g, this.b, this.a]
+  }
+
   map (mapper: (n: number) => number) {
     return [this.r, this.g, this.b].map(mapper).concat(this.a) as [number, number, number, number]
   }

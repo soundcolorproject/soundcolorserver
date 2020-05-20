@@ -25,3 +25,8 @@ export const codeRule = (dev: boolean): webpack.RuleSetRule => ({
     },
   ],
 })
+
+export const glslRule = (): webpack.RuleSetRule => ({
+  test: /\.(vert|frag)$/,
+  use: [{ loader: 'raw-loader' }],
+})
