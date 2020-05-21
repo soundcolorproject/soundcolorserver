@@ -7,6 +7,10 @@
   margin-bottom: 16px;
   font-size: 12px;
   cursor: pointer;
+  
+  &:active .switch-mark:after {
+    width: 20px;
+  }
 
   &:last-of-type {
     margin-bottom: 0;
@@ -16,7 +20,7 @@
     text-indent: -9999px;
     width: 40px;
     height: 24px;
-    background: grey;
+	  background: var(--grey-60);
     display: block;
     border-radius: 12px;
     position: relative;
@@ -24,7 +28,7 @@
     margin-right: 0.5rem;
 
     &:hover {
-      background: darkgrey;
+      background: var(--grey-50);
     }
 
     &:after {
@@ -34,13 +38,9 @@
       left: 6px;
       width: 12px;
       height: 12px;
-      background: #fff;
+      background: var(--white);
       border-radius: 6px;
       transition: 0.25s;
-    }
-
-    &:active:after {
-      width: 20px;
     }
   }
 
@@ -53,9 +53,9 @@
     width: 0;
 
     &:checked + .switch-mark {
-      background: black;
+	    background: var(--grey-80);
       &:hover {
-        background: darkslategrey;
+        background: var(--grey-70);
       }
       &:after {
         left: calc(100% - 6px);
