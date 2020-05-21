@@ -5,6 +5,7 @@ import * as cn from 'classnames'
 import {
   checkboxLabel,
   checkboxInput,
+  switchMark,
 } from './checkbox.pcss'
 
 export interface SliderProps {
@@ -36,6 +37,7 @@ export function Checkbox (props: SliderProps) {
         checked={checked}
         onChange={handleChange}
       />
+      <div className={switchMark} />
       {label}
     </label>
   )

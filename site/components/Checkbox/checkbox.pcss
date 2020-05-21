@@ -6,13 +6,61 @@
   justify-content: flex-start;
   margin-bottom: 16px;
   font-size: 12px;
+  cursor: pointer;
 
   &:last-of-type {
     margin-bottom: 0;
   }
 
-  .checkbox-input {
-    cursor: pointer;
+  .switch-mark {
+    text-indent: -9999px;
+    width: 40px;
+    height: 24px;
+    background: grey;
+    display: block;
+    border-radius: 12px;
+    position: relative;
+    transition: 0.25s;
     margin-right: 0.5rem;
+
+    &:hover {
+      background: darkgrey;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 6px;
+      transition: 0.25s;
+    }
+
+    &:active:after {
+      width: 20px;
+    }
+  }
+
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked + .switch-mark {
+      background: black;
+      &:hover {
+        background: darkslategrey;
+      }
+      &:after {
+        left: calc(100% - 6px);
+        transform: translateX(-100%);
+      }
+    }
   }
 }
