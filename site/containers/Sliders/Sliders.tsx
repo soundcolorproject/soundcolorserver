@@ -99,6 +99,7 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
 
       return (
         <Slider
+          key={name}
           label={label}
           value={value}
           onChange={this.setValue(name)}

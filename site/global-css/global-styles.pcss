@@ -126,8 +126,20 @@ input[type=range] {
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
   &:focus {
-      outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+      
+    &::-webkit-slider-runnable-track {
+      background: var(--grey-30);
+    }
+    
+    &::-ms-fill-lower {
+      background: var(--grey-30);
+    }
+    &::-ms-fill-upper {
+      background: var(--grey-30);
+    }
   }
+
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
   }
@@ -190,9 +202,6 @@ input[type=range] {
     cursor: pointer;
     background: var(--grey-20);
     border-radius: 2px;
-    &:focus {
-        background: var(--grey-30);
-    }
   }
   &::-moz-range-track {
       width: 100%;
@@ -213,15 +222,9 @@ input[type=range] {
   &::-ms-fill-lower {
     background: var(--grey-20);
     border-radius: 4px;
-    &:focus {
-        background: var(--grey-30);
-    }
   }
   &::-ms-fill-upper {
       background: var(--grey-20);
       border-radius: 4px;
-      &:focus {
-          background: var(--grey-30);
-      }
   }
 }
