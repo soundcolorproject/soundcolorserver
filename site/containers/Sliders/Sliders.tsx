@@ -136,7 +136,7 @@ export const Sliders = injectAndObserve<StateProps, OwnProps>(
               SLIDER_NAMES.map(this.renderSlider)
             }
             <Checkbox
-              label='Monochromatic'
+              label='Monochromacy'
               checked={patterns.monochrome}
               onChange={this.setMonochrome}
             />

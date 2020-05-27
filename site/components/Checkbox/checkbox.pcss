@@ -1,12 +1,31 @@
 
+:root {
+  --switch-margin: 6px;
+  --focus-border-width: 2px;
+}
+
 .checkbox-label {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
   margin-bottom: 16px;
   font-size: 12px;
   cursor: pointer;
+
+  .checkbox-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 8px;
+
+    .checkbox-value {
+      font-weight: 700;
+      cursor: text;
+    }
+  }
+
   
   &:active .switch-mark:after {
     width: 20px;
@@ -27,20 +46,24 @@
     transition: 0.25s;
     margin-right: 0.5rem;
 
-    &:hover {
-      background: var(--grey-50);
-    }
-
     &:after {
       content: '';
       position: absolute;
-      top: 6px;
-      left: 6px;
+      top: var(--switch-margin);
+      left: var(--switch-margin);
       width: 12px;
       height: 12px;
       background: var(--white);
       border-radius: 6px;
-      transition: 0.25s;
+    }
+
+    &:hover {
+      background: var(--grey-50);
+    }
+
+    &:focus {
+      outline: none;
+      background: var(--grey-40);
     }
   }
 
@@ -54,11 +77,17 @@
 
     &:checked + .switch-mark {
 	    background: var(--grey-80);
+      
       &:hover {
         background: var(--grey-70);
       }
+
+      &:focus {
+        background: var(--grey-60);
+      }
+
       &:after {
-        left: calc(100% - 6px);
+        left: calc(100% - var(--switch-margin));
         transform: translateX(-100%);
       }
     }
