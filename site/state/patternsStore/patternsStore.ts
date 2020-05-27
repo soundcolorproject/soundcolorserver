@@ -331,6 +331,16 @@ export const patternsStore = observable({
 })
 
 reaction(
+  () => patternsStore.currentPattern,
+  (currentPattern) => {
+    gtag('event', 'select_content', {
+      content_type: 'color_pattern',
+      content_id: currentPattern,
+    })
+  },
+)
+
+reaction(
   () => notes.map(note => (
     patternsStore.patternData.custom.colors[note]
   )),

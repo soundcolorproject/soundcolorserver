@@ -140,6 +140,9 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
 
     setPanelRoute = (route: PanelRoute) => {
       if (route === 'info') {
+        gtag('event', 'screen_view', {
+          screen_name: 'info',
+        })
         this.props.navigate!('/info').catch(e => {
           logger.error('Could not route to `/info`', e)
         })

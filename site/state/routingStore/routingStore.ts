@@ -1,5 +1,5 @@
 
-import { observable, action, computed } from 'mobx'
+import { observable, action, reaction } from 'mobx'
 
 export interface RoutingProp {
   routing: RoutingStore
@@ -34,8 +34,24 @@ const routeNames: { [key in SubRoute]: string } = {
 export class RoutingStore {
   constructor () {
     window.addEventListener('popstate', () => {
+      gtag('event', 'screen_view', {
+        screen_name: this.subRoutes[0] || this.panelRoute,
+      })
+
       this.isBack = true
     })
+
+    reaction(
+      () => ({
+        panelRoute: this.panelRoute,
+        subRoutes: this.subRoutes,
+      }),
+      ({ panelRoute, subRoutes }) => {
+        gtag('event', 'screen_view', {
+          screen_name: subRoutes[0] || panelRoute,
+        })
+      },
+    )
   }
 
   @observable panelRoute: PanelRoute = 'palette'

@@ -34,6 +34,16 @@ reaction(
   },
 )
 
+reaction(
+  () => renderStateStore.shader,
+  (shader) => {
+    gtag('event', 'select_content', {
+      content_type: 'visualization',
+      content_id: shader,
+    })
+  },
+)
+
 export const toggleFullscreen = action(function toggleFullscreen (
   renderState: RenderStateStore = renderStateStore,
 ) {
