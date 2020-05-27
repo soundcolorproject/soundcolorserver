@@ -44,11 +44,11 @@ export class RoutingStore {
     reaction(
       () => ({
         panelRoute: this.panelRoute,
-        subRoutes: this.subRoutes,
+        subRoute: this.subRoutes[0],
       }),
-      ({ panelRoute, subRoutes }) => {
+      ({ panelRoute, subRoute }) => {
         gtag('event', 'screen_view', {
-          screen_name: subRoutes[0] || panelRoute,
+          screen_name: subRoute || panelRoute,
         })
       },
     )

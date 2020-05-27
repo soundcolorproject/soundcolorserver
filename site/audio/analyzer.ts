@@ -3,6 +3,7 @@ import { context } from './context'
 import { getAudioSource } from './microphoneSource'
 import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
+import { errorString } from '../../shared/errorHelpers'
 
 export const fftSize = 32768 // maximum size allowed
 let analyser: AnalyserNode
@@ -53,4 +54,9 @@ export function getFft () {
 
 getAnalyser().catch((e) => {
   logger.error('Failed to initialize analyser:', e)
+  gtag('event', 'exception', {
+    description: 'Failed to initialize analyser: ' + errorString(e),
+    event_label: 'analyser exception',
+    fatal: true,
+  })
 })

@@ -1,13 +1,20 @@
 
 import { renderStateStore, togglePattern, toggleFullscreen } from './state/renderStateStore'
 import { logger } from '../shared/logger'
+import { errorString } from '../shared/errorHelpers'
 
 window.addEventListener('unhandledrejection', (evt) => {
   logger.error('Unhandled rejection:', evt.reason)
+  gtag('event', 'exception', {
+    description: errorString(evt.reason),
+  })
 })
 
 window.addEventListener('error', (evt) => {
   logger.error('Uncaught exception', evt.error)
+  gtag('event', 'exception', {
+    description: errorString(evt.error),
+  })
 })
 
 function shortcutsDisabled () {

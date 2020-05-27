@@ -9,6 +9,7 @@ import { logger } from '../../../shared/logger'
 import { BackOption } from '../BackOption'
 import { RoutingProp } from '../../state/routingStore'
 import { OverUnder } from '../../components/OverUnder'
+import { errorString } from '../../../shared/errorHelpers'
 
 interface OwnProps {
 }
@@ -23,6 +24,10 @@ export const HueRoot = injectAndObserve<StateProps, OwnProps>(
     refetchGroups = () => {
       this.props.apiStatus.fetchLightGroups().catch(e => {
         logger.warn('Failed to fetch light groups!', e)
+        gtag('event', 'exception', {
+          description: 'Failed to fetch hue light groups: ' + errorString(e),
+          event_label: 'hue light group fetch exception',
+        })
       })
     }
 

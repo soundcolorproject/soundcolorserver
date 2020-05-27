@@ -4,6 +4,7 @@ import { getUserMedia, getAudioSource } from '../../audio/microphoneSource'
 import { setSource as setSource1 } from '../../audio/analyzer'
 import { setSource as setSource2 } from '../../audio/miniAnalyser'
 import { logger } from '../../../shared/logger'
+import { errorString } from '../../../shared/errorHelpers'
 
 export type MediaStore = typeof mediaStore
 
@@ -33,6 +34,10 @@ getUserMedia().then(() => {
   mediaStore.ready = true
 }).catch(() => {
   mediaStore.error = true
+  gtag('event', 'exception', {
+    description: 'Failed to acquire user media: ' + errorString(e),
+    event_label: 'user media exception',
+  })
 })
 
 async function updateDevices () {

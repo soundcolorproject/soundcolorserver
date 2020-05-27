@@ -7,6 +7,7 @@ import { getColorsFromAnalysis } from '../../helpers/analysisColors'
 import { GroupColorMode, ApiGroupInfo } from '../../../shared/apiTypes/hue'
 import { patternsStore } from '../patternsStore'
 import { renderStateStore } from '../renderStateStore'
+import { errorString } from '../../../shared/errorHelpers'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore
@@ -43,6 +44,10 @@ export class ApiStatusStore {
       }
     }).catch(e => {
       logger.warn('Failed to check if the user is logged in:', e)
+      gtag('event', 'exception', {
+        description: 'Failed to verify hue login status: ' + errorString(e),
+        event_label: 'hue login status exception',
+      })
     })
   }
 
@@ -71,6 +76,10 @@ export class ApiStatusStore {
       this._setLightGroups(await getGroups())
     } catch (error) {
       this._setLightGroupError(error)
+      gtag('event', 'exception', {
+        description: 'Failed to fetch hue light groups: ' + errorString(e),
+        event_label: 'hue light group fetch exception',
+      })
     }
   }
 
@@ -114,6 +123,10 @@ export class ApiStatusStore {
 
     selectGroup({ groupId }).catch(e => {
       logger.info('Failed to alert on light selection:', e)
+      gtag('event', 'exception', {
+        description: 'Failed to set active light group: ' + errorString(e),
+        event_label: 'hue light group set exception',
+      })
     })
   }
 
@@ -152,6 +165,10 @@ export class ApiStatusStore {
         logger.info(`Setting color (${Date.now() - startTime})`)
         setColor({ groupId, color, mode }).catch(e => {
           logger.info('Failed to set group color:', e)
+          gtag('event', 'exception', {
+            description: 'Failed to set hue light group color: ' + errorString(e),
+            event_label: 'hue light group set color exception',
+          })
         })
       }, rate)
     }

@@ -6,6 +6,7 @@ import { sendFeedback } from '../../api/email'
 
 import { successMessage, errorMessage } from './feedback.pcss'
 import { FetchError } from '../../errors/FetchError'
+import { errorString } from '../../../shared/errorHelpers'
 
 export interface FeedbackProps {
 
@@ -60,6 +61,10 @@ export class Feedback extends React.PureComponent<FeedbackProps, FeedbackState> 
       this.setState({
         submitting: false,
         error: true,
+      })
+      gtag('event', 'exception', {
+        description: 'Failed to send feedback: ' + errorString(e),
+        event_label: 'feedback exception',
       })
     })
   }

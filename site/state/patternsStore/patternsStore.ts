@@ -4,6 +4,7 @@ import { getAnalyser } from '../../audio/analyzer'
 import { getMiniAnalyser } from '../../audio/miniAnalyser'
 import { toHsv, HSVa } from '../../pcss-functions/toHsv'
 import { randStr } from '../../helpers/random'
+import { errorString } from '../../../shared/errorHelpers'
 
 const defaultCustomColors = {
   'C': toHsv('#B4BBCC'),
@@ -37,6 +38,10 @@ function getCustomColorValue (name: string, note: Note) {
     } catch (e) {
       const color = defaultCustomColors[note]
       saveCustomColorValue(name, note, color)
+      gtag('event', 'exception', {
+        description: 'Failed to parse custom color from localStorage: ' + errorString(e),
+        event_label: 'local storage color parse exception',
+      })
       return color
     }
   } else {
@@ -61,6 +66,10 @@ function getFavoriteList (): Favorite[] {
       created: new Date(created),
     }))
   } catch (e) {
+    gtag('event', 'exception', {
+      description: 'Failed to parse custom color saves from localStorage: ' + errorString(e),
+      event_label: 'custom color saves exception',
+    })
     return []
   }
 }
@@ -336,6 +345,7 @@ reaction(
     gtag('event', 'select_content', {
       content_type: 'color_pattern',
       content_id: currentPattern,
+      event_label: `color_pattern:${currentPattern}`,
     })
   },
 )
