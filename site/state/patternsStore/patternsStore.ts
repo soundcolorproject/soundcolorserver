@@ -345,6 +345,7 @@ reaction(
     gtag('event', 'select_content', {
       content_type: 'color_pattern',
       content_id: currentPattern,
+      items: [{ name: currentPattern, category: 'color pattern' }],
       event_label: `color_pattern:${currentPattern}`,
     })
   },

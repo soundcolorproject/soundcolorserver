@@ -64,6 +64,7 @@ reaction(
     gtag('event', 'select_content', {
       content_type: 'visualization',
       content_id: shader,
+      items: [{ name: shader, category: 'shader' }],
       event_label: `visualization:${shader}`,
     })
   },
