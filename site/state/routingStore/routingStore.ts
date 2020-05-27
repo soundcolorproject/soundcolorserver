@@ -36,6 +36,7 @@ export class RoutingStore {
     window.addEventListener('popstate', () => {
       gtag('event', 'screen_view', {
         screen_name: this.subRoutes[0] || this.panelRoute,
+        event_label: `screen:${this.subRoutes[0] || this.panelRoute}`,
       })
 
       this.isBack = true
@@ -49,6 +50,7 @@ export class RoutingStore {
       ({ panelRoute, subRoute }) => {
         gtag('event', 'screen_view', {
           screen_name: subRoute || panelRoute,
+          event_label: `screen:${subRoute || panelRoute}`,
         })
       },
     )
