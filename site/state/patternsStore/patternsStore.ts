@@ -342,11 +342,9 @@ export const patternsStore = observable({
 reaction(
   () => patternsStore.currentPattern,
   (currentPattern) => {
-    gtag('event', 'select_content', {
-      content_type: 'color_pattern',
-      content_id: currentPattern,
-      items: [{ name: currentPattern, category: 'color pattern' }],
-      event_label: `color_pattern:${currentPattern}`,
+    gtag('event', 'set_color_pattern', {
+      event_category: 'color_pattern',
+      pattern_id: currentPattern,
     })
   },
 )

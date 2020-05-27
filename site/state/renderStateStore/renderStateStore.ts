@@ -61,11 +61,9 @@ reaction(
 reaction(
   () => renderStateStore.shader,
   (shader) => {
-    gtag('event', 'select_content', {
-      content_type: 'visualization',
-      content_id: shader,
-      items: [{ name: shader, category: 'shader' }],
-      event_label: `visualization:${shader}`,
+    gtag('event', 'set_visualization', {
+      event_category: 'visualization',
+      shader_id: shader,
     })
   },
 )
