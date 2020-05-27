@@ -14,6 +14,7 @@ export interface RenderStateProp {
 }
 
 export const renderStateStore = observable({
+  wakeLock: null as WakeLockSentinel | null,
   showText: true,
   showColors: false,
   isFullscreen: false,
@@ -28,8 +29,22 @@ reaction(
   (show) => {
     if (show) {
       startAnalysis()
+      if (navigator.wakeLock?.request) {
+        navigator.wakeLock.request('screen').then(wakeLock => {
+          renderStateStore.wakeLock = wakeLock
+        }).catch(err => {
+          logger.warn('failed to acquire wake lock', err)
+        })
+      }
     } else {
       pauseAnalysis()
+      if (renderStateStore.wakeLock) {
+        renderStateStore.wakeLock.release().then(() => {
+          renderStateStore.wakeLock = null
+        }).catch(err => {
+          logger.warn('failed to release wake lock', err)
+        })
+      }
     }
   },
 )

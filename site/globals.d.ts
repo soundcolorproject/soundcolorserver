@@ -17,3 +17,19 @@ declare module '*.vert' {
   const result: string
   export default result
 }
+
+declare type WakeLockType = 'screen'
+
+declare interface WakeLockSentinel extends EventTarget {
+  readonly type: WakeLockType
+  release (): Promise<void>
+  onRelease?: (ev: Event) => void
+}
+
+declare interface WakeLock {
+  request (type: WakeLockType): Promise<WakeLockSentinel>
+}
+
+interface Navigator {
+  readonly wakeLock?: WakeLock
+}
