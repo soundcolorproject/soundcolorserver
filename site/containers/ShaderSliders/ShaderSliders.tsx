@@ -51,6 +51,7 @@ export const ShaderSliders = injectAndObserve<StateProps, OwnProps>(
 
       return (
         <Slider
+          key={name}
           label={label}
           value={currentValue}
           min={min}
