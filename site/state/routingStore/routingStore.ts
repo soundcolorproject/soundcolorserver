@@ -1,5 +1,6 @@
 
 import { observable, action, reaction } from 'mobx'
+import { logger } from '../../../shared/logger'
 
 export interface RoutingProp {
   routing: RoutingStore
@@ -34,6 +35,7 @@ const routeNames: { [key in SubRoute]: string } = {
 export class RoutingStore {
   constructor () {
     window.addEventListener('popstate', () => {
+      logger.info('firing screen view event for', screenName)
       gtag('event', 'screen_view', {
         screen_name: this.subRoutes[0] || this.panelRoute,
         event_label: `screen:${this.subRoutes[0] || this.panelRoute}`,
@@ -45,12 +47,14 @@ export class RoutingStore {
     reaction(
       () => ({
         panelRoute: this.panelRoute,
-        subRoute: this.subRoutes[0],
+        subRouteCount: this.subRoutes.length,
+        subRoutes: this.subRoutes,
       }),
-      ({ panelRoute, subRoute }) => {
+      ({ panelRoute, subRoutes }) => {
+        const screenName = subRoutes[0] || panelRoute
+        logger.info('firing screen view event for', screenName)
         gtag('event', 'screen_view', {
-          screen_name: subRoute || panelRoute,
-          event_label: `screen:${subRoute || panelRoute}`,
+          screen_name: screenName,
         })
       },
     )
