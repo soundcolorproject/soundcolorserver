@@ -1,7 +1,7 @@
 
 // tslint:disable: no-console
 import * as ac from 'ansi-colors'
-import { LogLevel, getLogLevel } from './getLogLevel'
+import { LogLevel, getLogLevel, LogLevelStr, validLevels } from './getLogLevel'
 import { isBrowser } from './isBrowser'
 import { browserAnsi } from './browserAnsi'
 
@@ -36,13 +36,12 @@ function getBrowserAnsi (style: StyleName[]): string {
   return style.slice(1).reduce((style, name) => style[name], browserAnsi[style[0]]).toString()
 }
 
-const useStack = typeof new Error().stack === 'string'
-const noop = () => { /* noop */ }
-function createLogFunc (target: LogLevel, expected: LogLevel, logger: LogFunc, prefix: string, style: StyleName[] = []): LogFunc {
-  if (expected < target) {
-    return noop
-  }
+interface LogTarget {
+  level: LogLevel
+}
 
+const useStack = typeof new Error().stack === 'string'
+function createLogFunc (target: LogTarget, expected: LogLevel, logger: LogFunc, prefix: string, style: StyleName[] = []): LogFunc {
   if (prefix) {
     prefix = `${prefix}:`
   }
@@ -51,10 +50,12 @@ function createLogFunc (target: LogLevel, expected: LogLevel, logger: LogFunc, p
     const styleStr = getBrowserAnsi(style)
     if (!styleStr) {
       return (...args: any[]) => {
+        if (expected < target.level) return
         logger(prefix, ...args)
       }
     }
     return (...args: any[]) => {
+      if (expected < target.level) return
       let format = `%c${prefix} ` + args.map(arg => {
         switch (typeof arg) {
           case 'string':
@@ -79,6 +80,7 @@ function createLogFunc (target: LogLevel, expected: LogLevel, logger: LogFunc, p
   } else {
     const styleFn = getStyleFunc(style)
     return (...args: any[]) => {
+      if (expected < target.level) return
       const str = args.reduce((str, arg) => {
         if (typeof arg === 'object') {
           if (arg.constructor.name === 'ApiError') {
@@ -102,15 +104,31 @@ function createLogFunc (target: LogLevel, expected: LogLevel, logger: LogFunc, p
 }
 
 function createLogger () {
-  const target = LogLevel[getLogLevel()]
-  return {
+  const target = { level: LogLevel[getLogLevel()] }
+  const logger = {
     debug: createLogFunc(target, LogLevel.debug, console.debug, 'DEBUG', ['underline']),
     info: createLogFunc(target, LogLevel.info, console.info, 'INFO', ['cyan']),
     log: createLogFunc(target, LogLevel.log, console.log, 'LOG'),
     warn: createLogFunc(target, LogLevel.warn, console.warn, 'WARNING', ['yellow']),
     error: createLogFunc(target, LogLevel.error, console.error, 'ERROR', ['red', 'bold']),
     fatal: createLogFunc(target, LogLevel.fatal, console.error, '🔥 FATAL', ['red', 'bold']),
+    set logLevel (newLevel: LogLevelStr) {
+      const levelValue = LogLevel[newLevel]
+
+      // tslint:disable-next-line: strict-type-predicates
+      if (levelValue !== undefined) {
+        target.level = levelValue
+        console.log(`Log level set to ${newLevel} (${levelValue})`)
+      } else {
+        console.log(`Log level "${newLevel}" not recognized.  Valid log levels are: [${validLevels.join(', ')}]`)
+      }
+    },
+    get logLevel () {
+      return LogLevel[target.level] as LogLevelStr
+    },
   }
+
+  return logger
 }
 
 export const logger = createLogger()

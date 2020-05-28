@@ -13,7 +13,7 @@ export enum LogLevel {
 }
 
 declare const __LOG_LEVEL__: any
-const validLevels = Object.keys(LogLevel) as LogLevelStr[]
+export const validLevels = Object.keys(LogLevel).filter(level => Number.isNaN(parseFloat(level))) as LogLevelStr[]
 const defaultLogLevel: LogLevelStr = 'warn'
 function computeLogLevel (): LogLevelStr {
   try {
