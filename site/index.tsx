@@ -7,9 +7,9 @@ import * as ReactDOM from 'react-dom'
 
 import App from './containers/App'
 
-registerGlobalHandlers()
-
 ReactDOM.render(
   <App />,
   document.getElementById('root'),
 )
+
+registerGlobalHandlers()
