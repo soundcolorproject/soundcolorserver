@@ -5,14 +5,14 @@ import { errorString } from '../shared/errorHelpers'
 
 window.addEventListener('unhandledrejection', (evt) => {
   logger.error('Unhandled rejection:', evt.reason)
-  gtagPatched('event', 'exception', {
+  gtag('event', 'exception', {
     description: errorString(evt.reason),
   })
 })
 
 window.addEventListener('error', (evt) => {
   logger.error('Uncaught exception', evt.error)
-  gtagPatched('event', 'exception', {
+  gtag('event', 'exception', {
     description: errorString(evt.error),
   })
 })

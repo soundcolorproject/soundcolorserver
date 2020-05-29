@@ -141,7 +141,7 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
     setPanelRoute = (route: PanelRoute) => {
       if (route === 'info') {
         logger.info('firing screen view event for', 'info')
-        gtagPatched('event', 'screen_view', {
+        gtag('event', 'screen_view', {
           screen_name: 'info',
         })
         this.props.navigate!('/info').catch(e => {

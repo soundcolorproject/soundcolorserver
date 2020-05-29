@@ -53,7 +53,7 @@ export function getMiniFft () {
 
 getMiniAnalyser().catch((e) => {
   logger.warn('Failed to initialize mini analyser:', e)
-  gtagPatched('event', 'exception', {
+  gtag('event', 'exception', {
     description: 'Failed to initialize mini analyser: ' + errorString(e),
     event_label: 'mini-analyser exception',
   })
