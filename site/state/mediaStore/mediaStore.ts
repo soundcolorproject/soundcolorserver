@@ -34,7 +34,7 @@ getUserMedia().then(() => {
   mediaStore.ready = true
 }).catch(() => {
   mediaStore.error = true
-  gtag('event', 'exception', {
+  gtagPatched('event', 'exception', {
     description: 'Failed to acquire user media: ' + errorString(e),
     event_label: 'user media exception',
   })

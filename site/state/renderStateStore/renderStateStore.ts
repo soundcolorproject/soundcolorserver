@@ -35,7 +35,7 @@ reaction(
           renderStateStore.wakeLock = wakeLock
         }).catch(err => {
           logger.warn('failed to acquire wake lock', err)
-          gtag('event', 'exception', {
+          gtagPatched('event', 'exception', {
             description: 'Failed to acquire wake lock: ' + errorString(err),
             event_label: 'request wake lock exception',
           })
@@ -48,7 +48,7 @@ reaction(
           renderStateStore.wakeLock = null
         }).catch(err => {
           logger.warn('failed to release wake lock', err)
-          gtag('event', 'exception', {
+          gtagPatched('event', 'exception', {
             description: 'Failed to release wake lock: ' + errorString(err),
             event_label: 'release wake lock exception',
           })
@@ -61,7 +61,7 @@ reaction(
 reaction(
   () => renderStateStore.shader,
   (shader) => {
-    gtag('event', 'set_visualization', {
+    gtagPatched('event', 'set_visualization', {
       event_category: 'visualization',
       shader_id: shader,
     })
@@ -76,7 +76,7 @@ export const toggleFullscreen = action(function toggleFullscreen (
       renderState.isFullscreen = false
       document.exitFullscreen().catch((e) => {
         logger.error('Could not exit fullscreen mode:', e)
-        gtag('event', 'exception', {
+        gtagPatched('event', 'exception', {
           description: 'Failed to exit fullscreen: ' + errorString(err),
           event_label: 'fullscreen exit exception',
         })
@@ -87,7 +87,7 @@ export const toggleFullscreen = action(function toggleFullscreen (
         navigationUI: 'hide',
       }).catch((err) => {
         logger.warn('Fullscreen not allowed by user.')
-        gtag('event', 'exception', {
+        gtagPatched('event', 'exception', {
           description: 'Failed to enter fullscreen: ' + errorString(err),
           event_label: 'fullscreen entry exception',
         })
@@ -106,7 +106,7 @@ export const togglePattern = action(function togglePattern (
   renderState.showColors = !renderState.showColors
   resume().catch((e) => {
     logger.fatal('Could not resume color pattern:', e)
-    gtag('event', 'exception', {
+    gtagPatched('event', 'exception', {
       description: 'Failed to resume color pattern: ' + errorString(e),
       event_label: 'color pattern resume exception',
       fatal: true,

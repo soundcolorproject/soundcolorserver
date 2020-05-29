@@ -17,7 +17,7 @@ export const definePlugin = new webpack.DefinePlugin({
   '__REMOTE_API__': JSON.stringify(config.remoteApi),
   '__LOG_LEVEL__': JSON.stringify(config.logLevel),
   '__DEV__': JSON.stringify(config.dev),
-  '__BUILD_NUMBER__': JSON.stringify(process.env.CI_BUILD_NUMBER || 'development'),
+  '__BUILD_VERSION__': JSON.stringify(process.env.CI_BUILD_NUMBER || process.env.SOURCE_VERSION || 'development'),
 })
 
 export function buildPlugins (dev: boolean, constants: Constants) {

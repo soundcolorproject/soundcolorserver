@@ -54,7 +54,7 @@ export function getFft () {
 
 getAnalyser().catch((e) => {
   logger.error('Failed to initialize analyser:', e)
-  gtag('event', 'exception', {
+  gtagPatched('event', 'exception', {
     description: 'Failed to initialize analyser: ' + errorString(e),
     event_label: 'analyser exception',
     fatal: true,

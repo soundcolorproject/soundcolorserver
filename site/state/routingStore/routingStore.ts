@@ -36,7 +36,7 @@ export class RoutingStore {
   constructor () {
     window.addEventListener('popstate', () => {
       logger.info('firing screen view event for', screenName)
-      gtag('event', 'screen_view', {
+      gtagPatched('event', 'screen_view', {
         screen_name: this.subRoutes[0] || this.panelRoute,
         event_label: `screen:${this.subRoutes[0] || this.panelRoute}`,
       })
@@ -53,7 +53,7 @@ export class RoutingStore {
       ({ panelRoute, subRoutes }) => {
         const screenName = subRoutes[0] || panelRoute
         logger.info('firing screen view event for', screenName)
-        gtag('event', 'screen_view', {
+        gtagPatched('event', 'screen_view', {
           screen_name: screenName,
         })
       },

@@ -38,7 +38,7 @@ function getCustomColorValue (name: string, note: Note) {
     } catch (e) {
       const color = defaultCustomColors[note]
       saveCustomColorValue(name, note, color)
-      gtag('event', 'exception', {
+      gtagPatched('event', 'exception', {
         description: 'Failed to parse custom color from localStorage: ' + errorString(e),
         event_label: 'local storage color parse exception',
       })
@@ -66,7 +66,7 @@ function getFavoriteList (): Favorite[] {
       created: new Date(created),
     }))
   } catch (e) {
-    gtag('event', 'exception', {
+    gtagPatched('event', 'exception', {
       description: 'Failed to parse custom color saves from localStorage: ' + errorString(e),
       event_label: 'custom color saves exception',
     })
@@ -342,7 +342,7 @@ export const patternsStore = observable({
 reaction(
   () => patternsStore.currentPattern,
   (currentPattern) => {
-    gtag('event', 'set_color_pattern', {
+    gtagPatched('event', 'set_color_pattern', {
       event_category: 'color_pattern',
       pattern_id: currentPattern,
     })

@@ -62,7 +62,7 @@ export class Feedback extends React.PureComponent<FeedbackProps, FeedbackState> 
         submitting: false,
         error: true,
       })
-      gtag('event', 'exception', {
+      gtagPatched('event', 'exception', {
         description: 'Failed to send feedback: ' + errorString(e),
         event_label: 'feedback exception',
       })

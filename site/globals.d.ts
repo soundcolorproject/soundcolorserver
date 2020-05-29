@@ -2,7 +2,7 @@
 declare const __REMOTE_API__: boolean
 declare const __LOG_LEVEL__: 'debug' | 'info' | 'log' | 'warn' | 'error' | 'fatal' | 'none'
 declare const __DEV__: boolean
-declare const __BUILD_NUMBER__: string
+declare const __BUILD_VERSION__: string
 
 declare module '*.svg' {
   const result: any
@@ -33,4 +33,9 @@ declare interface WakeLock {
 
 interface Navigator {
   readonly wakeLock?: WakeLock
+}
+
+declare const gtagPatched: typeof gtag
+interface Window {
+  gtagPatched: typeof gtag
 }

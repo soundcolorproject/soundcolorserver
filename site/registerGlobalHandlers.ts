@@ -5,14 +5,14 @@ import { errorString } from '../shared/errorHelpers'
 
 window.addEventListener('unhandledrejection', (evt) => {
   logger.error('Unhandled rejection:', evt.reason)
-  gtag('event', 'exception', {
+  gtagPatched('event', 'exception', {
     description: errorString(evt.reason),
   })
 })
 
 window.addEventListener('error', (evt) => {
   logger.error('Uncaught exception', evt.error)
-  gtag('event', 'exception', {
+  gtagPatched('event', 'exception', {
     description: errorString(evt.error),
   })
 })
@@ -41,5 +41,3 @@ export function registerGlobalHandlers () {
     }
   })
 }
-
-logger.info('App Version:', __BUILD_NUMBER__)
