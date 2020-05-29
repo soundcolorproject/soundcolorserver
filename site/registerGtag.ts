@@ -5,7 +5,7 @@ const globalGtagConfig = {
   app_version: __BUILD_VERSION__,
 }
 
-gtag('config', 'G-RJKV4XFL4G', globalGtagConfig)
+gtag('config', 'UA-154332648-1', globalGtagConfig)
 
 window.gtagPatched = function (command: GtagCommand, two: GtagSecondParam, three?: GtagThirdParam) {
   if (command === 'event') {
