@@ -1,4 +1,5 @@
 
+import './registerGtag'
 import './global-css/index.pcss'
 import { registerGlobalHandlers } from './registerGlobalHandlers'
 
