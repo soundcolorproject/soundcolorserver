@@ -22,11 +22,11 @@ export function PanelLayout (props: PanelLayoutProps) {
   return (
     <div className={panelLayout}>
       <div className={layoutColumn}>
-        <div className='gt-mobile grow'>{above}</div>
+        <div className='gt-mobile grow center'>{above}</div>
         {preSpacer}
         <div className={layoutSpacer}>
           {inSpacer}
-          <div className='lt-mobile grow'>{above}</div>
+          <div className='lt-mobile grow center'>{above}</div>
         </div>
         <div className={afterSpacer}>
           {postSpacer}
