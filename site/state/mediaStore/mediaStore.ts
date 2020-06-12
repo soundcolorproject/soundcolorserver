@@ -1,6 +1,6 @@
 
 import { observable, reaction } from 'mobx'
-import { getUserMedia, getAudioSource } from '../../audio/microphoneSource'
+import { getAudioSource } from '../../audio/microphoneSource'
 import { setSource as setSource1 } from '../../audio/analyzer'
 import { setSource as setSource2 } from '../../audio/miniAnalyser'
 import { logger } from '../../../shared/logger'
@@ -28,17 +28,10 @@ async function setDevice (newDeviceId: string) {
 reaction(
   () => mediaStore.currentDeviceId,
   setDevice,
+  {
+    fireImmediately: false,
+  },
 )
-
-getUserMedia().then(() => {
-  mediaStore.ready = true
-}).catch(() => {
-  mediaStore.error = true
-  gtag('event', 'exception', {
-    description: 'Failed to acquire user media: ' + errorString(e),
-    event_label: 'user media exception',
-  })
-})
 
 async function updateDevices () {
   const devices = await navigator.mediaDevices.enumerateDevices()
@@ -46,13 +39,8 @@ async function updateDevices () {
   const possibleDevices = devices.filter(({ kind }) => kind === 'audioinput')
   mediaStore.possibleDevices = possibleDevices
   const currentDeviceId = mediaStore.currentDeviceId
-  if (!devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
+  if (currentDeviceId !== 'default' && !devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
     mediaStore.currentDeviceId = 'default'
-  } else {
-    const deviceId = mediaStore.currentDeviceId
-    setDevice(deviceId).catch(e => {
-      logger.warn(`Failed to change media device to ${deviceId}:`, e)
-    })
   }
 }
 

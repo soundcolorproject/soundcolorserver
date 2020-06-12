@@ -7,6 +7,7 @@ import { DEFAULT_SHADER, shaderNames } from '../../containers/ShaderCanvas'
 import { patternsStore, PatternsStore } from '../patternsStore'
 import { startAnalysis, pauseAnalysis } from '../analysisStore'
 import { errorString } from '../../../shared/errorHelpers'
+import { startAudio, stopAudio } from '../../audio'
 
 export type RenderStateStore = typeof renderStateStore
 
@@ -27,8 +28,9 @@ export const renderStateStore = observable({
 
 reaction(
   () => renderStateStore.showColors,
-  (show) => {
+  async (show) => {
     if (show) {
+      await startAudio()
       startAnalysis()
       if (navigator.wakeLock?.request) {
         navigator.wakeLock.request('screen').then(wakeLock => {
@@ -43,6 +45,7 @@ reaction(
       }
     } else {
       pauseAnalysis()
+      await stopAudio()
       if (renderStateStore.wakeLock) {
         renderStateStore.wakeLock.release().then(() => {
           renderStateStore.wakeLock = null

@@ -1,8 +1,10 @@
 
 import { context, resumePromise } from './context'
 
+let currentMedia: MediaStream | null = null
+
 export async function getUserMedia (deviceId = 'default') {
-  return navigator.mediaDevices.getUserMedia({
+  const newMedia = await navigator.mediaDevices.getUserMedia({
     audio: {
       deviceId: deviceId !== 'default' ? { exact: deviceId } : undefined,
       echoCancellation: false,
@@ -10,6 +12,20 @@ export async function getUserMedia (deviceId = 'default') {
       noiseSuppression: false,
     },
   })
+
+  if (newMedia !== currentMedia) {
+    stopUserMedia()
+  }
+  currentMedia = newMedia
+
+  return newMedia
+}
+
+export function stopUserMedia () {
+  if (currentMedia) {
+    currentMedia.getAudioTracks().forEach(track => track.stop())
+    currentMedia = null
+  }
 }
 
 export async function getAudioSource (deviceId = 'default') {

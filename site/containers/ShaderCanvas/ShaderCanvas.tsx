@@ -43,12 +43,18 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
     private _renderId?: number
     private _startTime = Date.now()
     private _shader?: BuiltProgramWithUniforms<typeof COMMON_UNIFORMS, CommonMeta>
+    private _noop: any
 
     componentDidUpdate (prevProps: ShaderCanvasProps) {
-      const { shaderName = DEFAULT_SHADER } = this.props
+      const { shaderName = DEFAULT_SHADER, renderState } = this.props
       if (this._gl && shaderName !== prevProps.shaderName) {
         logger.info('Using shader:', shaderName)
         this._shader = shaderMap.get(shaderName)!(this._gl)
+      }
+      if (renderState.showColors) {
+        this.start()
+      } else {
+        this.pause()
       }
     }
 
@@ -64,7 +70,6 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       const gl = this._gl = canvas.getContext('webgl')!
       this._shader = shaderMap.get(this.props.shaderName || DEFAULT_SHADER)!(gl)
       this._startTime = Date.now()
-      this.start()
     }
 
     private _renderLoop = () => {
@@ -73,6 +78,7 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       }
 
       this._setUniforms()
+      this._clearScene()
       this._drawScene()
 
       this._renderId = requestAnimationFrame(this._renderLoop)
@@ -126,7 +132,7 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       // this._shader.uniforms.u_color3([0, 0, 1, 1])
     }
 
-    private _drawScene = () => {
+    private _clearScene = () => {
       if (!this._gl || !this._shader) {
         return
       }
@@ -139,28 +145,38 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       // Clear the canvas
       gl.clearColor(0, 0, 0, 0)
       gl.clear(gl.COLOR_BUFFER_BIT)
+    }
 
-      if (!this.props.renderState.showColors) {
+    private _drawScene = () => {
+      if (!this._gl || !this._shader) {
         return
       }
+
+      const gl = this._gl
 
       // Render the scene
       this._shader.meta.render(gl, this._shader.program)
     }
 
     start = () => {
-      this._renderLoop()
+      if (!this._renderId) {
+        this._renderLoop()
+      }
     }
 
     pause = () => {
       if (this._renderId) {
         cancelAnimationFrame(this._renderId)
+        this._clearScene()
       }
       delete this._renderId
     }
 
     render () {
-      const { id, className } = this.props
+      const { id, className, renderState } = this.props
+
+      this._noop = renderState.showColors
+
       return (
         <canvas
           id={id}

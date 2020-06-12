@@ -3,13 +3,13 @@ import { context } from './context'
 import { getAudioSource } from './microphoneSource'
 import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
-import { errorString } from '../../shared/errorHelpers'
 
 export const fftSize = 32768 // maximum size allowed
 let analyser: AnalyserNode
 let fftArray: Float32Array
 let analyserPromise: Promise<AnalyserNode>
-let prevSource: AudioNode
+let prevSource: AudioNode | null = null
+let userMedia: MediaStream | null = null
 
 export async function getAnalyser () {
   if (!analyserPromise) {
@@ -30,11 +30,12 @@ export async function getAnalyser () {
   return analyserPromise
 }
 
-export function setSource (newSource: AudioNode) {
+export function setSource (newSource: AudioNode | null) {
   if (prevSource && analyser) {
     prevSource.disconnect(analyser)
+    prevSource.disconnect()
   }
-  if (analyser) {
+  if (newSource && analyser) {
     newSource.connect(analyser)
   }
 
@@ -51,12 +52,3 @@ export function getFft () {
   logger.info('fft', analyser.frequencyBinCount, fftSize)
   return fftArray
 }
-
-getAnalyser().catch((e) => {
-  logger.error('Failed to initialize analyser:', e)
-  gtag('event', 'exception', {
-    description: 'Failed to initialize analyser: ' + errorString(e),
-    event_label: 'analyser exception',
-    fatal: true,
-  })
-})
