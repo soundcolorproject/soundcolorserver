@@ -38,5 +38,5 @@ export async function startAudio () {
 
 export async function stopAudio () {
   setSource(null)
-  await stopUserMedia()
+  stopUserMedia()
 }
