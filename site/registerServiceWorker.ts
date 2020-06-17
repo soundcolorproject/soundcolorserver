@@ -38,6 +38,33 @@ async function loadServiceWorker () {
   }
 }
 
+interface BeforeInstallPromptEvent extends Event {
+  platforms: string[]
+  userChoice: Promise<'accepted' | 'dismissed'>
+  prompt (): Promise<void>
+}
+
+let deferredPrompt: BeforeInstallPromptEvent | null = null
+let canPromptUser = false
+
+function handleUserChoice (ev: BeforeInstallPromptEvent) {
+  ev.userChoice.then(choice => {
+    if (choice === 'accepted') {
+      logger.info('User installed the app')
+      gtag('event', 'install_accepted', {
+        event_label: 'install:accepted',
+      })
+    } else {
+      logger.info('User did not install the app')
+      gtag('event', 'install_declined', {
+        event_label: 'install:declined',
+      })
+    }
+  }).catch(err => {
+    logger.warn('Something went wrong while trying to install the app:', err)
+  })
+}
+
 export function registerServiceWorker () {
   if ('serviceWorker' in navigator) {
     renderStateStore.pushSubscriptionState = 'pending service worker'
@@ -46,6 +73,20 @@ export function registerServiceWorker () {
         logger.error('Something went wrong wile registering the service worker:', err)
         renderStateStore.serviceWorkerState = 'failed'
       })
+    })
+    window.addEventListener('beforeinstallprompt', (ev: BeforeInstallPromptEvent) => {
+      deferredPrompt = ev
+      if (!canPromptUser) {
+        deferredPrompt.preventDefault()
+        setTimeout(() => {
+          canPromptUser = true
+          // tslint:disable-next-line: no-floating-promises
+          ev.prompt()
+          handleUserChoice(ev)
+        }, 10000)
+      } else {
+        handleUserChoice(ev)
+      }
     })
   } else {
     renderStateStore.serviceWorkerState = 'not supported'
