@@ -46,7 +46,7 @@ export const styleRules = (dev: boolean, onlyTypes = false): webpack.RuleSetRule
       },
     ].filter(l => l),
   },
-  onlyTypes ? null : {
+  onlyTypes ? null as any : {
     test: /\.css$/,
     include: /node_modules/,
     use: [
