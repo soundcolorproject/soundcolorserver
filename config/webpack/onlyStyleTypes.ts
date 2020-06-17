@@ -6,7 +6,7 @@ import * as glob from 'glob'
 // This has to be done because there aren't typings for disable-output-webpack-plugin
 const DisableOutputWebpackPlugin = require('disable-output-webpack-plugin')
 
-import { styleRule } from './styles'
+import { styleRules } from './styles'
 
 function createOnlyStylesConfig (): webpack.Configuration {
   return {
@@ -24,7 +24,7 @@ function createOnlyStylesConfig (): webpack.Configuration {
     },
     module: {
       rules: [
-        styleRule(true, true),
+        ...styleRules(true, true),
       ],
     },
     plugins: [

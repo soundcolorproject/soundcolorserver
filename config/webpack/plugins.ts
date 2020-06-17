@@ -6,6 +6,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import * as CopyWebpackPlugin from 'copy-webpack-plugin'
+import { InjectManifest } from 'workbox-webpack-plugin'
 import { WatchMissingNodeModulesPlugin } from './WatchMissingNodeModulesPlugin'
 
 import { Constants } from './constants'
@@ -30,6 +31,13 @@ export function buildPlugins (dev: boolean, constants: Constants) {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new InjectManifest({
+      swSrc: path.join(__dirname, '../../site/sw.ts'),
+      swDest: 'sw.js',
+      maximumFileSizeToCacheInBytes: 10000000,
+      additionalManifestEntries: [
+      ],
+    }),
   ]
 
   if (dev) {

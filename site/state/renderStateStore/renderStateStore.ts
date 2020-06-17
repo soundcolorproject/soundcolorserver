@@ -15,7 +15,23 @@ export interface RenderStateProp {
   renderState: RenderStateStore
 }
 
+export type ServiceWorkerState =
+  | 'checking for capability'
+  | 'not supported'
+  | 'installing'
+  | 'active'
+  | 'failed'
+
+export type PushSubscriptionState =
+  | 'no service worker'
+  | 'pending service worker'
+  | 'awaiting request'
+  | 'subscribed'
+  | 'rejected'
+
 export const renderStateStore = observable({
+  serviceWorkerState: 'checking for capability' as ServiceWorkerState,
+  pushSubscriptionState: 'no service worker' as PushSubscriptionState,
   wakeLock: null as WakeLockSentinel | null,
   showText: true,
   showColors: false,
@@ -80,7 +96,7 @@ export const toggleFullscreen = action(function toggleFullscreen (
       document.exitFullscreen().catch((e) => {
         logger.error('Could not exit fullscreen mode:', e)
         gtag('event', 'exception', {
-          description: 'Failed to exit fullscreen: ' + errorString(err),
+          description: 'Failed to exit fullscreen: ' + errorString(e),
           event_label: 'fullscreen exit exception',
         })
       })
