@@ -10,7 +10,7 @@ import { styleRules } from './styles'
 import { buildConstants } from './constants'
 import { buildPlugins } from './plugins'
 
-function createConfig ({ prod = false } = {}): webpack.Configuration & { devServer: { [k: string]: any } } {
+function createConfig ({ prod = false, appMode = false } = {}): webpack.Configuration & { devServer: { [k: string]: any } } {
   const dev = !prod
   const constants = buildConstants(dev)
 
@@ -87,7 +87,7 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
         },
       ],
     },
-    plugins: buildPlugins(dev, constants),
+    plugins: buildPlugins(dev, appMode, constants),
     performance: {
       hints: dev ? false : 'warning',
     },

@@ -74,6 +74,9 @@ export async function promptInstall () {
 }
 
 export function registerServiceWorker () {
+  if (__APP_MODE__) {
+    return
+  }
   if ('serviceWorker' in navigator) {
     renderStateStore.pushSubscriptionState = 'pending service worker'
     window.addEventListener('load', () => {

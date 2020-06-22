@@ -6,6 +6,7 @@ declare const __REMOTE_API__: boolean
 declare const __LOG_LEVEL__: 'debug' | 'info' | 'log' | 'warn' | 'error' | 'fatal' | 'none'
 declare const __DEV__: boolean
 declare const __BUILD_VERSION__: string
+declare const __APP_MODE__: boolean
 
 declare module '*.webm' {
   const result: string

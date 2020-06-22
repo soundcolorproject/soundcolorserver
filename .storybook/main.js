@@ -6,7 +6,7 @@ require('ts-node').register({
 })
 
 const origConfig = require('../config/webpack').default()
-const { definePlugin } = require('../config/webpack/plugins')
+const { buildDefinePlugin } = require('../config/webpack/plugins')
 
 const IS_BUILD = process.env.BUILD === 'true'
 
@@ -57,7 +57,7 @@ module.exports = {
       },
       plugins: [
         ...config.plugins,
-        definePlugin,
+        buildDefinePlugin(),
       ],
     }
 

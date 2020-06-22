@@ -27,6 +27,7 @@ try {
 }
 
 export const config = {
+  standaloneApp: false,
   logLevel: getLogLevel(),
   port: process.env.PORT ? parseInt(process.env.PORT, 10) : 9000,
   dev: process.env.DEV === 'true',

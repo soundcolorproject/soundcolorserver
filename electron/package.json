@@ -1,0 +1,33 @@
+{
+  "name": "soundcolorserver",
+  "version": "0.0.1",
+  "description": "The application for using sound to drive color changing lights",
+  "main": "electron/index.js",
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongodb": "^3.5.5",
+    "node-cache": "^5.1.0",
+    "node-hue-api": "^4.0.5",
+    "nodemailer": "^6.4.6"
+  },
+  "devDependencies": {
+    "electron": "9.0.4"
+  },
+  "build": {
+    "appId": "com.soundcolorproject",
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.entertainment"
+    },
+    "directories": {
+      "output": "../apps",
+      "buildResources": "resources"
+    }
+  }
+}

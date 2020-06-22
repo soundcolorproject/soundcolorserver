@@ -1,4 +1,5 @@
 
+import 'react-hot-loader'
 import './registerGtag'
 import { registerServiceWorker } from './registerServiceWorker'
 registerServiceWorker()

@@ -2,19 +2,25 @@
   "name": "soundcolorserver",
   "version": "0.0.1",
   "description": "The server for using sound to drive color changing lights",
-  "main": "dist/server/index.js",
+  "main": "electron/dev.js",
   "private": true,
   "scripts": {
+    "preversion": "npm run check",
+    "postversion": "run-s version:*",
+    "version:app": "cd electron && npm version from-git",
+    "version:build": "npm run build",
+    "version:apps": "npm run pack && npm run dist",
     "start": "node dist/server/index.js",
     "start:local": "DEV=true node dist/server/index.js",
     "dev-remote": "USE_REMOTE_API=true npm run dev",
     "dev-sudo": "sudo --preserve-env=PATH npm run dev-sudo:run",
     "dev-sudo:run": "LOCAL_SSL=true URL='https://soundcolor.local/' npm run dev",
     "dev": "run-p dev:watch dev:open",
+    "electron": "electron --inspect=32123 .",
     "dev:watch": "node --inspect=32123 server/dev.js",
     "dev:open": "npm run dev:open:wait; open-cli \"${URL:-http://localhost:${PORT:-9000}/}\"",
     "dev:open:wait": "bash -c 'while ! curl -k \"${URL:-http://localhost:${PORT:-9000}/}\" --fail &>/dev/null; do sleep 1; done'",
-    "prebuild": "rm -rf dist",
+    "prebuild": "rm -rf dist apps",
     "watch:css-types": "nodemon --config nodemon.css-types.json",
     "build": "run-s build:*",
     "build:server": "tsc -p ./tsconfig.server.json",
@@ -22,6 +28,10 @@
     "build:site": "NODE_ENV='production' webpack-cli --config ./config/webpack/index.ts --env.prod",
     "build:storybook": "BUILD=true build-storybook && mv storybook-static dist/public/storybook",
     "build:static": "cp -r static dist",
+    "build:electron-static": "cp -r electron/static dist/electron && cp electron/resources dist && cp electron/package.json dist && cp package-lock.json dist",
+    "build:cleanup": "rm -rf dist/config",
+    "pack": "cd dist && electron-builder --dir",
+    "dist": "cd dist && electron-builder",
     "lint": "run-s lint:*",
     "lint:ts": "tslint --project .",
     "lint:glsl": "node ./lint-glsl.js",
@@ -41,9 +51,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@types/workbox-sw": "^4.3.1",
-    "@types/workbox-webpack-plugin": "^5.1.1",
-    "@types/yeoman-generator": "^3.1.4",
     "ansi-colors": "^4.1.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
@@ -52,9 +59,7 @@
     "mongodb": "^3.5.5",
     "node-cache": "^5.1.0",
     "node-hue-api": "^4.0.5",
-    "nodemailer": "^6.4.6",
-    "workbox-webpack-plugin": "^5.1.3",
-    "yeoman-generator": "^4.11.0"
+    "nodemailer": "^6.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -85,7 +90,7 @@
     "@types/jest": "^25.2.1",
     "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/mongodb": "^3.5.5",
-    "@types/node": "^13.9.8",
+    "@types/node": "^12.0.12",
     "@types/nodemailer": "^6.4.0",
     "@types/optimize-css-assets-webpack-plugin": "^5.0.1",
     "@types/reach__router": "^1.3.4",
@@ -95,6 +100,9 @@
     "@types/webpack": "^4.41.10",
     "@types/webpack-dev-middleware": "^3.7.0",
     "@types/webpack-hot-middleware": "^2.25.0",
+    "@types/workbox-sw": "^4.3.1",
+    "@types/workbox-webpack-plugin": "^5.1.1",
+    "@types/yeoman-generator": "^3.1.4",
     "autoprefixer": "^9.7.5",
     "babel-jest": "^25.2.6",
     "babel-loader": "^8.1.0",
@@ -106,6 +114,8 @@
     "css-vars-ponyfill": "^2.2.1",
     "disable-output-webpack-plugin": "^1.0.1",
     "dotenv": "^8.2.0",
+    "electron": "9.0.4",
+    "electron-builder": "^22.7.0",
     "enzyme-to-json": "^3.4.4",
     "express-http-proxy": "^1.6.0",
     "file-loader": "^6.0.0",
@@ -155,6 +165,14 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
+    "workbox-webpack-plugin": "^5.1.3",
+    "yeoman-generator": "^4.11.0",
     "yo": "^3.1.1"
+  },
+  "build": {
+    "appId": "com.soundcolorproject",
+    "mac": {
+      "category": "public.app-category.entertainment"
+    }
   }
 }

@@ -10,38 +10,42 @@ import { webpackMiddleware, webpackHotMiddleware, html5Fallback } from './middle
 import { hstsMiddleware } from './middleware/hsts'
 import { storybookMiddleware } from './middleware/storybook'
 
-export const app = express()
+export function buildApp () {
+  const app = express()
 
-// express configuration
-app.enable('trust proxy')
-app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
+  // express configuration
+  app.enable('trust proxy')
+  app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal'])
 
-// middlewares
-app.use(hstsMiddleware)
-app.use(compression())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-app.use(cookieParser())
-app.use(sessionMiddleware)
+  // middlewares
+  app.use(hstsMiddleware)
+  app.use(compression())
+  app.use(express.urlencoded({ extended: true }))
+  app.use(express.json())
+  app.use(cookieParser())
+  app.use(sessionMiddleware)
 
-// application router (api)
-app.use(router)
+  // application router (api)
+  app.use(router)
 
-// webpack
-app.use(webpackMiddleware())
-app.use(webpackHotMiddleware())
+  // webpack
+  app.use(webpackMiddleware())
+  app.use(webpackHotMiddleware())
 
-// storybook
-app.use(storybookMiddleware())
+  // storybook
+  app.use(storybookMiddleware())
 
-// static assets
-app.use(express.static(path.join(__dirname, '../static'), {
-  etag: true,
-  lastModified: true,
-}))
+  // static assets
+  app.use(express.static(path.join(__dirname, '../static'), {
+    etag: true,
+    lastModified: true,
+  }))
 
-// html5 fallback routing
-app.use(html5Fallback())
+  // html5 fallback routing
+  app.use(html5Fallback())
 
-// error handler
-app.use(errorHandler)
+  // error handler
+  app.use(errorHandler)
+
+  return app
+}

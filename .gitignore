@@ -4,6 +4,7 @@ node_modules
 node_modules.old
 
 # built
+/apps
 /dist
 /storybook-static
 *.pcss.d.ts
