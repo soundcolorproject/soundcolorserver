@@ -28,7 +28,7 @@
     "build:site": "NODE_ENV='production' webpack-cli --config ./config/webpack/index.ts --env.prod",
     "build:storybook": "BUILD=true build-storybook && mv storybook-static dist/public/storybook",
     "build:static": "cp -r static dist",
-    "build:electron-static": "cp -r electron/static dist/electron && cp electron/resources dist && cp electron/package.json dist && cp package-lock.json dist",
+    "build:electron-static": "cp -r electron/static dist/electron && cp -r electron/resources dist && cp electron/package.json dist && cp package-lock.json dist",
     "build:cleanup": "rm -rf dist/config",
     "pack": "cd dist && electron-builder --dir",
     "dist": "cd dist && electron-builder",
