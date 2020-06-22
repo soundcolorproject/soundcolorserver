@@ -13,7 +13,6 @@ function getCompiler () {
     throw compilerError
   } else if (!compiler) {
     try {
-      console.info('appMode?', config.standaloneApp)
       const webpack = require('webpack') as typeof wp
       compiler = webpack(require('../../config/webpack').default({ appMode: config.standaloneApp }))
       // tslint:disable-next-line: no-console

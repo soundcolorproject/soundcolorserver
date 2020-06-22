@@ -11,8 +11,6 @@ import { config } from './config'
 import { FatalError, FatalErrorCode } from './errors/FatalError'
 import { initDb } from './initDb'
 
-
-
 /**
  * generates a random port number between 5000 - 49999
  */
