@@ -45,6 +45,13 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
     private _shader?: BuiltProgramWithUniforms<typeof COMMON_UNIFORMS, CommonMeta>
     private _noop: any
 
+    componentDidMount () {
+      const { renderState } = this.props
+      if (renderState.showColors) {
+        this.start()
+      }
+    }
+
     componentDidUpdate (prevProps: ShaderCanvasProps) {
       const { shaderName = DEFAULT_SHADER, renderState } = this.props
       if (this._gl && shaderName !== prevProps.shaderName) {
@@ -175,6 +182,8 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
     render () {
       const { id, className, renderState } = this.props
 
+      // We have to reference renderState.showColors during render,
+      // otherwise the component won't be re-rendered when the value changes
       this._noop = renderState.showColors
 
       return (
