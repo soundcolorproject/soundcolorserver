@@ -4,6 +4,11 @@ declare const __LOG_LEVEL__: 'debug' | 'info' | 'log' | 'warn' | 'error' | 'fata
 declare const __DEV__: boolean
 declare const __BUILD_VERSION__: string
 
+declare module '*.png' {
+  const result: string
+  export default result
+}
+
 declare module '*.svg' {
   const result: any
   export = result

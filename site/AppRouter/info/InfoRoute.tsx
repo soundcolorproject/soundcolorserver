@@ -10,7 +10,16 @@ import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
 
 import {
   infoBody,
+  infoHeader,
+  headerBackdrop,
+  headerPadding,
   nav,
+  buttonLink,
+  logoWrapper,
+  logo,
+  headerText,
+
+
   header,
   colorPattern,
   patternTitle,
@@ -22,6 +31,8 @@ import {
   footer,
 } from './info.pcss'
 import { Feedback } from '../../containers/Feedback'
+
+import headerBackdropImage from './header-backdrop.png'
 
 export interface OwnProps extends RouteComponentProps {
 }
@@ -82,15 +93,23 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
       return (
         <div className={infoBody}>
 
-          <div className={nav}>
-            <Logo />
-            <Link to='/' className='gt-mobile'>Try the Sound Color System</Link>
-            <Link to='/' className='lt-mobile'>Try It Now</Link>
-          </div>
+          <div className={infoHeader}>
+            <div className={headerBackdrop}>
+              <img src={headerBackdropImage} />
+            </div>
+            <div className={headerPadding}>
+              <div className={nav}>
+                <Link to='/' className={logoWrapper}>
+                  <Logo className={logo} />
+                  <span className='gt-mobile'>Sound Color Project</span>
+                </Link>
+                <Link to='/' className={buttonLink}>Explore SOVIS</Link>
+              </div>
 
-          <div className={header}>
-            <h1>Exploring accessibility to sound through color, light, and texture.</h1>
-            <h2>Offering an opportunity to experience the sound spectrum visually.</h2>
+              <div className={header}>
+                <h1 className={headerText}>Exploring the relationships between audible and visual spectrums.</h1>
+              </div>
+            </div>
           </div>
 
           {

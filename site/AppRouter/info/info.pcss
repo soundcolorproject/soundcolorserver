@@ -3,16 +3,122 @@
 
 .info-body {
     background: var(--grey-05);
-    padding: 40px;
     height: auto;
     line-height: 1.6;
     font-weight: 600;
+    color: var(--grey-80);
 
-    * {
-        color: var(--grey-80);
+    .info-header {
+        color: white;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        background: red;
+        flex-direction: row;
+        align-items: stretch;
+
+        @mixin breakpoint laptop, min {
+            height: 50vw;
+        }
+
+        @mixin breakpoint laptop {
+            height: smoothSize(mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop) / 2, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
+        }
+
+        @mixin breakpoint mobile {
+            height: 100vw;
+        }
     }
 
-    a, button {
+    .header-backdrop {
+        z-index: -1;
+        position: absolute;
+        display: flex;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > * {
+            flex: 1;
+            object-fit: cover;
+            height: 100%;
+            min-width: 100%;
+        }
+    }
+
+    .header-padding {
+        flex-grow: 1;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 64px;
+    }
+
+    .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+
+        .logo {
+            width: 19px;
+            height: 19px;
+            margin-right: 16px;
+        }
+    }
+
+    .button-link {
+        color: var(--black);
+        background: white;
+        padding: 10px 24px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .header {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-text {
+        line-height: 10vw;
+        font-weight: 500;
+        text-align: center;
+
+        @mixin breakpoint laptop, min {
+            font-size: 3.33333vw;
+            line-height: 3.88888vw;
+            max-width: 42vw;
+        }
+
+        @mixin breakpoint laptop {
+            font-size: smoothSize(36, 34.13333, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
+            line-height: smoothSize(48, 39.82222, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
+            max-width: smoothSize(416, 430, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
+        }
+
+        @mixin breakpoint mobile {
+            font-size: 7.5vw;
+            line-height: 10vw;
+        }
+    }
+
+    /* a, button {
         color: var(--grey-80);
         background: var(--grey-10);
         box-sizing: border-box;
@@ -37,14 +143,7 @@
             background: var(--grey-10);
             cursor: not-allowed;
         }
-    }
-
-    h1 {
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: 0;
-        text-transform: none;
-    }
+    } */
 
     h2 {
         font-size: 13px;
@@ -57,30 +156,9 @@
         font-weight: 600;
     }
 
-    .nav {
-        margin-top: 16px;
-        display: flex;
-        justify-content: space-between;
-
-        a {
-            color: var(--white);
-            background: var(--grey-80);
-            border-color: transparent;
-
-            &:hover {
-                background: var(--grey-70);
-            }
-
-            &:active {
-                background: var(--grey-60);
-            }
-        }
-    }
-
-    .header, .section, .footer {
+    .section, .footer {
         max-width: 344px;
         text-align: center;
-        margin: 144px auto;
 
         @mixin breakpoint mobile {
             margin: 104px auto;
