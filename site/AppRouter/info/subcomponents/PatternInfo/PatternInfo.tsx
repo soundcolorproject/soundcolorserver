@@ -4,19 +4,17 @@ import {
   patternInfo,
   patternDescription,
   buttonWrapper,
-  patternButton,
 } from './patternInfo.pcss'
 import { PatternName, PatternsStore } from '../../../../state/patternsStore'
-import { getContrastingColor } from '../../../../pcss-functions'
+import { LinkButton } from '../LinkButton'
 
 export interface PatternInfoProps {
   pattern: PatternsStore['patternData'][PatternName]
-  setPattern: () => void
+  setPattern: (ev: React.MouseEvent<HTMLAnchorElement>) => void
 }
 
 export function PatternInfo ({ pattern, setPattern }: PatternInfoProps) {
   const buttonBackground = pattern.colors.C
-  const buttonColor = getContrastingColor(buttonBackground)
   return (
     <div className={patternInfo}>
       <h3>
@@ -26,12 +24,11 @@ export function PatternInfo ({ pattern, setPattern }: PatternInfoProps) {
         {pattern.description}
       </div>
       <div className={buttonWrapper}>
-        <button
-          type='button'
+        <LinkButton
+          to='/'
           onClick={setPattern}
-          className={patternButton}
-          style={{ backgroundColor: buttonBackground.toString(), color: buttonColor }}
-        >Explore SOVIS with {pattern.label}</button>
+          color={buttonBackground}
+        >Explore SOVIS with {pattern.label}</LinkButton>
       </div>
     </div>
   )

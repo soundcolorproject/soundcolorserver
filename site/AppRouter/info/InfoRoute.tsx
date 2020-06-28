@@ -45,7 +45,10 @@ const patternColors = {
 export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
   ({ patterns, renderState }) => ({ patterns, renderState }),
   class InfoRoute extends React.Component<InfoRouteProps> {
-    setPattern = (newPattern: PatternName) => () => {
+    setPattern = (newPattern: PatternName) => (ev: React.MouseEvent<HTMLAnchorElement>) => {
+      if (ev.metaKey || ev.ctrlKey) {
+        ev.preventDefault()
+      }
       const { patterns, renderState } = this.props
       patterns.currentPattern = newPattern
       if (!renderState.showColors) {
