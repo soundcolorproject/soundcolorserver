@@ -1,38 +1,21 @@
 
 import * as React from 'react'
-import { Link, RouteComponentProps, navigate } from '@reach/router'
+import { RouteComponentProps, navigate } from '@reach/router'
 
-import { PatternBar } from '../../containers/PatternBar'
-import { Logo } from '../../components/Logo/Logo'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { PatternName, PatternsProp } from '../../state/patternsStore'
 import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
 
-import {
-  infoBody,
-  infoHeader,
-  headerBackdrop,
-  headerPadding,
-  nav,
-  buttonLink,
-  logoWrapper,
-  logo,
-  headerText,
+import { infoBody, subsection, footer, list, linkWrapper, link } from './info.pcss'
 
+import { InfoHeader } from './subcomponents/InfoHeader'
+import { InfoSection } from './subcomponents/InfoSection'
 
-  header,
-  colorPattern,
-  patternTitle,
-  patternHighlight,
-  patternDescription,
-  section,
-  divider,
-  origins,
-  footer,
-} from './info.pcss'
-import { Feedback } from '../../containers/Feedback'
-
-import headerBackdropImage from './header-backdrop.png'
+import hirshhornLogo from './hirshhorn.svg'
+import sequoiaLogo from './sequoia.svg'
+import { PatternInfo } from './subcomponents/PatternInfo'
+import { LinkButton } from './subcomponents/LinkButton'
+import { PatreonLink } from '../../components/PatreonLink'
 
 export interface OwnProps extends RouteComponentProps {
 }
@@ -71,93 +54,146 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
       navigate('/').catch()
     }
 
-    renderPattern = (name: PatternName) => {
-      const pattern = this.props.patterns.patternData[name]
-      return (
-        <div key={name} className={colorPattern}>
-          <div className={patternTitle}>
-            <div className={patternHighlight} style={{ background: patternColors[name] }} />
-            <span>Color Pattern</span>
-            <p>{pattern.label}</p>
-          </div>
-          <div className={patternDescription}>
-            <PatternBar patternName={name} />
-            <p>{pattern.description}</p>
-            <button type='button' onClick={this.setPattern(name)}>Start with {pattern.label}</button>
-          </div>
-        </div>
-      )
-    }
-
     render () {
+      const { patternData } = this.props.patterns
       return (
         <div className={infoBody}>
+          <InfoHeader />
 
-          <div className={infoHeader}>
-            <div className={headerBackdrop}>
-              <img src={headerBackdropImage} />
+          <InfoSection
+            title='about'
+            spacerColor='#F6D70B'
+          >
+            <p>The Sound Color Project began as a way to find ways to provide accessibility to music through visual attributes such as light, color, and texture.</p>
+            <p>As the project evolves, it continues to move forward with the mission of exploring multisensory accessibility.</p>
+          </InfoSection>
+
+          <InfoSection
+            title='featured by'
+            spacerColor='#40C0AD'
+          >
+            <p style={{ textAlign: 'center' }}><img src={hirshhornLogo} /></p>
+            <p style={{ textAlign: 'center' }}><img src={sequoiaLogo} /></p>
+          </InfoSection>
+
+          <InfoSection
+            title='how sovis works'
+            spacerColor='#EC5F2D'
+          >
+            <p>The SOVIS product uses an audio input source — device microphone, USB audio interface, MIDI controller — to analyze frequency and volume. Using a defined color pattern and mapping audible to visual attributes, the frequency and volume are translated into color, light, and texture.</p>
+            <p>SOVIS can be installed as a Chrome desktop app which does not require a login, and never records or stores audio on any version. It is built on Javascript and utilized the Web Audio API.</p>
+            <p>There is an available executable for developers called SOVIS OS.</p>
+          </InfoSection>
+
+          <InfoSection
+            title='color patterns'
+            spacerColor='#9D32F5'
+          >
+            <p>Thorough research has helped us define a variety of ways to translate a sonic element into a visual one.</p>
+            {
+              patterns.map(name => (
+                <PatternInfo
+                  key={name}
+                  pattern={patternData[name]}
+                  setPattern={this.setPattern(name)}
+                />
+              ))
+            }
+          </InfoSection>
+
+          <InfoSection
+            title='features'
+            spacerColor='#40C070'
+          >
+            <div className={subsection}>
+              <h3>Philips Hue</h3>
+              Easily connect your Philips Hue lights to experience SOVIS in your space.
             </div>
-            <div className={headerPadding}>
-              <div className={nav}>
-                <Link to='/' className={logoWrapper}>
-                  <Logo className={logo} />
-                  <span className='gt-mobile'>Sound Color Project</span>
-                </Link>
-                <Link to='/' className={buttonLink}>Explore SOVIS</Link>
-              </div>
-
-              <div className={header}>
-                <h1 className={headerText}>Exploring the relationships between audible and visual spectrums.</h1>
-              </div>
+            <div className={subsection}>
+              <h3>Audio Inputs</h3>
+              Use your device microphone, USB audio interface (per track), or MIDI controller as a source for audio input.
             </div>
-          </div>
-
-          {
-            patterns.map(this.renderPattern)
-          }
-
-          <div className={section}>
-            <h1>Build with Sound Color Project</h1>
-            <div className={divider}></div>
-            <h2>We offer various builds of our software to be installed and used on different devices. (Coming soon)</h2>
-            <a href='https://github.com/soundcolorproject/soundcolorserver' target='_blank'>
-              <svg width='16' height='16' viewBox='0 0 16 16'>
-                <g clipPath='url(#clip0)'>
-                  <path fillRule='evenodd' clipRule='evenodd' d='M8 0.198853C3.58011 0.198853 0 3.77896 0 8.19885C0 11.7348 2.29343 14.7305 5.47084 15.7912C5.86863 15.8649 6.01596 15.6194 6.01596 15.4033C6.01596 15.2117 6.01105 14.7108 6.00614 14.0429C3.78146 14.5242 3.31001 12.9723 3.31001 12.9723C2.94659 12.0491 2.42112 11.7986 2.42112 11.7986C1.69429 11.3026 2.47514 11.3124 2.47514 11.3124C3.27563 11.3714 3.70288 12.1375 3.70288 12.1375C4.41498 13.3603 5.57397 13.0067 6.03069 12.8004C6.10436 12.2848 6.31062 11.9312 6.53653 11.7299C4.76366 11.5334 2.89748 10.8459 2.89748 7.78142C2.89748 6.90726 3.20688 6.19517 3.72253 5.63532C3.63904 5.42905 3.36403 4.61874 3.79619 3.51868C3.79619 3.51868 4.469 3.3026 5.99632 4.33882C6.63474 4.16202 7.31737 4.07362 8 4.06871C8.67772 4.07362 9.36525 4.16202 10.0037 4.33882C11.531 3.3026 12.2038 3.51868 12.2038 3.51868C12.6409 4.61874 12.3659 5.43397 12.2824 5.63532C12.7931 6.19517 13.1025 6.90726 13.1025 7.78142C13.1025 10.8557 11.2314 11.5285 9.44874 11.7299C9.73358 11.9754 9.99386 12.4665 9.99386 13.213C9.99386 14.2836 9.98404 15.143 9.98404 15.4082C9.98404 15.6243 10.1265 15.8698 10.5341 15.7912C13.7115 14.7305 16 11.7348 16 8.20376C16 3.77896 12.4199 0.198853 8 0.198853Z' fill='#191717' />
-                </g>
-                <defs>
-                  <clipPath id='clip0'>
-                    <rect y='0.198853' width='16' height='15.6022' fill='white' />
-                  </clipPath>
-                </defs>
-              </svg>
-              Sound Color Project on GitHub
-                </a>
-          </div>
-
-          <div className={section}>
-            <h1>Work With Us</h1>
-            <div className={divider}></div>
-            <h2>We believe in the strength of community and lifting one another up in solidarity of inclusion for all.</h2>
-            <h2>If you have a vision of how Sound Color Project could be used in your space, we would love to hear about it.</h2>
-            <Feedback />
-          </div>
-
-          <div className={section}>
-            <h1>Origins</h1>
-            <div className={divider}></div>
-            <div className={origins}>
-              <h2>Sound Color Project began as a way to offer people who are D/deaf or hard of hearing an opportunity to experience the feeling of music.</h2>
-              <h2>Like any form of art, there is not one defined interpretation, but an opportunity for each participant to visualize the music in their own way.</h2>
-              <h2>Using a device microphone, audio interface, or MIDI controller, sound waves are converted to color, through the translation based on different color patterns. Brightness, tone, and vibrance of light change according to volume, note, and frequency and are then customizable along with transition speed and the ability to see all colors in monochromacy.</h2>
-              <h2>The color patterns derive from research in how the audible spectrum translates to the visible spectrum through forms connecting to emotion, sprituality, and memory. Color is only visible with the presence of light. With different amounts of light and the dependence of surroundings, colors can appear differently. Since we all see these colors differently, an option to create a custom color pattern is made available.</h2>
+            <div className={subsection}>
+              <h3>Sound Details</h3>
+              Receive instant detailed feedback on your audio input including noise volume, tone volume, frequency, note, and cents flat.
             </div>
-          </div>
+            <div className={subsection}>
+              <h3>Fine Tune</h3>
+              Customize your visual experience with color, brightness, vibrance, texture, and more.
+            </div>
+            <div className={subsection}>
+              <h3>Keyboard Shortcuts</h3>
+              Navigate SOVIS with keyboard shortcuts to enable full screen display and quick customization.
+            </div>
+
+            <div className={subsection} style={{ textAlign: 'center' }}>
+              <LinkButton to='/' color='#1B2128'>Explore SOVIS</LinkButton>
+            </div>
+          </InfoSection>
+
+          <InfoSection
+            title='flexible &amp; divrese'
+            spacerColor='#F6AB0B'
+          >
+            <p>SOVIS can be displayed on your phone, computer monitor, TV, projector, and Philips Hue lights, making it easy to use for many applications.</p>
+            <ul className={list}>
+              <li>Music Performances</li>
+              <li>Yoga &amp; Meditative Practices</li>
+              <li>Chromotherapy Healing</li>
+              <li>Speech Visualization</li>
+              <li>Sound-to-Color Synesthesia Representation</li>
+            </ul>
+          </InfoSection>
+
+          <InfoSection
+            title='support'
+            spacerColor='#EC5F2D'
+          >
+            <p>For us, Sound Color Project is an experiment to make something new that challenges accessibility to feeling. We’re passionate about doing this, which means we put our own resources and plenty of effort into building something to share with the world.</p>
+            <p>To support us and this project, you can become a patron, which helps encourage us to keep going, knowing this means something to someone else too.</p>
+            <div className={linkWrapper}>
+              <PatreonLink />
+            </div>
+          </InfoSection>
+
+          <InfoSection
+            title='troubleshooting'
+            spacerColor='#EC472D'
+          >
+            <div className={subsection}>
+              <h3>Getting Started</h3>
+              To get started, launch SOVIS. If prompted by your browser, allow access to the device microphone. Hit play or select a color pattern. Then make noise and watch the colors and light change accordingly.
+            </div>
+            <div className={subsection}>
+              <h3>Mic Access</h3>
+              In order to make SOVIS work, you need to allow mic access via your browser. When you pause the system or use a different audio input source, the mic stops listening. Nothing is ever recorded or stored.
+            </div>
+            <div className={subsection}>
+              <h3>Browser Compatability</h3>
+              SOVIS only works in Chrome, Firefox, Brave, and all Chromium based browsers.
+            </div>
+            <div className={subsection}>
+              <h3>Updating Browser</h3>
+              If SOVIS is not working after allowing mic access in a Chromium based browser, please check to make sure your browser is updated to its latest version.
+            </div>
+          </InfoSection>
+
+          <InfoSection
+            title='contact'
+            spacerColor='#204ADA'
+          >
+            <p>The Sound Color Project is made by <a className={link} href='https://kgroat.dev' target='_blank'>Kevin Groat</a> and <a className={link} href='https://derektorsani.com/' target='_blank'>Derek Torsani</a>.</p>
+            <p>For any questions, issues, or ideas, please reach out to us.</p>
+            <div className={subsection} />
+            <div className={subsection}>
+              <h3>Email</h3>
+              <a className={link} href='mailto:info@soundcolorproject.com'>info@soundcolorproject.com</a>
+            </div>
+          </InfoSection>
 
           <div className={footer}>
-            <p>Sound Color Project © {new Date().getFullYear()}</p>
+            <div>Sound Color Project © {new Date().getFullYear()}</div>
           </div>
-
         </div>
       )
     }

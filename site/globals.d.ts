@@ -11,7 +11,7 @@ declare module '*.png' {
 
 declare module '*.svg' {
   const result: any
-  export = result
+  export default result
 }
 
 declare module '*.frag' {

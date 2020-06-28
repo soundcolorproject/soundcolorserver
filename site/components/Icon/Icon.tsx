@@ -4,19 +4,7 @@ import * as cn from 'classnames'
 
 import { icon } from './icon.pcss'
 
-import { IconName, iconOptions } from './iconOptions'
-
-export type IconSize = keyof typeof iconSizes
-
-export const iconSizes = {
-  xxs: 12,
-  xs: 16,
-  sm: 20,
-  med: 24,
-  lg: 28,
-  xl: 32,
-  xxl: 36,
-}
+import { IconSize, IconName, iconSizes, iconOptions, iconProperties, IconProperties, IconViewBox } from './iconOptions'
 
 export interface IconProps {
   name: IconName
@@ -26,16 +14,40 @@ export interface IconProps {
   style?: React.CSSProperties
 }
 
+function defaultSizeDetails (size: IconSize): IconProperties {
+  return ({
+    fullWidth: iconSizes[size],
+    fullHeight: iconSizes[size],
+    marginWidth: 0,
+    marginHeight: 0,
+  })
+}
+
+const defautViewBox: IconViewBox = {
+  viewWidth: 24,
+  viewHeight: 24,
+}
+
 export function Icon ({ name, color, size = 'med', className, style }: IconProps) {
+  const properties = iconProperties[name]
+  const sizeDetails = properties && properties[size] || defaultSizeDetails(size)
+  const viewBox = properties || defautViewBox
+
   return (
     <svg
       className={cn(icon, className)}
       xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 24 24'
+      viewBox={`0 0 ${viewBox.viewWidth} ${viewBox.viewHeight}`}
       fill={color}
-      width={iconSizes[size]}
-      height={iconSizes[size]}
-      style={style}
+      width={sizeDetails.fullWidth}
+      height={sizeDetails.fullHeight}
+      style={{
+        marginTop: -sizeDetails.marginHeight || undefined,
+        marginBottom: -sizeDetails.marginHeight || undefined,
+        marginLeft: -sizeDetails.marginWidth || undefined,
+        marginRight: -sizeDetails.marginWidth || undefined,
+        ...style,
+      }}
     >
       <use href={iconOptions[name]} fill={color} />
     </svg>

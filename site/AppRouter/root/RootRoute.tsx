@@ -179,11 +179,11 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
                 <HomeRow
                   selected={routing.panelRoute}
                   buttons={{
-                    info: 'info',
-                    palette: 'palette',
-                    home: 'music_note',
+                    palette: 'colors',
+                    settings: 'connections',
                     filters: 'tune',
-                    settings: 'settings',
+                    home: 'music_note',
+                    info: 'about',
                   }}
                   onChange={this.setPanelRoute}
                 />

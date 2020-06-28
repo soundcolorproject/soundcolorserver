@@ -65,6 +65,14 @@ function handleUserChoice (ev: BeforeInstallPromptEvent) {
   })
 }
 
+export async function promptInstall () {
+  if (deferredPrompt) {
+    await deferredPrompt.prompt()
+  }
+
+  deferredPrompt = null
+}
+
 export function registerServiceWorker () {
   if ('serviceWorker' in navigator) {
     renderStateStore.pushSubscriptionState = 'pending service worker'
@@ -78,12 +86,6 @@ export function registerServiceWorker () {
       deferredPrompt = ev
       if (!canPromptUser) {
         deferredPrompt.preventDefault()
-        setTimeout(() => {
-          canPromptUser = true
-          // tslint:disable-next-line: no-floating-promises
-          ev.prompt()
-          handleUserChoice(ev)
-        }, 10000)
       } else {
         handleUserChoice(ev)
       }

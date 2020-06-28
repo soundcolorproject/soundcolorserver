@@ -1,291 +1,69 @@
 
 @import '../../global-css/mixins.pcss';
 
+:root {
+  @mixin breakpoint laptop, min {
+    --info-text-width: 42vw;
+  }
+
+  @mixin breakpoint laptop {
+    --info-text-width: smoothSize(416, 430, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
+  }
+
+  @mixin breakpoint mobile {
+    --info-text-width: calc(100vw - 64px);
+  }
+}
+
 .info-body {
-    background: var(--grey-05);
-    height: auto;
-    line-height: 1.6;
+  background: var(--white);
+  height: auto;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--grey-80);
+
+  .subsection {
+    font-size: 14px;
+
+    + .subsection {
+      margin-top: 32px;
+    }
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 800;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .list {
+    padding-left: 1em;
+    font-weight: 800;
+  }
+
+  .link-wrapper {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .link {
+    font-size: 1em;
+    color: var(--black);
+    text-decoration: underline;
     font-weight: 600;
-    color: var(--grey-80);
+  }
 
-    .info-header {
-        color: white;
-        z-index: 1;
-        position: relative;
-        display: flex;
-        background: red;
-        flex-direction: row;
-        align-items: stretch;
-
-        @mixin breakpoint laptop, min {
-            height: 50vw;
-        }
-
-        @mixin breakpoint laptop {
-            height: smoothSize(mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop) / 2, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
-        }
-
-        @mixin breakpoint mobile {
-            height: 100vw;
-        }
-    }
-
-    .header-backdrop {
-        z-index: -1;
-        position: absolute;
-        display: flex;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        > * {
-            flex: 1;
-            object-fit: cover;
-            height: 100%;
-            min-width: 100%;
-        }
-    }
-
-    .header-padding {
-        flex-grow: 1;
-        padding: 32px;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 64px;
-    }
-
-    .logo-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        font-size: 14px;
-
-        .logo {
-            width: 19px;
-            height: 19px;
-            margin-right: 16px;
-        }
-    }
-
-    .button-link {
-        color: var(--black);
-        background: white;
-        padding: 10px 24px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: 800;
-    }
-
-    .header {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .header-text {
-        line-height: 10vw;
-        font-weight: 500;
-        text-align: center;
-
-        @mixin breakpoint laptop, min {
-            font-size: 3.33333vw;
-            line-height: 3.88888vw;
-            max-width: 42vw;
-        }
-
-        @mixin breakpoint laptop {
-            font-size: smoothSize(36, 34.13333, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
-            line-height: smoothSize(48, 39.82222, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
-            max-width: smoothSize(416, 430, mapGet($breakpointMap, mobile), mapGet($breakpointMap, laptop));
-        }
-
-        @mixin breakpoint mobile {
-            font-size: 7.5vw;
-            line-height: 10vw;
-        }
-    }
-
-    /* a, button {
-        color: var(--grey-80);
-        background: var(--grey-10);
-        box-sizing: border-box;
-        display: inline-block;
-        border-radius: 4px;
-        font-size: 11px;
-        font-weight: 700;
-        padding: 12px 20px;
-        height: 40px;
-        cursor: pointer;
-
-        &:hover {
-            background: var(--grey-20);
-            border-color: transparent;
-        }
-
-        &:active {
-            background: var(--grey-30);
-        }
-
-        &:disabled {
-            background: var(--grey-10);
-            cursor: not-allowed;
-        }
-    } */
-
-    h2 {
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--grey-60);
-    }
-
-    h3 {
-        font-size: 17px;
-        font-weight: 600;
-    }
-
-    .section, .footer {
-        max-width: 344px;
-        text-align: center;
-
-        @mixin breakpoint mobile {
-            margin: 104px auto;
-            text-align: left;
-            max-width: 480px;
-        }
-    }
-
-    .color-pattern {
-        display: flex;
-        max-width: 528px;
-        margin: 56px auto;
-
-        @mixin breakpoint minitab {
-            display: block;
-        }
-
-        .pattern-title {
-            width: 100%;
-            max-width: 192px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin-right: 48px;
-
-            @mixin breakpoint minitab {
-                max-width: 100%;
-                align-items: flex-start;
-                margin-bottom: 16px;
-            }
-
-            .pattern-highlight {
-                width: 58px;
-                height: 2px;
-                right: 0;
-                margin-bottom: 8px;
-            }
-
-            span {
-                font-size: 9px;
-                font-weight: 600;
-                color: var(--grey-60);
-            }
-
-            p {
-                font-size: 21px;
-                font-weight: 700;
-                color: var(--grey-80);
-                margin: 0;
-            }
-
-        }
-
-        .pattern-description {
-            width: 100%;
-            max-width: 288px;
-
-            @mixin breakpoint minitab {
-                max-width: 100%;
-            }
-
-            a {
-                margin-top: 8px;
-            }
-
-            p {
-                font-size: 11px;
-            }
-        }
-    }
-
-    .section {
-        a {
-            margin-top: 24px;
-            display: inline-flex;
-
-            svg {
-                padding-right: 8px;
-            }
-        }
-
-        .divider {
-            width: 16px;
-            height: 2px;
-            background: var(--grey-20);
-            margin: 24px auto 32px;
-
-            @mixin breakpoint mobile {
-                margin: 24px 0 32px;
-            }
-        }
-
-        input {
-            display: block;
-            width: 100%;
-            background: var(--white);
-            border: 1px solid var(--grey-10);
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 16px;
-            box-sizing: border-box;
-            font-weight: 500;
-        }
-
-        textarea {
-            display: block;
-            width: 100%;
-            background: var(--white);
-            border: 1px solid var(--grey-10);
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 16px;
-            resize: vertical;
-            min-height: 80px;
-            box-sizing: border-box;
-            font-weight: 500;
-        }
-    }
-
-    .origins {
-        text-align: left;
-    }
-
-    .footer {
-        p {
-            color: var(--grey-40);
-        }
-    }
-
+  .footer {
+    margin-top: 48px;
+    padding-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    line-height: 22px;
+  }
 }

@@ -68,6 +68,7 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
             ...styleRules(dev),
             {
               test: /\.svg$/,
+              include: /Icon\/svg/,
               exclude: /node_modules/,
               use: [
                 {
@@ -76,7 +77,7 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
               ],
             },
             {
-              exclude: /\.(ejs|js|jsx|mjs|ts|tsx|svg|html|json|css|pcss)$/,
+              exclude: /\.(ejs|js|jsx|mjs|ts|tsx|html|json|css|pcss)$/,
               loader: require.resolve('file-loader'),
               options: {
                 name: 'static/media/[name].[hash:8].[ext]',
