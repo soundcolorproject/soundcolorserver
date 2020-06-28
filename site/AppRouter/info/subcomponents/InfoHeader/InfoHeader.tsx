@@ -17,13 +17,28 @@ import {
 
 import { LinkButton } from '../LinkButton'
 import headerBackdropImage from './header-backdrop.png'
+import headerBackdropVideo from './header.webm'
 import { PatreonLink } from '../../../../components/PatreonLink'
+import { logger } from '../../../../../shared/logger'
 
 export function InfoHeader () {
+  const [showVideo, setShowVideo] = React.useState(false)
+  const videoRef = React.useRef<HTMLVideoElement>(null)
+  const videoLoaded = React.useMemo(() => (ev: React.SyntheticEvent<HTMLVideoElement>) => {
+    ev.currentTarget.play().then(() => {
+      setShowVideo(true)
+    }).catch(() => {
+      logger.warn('failed to start video')
+    })
+  }, [])
+
   return (
     <div className={infoHeader}>
       <div className={headerBackdrop}>
-          <img src={headerBackdropImage} />
+        <video hidden={!showVideo} ref={videoRef} muted loop onCanPlayThrough={videoLoaded}>
+          <source src={headerBackdropVideo} />
+        </video>
+        <img hidden={showVideo} src={headerBackdropImage} />
       </div>
       <div className={headerPadding}>
           <div className={nav}>
