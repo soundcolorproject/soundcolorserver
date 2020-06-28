@@ -1,4 +1,3 @@
-import { number } from "@storybook/addon-knobs"
 
 export type IconSize = keyof typeof iconSizes
 
