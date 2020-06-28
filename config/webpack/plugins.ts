@@ -35,6 +35,7 @@ export function buildPlugins (dev: boolean, constants: Constants) {
       swSrc: path.join(__dirname, '../../site/sw.ts'),
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 10000000,
+      exclude: [/\.webm$/],
       additionalManifestEntries: [
       ],
     }),
