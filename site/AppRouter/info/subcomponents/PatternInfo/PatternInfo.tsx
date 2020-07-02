@@ -14,6 +14,7 @@ export interface PatternInfoProps {
 }
 
 export function PatternInfo ({ pattern, setPattern }: PatternInfoProps) {
+  // TODO: use specific colors for each pattern
   const buttonBackground = pattern.colors.C
   return (
     <div className={patternInfo}>

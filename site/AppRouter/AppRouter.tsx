@@ -6,6 +6,7 @@ import { InfoRoute } from './info'
 import { ColorRenderer } from '../containers/ColorRenderer'
 
 export class AppRouter extends React.Component {
+  // TODO make info be at `/` and sovis be at `/sovis`
   render () {
     return (
       <div>

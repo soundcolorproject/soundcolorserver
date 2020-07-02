@@ -24,6 +24,7 @@ export function LinkButton ({ color, to, children, className, style: customStyle
     style.color = getContrastingColor(color)
   }
 
+  // TODO: Update hover/active styles
   return (
     <Link to={to} className={`${linkButton} ${className}`} onClick={onClick} style={style}>{children}</Link>
   )

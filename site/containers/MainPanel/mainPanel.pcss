@@ -1,0 +1,35 @@
+
+:root {
+  --main-panel-width: 320px;
+  --main-panel-round: 8px;
+  --main-panel-margin: 48px;
+  --main-panel-height: calc(100vh - var(--panel-layout-margin));
+
+  @mixin breakpoint mobile {
+    --main-panel-width: 100vw;
+    --main-panel-round: 0px;
+    --main-panel-margin: 0px;
+  }
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: row;
+
+  .navigation {
+    width: 100%;
+
+    *.mini {
+      width: 15%;
+    }
+  }
+
+  .panel {
+    flex: 1;
+    min-width: 0;
+
+    .panel-content {
+
+    }
+  }
+}
