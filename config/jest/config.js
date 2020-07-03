@@ -10,13 +10,13 @@ module.exports = {
     '!**/index.tsx',
     '!**/index.ts',
   ],
-  setupFiles: [
+  setupFilesAfterEnv: [
     '<rootDir>/config/jest/setup.js',
   ],
   testMatch: [
-    '<rootDir>/src/**/*.test.(j|t)s?(x)',
+    '<rootDir>/(site|server)/**/*.test.(j|t)s?(x)',
   ],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
+  // moduleNameMapper: {}
   testURL: 'http://localhost',
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
@@ -25,7 +25,7 @@ module.exports = {
     '^(?!.*\\.(js|jsx|css|json)$)': '<rootDir>/config/jest/fileTransform.js',
   },
   moduleDirectories: [
-    'node_modules', '<rootDir>/src'
+    'node_modules'
   ],
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
@@ -38,7 +38,10 @@ module.exports = {
     'json',
   ],
   globals: {
+    '__REMOTE_API__': true,
+    '__LOG_LEVEL__': 'debug',
     '__DEV__': true,
+    '__BUILD_VERSION__': 'development',
     'ts-jest': {
       tsConfig: require.resolve('../../tsconfig.test.json'),
     },

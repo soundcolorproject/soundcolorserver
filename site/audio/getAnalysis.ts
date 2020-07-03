@@ -1,5 +1,5 @@
 
-import { context } from './context'
+import { getContext } from './context'
 import { getFft, fftSize } from './analyzer'
 import { getNoteInformation, NoteInfo } from './getNoteInformation'
 import { patternsStore } from '../state/patternsStore'
@@ -109,7 +109,7 @@ function getStrongestValues (fft: Float32Array, minToCount: number) {
   fft.forEach(addIfHigher)
 
   logger.info('getStrongestValues output', strongest.map(({ idx, value }) => {
-    const frequency = idx * (context.sampleRate) / fftSize
+    const frequency = idx * (getContext().sampleRate) / fftSize
     return {
       frequency,
       dB: value,
@@ -121,7 +121,7 @@ function getStrongestValues (fft: Float32Array, minToCount: number) {
 
 function getTones (strengths: ToneStrength[]): ToneInfo[] {
   let tones = strengths.map(({ value, idx }) => {
-    const frequency = idx * (context.sampleRate) / fftSize
+    const frequency = idx * (getContext().sampleRate) / fftSize
 
     return {
       dB: value,

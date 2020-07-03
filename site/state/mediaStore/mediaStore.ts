@@ -50,6 +50,6 @@ if (navigator.mediaDevices) {
   }))
 }
 
-updateDevices().catch(e => {
-  logger.error('Failed to fetch media devices:', e)
-})
+// updateDevices().catch(e => {
+//   logger.error('Failed to fetch media devices:', e)
+// })

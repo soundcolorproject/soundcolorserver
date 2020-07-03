@@ -77,7 +77,7 @@ export class ApiStatusStore {
     } catch (error) {
       this._setLightGroupError(error)
       gtag('event', 'exception', {
-        description: 'Failed to fetch hue light groups: ' + errorString(e),
+        description: 'Failed to fetch hue light groups: ' + errorString(error),
         event_label: 'hue light group fetch exception',
       })
     }

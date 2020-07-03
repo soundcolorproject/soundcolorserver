@@ -19,3 +19,4 @@ uglify-cache
 # tooling
 /.vscode/*
 !/.vscode/*.example.json
+/coverage

@@ -5,6 +5,7 @@ import {
   panelLayout,
   layoutColumn,
   layoutSpacer,
+  panelWrapper,
   afterSpacer,
   layoutFooter,
 } from './panelLayout.pcss'
@@ -28,11 +29,13 @@ export function PanelLayout (props: PanelLayoutProps) {
           {inSpacer}
           <div className='lt-mobile grow center'>{above}</div>
         </div>
-        <div className={afterSpacer}>
-          {postSpacer}
-        </div>
-        <div className={layoutFooter}>
-          {footer}
+        <div className={panelWrapper}>
+          <div className={layoutFooter}>
+            {footer}
+          </div>
+          <div className={afterSpacer}>
+            {postSpacer}
+          </div>
         </div>
       </div>
     </div>

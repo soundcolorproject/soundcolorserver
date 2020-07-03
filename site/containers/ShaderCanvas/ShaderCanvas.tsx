@@ -7,14 +7,13 @@ import { RenderStateProp } from '../../state/renderStateStore'
 import { injectAndObserve } from '../../state/injectAndObserve'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
 import { toRgb } from '../../pcss-functions'
-
-import { backgroundColors } from './shaderCanvas.pcss'
-import { ShaderName, shaderNames } from './shaderName'
-import { BuiltProgramWithUniforms } from './helpers/buildProgram'
-import { COMMON_UNIFORMS, CommonMeta, CommonShaderBuilder } from './helpers/common'
 import { logger } from '../../../shared/logger'
 
-const requireShader = require.context('./shaders', true, /shader\.ts$/)
+import { backgroundColors } from './shaderCanvas.pcss'
+import { ShaderName, shaderNames, DEFAULT_SHADER } from './shaderName'
+import { BuiltProgramWithUniforms } from './helpers/buildProgram'
+import { COMMON_UNIFORMS, CommonMeta, CommonShaderBuilder } from './helpers/common'
+import { requireShader } from './requireShader'
 
 const shaderMap = new Map<ShaderName, CommonShaderBuilder>()
 shaderNames.forEach(name => {
@@ -34,7 +33,6 @@ type StateProps =
 
 export type ShaderCanvasProps = OwnProps & StateProps
 
-export const DEFAULT_SHADER: ShaderName = 'lights'
 export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
   ({ analysis, patterns, renderState }) => ({ analysis, patterns, renderState }),
   class ShaderCanvas extends React.PureComponent<ShaderCanvasProps> {

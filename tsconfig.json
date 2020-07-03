@@ -21,6 +21,7 @@
     "site"
   ],
   "exclude": [
+    "generators",
     "node_modules"
   ]
 }

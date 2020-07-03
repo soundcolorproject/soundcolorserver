@@ -1,5 +1,5 @@
 
-import { context } from './context'
+import { getContext } from './context'
 import { getAudioSource } from './microphoneSource'
 import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
@@ -17,7 +17,7 @@ export async function getAnalyser () {
       const source = prevSource || await getAudioSource()
       prevSource = source
 
-      analyser = context.createAnalyser()
+      analyser = getContext().createAnalyser()
       analyser.fftSize = fftSize
       analyser.smoothingTimeConstant = patternsStore.timeSmoothing
 

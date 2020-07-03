@@ -76,3 +76,5 @@ export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
     },
   },
 }
+
+export const DEFAULT_SHADER: ShaderName = 'lights'

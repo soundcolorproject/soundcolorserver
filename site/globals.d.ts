@@ -1,4 +1,6 @@
 
+///<reference types="gtag.js" />
+
 declare const __REMOTE_API__: boolean
 declare const __LOG_LEVEL__: 'debug' | 'info' | 'log' | 'warn' | 'error' | 'fatal' | 'none'
 declare const __DEV__: boolean
@@ -48,4 +50,12 @@ interface Navigator {
 declare const gtagPatched: typeof gtag
 interface Window {
   gtagPatched: typeof gtag
+}
+
+declare type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T[P] extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : DeepPartial<T[P]>
 }

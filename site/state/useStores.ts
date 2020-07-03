@@ -1,6 +1,7 @@
 
-import * as React from 'react'
-import { Provider } from 'mobx-react'
+import { useMemo } from 'react'
+
+import { logger } from '../../shared/logger'
 
 import { AnalysisProp, analysisStore } from './analysisStore'
 import { ApiStatusProp, apiStatusStore } from './apiStatusStore'
@@ -9,11 +10,7 @@ import { PatternsProp, patternsStore } from './patternsStore'
 import { RenderStateProp, renderStateStore } from './renderStateStore'
 import { RoutingProp, routingStore } from './routingStore'
 
-interface Props {
-  children?: React.ReactNode
-}
-
-export type MobxProviderProps =
+export type MobxStoresProps =
   & AnalysisProp
   & ApiStatusProp
   & MediaProp
@@ -21,19 +18,13 @@ export type MobxProviderProps =
   & RenderStateProp
   & RoutingProp
 
-const stores: MobxProviderProps = {
-  analysis: analysisStore,
-  apiStatus: apiStatusStore,
-  media: mediaStore,
-  patterns: patternsStore,
-  renderState: renderStateStore,
-  routing: routingStore,
-}
-
-export function MobxProvider ({ children }: Props) {
-  return (
-    <Provider {...stores}>
-      {children}
-    </Provider>
-  )
+export function useStores () {
+  return useMemo<MobxStoresProps>(() => Object.freeze({
+    analysis: analysisStore,
+    apiStatus: apiStatusStore,
+    media: mediaStore,
+    patterns: patternsStore,
+    renderState: renderStateStore,
+    routing: routingStore,
+  }), [])
 }

@@ -1,5 +1,5 @@
 
-import { context } from './context'
+import { getContext } from './context'
 import { getAnalyser } from './analyzer'
 import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
@@ -17,7 +17,7 @@ export async function getMiniAnalyser () {
       const source = prevSource || await getAnalyser()
       prevSource = source
 
-      analyser = context.createAnalyser()
+      analyser = getContext().createAnalyser()
       analyser.fftSize = fftSize
       analyser.smoothingTimeConstant = patternsStore.timeSmoothing
 

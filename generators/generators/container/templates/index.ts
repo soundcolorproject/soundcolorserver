@@ -1,0 +1,2 @@
+
+export { $UpperName } from './$UpperName'

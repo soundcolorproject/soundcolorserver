@@ -1,0 +1,11 @@
+{
+  "name": "generator-react",
+  "version": "1.0.0",
+  "private": true,
+  "author": "kgroat",
+  "license": "ISC",
+  "scripts": {
+    "postinstall": "make build",
+    "build": "$(cd .. && npm bin)/tsc"
+  }
+}

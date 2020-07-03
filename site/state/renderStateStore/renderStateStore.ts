@@ -2,7 +2,7 @@
 import { observable, action, reaction } from 'mobx'
 import { resume } from '../../audio/context'
 import { logger } from '../../../shared/logger'
-import { DEFAULT_SHADER, shaderNames } from '../../containers/ShaderCanvas'
+import { DEFAULT_SHADER } from '../../containers/ShaderCanvas/shaderName'
 
 import { patternsStore, PatternsStore } from '../patternsStore'
 import { startAnalysis, pauseAnalysis } from '../analysisStore'

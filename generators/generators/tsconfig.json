@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.site.json",
+  "compilerOptions": {
+    "lib": ["es2015", "es2016", "es2017", "esnext.asynciterable", "dom", "dom.iterable"],
+    "rootDir": "../..",
+    "baseUrl": ".",
+    "noEmit": true,
+    "types": [
+      "@testing-library/jest-dom",
+      "jest",
+      "node",
+      "yeoman-generator"
+    ],
+    "paths": {
+      "site/*": ["../../site/*"]
+    }
+  },
+  "include": [
+    "../_globals.d.ts",
+    "./**/templates/**/*"
+  ],
+  "exclude": []
+}
