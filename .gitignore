@@ -4,13 +4,13 @@ node_modules
 node_modules.old
 
 # built
-dist
+/dist
 *.pcss.d.ts
 
 # local config
-.env
-.npmrc
-local
+/.env
+/.npmrc
+/local
 
 # temporary
 tmp

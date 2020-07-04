@@ -57,6 +57,7 @@ interface PrintPositionOpts {
 }
 function printPositions ({ lines, unusedVariables, log }: PrintPositionOpts) {
   log(' === Some variables in the template seem to be unused === ')
+  log(new Error().stack?.split('\n').slice(3).join('\n'))
 
   lines.forEach((line, idx) => {
     const lineNumber = idx + 1

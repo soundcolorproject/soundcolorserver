@@ -3,3 +3,4 @@
 !*.d.ts
 !*.ts
 build
+!jakefile.js
