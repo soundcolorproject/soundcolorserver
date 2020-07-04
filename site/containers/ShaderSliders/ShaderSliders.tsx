@@ -4,7 +4,7 @@ import { action } from 'mobx'
 
 import { ClickableMenuOption } from '../../components/MenuOption'
 import { OverUnder } from '../../components/OverUnder'
-import { shaderInfo } from '../ShaderCanvas'
+import { shaderInfo } from '../ShaderCanvas/shaderName'
 import { BackOption } from '../BackOption'
 
 import { injectAndObserve } from '../../state/injectAndObserve'

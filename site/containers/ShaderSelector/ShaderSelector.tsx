@@ -7,7 +7,7 @@ import { RoutingProp } from '../../state/routingStore'
 import { MenuOption, ClickableMenuOption } from '../../components/MenuOption'
 
 import { BackOption } from '../BackOption'
-import { ShaderName, shaderNames, shaderInfo } from '../ShaderCanvas'
+import { ShaderName, shaderNames, shaderInfo } from '../ShaderCanvas/shaderName'
 
 import { shaderSelector } from './shaderSelector.pcss'
 

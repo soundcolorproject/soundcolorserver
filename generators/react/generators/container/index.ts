@@ -3,9 +3,9 @@ import * as Generator from 'yeoman-generator'
 import * as fs from 'fs'
 import * as path from 'path'
 
-import { createPrompts } from '../../helpers/createPrompts'
-import { runTemplate } from '../../helpers/runTemplate'
-import { fixSiteImports } from '../../helpers/fixSiteImports'
+import { createPrompts } from '../../../helpers/createPrompts'
+import { fixImports } from '../../../helpers/fixImports'
+import { runTemplate } from '../../../helpers/runTemplate'
 
 interface Answers {
   name: string
@@ -13,16 +13,16 @@ interface Answers {
 }
 
 const TEMPLATES_DIR = path.join(__dirname, 'templates')
-class ComponentGenerator extends Generator {
+class ContainerGenerator extends Generator {
   private static readonly prompts = createPrompts<Answers>({
     name: {
       type: 'input',
-      message: 'What would you like to name your component (should be CamelCase)?',
+      message: 'What would you like to name your container (should be CamelCase)?',
     },
     directory: {
       type: 'input',
-      message: 'Where should the component be generated?',
-      default: 'components',
+      message: 'Where should the container be generated?',
+      default: 'containers',
     },
   })
 
@@ -40,7 +40,7 @@ class ComponentGenerator extends Generator {
   }
 
   async promptUser () {
-    this._answers = await this.prompt(ComponentGenerator.prompts) as Answers
+    this._answers = await this.prompt(ContainerGenerator.prompts) as Answers
   }
 
   generateModule () {
@@ -73,15 +73,23 @@ class ComponentGenerator extends Generator {
     this.log(`${relativePath} generated!`)
   }
 
-  private _generateFiles (outputDir: string, relativePath: string, templateContext: any) {
+  private _generateFiles (outputDir: string, relativePath: string, variables: any) {
     this._templateDirFiles.forEach(templateFilePath => {
-      const templateStr = fs.readFileSync(templateFilePath).toString()
+      const template = fs.readFileSync(templateFilePath).toString()
 
-      const fileName = runTemplate(path.basename(templateFilePath), templateContext)
-      let fileContent = runTemplate(templateStr, templateContext)
+      const fileName = runTemplate({
+        template: path.basename(templateFilePath),
+        variables,
+        log: this.log,
+      })
+      let fileContent = runTemplate({
+        template,
+        variables,
+        log: this.log,
+      })
 
       if (/\.tsx?$/.test(fileName)) {
-        fileContent = fixSiteImports(fileContent, relativePath)
+        fileContent = fixImports(fileContent, relativePath)
       }
 
       fs.writeFileSync(
@@ -92,4 +100,4 @@ class ComponentGenerator extends Generator {
   }
 }
 
-export = ComponentGenerator
+export = ContainerGenerator

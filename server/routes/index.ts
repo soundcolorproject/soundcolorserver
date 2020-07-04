@@ -8,8 +8,6 @@ import { deleteRemoteCredentials } from '../db/remoteCredentials'
 
 export const router = Router()
 
-router.use('/api', apiRouter)
-
 if (config.remoteApi) {
   router.get('/login', asyncHandler(async (req, res) => {
     const api = await getApi(req.getSessionId())
@@ -25,3 +23,5 @@ if (config.remoteApi) {
     res.redirect('/')
   }))
 }
+
+router.use('/api', apiRouter)

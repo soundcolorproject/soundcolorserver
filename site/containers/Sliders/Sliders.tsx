@@ -13,7 +13,7 @@ import { RoutingProp } from '../../state/routingStore'
 import { sliders, content } from './sliders.pcss'
 import { Checkbox } from '../../components/Checkbox'
 import { Slider } from '../../components/Slider'
-import { shaderInfo } from '../ShaderCanvas'
+import { shaderInfo } from '../ShaderCanvas/shaderName'
 
 interface OwnProps {
   height?: number

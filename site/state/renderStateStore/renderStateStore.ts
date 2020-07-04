@@ -2,13 +2,13 @@
 import { observable, action, reaction } from 'mobx'
 import { resume } from '../../audio/context'
 import { logger } from '../../../shared/logger'
-import { DEFAULT_SHADER } from '../../containers/ShaderCanvas/shaderName'
 
 import { patternsStore, PatternsStore } from '../patternsStore'
 import { startAnalysis, pauseAnalysis } from '../analysisStore'
 import { errorString } from '../../../shared/errorHelpers'
 import { startAudio, stopAudio } from '../../audio'
 import { promptInstall } from '../../registerServiceWorker'
+import { ShaderName } from '../../containers/ShaderCanvas/shaderName'
 
 export type RenderStateStore = typeof renderStateStore
 
@@ -30,6 +30,7 @@ export type PushSubscriptionState =
   | 'subscribed'
   | 'rejected'
 
+const DEFAULT_SHADER = 'lights' as ShaderName
 export const renderStateStore = observable({
   serviceWorkerState: 'checking for capability' as ServiceWorkerState,
   pushSubscriptionState: 'no service worker' as PushSubscriptionState,
@@ -43,6 +44,7 @@ export const renderStateStore = observable({
   },
 })
 
+let installPrompted = false
 reaction(
   () => renderStateStore.showColors,
   async (show) => {
@@ -60,7 +62,10 @@ reaction(
           })
         })
       }
-      await promptInstall()
+      if (!installPrompted) {
+        await promptInstall()
+        installPrompted = true
+      }
     } else {
       pauseAnalysis()
       await stopAudio()

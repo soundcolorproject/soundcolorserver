@@ -1,6 +1,6 @@
 import { UniformMap, UniformSetter } from './buildUniformMap'
 import { BuiltProgramWithUniforms } from './buildProgram'
-import { ShaderName, shaderInfo } from '..'
+import { ShaderName, shaderInfo } from '../shaderName'
 import { renderStateStore } from '../../../state/renderStateStore'
 
 export interface CommonMeta {

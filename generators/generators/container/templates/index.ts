@@ -1,2 +1,0 @@
-
-export { $UpperName } from './$UpperName'

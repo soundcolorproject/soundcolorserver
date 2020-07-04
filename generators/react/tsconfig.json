@@ -9,7 +9,7 @@
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "..",
-    "baseUrl": "..",
+    "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -23,18 +23,15 @@
       "yeoman-generator"
     ],
     "paths": {
-      "site/*": ["site/*"]
+      "helpers/*": ["../helpers/*"]
     }
   },
   "include": [
     "_globals.d.ts",
-    "generators"
+    "generators",
+    "../helpers"
   ],
   "exclude": [
-    "../src",
-    "../node_modules",
-    "../cypress",
-    "../public",
     "generators/**/templates/**/*"
   ]
 }

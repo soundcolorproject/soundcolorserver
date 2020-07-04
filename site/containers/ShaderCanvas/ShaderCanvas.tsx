@@ -10,7 +10,7 @@ import { toRgb } from '../../pcss-functions'
 import { logger } from '../../../shared/logger'
 
 import { backgroundColors } from './shaderCanvas.pcss'
-import { ShaderName, shaderNames, DEFAULT_SHADER } from './shaderName'
+import { ShaderName, shaderNames } from './shaderName'
 import { BuiltProgramWithUniforms } from './helpers/buildProgram'
 import { COMMON_UNIFORMS, CommonMeta, CommonShaderBuilder } from './helpers/common'
 import { requireShader } from './requireShader'
@@ -23,7 +23,7 @@ shaderNames.forEach(name => {
 interface OwnProps {
   id?: string
   className?: string
-  shaderName?: ShaderName
+  shaderName: ShaderName
 }
 
 type StateProps =
@@ -51,7 +51,7 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
     }
 
     componentDidUpdate (prevProps: ShaderCanvasProps) {
-      const { shaderName = DEFAULT_SHADER, renderState } = this.props
+      const { shaderName, renderState } = this.props
       if (this._gl && shaderName !== prevProps.shaderName) {
         logger.info('Using shader:', shaderName)
         this._shader = shaderMap.get(shaderName)!(this._gl)
@@ -73,7 +73,7 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       }
 
       const gl = this._gl = canvas.getContext('webgl')!
-      this._shader = shaderMap.get(this.props.shaderName || DEFAULT_SHADER)!(gl)
+      this._shader = shaderMap.get(this.props.shaderName)!(gl)
       this._startTime = Date.now()
     }
 

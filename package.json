@@ -31,9 +31,10 @@
     "check-ci": "run-s lint build test verify-build-ci",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "generate:build": "cd generators && make build -s",
-    "generate:component": "npm run generate:build && yo react:component",
-    "generate:container": "npm run generate:build && yo react:container"
+    "build-generators": "run-p build-generators:*",
+    "build-generators:react": "cd generators/react && make build -s",
+    "generate:component": "npm run build-generators && yo react:component",
+    "generate:container": "npm run build-generators && yo react:container"
   },
   "license": "ISC",
   "dependencies": {
@@ -103,7 +104,7 @@
     "dotenv": "^8.2.0",
     "enzyme-to-json": "^3.4.4",
     "file-loader": "^6.0.0",
-    "generator-react": "file:generators",
+    "generator-react": "file:generators/react",
     "glob": "^7.1.6",
     "hot-module-replacement": "^3.0.3",
     "html-webpack-plugin": "^4.0.4",

@@ -1,11 +1,8 @@
 
 /// <reference lib="webworker" />
 
-import {} from './sw'
-
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js')
 
-// export default null
 declare var self: ServiceWorkerGlobalScope
 
 workbox.core.skipWaiting()
@@ -21,3 +18,7 @@ self.addEventListener('push', (event) => {
 })
 
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST)
+
+// This is necessary to put TS in module mode rather than ambient mode
+// Otherwise TS will start yelling about redefining `self` from the definition in `lib.dom`
+export default null

@@ -17,7 +17,12 @@ export interface RemainingVariable {
 
 const variableFinder = /(\$\w+)/g
 
-export function runTemplate (template: string, variables: VariableMap) {
+interface TemplateOptions {
+  template: string
+  variables: VariableMap
+  log: (message?: string, context?: any) => void
+}
+export function runTemplate ({ template, variables, log }: TemplateOptions) {
   let result = template
   Object.keys(variables).forEach(variable => {
     const value = variables[variable]
@@ -35,29 +40,38 @@ export function runTemplate (template: string, variables: VariableMap) {
   }
 
   if (unusedVariables.length > 0) {
-    printPositions(template.split('\n'), unusedVariables)
+    printPositions({
+      lines: template.split('\n'),
+      unusedVariables,
+      log,
+    })
   }
 
   return result
 }
 
-function printPositions (lines: string[], remainingVariables: string[]) {
-  console.warn(' === Some variables in the template seem to be unused === ')
+interface PrintPositionOpts {
+  lines: string[]
+  unusedVariables: string[]
+  log: (message?: string, context?: any) => void
+}
+function printPositions ({ lines, unusedVariables, log }: PrintPositionOpts) {
+  log(' === Some variables in the template seem to be unused === ')
 
   lines.forEach((line, idx) => {
     const lineNumber = idx + 1
-    remainingVariables.forEach(variable => {
+    unusedVariables.forEach(variable => {
       const linePosition = line.indexOf(variable)
       if (linePosition >= 0) {
-        console.warn(`Variable ${variable} unused on ${lineNumber}:${linePosition} --`)
-        console.warn(line)
-        console.warn(positionCaret(linePosition))
-        console.log()
+        log(`Variable ${variable} unused on ${lineNumber}:${linePosition} --`)
+        log(line)
+        log(positionCaret(linePosition))
+        log()
       }
     })
   })
 
-  console.log()
+  log()
 }
 
 function positionCaret (position: number): string {
