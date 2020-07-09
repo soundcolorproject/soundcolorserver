@@ -9,7 +9,6 @@ export interface PatreonLinkProps {
 }
 
 export function PatreonLink ({ className }: PatreonLinkProps) {
-  // TODO: Update hover/active styles
   return (
     <a className={`${patreonLink} ${className}`} href='https://www.patreon.com/soundcolorproject' target='_blank'>
       <Icon name='patreon' size='xs' className={icon} />

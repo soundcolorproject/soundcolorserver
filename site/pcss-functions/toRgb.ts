@@ -7,6 +7,7 @@ import { toSRgb, SRGBa } from './toSRgb'
 
 import { Color } from './types'
 import { HSVa } from './toHsv'
+import { printDigits } from '../helpers/numbers'
 
 export function toRgb (color: Color): RGBa {
   if (typeof color === 'string') {
@@ -28,6 +29,16 @@ export function toRgb (color: Color): RGBa {
   return RGBa.fromSRgb(toSRgb(color))
 }
 
+function toHex (num: number) {
+  num = Math.round(num)
+  let str = Math.max(0, Math.min(num, 255)).toString(16)
+  if (str.length === 1) {
+    return `0${str}`
+  } else {
+    return str
+  }
+}
+
 export class RGBa {
   readonly type = 'RGBa'
 
@@ -46,16 +57,31 @@ export class RGBa {
     return [this.r, this.g, this.b].map(mapper).concat(this.a) as [number, number, number, number]
   }
 
-  toString (): string {
-    return toSRgb(this).toString()
+  toString () {
+    if (this.a !== 1) {
+      const R = printDigits(this.r * 255, 2)
+      const G = printDigits(this.g * 255, 2)
+      const B = printDigits(this.b * 255, 2)
+      const a = printDigits(this.a, 4)
+      return `rgba(${R}, ${G}, ${B}, ${a})`
+    } else {
+      const R = toHex(this.r * 255)
+      const G = toHex(this.g * 255)
+      const B = toHex(this.b * 255)
+      return `#${R}${G}${B}`
+    }
   }
 
   valueOf () {
     return [this.r,this.g,this.b,this.a]
   }
 
+  clone () {
+    return new RGBa(this.r, this.g, this.b, this.a)
+  }
+
   static fromSRgb (orig: SRGBa) {
-    if (!(orig instanceof SRGBa)) {
+    if (orig.type !== 'SRGBa') {
       throw new Error('input to fromSRgb must be of type Srgba')
     }
 
@@ -68,7 +94,7 @@ export class RGBa {
   }
 
   static fromHSL (orig: HSLa) {
-    if (!(orig instanceof HSLa)) {
+    if (orig.type !== 'HSLa') {
       throw new Error('input to fromHSL must be of type HSLa')
     }
 

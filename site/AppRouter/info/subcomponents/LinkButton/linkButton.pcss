@@ -1,9 +1,18 @@
 
+:root {
+  --normal-background: var(--white);
+  --hover-background: var(--grey-20);
+}
+
 .link-button {
   color: var(--black);
-  background: var(--white);
+  background: var(--normal-background);
   padding: 10px 24px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 800;
+
+  &:hover {
+    background: var(--hover-background);
+  }
 }

@@ -1,13 +1,11 @@
 
-import { toRgb, RGBa } from './toRgb'
-import { toSRgb } from './toSRgb'
+import { toRgb } from './toRgb'
+import { toSRgb, SRGBa } from './toSRgb'
 
 import { Color } from './types'
 
 export function getLuminance (color: Color) {
-  if (!(color instanceof RGBa)) {
-    color = toRgb(toSRgb(color))
-  }
+  color = toRgb(new SRGBa(...toRgb(color).toArray()))
 
   return (
     0.2126 * color.r +

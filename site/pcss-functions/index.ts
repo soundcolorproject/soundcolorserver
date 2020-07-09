@@ -1,8 +1,10 @@
 
+export { darken } from './darken'
 export { getContrast } from './getContrast'
 export { getContrastingColor } from './getContrastingColor'
 export { getDefault } from './getDefault'
 export { getLuminance } from './getLuminance'
+export { lighten } from './lighten'
 export { makeCompliant } from './makeCompliant'
 export { mapGet } from './mapGet'
 export { ms } from './modularScale'
