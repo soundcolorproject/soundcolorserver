@@ -84,9 +84,9 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
             spacerColor='#EC5F2D'
           >
             <p>The SOVIS product uses an audio input source — device microphone, USB audio interface — to analyze frequency and volume. Using a defined color pattern and mapping audible to visual attributes, the frequency and volume are translated into color, light, and texture.</p>
-            {/* TODO: update this language */}
-            <p>SOVIS can be installed as a Chrome desktop app which does not require a login, and never records or stores audio on any version. It is built on Javascript and utilized the Web Audio API.</p>
-            {/* <p>There is an available executable for developers called SOVIS OS.</p> */}
+            <p>It is built on Javascript and utilizes the Web Audio API.  SOVIS never stores or transmits audio, but simply uses it to drive the color patterns seen on screen.</p>
+            <p>SOVIS can be installed as an app.  This will add an app icon on your home screen if on mobile, or create a browser-based application on a laptop or desktop.</p>
+            {/* <p>There is an available executable for developers called SOVIS for Desktop.</p> */}
           </InfoSection>
 
           <InfoSection
