@@ -48,7 +48,7 @@ export function InfoHeader () {
             </Link>
             <div className={buttons}>
               <PatreonLink className='gt-mobile' />
-              <LinkButton to='/' >Explore SOVIS</LinkButton>
+              <LinkButton to='/sovis' >Explore SOVIS</LinkButton>
             </div>
           </div>
 

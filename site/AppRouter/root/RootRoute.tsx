@@ -144,8 +144,8 @@ export const RootRoute = injectAndObserve<StateProps, OwnProps>(
         gtag('event', 'screen_view', {
           screen_name: 'info',
         })
-        this.props.navigate!('/info').catch(e => {
-          logger.error('Could not route to `/info`', e)
+        this.props.navigate!('/').catch(e => {
+          logger.error('Could not route to `/`', e)
         })
         return
       }

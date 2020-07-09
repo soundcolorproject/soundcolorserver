@@ -26,7 +26,7 @@ export function PatternInfo ({ pattern, setPattern }: PatternInfoProps) {
       </div>
       <div className={buttonWrapper}>
         <LinkButton
-          to='/'
+          to='/sovis'
           onClick={setPattern}
           color={buttonBackground}
         >Explore SOVIS with {pattern.label}</LinkButton>

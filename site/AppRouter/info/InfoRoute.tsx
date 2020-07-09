@@ -54,7 +54,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
       if (!renderState.showColors) {
         togglePattern(patterns, renderState)
       }
-      navigate('/').catch()
+      navigate('/sovis').catch()
     }
 
     render () {
@@ -131,7 +131,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
             </div>
 
             <div className={subsection} style={{ textAlign: 'center' }}>
-              <LinkButton to='/' color='#1B2128'>Explore SOVIS</LinkButton>
+              <LinkButton to='/sovis' color='#1B2128'>Explore SOVIS</LinkButton>
             </div>
           </InfoSection>
 
