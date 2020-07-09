@@ -98,6 +98,7 @@ export const InfoRoute = injectAndObserve<StateProps, OwnProps>(
               patterns.map(name => (
                 <PatternInfo
                   key={name}
+                  isCustom={name === 'custom'}
                   pattern={patternData[name]}
                   setPattern={this.setPattern(name)}
                 />

@@ -4,20 +4,42 @@ import {
   patternInfo,
   patternDescription,
   buttonWrapper,
+  startPatternButton,
 } from './patternInfo.pcss'
-import { PatternName, PatternsStore } from '../../../../state/patternsStore'
+import { PatternName, PatternsStore, notes } from '../../../../state/patternsStore'
 import { LinkButton } from '../LinkButton'
+import { getContrastingColor } from '../../../../pcss-functions'
 
 export interface PatternInfoProps {
+  isCustom?: boolean
   pattern: PatternsStore['patternData'][PatternName]
   setPattern: (ev: React.MouseEvent<HTMLAnchorElement>) => void
 }
 
-export function PatternInfo ({ pattern, setPattern }: PatternInfoProps) {
-  // TODO: use specific colors for each pattern
-  const buttonBackground = pattern.colors.C
+interface ColorCssVars {
+  [item: string]: string
+}
+
+export function PatternInfo ({ isCustom, pattern, setPattern }: PatternInfoProps) {
+  const noteColors = !isCustom
+    ? pattern.colors
+    : (pattern as PatternsStore['patternData']['custom']).defaultColors
+  const buttonNoteColor = pattern.buttonNoteColor
+  const buttonBackground = noteColors[buttonNoteColor]
+
+  const startIndex = notes.indexOf(buttonNoteColor)
+  const noteHoverColors = Array.from(Array(12)).map((_, i) => (
+    noteColors[notes[(i + startIndex) % notes.length]]
+  ))
+
+  const colorVars: ColorCssVars = {}
+  noteHoverColors.forEach((color, i) => {
+    colorVars[`--pattern-color-${i}`] = color.toString()
+    colorVars[`--pattern-contrast-${i}`] = getContrastingColor(color).toString()
+  })
+
   return (
-    <div className={patternInfo}>
+    <div className={patternInfo} style={colorVars}>
       <h3>
         {pattern.label}
       </h3>
@@ -29,6 +51,7 @@ export function PatternInfo ({ pattern, setPattern }: PatternInfoProps) {
           to='/sovis'
           onClick={setPattern}
           color={buttonBackground}
+          className={startPatternButton}
         >Explore SOVIS with {pattern.label}</LinkButton>
       </div>
     </div>

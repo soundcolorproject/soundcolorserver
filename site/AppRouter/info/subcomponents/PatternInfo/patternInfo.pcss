@@ -1,4 +1,87 @@
 
+:root {
+  --pattern-color-0: var(--grey-20);
+  --pattern-color-1: var(--grey-20);
+  --pattern-color-2: var(--grey-20);
+  --pattern-color-3: var(--grey-20);
+  --pattern-color-4: var(--grey-20);
+  --pattern-color-5: var(--grey-20);
+  --pattern-color-6: var(--grey-20);
+  --pattern-color-7: var(--grey-20);
+  --pattern-color-8: var(--grey-20);
+  --pattern-color-9: var(--grey-20);
+  --pattern-color-10: var(--grey-20);
+  --pattern-color-11: var(--grey-20);
+
+  --pattern-contrast-0: var(--black);
+  --pattern-contrast-1: var(--black);
+  --pattern-contrast-2: var(--black);
+  --pattern-contrast-3: var(--black);
+  --pattern-contrast-4: var(--black);
+  --pattern-contrast-5: var(--black);
+  --pattern-contrast-6: var(--black);
+  --pattern-contrast-7: var(--black);
+  --pattern-contrast-8: var(--black);
+  --pattern-contrast-9: var(--black);
+  --pattern-contrast-10: var(--black);
+  --pattern-contrast-11: var(--black);
+}
+
+@keyframes pattern-colors {
+  0% {
+    /* color: var(--pattern-contrast-0); */
+    background-color: var(--pattern-color-0);
+  }
+  8.33% {
+    /* color: var(--pattern-contrast-1); */
+    background-color: var(--pattern-color-1);
+  }
+  16.67% {
+    /* color: var(--pattern-contrast-2); */
+    background-color: var(--pattern-color-2);
+  }
+  25% {
+    /* color: var(--pattern-contrast-3); */
+    background-color: var(--pattern-color-3);
+  }
+  33.33% {
+    /* color: var(--pattern-contrast-4); */
+    background-color: var(--pattern-color-4);
+  }
+  41.67% {
+    /* color: var(--pattern-contrast-5); */
+    background-color: var(--pattern-color-5);
+  }
+  50% {
+    /* color: var(--pattern-contrast-6); */
+    background-color: var(--pattern-color-6);
+  }
+  58.33% {
+    /* color: var(--pattern-contrast-7); */
+    background-color: var(--pattern-color-7);
+  }
+  66.67% {
+    /* color: var(--pattern-contrast-8); */
+    background-color: var(--pattern-color-8);
+  }
+  75% {
+    /* color: var(--pattern-contrast-9); */
+    background-color: var(--pattern-color-9);
+  }
+  83.33% {
+    /* color: var(--pattern-ccontrast10); */
+    background-color: var(--pattern-color-10);
+  }
+  91.67% {
+    /* color: var(--pattern-ccontrast11); */
+    background-color: var(--pattern-color-11);
+  }
+  100% {
+    /* color: var(--pattern-contrast-0); */
+    background-color: var(--pattern-color-0);
+  }
+}
+
 .pattern-info {
   margin-top: 32px;
   display: flex;
@@ -18,5 +101,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    .start-pattern-button {
+      &:hover {
+        animation-duration: 3s;
+        animation-name: pattern-colors;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    }
   }
 }

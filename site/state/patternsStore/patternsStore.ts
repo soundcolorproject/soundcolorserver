@@ -192,6 +192,7 @@ export const patternsStore = observable({
   patternData: {
     chakras: {
       label: 'Chakras',
+      buttonNoteColor: 'G' as Note,
       description: formatDescription(`
         Referencing the points of the energy in the body, they are often used to find spiritual or concious balance
         through meditation.Each chakra — root, sacral, solar plexus, heart, throat, third eye, and crown — are
@@ -217,6 +218,7 @@ export const patternsStore = observable({
     },
     chromesthesia: {
       label: 'Chromesthesia',
+      buttonNoteColor: 'A#' as Note,
       description: formatDescription(`
         Also known as sound-color synesthesia, this pattern is based on phenomenon in which those who experience it
         (less than 1 in every 2,000 people) hear sounds and see colors. It has been described as a sort of 'film of
@@ -241,6 +243,7 @@ export const patternsStore = observable({
     },
     emotion: {
       label: 'Emotion',
+      buttonNoteColor: 'B' as Note,
       description: formatDescription(`
         Using Robert Plutchik's emotion wheel, colors are directly related to human emotions. In a similar way
         different genres of music often portray the same emotions. By looking at what genres commonly evoke certain
@@ -264,6 +267,7 @@ export const patternsStore = observable({
     },
     chromotherapy: {
       label: 'Chromotherapy',
+      buttonNoteColor: 'G' as Note,
       description: formatDescription(`
         Through early research and calculations around chromotherapy, Dinshah Ghadiali experimented exposing colored
         light to people as a form of healing. Using the measurement of electromagnetic waves, the visible spectrum can
@@ -286,6 +290,7 @@ export const patternsStore = observable({
     },
     adolescence: {
       label: 'Adolescence',
+      buttonNoteColor: 'E' as Note,
       description: formatDescription(`
         Some times a route to developing chromesthesia, children are introduced to a variety of colors and musical
         sounds at the same time. From pianos and xylophones, to light up sound-making toys, toddlers are exposed and
@@ -309,11 +314,13 @@ export const patternsStore = observable({
     },
     custom: {
       label: 'Custom',
+      buttonNoteColor: 'A#' as Note,
       description: formatDescription(`
         We all experience sound and color differently, uniquely in our own ways. Creating our own custom color patterns
         enables us to express ourselves in the way we hear and see.
       `),
       colors: getCustomColors(),
+      defaultColors: defaultCustomColors,
     },
   },
   favorites: getFavorites(),
