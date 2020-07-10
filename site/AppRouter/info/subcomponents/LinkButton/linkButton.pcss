@@ -2,6 +2,7 @@
 :root {
   --normal-background: var(--white);
   --hover-background: var(--grey-20);
+  --active-background: var(--grey-40);
 }
 
 .link-button {
@@ -11,8 +12,13 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 800;
+  transition: background-color 0.2s;
 
   &:hover {
     background-color: var(--hover-background);
+  }
+
+  &:active {
+    background-color: var(--active-background);
   }
 }

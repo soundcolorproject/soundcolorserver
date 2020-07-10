@@ -55,6 +55,15 @@
     color: var(--black);
     text-decoration: underline;
     font-weight: 600;
+    transition: color 0.1s;
+
+    &:hover, &:focus {
+      color: var(--grey-80);
+    }
+
+    &:active {
+      color: var(--grey-60);
+    }
   }
 
   .footer {
