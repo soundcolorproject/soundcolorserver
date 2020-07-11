@@ -7,7 +7,7 @@ import {
   startPatternButton,
 } from './patternInfo.pcss'
 import { PatternName, PatternsStore, notes } from '../../../../state/patternsStore'
-import { LinkButton } from '../LinkButton'
+import { LinkButton } from '../../../../components/LinkButton'
 import { getContrastingColor } from '../../../../pcss-functions'
 
 export interface PatternInfoProps {

@@ -14,7 +14,7 @@ import { InfoSection } from './subcomponents/InfoSection'
 import hirshhornLogo from './hirshhorn.svg'
 import sequoiaLogo from './sequoia.svg'
 import { PatternInfo } from './subcomponents/PatternInfo'
-import { LinkButton } from './subcomponents/LinkButton'
+import { LinkButton } from '../../components/LinkButton'
 import { PatreonLink } from '../../components/PatreonLink'
 
 export interface OwnProps extends RouteComponentProps {

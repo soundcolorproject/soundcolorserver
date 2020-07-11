@@ -15,7 +15,7 @@ import {
   header,
 } from './infoHeader.pcss'
 
-import { LinkButton } from '../LinkButton'
+import { LinkButton } from '../../../../components/LinkButton'
 import headerBackdropImage from './header-backdrop.png'
 import headerBackdropVideo from './header.webm'
 import { PatreonLink } from '../../../../components/PatreonLink'

@@ -2,10 +2,10 @@
 import * as React from 'react'
 import { Link } from '@reach/router'
 
-import { getContrastingColor, lighten, darken } from '../../../../pcss-functions'
+import { getContrastingColor, lighten, darken } from '../../pcss-functions'
 
 import { linkButton } from './linkButton.pcss'
-import { Color } from '../../../../pcss-functions/types'
+import { Color } from '../../pcss-functions/types'
 
 export interface LinkButtonProps {
   color?: Color
@@ -24,12 +24,6 @@ interface CssVariables {
 
 export function LinkButton ({ color, to, children, className, style: customStyle, onClick }: LinkButtonProps) {
   const style: React.CSSProperties & CssVariables = { ...customStyle }
-  // const ref = React.useRef<HTMLAnchorElement>(null)
-  // React.useLayoutEffect(() => {
-  //   if (ref.current) {
-  //     ref.current.style.set
-  //   }
-  // }, [ref.current])
 
   if (color) {
     const contrastingColor = getContrastingColor(color)
