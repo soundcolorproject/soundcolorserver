@@ -2,7 +2,7 @@
 import { toHsv } from './toHsv'
 import { toHsl } from './toHsl'
 import { RGBa, toRgb } from './toRgb'
-import { SRGBa } from './toSRgb'
+import { SRGBa, toSRgb } from './toSRgb'
 
 import { Color } from './types'
 
