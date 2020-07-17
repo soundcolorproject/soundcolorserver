@@ -39,7 +39,7 @@ const panelDetails: Record<PanelName, PanelDetail> = {
   },
   actions: {
     title: 'Actions',
-    icon: 'play_circle', // temporary
+    icon: 'download',
   },
 }
 

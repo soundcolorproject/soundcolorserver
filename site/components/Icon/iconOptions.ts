@@ -55,6 +55,7 @@ export const iconOptions = {
   colors: buildSvgContainer('colors'),
   connections: buildSvgContainer('connections'),
   delete: buildSvgContainer('delete'),
+  download: buildSvgContainer('download'),
   favorite_border: buildSvgContainer('favorite_border'),
   favorite: buildSvgContainer('favorite'),
   fullscreen: buildSvgContainer('fullscreen'),
@@ -131,6 +132,9 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
     ...newIconSizes,
   },
   connections: {
+    ...newIconSizes,
+  },
+  download: {
     ...newIconSizes,
   },
   fullscreen: {
