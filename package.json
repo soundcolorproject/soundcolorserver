@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "node dist/server/index.js",
-    "start:dev": "DEV=true node dist/server/index.js",
+    "start:local": "DEV=true node dist/server/index.js",
     "dev-remote": "USE_REMOTE_API=true npm run dev",
     "dev-sudo": "sudo --preserve-env=PATH npm run dev-sudo:run",
     "dev-sudo:run": "LOCAL_SSL=true URL='https://soundcolor.local/' npm run dev",
