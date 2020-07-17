@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots HomeRow Stateful 1`] = `
+<div
+  id="homeRow"
+>
+  <button
+    className="homeRowButton selected"
+    onClick={[Function]}
+  >
+    <svg
+      className="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </button>
+  <button
+    className="homeRowButton"
+    onClick={[Function]}
+  >
+    <svg
+      className="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </button>
+  <button
+    className="homeRowButton"
+    onClick={[Function]}
+  >
+    <svg
+      className="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </button>
+  <button
+    className="homeRowButton"
+    onClick={[Function]}
+  >
+    <svg
+      className="icon"
+      height={36}
+      style={
+        Object {
+          "marginBottom": -6,
+          "marginLeft": -6,
+          "marginRight": -6,
+          "marginTop": -6,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={36}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </button>
+  <button
+    className="homeRowButton"
+    onClick={[Function]}
+  >
+    <svg
+      className="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Icon Specific Icon 1`] = `
+<svg
+  className="icon"
+  fill="var(--grey-90)"
+  height={24}
+  style={
+    Object {
+      "marginBottom": undefined,
+      "marginLeft": undefined,
+      "marginRight": undefined,
+      "marginTop": undefined,
+    }
+  }
+  viewBox="0 0 24 24"
+  width={24}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <use
+    fill="var(--grey-90)"
+  />
+</svg>
+`;
+
+exports[`Storyshots Panel With Default Size 1`] = `
+<div
+  className="panel"
+>
+  <div
+    className="swapper"
+    style={
+      Object {
+        "height": 0,
+      }
+    }
+  >
+    <div
+      className="scrollable current"
+    >
+      <div>
+        <div
+          className="one"
+          style={
+            Object {
+              "background": "#888",
+              "color": "white",
+              "height": 100,
+              "padding": 10,
+            }
+          }
+        >
+          One
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Panel With Set Size 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "flex-end",
+      "display": "flex",
+      "flexDirection": "row",
+      "height": "100vh",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="panel"
+    style={
+      Object {
+        "width": 320,
+      }
+    }
+  >
+    <div
+      className="swapper"
+      style={
+        Object {
+          "height": 0,
+        }
+      }
+    >
+      <div
+        className="scrollable current"
+      >
+        <div>
+          <div
+            className="one"
+            style={
+              Object {
+                "background": "#888",
+                "color": "white",
+                "height": 100,
+                "padding": 10,
+              }
+            }
+          >
+            One
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PanelLayout With Content 1`] = `
+<div
+  className="panelLayout"
+>
+  <div
+    className="layoutColumn"
+  >
+    <div
+      className="gt-mobile grow center"
+    />
+    <div
+      style={
+        Object {
+          "color": "#444",
+          "padding": 10,
+        }
+      }
+    >
+      Foo
+    </div>
+    <div
+      className="layoutSpacer"
+    >
+      <div
+        className="lt-mobile grow center"
+      />
+    </div>
+    <div
+      className="panelWrapper"
+    >
+      <div
+        className="layoutFooter"
+      >
+        <div />
+      </div>
+      <div
+        className="afterSpacer"
+      >
+        <div
+          style={
+            Object {
+              "background": "#888",
+              "color": "white",
+              "padding": 10,
+            }
+          }
+        >
+          Bar
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots ShrinkingPanelButton Example 1`] = `
+<div
+  className="shrinkingPanelButton"
+  data-testid="shrinking-panel-button"
+>
+  ShrinkingPanelButton Component Content
+</div>
+`;
+
+exports[`Storyshots ShrinkingSidePanel Example 1`] = `
+<div
+  className="shrinkingSidePanel"
+  data-testid="shrinking-side-panel"
+>
+  ShrinkingSidePanel Component Content
+</div>
+`;

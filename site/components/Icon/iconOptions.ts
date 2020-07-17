@@ -1,4 +1,6 @@
 
+import { requireSvg } from './requireSvg'
+
 export type IconSize = keyof typeof iconSizes
 
 export const iconSizes = {
@@ -15,7 +17,6 @@ const container = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
 container.id = 'svg-container'
 document.body.appendChild(container)
 
-const requireSvg = require.context('./svg', true, /\.svg/)
 function buildSvgContainer (name: string) {
   const svgStr: string = requireSvg(`./${name}.svg`).default
   const svgContainer = document.createElement('div')
