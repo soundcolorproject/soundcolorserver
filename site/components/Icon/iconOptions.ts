@@ -96,7 +96,7 @@ export type IconSizeProperties = {
 
 export type IconViewProperties = IconViewBox & IconSizeProperties
 
-const iconSizeNames = Object.keys(iconSizes) as IconSize[]
+export const iconSizeNames = Object.keys(iconSizes) as IconSize[]
 function buildIconSizes (iconWidth: number, iconTrueWidth: number, iconHeight = iconWidth, iconTrueHeight = iconTrueWidth) {
   const widthRatio = iconTrueWidth / iconWidth
   const heightRatio = iconTrueHeight / iconHeight
