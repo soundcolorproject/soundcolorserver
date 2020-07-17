@@ -16,7 +16,7 @@ export interface Props {
   children: string
   icon: IconName
   iconSize?: IconSize
-  noArrow?: boolean
+  endIcon?: IconName
   noBold?: boolean
   onClick?: () => void
   shrink?: boolean
@@ -31,7 +31,7 @@ export function ShrinkingPanelButton (props: Props) {
     children,
     icon,
     iconSize = 'xs',
-    noArrow = false,
+    endIcon = 'play',
     noBold = false,
     onClick = noop,
     shrink = false,
@@ -77,7 +77,7 @@ export function ShrinkingPanelButton (props: Props) {
       >
         <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} />
         <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>{children}</div>
-        {!noArrow && <Icon size='sm' name='play' className={buttonIcon} />}
+        <Icon size='sm' name={endIcon} className={buttonIcon} />
       </div>
     </div>
   )
