@@ -14,6 +14,8 @@ export const iconSizes = {
 }
 
 const container = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs')
+container.appendChild(defs)
 container.id = 'svg-container'
 document.body.appendChild(container)
 
@@ -30,7 +32,13 @@ function buildSvgContainer (name: string) {
   const group = document.createElementNS('http://www.w3.org/2000/svg', 'g')
   group.id = name
   Array.from(svg.children).forEach(child => {
-    group.appendChild(child)
+    if (child.nodeName === 'defs') {
+      Array.from(child.children).forEach(def => {
+        defs.appendChild(def)
+      })
+    } else {
+      group.appendChild(child)
+    }
   })
 
   container.appendChild(group)
@@ -53,6 +61,7 @@ export const iconOptions = {
   home: buildSvgContainer('home'),
   info: buildSvgContainer('info'),
   launch: buildSvgContainer('launch'),
+  logo: buildSvgContainer('logo'),
   minimize: buildSvgContainer('minimize'),
   music_note: buildSvgContainer('music_note'),
   palette: buildSvgContainer('palette'),
@@ -125,6 +134,9 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
     ...newIconSizes,
   },
   fullscreen: {
+    ...newIconSizes,
+  },
+  logo: {
     ...newIconSizes,
   },
   minimize: {

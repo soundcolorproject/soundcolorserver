@@ -1,7 +1,17 @@
 
 import * as React from 'react'
 
-export function useTransition (children: React.ReactElement, transitionTime: number): [React.ReactElement | null, boolean] {
+function isSameElement (el1: React.ReactElement | null, el2: React.ReactElement | null) {
+  if (el1 === el2) {
+    return true
+  } else if (el1 === null || el2 === null) {
+    return false
+  } else {
+    return el1.type === el2.type && el1.key === el2.key
+  }
+}
+
+export function useTransition (children: React.ReactElement | null, transitionTime: number): [React.ReactElement | null, boolean] {
   const [prev1, setPrev1] = React.useState(children)
   const [prev2, setPrev2] = React.useState(children)
   const [timer, setTimer] = React.useState<any>(null)
@@ -17,7 +27,7 @@ export function useTransition (children: React.ReactElement, transitionTime: num
     if (cleanup) {
       return doCleanup
     }
-    if (prev1 !== children) {
+    if (!isSameElement(prev1, children)) {
       if (timer) {
         clearTimeout(timer)
         setTimer(null)
@@ -36,7 +46,7 @@ export function useTransition (children: React.ReactElement, transitionTime: num
     if (cleanup) {
       return doCleanup
     }
-    if (prev2 !== children && !transition) {
+    if (isSameElement(prev1, children) && !transition) {
       setTimeout(() => {
         if (cleanup) {
           return
@@ -55,7 +65,7 @@ export function useTransition (children: React.ReactElement, transitionTime: num
     return doCleanup
   }, [prev1])
 
-  if (prev2 === children) {
+  if (isSameElement(prev2, children)) {
     return [null, false]
   }
 

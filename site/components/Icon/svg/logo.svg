@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect x="5" y="5" width="14" height="14" rx="7" fill="url(#logoPattern0)"/>
+  <defs>
+    <pattern id="logoPattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+      <image transform="scale(0.00195312)" width="512" height="512" xlink:href="/android-chrome-512x512.png"/>
+    </pattern>
+  </defs>
+</svg>

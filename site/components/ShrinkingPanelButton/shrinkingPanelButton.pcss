@@ -8,15 +8,15 @@
   &.shrunk {
     cursor: pointer;
 
+    &.active-style {
+      background: var(--white);
+    }
+
     &:hover {
       background: var(--grey-10);
     }
-
-    &.active-style {
-      background: var(--white);
-      &:hover {
-        background: var(--grey-10)
-      }
+    &:active {
+      background: var(--grey-30);
     }
 
     .hover-color, .hover-color:hover {
@@ -24,7 +24,7 @@
       color: var(--black);
 
       .button-icon {
-        fill: var(--black);
+        fill: var(--black) !important;
       }
     }
 
@@ -75,6 +75,15 @@
 
     &:hover {
       background-color: var(--black);
+      color: var(--white);
+
+      .button-icon {
+        fill: var(--white);
+      }
+    }
+
+    &:active {
+      background: var(--grey-80);
       color: var(--white);
 
       .button-icon {

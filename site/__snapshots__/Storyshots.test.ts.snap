@@ -140,6 +140,371 @@ exports[`Storyshots Icon Specific Icon 1`] = `
 </svg>
 `;
 
+exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="mainPanelWithShrinkingSide"
+    data-testid="main-panel-with-shrinking-side"
+    style={
+      Object {
+        "height": 288,
+      }
+    }
+  >
+    <div
+      className="shrinkingSidePanel"
+      data-testid="shrinking-side-panel"
+    >
+      <div
+        className="shrinkingPanelButton activeStyle"
+        data-testid="shrinking-panel-button"
+        onKeyPress={[Function]}
+      >
+        <div
+          className="hoverColor"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon buttonIcon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": -4,
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "normal",
+              }
+            }
+          >
+            Sound Color Project
+          </div>
+        </div>
+      </div>
+      <div
+        className="shrinkingPanelButton"
+        data-testid="shrinking-panel-button"
+        onKeyPress={[Function]}
+      >
+        <div
+          className="hoverColor"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon buttonIcon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": -4,
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Color Patterns
+          </div>
+          <svg
+            className="icon buttonIcon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": -5,
+                "marginRight": -5,
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="shrinkingPanelButton"
+        data-testid="shrinking-panel-button"
+        onKeyPress={[Function]}
+      >
+        <div
+          className="hoverColor"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon buttonIcon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": -4,
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Connections
+          </div>
+          <svg
+            className="icon buttonIcon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": -5,
+                "marginRight": -5,
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="shrinkingPanelButton"
+        data-testid="shrinking-panel-button"
+        onKeyPress={[Function]}
+      >
+        <div
+          className="hoverColor"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon buttonIcon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": -4,
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Options
+          </div>
+          <svg
+            className="icon buttonIcon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": -5,
+                "marginRight": -5,
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="shrinkingPanelButton"
+        data-testid="shrinking-panel-button"
+        onKeyPress={[Function]}
+      >
+        <div
+          className="hoverColor"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon buttonIcon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": -4,
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Sound Details
+          </div>
+          <svg
+            className="icon buttonIcon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": -5,
+                "marginRight": -5,
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="shrinkingPanelButton"
+        data-testid="shrinking-panel-button"
+        onKeyPress={[Function]}
+      >
+        <div
+          className="hoverColor"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon buttonIcon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": -4,
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Actions
+          </div>
+          <svg
+            className="icon buttonIcon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": -5,
+                "marginRight": -5,
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      className="panelContentWrapper"
+    >
+      <div
+        className="panelContent swapper"
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Panel With Default Size 1`] = `
 <div
   className="panel"
@@ -282,20 +647,504 @@ exports[`Storyshots PanelLayout With Content 1`] = `
 </div>
 `;
 
+exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
+<div
+  className="shrinkingPanelButton"
+  data-testid="shrinking-panel-button"
+  onKeyPress={[Function]}
+>
+  <div
+    className="hoverColor"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      className="icon buttonIcon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": -4,
+          "marginLeft": -4,
+          "marginRight": 6,
+          "marginTop": -4,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Options
+    </div>
+    <svg
+      className="icon buttonIcon"
+      height={30}
+      style={
+        Object {
+          "marginBottom": -5,
+          "marginLeft": -5,
+          "marginRight": -5,
+          "marginTop": -5,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={30}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Storyshots ShrinkingPanelButton Example 1`] = `
 <div
   className="shrinkingPanelButton"
   data-testid="shrinking-panel-button"
+  onKeyPress={[Function]}
 >
-  ShrinkingPanelButton Component Content
+  <div
+    className="hoverColor"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      className="icon buttonIcon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": -4,
+          "marginLeft": -4,
+          "marginRight": 6,
+          "marginTop": -4,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Color Patterns
+    </div>
+    <svg
+      className="icon buttonIcon"
+      height={30}
+      style={
+        Object {
+          "marginBottom": -5,
+          "marginLeft": -5,
+          "marginRight": -5,
+          "marginTop": -5,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={30}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
+<div
+  className="shrinkingPanelButton"
+  data-testid="shrinking-panel-button"
+  onKeyPress={[Function]}
+>
+  <div
+    className="hoverColor"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      className="icon buttonIcon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": -4,
+          "marginLeft": -4,
+          "marginRight": 6,
+          "marginTop": -4,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+    </div>
+    <svg
+      className="icon buttonIcon"
+      height={30}
+      style={
+        Object {
+          "marginBottom": -5,
+          "marginLeft": -5,
+          "marginRight": -5,
+          "marginTop": -5,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={30}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use />
+    </svg>
+  </div>
 </div>
 `;
 
 exports[`Storyshots ShrinkingSidePanel Example 1`] = `
 <div
-  className="shrinkingSidePanel"
-  data-testid="shrinking-side-panel"
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
 >
-  ShrinkingSidePanel Component Content
+  <div
+    className="shrinkingSidePanel"
+    data-testid="shrinking-side-panel"
+  >
+    ShrinkingSidePanel Component Content
+  </div>
+</div>
+`;
+
+exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="shrinkingSidePanel"
+    data-testid="shrinking-side-panel"
+  >
+    <div
+      className="shrinkingPanelButton"
+      data-testid="shrinking-panel-button"
+      onKeyPress={[Function]}
+    >
+      <div
+        className="hoverColor"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon buttonIcon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": -4,
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Color Patterns
+        </div>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="shrinkingPanelButton"
+      data-testid="shrinking-panel-button"
+      onKeyPress={[Function]}
+    >
+      <div
+        className="hoverColor"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon buttonIcon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": -4,
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Connections
+        </div>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="shrinkingPanelButton"
+      data-testid="shrinking-panel-button"
+      onKeyPress={[Function]}
+    >
+      <div
+        className="hoverColor"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon buttonIcon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": -4,
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Options
+        </div>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="shrinkingPanelButton"
+      data-testid="shrinking-panel-button"
+      onKeyPress={[Function]}
+    >
+      <div
+        className="hoverColor"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon buttonIcon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": -4,
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Sound Details
+        </div>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="shrinkingPanelButton"
+      data-testid="shrinking-panel-button"
+      onKeyPress={[Function]}
+    >
+      <div
+        className="hoverColor"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon buttonIcon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": -4,
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Actions
+        </div>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </div>
+    </div>
+  </div>
 </div>
 `;

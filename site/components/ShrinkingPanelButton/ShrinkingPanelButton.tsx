@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import * as classNames from 'classnames'
-import { Icon, IconName } from '../Icon'
+import { Icon, IconName, IconSize } from '../Icon'
 
 import {
   shrinkingPanelButton,
@@ -12,9 +12,12 @@ import {
   text,
 } from './shrinkingPanelButton.pcss'
 
-interface Props {
+export interface Props {
   children: string
   icon: IconName
+  iconSize?: IconSize
+  noArrow?: boolean
+  noBold?: boolean
   onClick?: () => void
   shrink?: boolean
   active?: boolean
@@ -27,6 +30,9 @@ export function ShrinkingPanelButton (props: Props) {
   const {
     children,
     icon,
+    iconSize = 'xs',
+    noArrow = false,
+    noBold = false,
     onClick = noop,
     shrink = false,
     active = false,
@@ -41,9 +47,17 @@ export function ShrinkingPanelButton (props: Props) {
     className,
   )
 
-  const handleClick = React.useMemo(() => (ev: React.MouseEvent) => {
+  const handleClick = React.useMemo(() => (ev: React.SyntheticEvent) => {
     ev.preventDefault()
     onClick()
+  }, [onClick])
+
+  const handleKeypress = React.useMemo(() => (ev: React.KeyboardEvent) => {
+    ev.preventDefault()
+    ev.stopPropagation()
+    if (ev.key === ' ' || ev.key === 'Enter') {
+      onClick()
+    }
   }, [onClick])
 
   return (
@@ -52,11 +66,18 @@ export function ShrinkingPanelButton (props: Props) {
       style={style}
       data-testid='shrinking-panel-button'
       onClick={shrink ? handleClick : undefined}
+      tabIndex={shrink ? 0 : undefined}
+      onKeyPress={handleKeypress}
     >
-      <div className={hoverColor} onClick={shrink ? undefined : handleClick}>
-        <Icon size='xs' name={icon} className={buttonIcon} style={{ marginRight: 6 }} />
-        <div className={text}>{children}</div>
-        <Icon size='sm' name='play' className={buttonIcon} />
+      <div
+        className={hoverColor}
+        onClick={shrink ? undefined : handleClick}
+        tabIndex={shrink ? undefined : 0}
+        onKeyPress={handleKeypress}
+      >
+        <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} />
+        <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>{children}</div>
+        {!noArrow && <Icon size='sm' name='play' className={buttonIcon} />}
       </div>
     </div>
   )

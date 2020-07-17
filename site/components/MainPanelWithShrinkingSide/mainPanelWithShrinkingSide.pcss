@@ -1,0 +1,120 @@
+
+@import '../../global-css/mixins.pcss';
+
+:root {
+  --main-panel-transition-time: 0.5s;
+  --main-panel-max-height: 100vh;
+
+  @mixin breakpoint mobile {
+    --main-panel-max-height: 85vh;
+  }
+}
+
+.main-panel-with-shrinking-side {
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+  background: var(--white);
+  color: var(--black);
+  max-height: var(--main-panel-max-height);
+  transition: height var(--main-panel-transition-time);
+  width: var(--panel-layout-width);
+
+  .panel-content-wrapper {
+    width: 100%;
+    height: 100%;
+    flex-basis: 0;
+    flex: 1;
+  }
+
+  .panel-content {
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+  }
+
+  .swapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    max-height: var(--main-panel-max-height);
+    transition: right 0s, top 0s;
+    right: 0;
+    top: 0;
+
+    &:not(.transition-right, .transition-left, .transition-up, .transition-down) {
+      .next {
+        top: 100%;
+      }
+    }
+  }
+
+  & .prev, & .next {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .transition-right {
+    transition: right var(--main-panel-transition-time);
+    right: -100%;
+
+    .prev {
+      right: 0;
+    }
+
+    .next {
+      right: 100%;
+    }
+  }
+
+  .transition-left {
+    transition: right var(--main-panel-transition-time);
+    right: 100%;
+
+    .prev {
+      right: 0;
+    }
+
+    .next {
+      right: -100%;
+    }
+  }
+
+  .transition-up {
+    transition: top var(--main-panel-transition-time);
+    top: 100%;
+
+    .prev {
+      top: 0;
+    }
+
+    .next {
+      top: -100%;
+    }
+  }
+
+  .transition-down {
+    transition: top var(--main-panel-transition-time);
+    top: -100%;
+
+    .prev {
+      top: 0;
+    }
+
+    .next {
+      top: 100%;
+    }
+  }
+}
