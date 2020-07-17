@@ -5,6 +5,7 @@ node_modules.old
 
 # built
 /dist
+/storybook-static
 *.pcss.d.ts
 
 # local config

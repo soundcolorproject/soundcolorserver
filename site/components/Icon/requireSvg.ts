@@ -1,7 +1,5 @@
 
-// import requireContext from 'require-context.macro'
-
-if (!require['context']) {
+if (__JEST__ === true && !require['context']) {
   const { join } = require('path')
   require['context'] = (prePath: string): any => {
     return (additionalPath: string) => require('./' + join(prePath, additionalPath))

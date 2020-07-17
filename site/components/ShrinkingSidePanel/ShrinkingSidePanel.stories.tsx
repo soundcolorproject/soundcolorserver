@@ -1,6 +1,7 @@
 
 import * as React from 'react'
 import { select, boolean } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
 import { ShrinkingSidePanel } from './ShrinkingSidePanel'
 import { ShrinkingPanelButton } from '../ShrinkingPanelButton'
@@ -25,19 +26,44 @@ export const withShinkingButtons = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
       <ShrinkingSidePanel shrink={shrink}>
-        <ShrinkingPanelButton icon='colors' shrink={shrink} active={activePanel === 'colors'}>
+        <ShrinkingPanelButton
+          icon='colors'
+          shrink={shrink}
+          active={activePanel === 'colors'}
+          onClick={action('colors clicked')}
+        >
           Color Patterns
         </ShrinkingPanelButton>
-        <ShrinkingPanelButton icon='connections' shrink={shrink} active={activePanel === 'connections'}>
+        <ShrinkingPanelButton
+          icon='connections'
+          shrink={shrink}
+          active={activePanel === 'connections'}
+          onClick={action('connections clicked')}
+        >
           Connections
         </ShrinkingPanelButton>
-        <ShrinkingPanelButton icon='tune' shrink={shrink} active={activePanel === 'options'}>
+        <ShrinkingPanelButton
+          icon='tune'
+          shrink={shrink}
+          active={activePanel === 'options'}
+          onClick={action('options clicked')}
+        >
           Options
         </ShrinkingPanelButton>
-        <ShrinkingPanelButton icon='music_note' shrink={shrink} active={activePanel === 'sound'}>
+        <ShrinkingPanelButton
+          icon='music_note'
+          shrink={shrink}
+          active={activePanel === 'sound'}
+          onClick={action('sound clicked')}
+        >
           Sound Details
         </ShrinkingPanelButton>
-        <ShrinkingPanelButton icon='play_circle' shrink={shrink} active={activePanel === 'actions'}>
+        <ShrinkingPanelButton
+          icon='play_circle'
+          shrink={shrink}
+          active={activePanel === 'actions'}
+          onClick={action('actions clicked')}
+        >
           Actions
         </ShrinkingPanelButton>
       </ShrinkingSidePanel>

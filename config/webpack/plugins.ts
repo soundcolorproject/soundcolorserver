@@ -15,6 +15,7 @@ import { config } from '../../server/config'
 
 export const definePlugin = new webpack.DefinePlugin({
   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+  '__JEST__': JSON.stringify(false),
   '__REMOTE_API__': JSON.stringify(config.remoteApi),
   '__LOG_LEVEL__': JSON.stringify(config.logLevel),
   '__DEV__': JSON.stringify(config.dev),

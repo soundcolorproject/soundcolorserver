@@ -8,6 +8,8 @@ require('ts-node').register({
 const origConfig = require('../config/webpack').default()
 const { definePlugin } = require('../config/webpack/plugins')
 
+const IS_BUILD = process.env.BUILD === 'true'
+
 module.exports = {
   stories: ['./includes.ts', '../site/**/*.stories.[j|t]sx'],
   addons: [
@@ -15,9 +17,14 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-knobs',
   ],
+
   webpackFinal: (config) => {
     return {
       ...config,
+      output: {
+        ...config.output,
+        publicPath: IS_BUILD ? '/storybook' : '/',
+      },
       devtool: 'eval-source-map',
       resolve: {
         ...config.resolve,

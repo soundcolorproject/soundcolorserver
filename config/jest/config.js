@@ -38,6 +38,7 @@ module.exports = {
     'json',
   ],
   globals: {
+    '__JEST__': true,
     '__REMOTE_API__': true,
     '__LOG_LEVEL__': 'debug',
     '__DEV__': true,

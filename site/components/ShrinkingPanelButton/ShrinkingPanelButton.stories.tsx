@@ -1,6 +1,7 @@
 
 import * as React from 'react'
 import { select, text, boolean } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 import { iconNames } from '../Icon'
 
 import { ShrinkingPanelButton } from './ShrinkingPanelButton'
@@ -14,6 +15,7 @@ export const example = () => (
     icon={select('icon', iconNames, 'colors')}
     shrink={boolean('shrink', false)}
     active={boolean('active', false)}
+    onClick={action('ShrinkingPanelButton clicked')}
   >
     Color Patterns
   </ShrinkingPanelButton>
@@ -24,6 +26,7 @@ export const longText = () => (
     icon={select('icon', iconNames, 'colors')}
     shrink={boolean('shrink', false)}
     active={boolean('active', false)}
+    onClick={action('ShrinkingPanelButton clicked')}
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
   </ShrinkingPanelButton>
@@ -34,6 +37,7 @@ export const customText = () => (
     icon={select('icon', iconNames, 'tune')}
     shrink={boolean('shrink', false)}
     active={boolean('active', false)}
+    onClick={action('ShrinkingPanelButton clicked')}
   >
     {text('text', 'Options')}
   </ShrinkingPanelButton>

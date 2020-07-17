@@ -6,12 +6,17 @@
   transition: background 0.3s;
 
   &.shrunk {
+    cursor: pointer;
+
     &:hover {
       background: var(--grey-10);
     }
 
     &.active-style {
       background: var(--white);
+      &:hover {
+        background: var(--grey-10)
+      }
     }
 
     .hover-color, .hover-color:hover {
