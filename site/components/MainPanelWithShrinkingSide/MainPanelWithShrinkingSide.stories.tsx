@@ -55,7 +55,9 @@ function StatefulExample () {
   const [transitionDirecton, setTransitionDirection] = React.useState<TransitionDirection>('right')
 
   React.useLayoutEffect(() => {
-    if (prevPanel === 'home') {
+    if (panel === 'home') {
+      setTransitionDirection('right')
+    } else if (prevPanel === 'home') {
       setTransitionDirection('left')
     } else if (panels.indexOf(panel) > panels.indexOf(prevPanel)) {
       setTransitionDirection('down')
@@ -72,7 +74,7 @@ function StatefulExample () {
     <ShrinkingSidePanel shrink={shrink}>
       <ShrinkingPanelButton
         icon={shrink ? 'arrow_back' : 'logo'}
-        noArrow
+        endIcon='about'
         noBold
         shrink={shrink}
         active={panel === 'home'}
