@@ -118,26 +118,48 @@ exports[`Storyshots HomeRow Stateful 1`] = `
 `;
 
 exports[`Storyshots Icon Specific Icon 1`] = `
-<svg
-  className="icon"
-  fill="var(--grey-90)"
-  height={24}
+<div
   style={
     Object {
-      "marginBottom": undefined,
-      "marginLeft": undefined,
-      "marginRight": undefined,
-      "marginTop": undefined,
+      "alignItems": "center",
+      "display": "flex",
+      "height": "100vh",
+      "justifyContent": "center",
     }
   }
-  viewBox="0 0 24 24"
-  width={24}
-  xmlns="http://www.w3.org/2000/svg"
 >
-  <use
-    fill="var(--grey-90)"
-  />
-</svg>
+  <div
+    style={
+      Object {
+        "borderColor": "transparent",
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "lineHeight": 0,
+      }
+    }
+  >
+    <svg
+      className="icon"
+      fill="var(--white)"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        fill="var(--white)"
+      />
+    </svg>
+  </div>
+</div>
 `;
 
 exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
@@ -201,6 +223,23 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             Sound Color Project
           </div>
+          <svg
+            className="icon buttonIcon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": -5,
+                "marginRight": -5,
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use />
+          </svg>
         </div>
       </div>
       <div
