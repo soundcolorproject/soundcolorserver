@@ -122,6 +122,7 @@ exports[`Storyshots Icon Specific Icon 1`] = `
   style={
     Object {
       "alignItems": "center",
+      "background": "var(--black)",
       "display": "flex",
       "height": "100vh",
       "justifyContent": "center",
@@ -133,7 +134,7 @@ exports[`Storyshots Icon Specific Icon 1`] = `
       Object {
         "borderColor": "transparent",
         "borderStyle": "solid",
-        "borderWidth": 2,
+        "borderWidth": 1,
         "lineHeight": 0,
       }
     }
