@@ -107,6 +107,7 @@
     "disable-output-webpack-plugin": "^1.0.1",
     "dotenv": "^8.2.0",
     "enzyme-to-json": "^3.4.4",
+    "express-http-proxy": "^1.6.0",
     "file-loader": "^6.0.0",
     "generator-server": "file:generators/server",
     "generator-site": "file:generators/site",

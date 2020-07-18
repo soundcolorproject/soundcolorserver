@@ -8,6 +8,7 @@ import { errorHandler } from './middleware/errorHandler'
 import { sessionMiddleware } from './middleware/session'
 import { webpackMiddleware, webpackHotMiddleware, html5Fallback } from './middleware/webpack'
 import { hstsMiddleware } from './middleware/hsts'
+import { storybookMiddleware } from './middleware/storybook'
 
 export const app = express()
 
@@ -29,6 +30,9 @@ app.use(router)
 // webpack
 app.use(webpackMiddleware())
 app.use(webpackHotMiddleware())
+
+// storybook
+app.use(storybookMiddleware())
 
 // static assets
 app.use(express.static(path.join(__dirname, '../static'), {

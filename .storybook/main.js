@@ -19,13 +19,26 @@ module.exports = {
   ],
 
   webpackFinal: (config) => {
-    return {
+    const result =  {
       ...config,
+      entry: !IS_BUILD 
+        ? config.entry
+        : config.entry.map(e => {
+          if (e.includes('webpack-hot-middleware')) {
+            return `${e}&path=/storybook/__webpack_hmr`
+          } else {
+            return e
+          }
+        }),
       output: {
         ...config.output,
-        publicPath: IS_BUILD ? '/storybook' : '/',
+        publicPath: IS_BUILD ? '/storybook/' : '/',
       },
       devtool: 'eval-source-map',
+      devServer: {
+        ...config.devServer,
+        publicPath: IS_BUILD ? '/storybook/' : '/',
+      },
       resolve: {
         ...config.resolve,
         extensions: [
@@ -47,5 +60,7 @@ module.exports = {
         definePlugin,
       ],
     }
+
+    return result
   },
 };
