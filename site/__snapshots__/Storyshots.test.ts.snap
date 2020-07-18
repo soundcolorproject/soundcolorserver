@@ -660,28 +660,24 @@ exports[`Storyshots PanelLayout With Content 1`] = `
       />
     </div>
     <div
-      className="panelWrapper"
+      className="afterSpacer"
     >
       <div
-        className="layoutFooter"
-      >
-        <div />
-      </div>
-      <div
-        className="afterSpacer"
-      >
-        <div
-          style={
-            Object {
-              "background": "#888",
-              "color": "white",
-              "padding": 10,
-            }
+        style={
+          Object {
+            "background": "#888",
+            "color": "white",
+            "padding": 10,
           }
-        >
-          Bar
-        </div>
+        }
+      >
+        Bar
       </div>
+    </div>
+    <div
+      className="layoutFooter"
+    >
+      <div />
     </div>
   </div>
 </div>
