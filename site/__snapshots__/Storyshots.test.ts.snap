@@ -191,11 +191,13 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         data-testid="shrinking-panel-button"
         onKeyPress={[Function]}
       >
-        <div
+        <a
           className="hoverColor"
+          href="/"
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex={0}
+          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -241,18 +243,19 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             <use />
           </svg>
-        </div>
+        </a>
       </div>
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
         onKeyPress={[Function]}
       >
-        <div
+        <a
           className="hoverColor"
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex={0}
+          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -298,18 +301,19 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             <use />
           </svg>
-        </div>
+        </a>
       </div>
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
         onKeyPress={[Function]}
       >
-        <div
+        <a
           className="hoverColor"
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex={0}
+          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -355,18 +359,19 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             <use />
           </svg>
-        </div>
+        </a>
       </div>
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
         onKeyPress={[Function]}
       >
-        <div
+        <a
           className="hoverColor"
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex={0}
+          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -412,18 +417,19 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             <use />
           </svg>
-        </div>
+        </a>
       </div>
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
         onKeyPress={[Function]}
       >
-        <div
+        <a
           className="hoverColor"
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex={0}
+          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -469,18 +475,19 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             <use />
           </svg>
-        </div>
+        </a>
       </div>
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
         onKeyPress={[Function]}
       >
-        <div
+        <a
           className="hoverColor"
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex={0}
+          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -526,7 +533,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           >
             <use />
           </svg>
-        </div>
+        </a>
       </div>
     </div>
     <div
@@ -689,11 +696,12 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
   data-testid="shrinking-panel-button"
   onKeyPress={[Function]}
 >
-  <div
+  <a
     className="hoverColor"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex={0}
+    target="_blank"
   >
     <svg
       className="icon buttonIcon"
@@ -739,7 +747,7 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
     >
       <use />
     </svg>
-  </div>
+  </a>
 </div>
 `;
 
@@ -749,11 +757,12 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
   data-testid="shrinking-panel-button"
   onKeyPress={[Function]}
 >
-  <div
+  <a
     className="hoverColor"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex={0}
+    target="_blank"
   >
     <svg
       className="icon buttonIcon"
@@ -799,7 +808,7 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
     >
       <use />
     </svg>
-  </div>
+  </a>
 </div>
 `;
 
@@ -809,11 +818,12 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
   data-testid="shrinking-panel-button"
   onKeyPress={[Function]}
 >
-  <div
+  <a
     className="hoverColor"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex={0}
+    target="_blank"
   >
     <svg
       className="icon buttonIcon"
@@ -859,7 +869,7 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
     >
       <use />
     </svg>
-  </div>
+  </a>
 </div>
 `;
 
@@ -901,11 +911,12 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       data-testid="shrinking-panel-button"
       onKeyPress={[Function]}
     >
-      <div
+      <a
         className="hoverColor"
         onClick={[Function]}
         onKeyPress={[Function]}
         tabIndex={0}
+        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -951,18 +962,19 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         >
           <use />
         </svg>
-      </div>
+      </a>
     </div>
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
       onKeyPress={[Function]}
     >
-      <div
+      <a
         className="hoverColor"
         onClick={[Function]}
         onKeyPress={[Function]}
         tabIndex={0}
+        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1008,18 +1020,19 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         >
           <use />
         </svg>
-      </div>
+      </a>
     </div>
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
       onKeyPress={[Function]}
     >
-      <div
+      <a
         className="hoverColor"
         onClick={[Function]}
         onKeyPress={[Function]}
         tabIndex={0}
+        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1065,18 +1078,19 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         >
           <use />
         </svg>
-      </div>
+      </a>
     </div>
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
       onKeyPress={[Function]}
     >
-      <div
+      <a
         className="hoverColor"
         onClick={[Function]}
         onKeyPress={[Function]}
         tabIndex={0}
+        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1122,18 +1136,19 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         >
           <use />
         </svg>
-      </div>
+      </a>
     </div>
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
       onKeyPress={[Function]}
     >
-      <div
+      <a
         className="hoverColor"
         onClick={[Function]}
         onKeyPress={[Function]}
         tabIndex={0}
+        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1179,7 +1194,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         >
           <use />
         </svg>
-      </div>
+      </a>
     </div>
   </div>
 </div>
