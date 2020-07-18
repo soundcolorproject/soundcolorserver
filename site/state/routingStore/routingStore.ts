@@ -35,10 +35,11 @@ const routeNames: { [key in SubRoute]: string } = {
 export class RoutingStore {
   constructor () {
     window.addEventListener('popstate', () => {
+      const screenName = this.subRoutes[0] || this.panelRoute
       logger.info('firing screen view event for', screenName)
       gtag('event', 'screen_view', {
-        screen_name: this.subRoutes[0] || this.panelRoute,
-        event_label: `screen:${this.subRoutes[0] || this.panelRoute}`,
+        screen_name: screenName,
+        event_label: `screen:${screenName}`,
       })
 
       this.isBack = true

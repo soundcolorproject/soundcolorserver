@@ -52,8 +52,12 @@ export class HSLa {
     return [this.h,this.s,this.l,this.a]
   }
 
+  clone () {
+    return new HSLa(this.h, this.s, this.l, this.a)
+  }
+
   static fromRgb (orig: RGBa) {
-    if (!(orig instanceof RGBa)) {
+    if (orig.type !== 'RGBa') {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 

@@ -63,8 +63,12 @@ export class SRGBa {
     return [this.r, this.g, this.b, this.a]
   }
 
+  clone () {
+    return new SRGBa(this.r, this.g, this.b, this.a)
+  }
+
   static fromRgb (orig: RGBa) {
-    if (!(orig instanceof RGBa)) {
+    if (orig.type !== 'RGBa') {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 
@@ -78,7 +82,7 @@ export class SRGBa {
   }
 
   static fromHsl (orig: HSLa) {
-    if (!(orig instanceof HSLa)) {
+    if (orig.type !== 'HSLa') {
       throw new Error('input to fromHsl must be of type HSLa')
     }
 

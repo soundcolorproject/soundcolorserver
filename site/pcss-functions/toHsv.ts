@@ -41,7 +41,7 @@ export class HSVa {
   }
 
   static fromRgb (orig: RGBa) {
-    if (!(orig instanceof RGBa)) {
+    if (orig.type !== 'RGBa') {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 

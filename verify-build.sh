@@ -16,6 +16,7 @@ function end () {
   kill $bg_pid &>/dev/null
   wait $bg_pid &>/dev/null
   if [[ "$reinstall" = 'true' ]]; then
+    rm -rf node_modules &>/dev/null
     if ! mv node_modules.old node_modules &>/dev/null; then
       npm ci
     fi

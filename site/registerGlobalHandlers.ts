@@ -18,7 +18,7 @@ window.addEventListener('error', (evt) => {
 })
 
 function shortcutsDisabled () {
-  return location.pathname.startsWith('/info')
+  return location.pathname === '/'
 }
 
 export function registerGlobalHandlers () {

@@ -9,6 +9,8 @@ import { registerGlobalHandlers } from './registerGlobalHandlers'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import * as pcssFunctions from './pcss-functions'
+(window as any)._pcssFunctions = pcssFunctions
 
 import App from './containers/App/index.dev'
 

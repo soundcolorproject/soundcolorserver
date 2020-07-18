@@ -8,6 +8,7 @@ import { patternsStore, PatternsStore } from '../patternsStore'
 import { startAnalysis, pauseAnalysis } from '../analysisStore'
 import { errorString } from '../../../shared/errorHelpers'
 import { startAudio, stopAudio } from '../../audio'
+import { promptInstall } from '../../registerServiceWorker'
 
 export type RenderStateStore = typeof renderStateStore
 
@@ -59,6 +60,7 @@ reaction(
           })
         })
       }
+      await promptInstall()
     } else {
       pauseAnalysis()
       await stopAudio()
