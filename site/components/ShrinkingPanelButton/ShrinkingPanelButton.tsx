@@ -19,6 +19,7 @@ export interface Props {
   endIcon?: IconName
   noBold?: boolean
   onClick?: () => void
+  href?: string
   shrink?: boolean
   active?: boolean
   className?: string
@@ -30,10 +31,11 @@ export function ShrinkingPanelButton (props: Props) {
   const {
     children,
     icon,
+    onClick,
+    href,
     iconSize = 'xs',
-    endIcon = 'play',
+    endIcon = onClick ? 'play' : href ? 'about' : undefined,
     noBold = false,
-    onClick = noop,
     shrink = false,
     active = false,
     className,
@@ -47,12 +49,12 @@ export function ShrinkingPanelButton (props: Props) {
     className,
   )
 
-  const handleClick = React.useMemo(() => (ev: React.SyntheticEvent) => {
+  const handleClick = React.useMemo(() => !onClick ? noop : (ev: React.SyntheticEvent) => {
     ev.preventDefault()
     onClick()
   }, [onClick])
 
-  const handleKeypress = React.useMemo(() => (ev: React.KeyboardEvent) => {
+  const handleKeypress = React.useMemo(() => !onClick ? noop : (ev: React.KeyboardEvent) => {
     ev.preventDefault()
     ev.stopPropagation()
     if (ev.key === ' ' || ev.key === 'Enter') {
@@ -69,16 +71,18 @@ export function ShrinkingPanelButton (props: Props) {
       tabIndex={shrink ? 0 : undefined}
       onKeyPress={handleKeypress}
     >
-      <div
+      <a
+        href={href}
         className={hoverColor}
         onClick={shrink ? undefined : handleClick}
         tabIndex={shrink ? undefined : 0}
         onKeyPress={handleKeypress}
+        target='_blank'
       >
         <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} />
         <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>{children}</div>
-        <Icon size='sm' name={endIcon} className={buttonIcon} />
-      </div>
+        {endIcon && <Icon size='sm' name={endIcon} className={buttonIcon} />}
+      </a>
     </div>
   )
 }

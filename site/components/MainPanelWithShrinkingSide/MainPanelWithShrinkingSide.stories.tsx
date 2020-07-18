@@ -74,11 +74,11 @@ function StatefulExample () {
     <ShrinkingSidePanel shrink={shrink}>
       <ShrinkingPanelButton
         icon={shrink ? 'arrow_back' : 'logo'}
-        endIcon='about'
         noBold
         shrink={shrink}
         active={panel === 'home'}
-        onClick={changePanel('home')}
+        href={shrink ? undefined : '/'}
+        onClick={shrink ? changePanel('home') : undefined}
       >
         Sound Color Project
       </ShrinkingPanelButton>
