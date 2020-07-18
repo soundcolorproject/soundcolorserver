@@ -46,27 +46,19 @@ body {
       }
     }
 
-    .panel-wrapper {
-      display: flex;
-      flex-direction: row;
-      
-      .layout-footer {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        flex-shrink: 0;
-        overflow: hidden;
-        border-bottom-left-radius: var(--panel-layout-round);
-        border-bottom-right-radius: var(--panel-layout-round);
-      }
+    .after-spacer {
+      flex-shrink: 1;
+      border-top-left-radius: var(--panel-layout-round);
+      border-top-right-radius: var(--panel-layout-round);
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
 
-      .after-spacer {
-        flex-shrink: 1;
-        border-top-left-radius: var(--panel-layout-round);
-        border-top-right-radius: var(--panel-layout-round);
-        overflow-x: hidden;
-        overflow-y: hidden;
-      }
+    .layout-footer {
+      flex-shrink: 0;
+      overflow: hidden;
+      border-bottom-left-radius: var(--panel-layout-round);
+      border-bottom-right-radius: var(--panel-layout-round);
     }
   }
 

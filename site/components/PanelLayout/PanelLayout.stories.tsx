@@ -20,6 +20,5 @@ export const withContent = () => (
       background: '#888',
       color: 'white',
     }}>Bar</div>}
-    footer={<div/>}
   />
 )
