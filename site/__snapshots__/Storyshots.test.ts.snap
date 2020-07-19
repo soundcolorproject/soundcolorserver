@@ -552,90 +552,313 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
 </div>
 `;
 
-exports[`Storyshots Panel With Default Size 1`] = `
+exports[`Storyshots Panel Contained 1`] = `
 <div
-  className="panel"
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
 >
   <div
-    className="swapper"
     style={
       Object {
-        "height": 0,
+        "height": 288,
+        "width": 272,
       }
     }
   >
     <div
-      className="scrollable current"
+      className="panel"
+      data-testid="panel"
     >
-      <div>
-        <div
-          className="one"
-          style={
-            Object {
-              "background": "#888",
-              "color": "white",
-              "height": 100,
-              "padding": 10,
-            }
-          }
+      <div
+        className="panelTitle"
+      >
+        My Panel
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
         >
-          One
-        </div>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            This is a panel button
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            So is this
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            And another
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Just making enough
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            That it will require
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            The ability to scroll
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Does it work?
+          </div>
+        </a>
+      </div>
+      <div
+        className="panelButton"
+        data-testid="panel-button"
+        style={Object {}}
+      >
+        <a
+          className="hoverButton"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            This one should also have ellipses due to it being a very long button name
+          </div>
+        </a>
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`Storyshots Panel With Set Size 1`] = `
+exports[`Storyshots Panel Uncontained 1`] = `
 <div
-  style={
-    Object {
-      "alignItems": "flex-end",
-      "display": "flex",
-      "flexDirection": "row",
-      "height": "100vh",
-      "justifyContent": "center",
-    }
-  }
+  className="panel"
+  data-testid="panel"
 >
   <div
-    className="panel"
-    style={
-      Object {
-        "width": 320,
-      }
-    }
+    className="panelTitle"
   >
-    <div
-      className="swapper"
-      style={
-        Object {
-          "height": 0,
-        }
-      }
+    My Panel
+  </div>
+  <div
+    className="panelButton"
+    data-testid="panel-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
     >
       <div
-        className="scrollable current"
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
       >
-        <div>
-          <div
-            className="one"
-            style={
-              Object {
-                "background": "#888",
-                "color": "white",
-                "height": 100,
-                "padding": 10,
-              }
-            }
-          >
-            One
-          </div>
-        </div>
+        This is a panel button
       </div>
-    </div>
+    </a>
   </div>
+  <div
+    className="panelButton"
+    data-testid="panel-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        So is this
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PanelButton Example 1`] = `
+<div
+  className="panelButton"
+  data-testid="panel-button"
+  style={Object {}}
+>
+  <a
+    className="hoverButton"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+    target="_blank"
+  >
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    />
+  </a>
 </div>
 `;
 
@@ -686,6 +909,269 @@ exports[`Storyshots PanelLayout With Content 1`] = `
     >
       <div />
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PatternSelector Example 1`] = `
+<div
+  className="panel"
+  data-testid="pattern-selector"
+>
+  <div
+    className="panelTitle"
+  >
+    Color Patterns
+  </div>
+  <div
+    className="panelButton"
+    data-testid="pattern-button-chakras"
+    style={
+      Object {
+        "--panel-button-active-background": "#006fe0",
+        "--panel-button-active-color": "var(--white)",
+        "--panel-button-hover-background": "#0080ff",
+        "--panel-button-hover-color": "var(--black)",
+      }
+    }
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Chakras
+      </div>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="pattern-button-chromesthesia"
+    style={
+      Object {
+        "--panel-button-active-background": "#b9a57b",
+        "--panel-button-active-color": "var(--black)",
+        "--panel-button-hover-background": "#d3bd8d",
+        "--panel-button-hover-color": "var(--black)",
+      }
+    }
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Chromesthesia
+      </div>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="pattern-button-emotion"
+    style={
+      Object {
+        "--panel-button-active-background": "#ba00bb",
+        "--panel-button-active-color": "var(--white)",
+        "--panel-button-hover-background": "#d400d6",
+        "--panel-button-hover-color": "var(--white)",
+      }
+    }
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Emotion
+      </div>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="pattern-button-chromotherapy"
+    style={
+      Object {
+        "--panel-button-active-background": "#dd4b14",
+        "--panel-button-active-color": "var(--white)",
+        "--panel-button-hover-background": "#fc5719",
+        "--panel-button-hover-color": "var(--black)",
+      }
+    }
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Chromotherapy
+      </div>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="pattern-button-adolescence"
+    style={
+      Object {
+        "--panel-button-active-background": "#14a58d",
+        "--panel-button-active-color": "var(--black)",
+        "--panel-button-hover-background": "#19bda2",
+        "--panel-button-hover-color": "var(--black)",
+      }
+    }
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Adolescence
+      </div>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="panel-button"
+    style={
+      Object {
+        "--panel-button-active-background": "#c5aaa9",
+        "--panel-button-active-color": "var(--black)",
+        "--panel-button-hover-background": "#dbc9c8",
+        "--panel-button-hover-color": "var(--black)",
+      }
+    }
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Custom
+      </div>
+      <svg
+        className="icon buttonIcon"
+        height={30}
+        style={
+          Object {
+            "marginBottom": -5,
+            "marginLeft": -5,
+            "marginRight": -5,
+            "marginTop": -5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={30}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <use />
+      </svg>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="panel-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Saved
+        <span
+          className="suffixText"
+        >
+           - 
+          0
+        </span>
+      </div>
+      <svg
+        className="icon buttonIcon"
+        height={30}
+        style={
+          Object {
+            "marginBottom": -5,
+            "marginLeft": -5,
+            "marginRight": -5,
+            "marginTop": -5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={30}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <use />
+      </svg>
+    </a>
   </div>
 </div>
 `;

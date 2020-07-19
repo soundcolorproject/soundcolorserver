@@ -2,9 +2,10 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import { mockUseStores } from '../../state/mockUseStores'
+import { PatternsStore } from '../../state/patternsStore'
+import { HSVa } from '../../pcss-functions/toHsv'
 
 import { PatternSelector } from './PatternSelector'
-import { PatternsStore } from '../../state/patternsStore'
 
 describe(PatternSelector.name, () => {
   const useStoresSpy = mockUseStores()
@@ -18,16 +19,22 @@ describe(PatternSelector.name, () => {
 
     const patterns: DeepPartial<PatternsStore> = {
       currentPattern: 'chakras',
+      patternNames: ['chakras'],
       patternData: {
         chakras: {
-          description: expected,
+          label: expected,
+          buttonNoteColor: 'C',
+          colors: {
+            'C': new HSVa(120, 1, 1),
+          },
         },
       },
+      favorites: {},
     }
     useStoresSpy.mockReturnValue({ patterns })
 
     const mounted = render(<PatternSelector />)
-    const el = mounted.getByTestId('pattern-selector')
+    const el = mounted.getByTestId('pattern-button-chakras')
 
     expect(el).toHaveTextContent(expected)
   })

@@ -29,7 +29,7 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
   }, [routing])
 
   return useObserver(() => (
-    <Panel title='Color Patterns'>
+    <Panel title='Color Patterns' data-testid='pattern-selector'>
       {
         patterns.patternNames.map(name => {
           if (name === 'custom') {
@@ -54,7 +54,7 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
               onClick={setPattern(name)}
               active={patterns.currentPattern === name}
               hoverColor={data.colors[data.buttonNoteColor].toString()}
-
+              data-testid={`pattern-button-${name}`}
             >
               {data.label}
             </PanelButton>

@@ -9,16 +9,17 @@ interface Props {
   children?: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  'data-testid'?: string
 }
 
 export function Panel (props: Props) {
-  const { title, children, className, style } = props
+  const { title, children, className, style, 'data-testid': testid = 'panel' } = props
 
   return (
     <div
       className={classNames(panel, className)}
       style={style}
-      data-testid='panel'
+      data-testid={testid}
     >
       <div className={panelTitle}>{title}</div>
       {children}

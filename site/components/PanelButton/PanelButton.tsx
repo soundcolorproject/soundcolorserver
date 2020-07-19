@@ -15,7 +15,7 @@ import {
 } from './panelButton.pcss'
 
 export interface Props {
-  children: React.ReactNode
+  children?: React.ReactNode
   suffix?: React.ReactNode
   onClick?: () => void
   href?: string
@@ -25,6 +25,7 @@ export interface Props {
   noBold?: boolean
   className?: string
   style?: React.CSSProperties
+  'data-testid'?: string
 }
 
 interface CssVars {
@@ -48,6 +49,7 @@ export function PanelButton (props: Props) {
     noBold = false,
     className,
     style,
+    'data-testid': testid = 'panel-button',
   } = props
 
   const cn = classNames(
@@ -87,7 +89,7 @@ export function PanelButton (props: Props) {
     <div
       className={cn}
       style={fullStyle}
-      data-testid='shrinking-panel-button'
+      data-testid={testid}
     >
       <a
         href={href}
