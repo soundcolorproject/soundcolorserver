@@ -7,7 +7,7 @@ import {
   placeholderText,
 } from './textInput.pcss'
 
-interface Props {
+export interface TextInputProps {
   placeholder: string
   value: string
   onChange: (value: string) => void
@@ -17,7 +17,7 @@ interface Props {
   'data-testid'?: string
 }
 
-export const TextInput = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
   const {
     placeholder,
     value,

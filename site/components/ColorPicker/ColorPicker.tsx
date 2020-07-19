@@ -7,20 +7,20 @@ import { Color, HSVa, toHsv, getContrastingColor } from '../../pcss-functions'
 
 import { colorPicker } from './colorPicker.pcss'
 
-interface Props {
-  children: React.ReactNode
+export interface ColorPickerProps {
   value: Color
   onChange: (value: HSVa) => void
+  children?: React.ReactNode
   className?: string
   style?: React.CSSProperties
   'data-testid'?: string
 }
 
-export function ColorPicker (props: Props) {
+export function ColorPicker (props: ColorPickerProps) {
   const {
-    children,
     value,
     onChange,
+    children,
     className,
     style,
     'data-testid': testid = 'color-picker',

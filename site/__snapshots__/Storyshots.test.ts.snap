@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots ColorPicker Stateful Example 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <button
+    className="colorPicker"
+    data-testid="color-picker"
+    style={
+      Object {
+        "backgroundColor": "#baa3fa",
+        "color": "var(--black)",
+      }
+    }
+  >
+    C
+  </button>
+</div>
+`;
+
 exports[`Storyshots HomeRow Stateful 1`] = `
 <div
   id="homeRow"
@@ -1681,6 +1707,137 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           <use />
         </svg>
       </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput Knobs With Icon 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "var(--white)",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="textInput"
+    data-testid="text-input"
+    style={
+      Object {
+        "maxWidth": "85vw",
+        "width": 400,
+      }
+    }
+  >
+    <input
+      data-testid="text-input-input"
+      onChange={[Function]}
+      value="I am a value"
+    />
+    <div
+      className="placeholderText"
+      data-testid="text-input-placeholder"
+    >
+      I am a placeholder
+    </div>
+    <svg
+      className="icon"
+      fill="var(--black)"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        fill="var(--black)"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput Plain Knobs 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "var(--white)",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="textInput"
+    data-testid="text-input"
+    style={
+      Object {
+        "maxWidth": "85vw",
+        "width": 400,
+      }
+    }
+  >
+    <input
+      data-testid="text-input-input"
+      onChange={[Function]}
+      value="I am a value"
+    />
+    <div
+      className="placeholderText"
+      data-testid="text-input-placeholder"
+    >
+      I am a placeholder
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput Stateful 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "var(--white)",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="textInput"
+    data-testid="text-input"
+    style={
+      Object {
+        "maxWidth": "85vw",
+        "width": 400,
+      }
+    }
+  >
+    <input
+      data-testid="text-input-input"
+      onChange={[Function]}
+      value=""
+    />
+    <div
+      className="placeholderText"
+      data-testid="text-input-placeholder"
+    >
+      I am a placeholder
     </div>
   </div>
 </div>
