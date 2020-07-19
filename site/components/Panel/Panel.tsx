@@ -1,70 +1,27 @@
 
 import * as React from 'react'
-import * as cn from 'classnames'
-// import useDimensions from 'react-use-dimensions'
+import * as classNames from 'classnames'
 
-import { useTransition } from '../../hooks/useTransition'
-import { useDimensions } from '../../hooks/useDimensions'
+import { panel, panelTitle } from './panel.pcss'
 
-import {
-  panel,
-  swapper,
-  scrollable,
-  current,
-  prev,
-  next,
-  transition,
-  transitionBack,
-} from './panel.pcss'
-
-export interface PanelProps {
-  children: React.ReactElement
-  back?: boolean
+interface Props {
+  title: string
+  children?: React.ReactNode
   className?: string
   style?: React.CSSProperties
-  transitionSpeed?: number
-  recompute?: any
 }
 
-export function Panel (props: PanelProps) {
-  const { children, back, className, style, recompute, transitionSpeed = 750 } = props
-  const [prevChildren, shouldTransition] = useTransition(children, transitionSpeed + 200)
-
-  const [ref, dimensions] = useDimensions<HTMLDivElement>(recompute)
-  const height = dimensions?.height
-
-  if (!prevChildren) {
-    return (
-      <div className={cn(panel, className)} style={style}>
-        <div className={swapper} style={{ height }}>
-          <div className={`${scrollable} ${current}`}>
-            <div key='current' ref={ref}>
-              {children}
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
+export function Panel (props: Props) {
+  const { title, children, className, style } = props
 
   return (
-    <div className={cn(panel, className)} style={style}>
-      <div className={cn({
-        [swapper]: true,
-        [transition]: shouldTransition && !back,
-        [transitionBack]: shouldTransition && back,
-      })} style={{ height }}>
-        <div className={`${scrollable} ${prev}`}>
-          <div key='prev'>
-            {prevChildren}
-          </div>
-        </div>
-        <div className={`${scrollable} ${next}`}>
-          <div ref={ref} key={`next-${recompute}`}>
-            {children}
-          </div>
-        </div>
-      </div>
+    <div
+      className={classNames(panel, className)}
+      style={style}
+      data-testid='panel'
+    >
+      <div className={panelTitle}>{title}</div>
+      {children}
     </div>
   )
 }
