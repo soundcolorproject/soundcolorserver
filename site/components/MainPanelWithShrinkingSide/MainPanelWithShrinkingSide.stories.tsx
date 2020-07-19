@@ -52,7 +52,7 @@ function PanelContent ({ name }: { name: PanelName }) {
 function StatefulExample () {
   const [panel, setPanel] = React.useState<PanelName>('home')
   const [prevPanel, setPrevPanel] = React.useState<PanelName>('home')
-  const [transitionDirecton, setTransitionDirection] = React.useState<TransitionDirection>('right')
+  const [transitionDirection, setTransitionDirection] = React.useState<TransitionDirection>('right')
 
   React.useLayoutEffect(() => {
     if (panel === 'home') {
@@ -102,7 +102,7 @@ function StatefulExample () {
     <MainPanelWithShrinkingSide
       sidePanel={sidePanel()}
       height={panel === 'colors' ? 384 : 288}
-      transitionDirection={transitionDirecton}
+      transitionDirection={transitionDirection}
       open={shrink}
     >
       {

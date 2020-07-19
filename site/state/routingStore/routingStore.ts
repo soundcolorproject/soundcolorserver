@@ -1,17 +1,20 @@
 
 import { observable, action, reaction } from 'mobx'
 import { logger } from '../../../shared/logger'
+import { TransitionDirection } from '../../components/MainPanelWithShrinkingSide'
 
 export interface RoutingProp {
   routing: RoutingStore
 }
 
 export type PanelRoute =
-  | 'info'
-  | 'settings'
   | 'home'
-  | 'filters'
   | 'palette'
+  | 'connections'
+  | 'filters'
+  | 'sound'
+  | 'settings'
+  | 'info'
 
 export type SubRoute =
   | 'audioSource'
@@ -42,7 +45,7 @@ export class RoutingStore {
         event_label: `screen:${screenName}`,
       })
 
-      this.isBack = true
+      this.transitionDirection = 'right'
     })
 
     reaction(
@@ -61,9 +64,9 @@ export class RoutingStore {
     )
   }
 
-  @observable panelRoute: PanelRoute = 'palette'
+  @observable panelRoute: PanelRoute = 'home'
   @observable subRoutes: SubRoute[] = []
-  @observable isBack = false
+  @observable transitionDirection: TransitionDirection = 'right'
 
   getSubRouteName () {
     if (this.subRoutes.length === 0) {
@@ -73,22 +76,22 @@ export class RoutingStore {
   }
 
   @action
-  setPanelRoute = (route: PanelRoute, isBack = false) => {
+  setPanelRoute = (route: PanelRoute, direction: TransitionDirection = 'left') => {
     this.subRoutes = []
     this.panelRoute = route
-    this.isBack = isBack
+    this.transitionDirection = direction
   }
 
   @action
-  popSubroute = () => {
+  popSubroute = (direction: TransitionDirection = 'right') => {
     this.subRoutes.shift()
-    this.isBack = true
+    this.transitionDirection = direction
   }
 
   @action
-  popSubrouteToRoot = (route?: SubRoute, isBack = true) => {
+  popSubrouteToRoot = (route?: SubRoute, direction: TransitionDirection = 'right') => {
     this.subRoutes = []
-    this.isBack = isBack
+    this.transitionDirection = direction
 
     if (route) {
       this.subRoutes.push(route)
@@ -96,13 +99,13 @@ export class RoutingStore {
   }
 
   @action
-  popSubrouteTo = (route: SubRoute, isBack = true) => {
+  popSubrouteTo = (route: SubRoute, direction: TransitionDirection = 'right') => {
     const index = this.subRoutes.indexOf(route)
     if (index === 0) {
       return
     }
 
-    this.isBack = isBack
+    this.transitionDirection = direction
     if (index > 0) {
       this.subRoutes.splice(0, index)
     } else {
@@ -112,9 +115,9 @@ export class RoutingStore {
   }
 
   @action
-  goToSubroute = (route: SubRoute) => {
+  goToSubroute = (route: SubRoute, direction: TransitionDirection = 'left') => {
     this.subRoutes.unshift(route)
-    this.isBack = false
+    this.transitionDirection = direction
   }
 }
 

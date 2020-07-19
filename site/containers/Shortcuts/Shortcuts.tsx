@@ -39,7 +39,7 @@ export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
         onClick={action}
         onKeyDown={action}
       >
-        <Icon name={icon} />
+        <Icon name={icon} size='xs' />
       </button>
     )
 

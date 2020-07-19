@@ -1,9 +1,11 @@
 
 .shrinking-side-panel {
+  position: relative;
   background: var(--grey-05);
   color: var(--black);
-  width: var(--panel-layout-width);
+  width: var(--main-panel-layout-width);
   transition: width 0.3s;
+  z-index: 1;
 
   &.shrunk {
     width: 48px;
