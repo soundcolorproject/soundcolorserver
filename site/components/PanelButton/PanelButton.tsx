@@ -78,9 +78,9 @@ export function PanelButton (props: Props) {
   }, [onClick])
 
   const handleKeypress = React.useMemo(() => !onClick ? noop : (ev: React.KeyboardEvent) => {
-    ev.preventDefault()
-    ev.stopPropagation()
     if (ev.key === ' ' || ev.key === 'Enter') {
+      ev.preventDefault()
+      ev.stopPropagation()
       onClick()
     }
   }, [onClick])
@@ -96,7 +96,7 @@ export function PanelButton (props: Props) {
         className={classNames(hoverButton, { [hilight]: active })}
         onClick={handleClick}
         tabIndex={0}
-        onKeyPress={handleKeypress}
+        onKeyDown={handleKeypress}
         target='_blank'
       >
         <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>

@@ -189,13 +189,13 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       <div
         className="shrinkingPanelButton activeStyle"
         data-testid="shrinking-panel-button"
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
       >
         <a
           className="hoverColor"
           href="/"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -248,12 +248,12 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
       >
         <a
           className="hoverColor"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -306,12 +306,12 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
       >
         <a
           className="hoverColor"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -364,12 +364,12 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
       >
         <a
           className="hoverColor"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -422,12 +422,12 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
       >
         <a
           className="hoverColor"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -480,12 +480,12 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       <div
         className="shrinkingPanelButton"
         data-testid="shrinking-panel-button"
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
       >
         <a
           className="hoverColor"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -587,7 +587,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -611,7 +611,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -635,7 +635,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -659,7 +659,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -683,7 +683,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -707,7 +707,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -731,7 +731,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -755,7 +755,7 @@ exports[`Storyshots Panel Contained 1`] = `
         <a
           className="hoverButton"
           onClick={[Function]}
-          onKeyPress={[Function]}
+          onKeyDown={[Function]}
           tabIndex={0}
           target="_blank"
         >
@@ -794,7 +794,7 @@ exports[`Storyshots Panel Uncontained 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -818,7 +818,7 @@ exports[`Storyshots Panel Uncontained 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -846,7 +846,7 @@ exports[`Storyshots PanelButton Example 1`] = `
   <a
     className="hoverButton"
     onClick={[Function]}
-    onKeyPress={[Function]}
+    onKeyDown={[Function]}
     tabIndex={0}
     target="_blank"
   >
@@ -938,7 +938,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -969,7 +969,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -1000,7 +1000,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -1031,7 +1031,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -1062,7 +1062,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -1093,7 +1093,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -1134,7 +1134,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
     <a
       className="hoverButton"
       onClick={[Function]}
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
       target="_blank"
     >
@@ -1180,12 +1180,12 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
 <div
   className="shrinkingPanelButton"
   data-testid="shrinking-panel-button"
-  onKeyPress={[Function]}
+  onKeyDown={[Function]}
 >
   <a
     className="hoverColor"
     onClick={[Function]}
-    onKeyPress={[Function]}
+    onKeyDown={[Function]}
     tabIndex={0}
     target="_blank"
   >
@@ -1241,12 +1241,12 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
 <div
   className="shrinkingPanelButton"
   data-testid="shrinking-panel-button"
-  onKeyPress={[Function]}
+  onKeyDown={[Function]}
 >
   <a
     className="hoverColor"
     onClick={[Function]}
-    onKeyPress={[Function]}
+    onKeyDown={[Function]}
     tabIndex={0}
     target="_blank"
   >
@@ -1302,12 +1302,12 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
 <div
   className="shrinkingPanelButton"
   data-testid="shrinking-panel-button"
-  onKeyPress={[Function]}
+  onKeyDown={[Function]}
 >
   <a
     className="hoverColor"
     onClick={[Function]}
-    onKeyPress={[Function]}
+    onKeyDown={[Function]}
     tabIndex={0}
     target="_blank"
   >
@@ -1395,12 +1395,12 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
     >
       <a
         className="hoverColor"
         onClick={[Function]}
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
         tabIndex={0}
         target="_blank"
       >
@@ -1453,12 +1453,12 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
     >
       <a
         className="hoverColor"
         onClick={[Function]}
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
         tabIndex={0}
         target="_blank"
       >
@@ -1511,12 +1511,12 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
     >
       <a
         className="hoverColor"
         onClick={[Function]}
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
         tabIndex={0}
         target="_blank"
       >
@@ -1569,12 +1569,12 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
     >
       <a
         className="hoverColor"
         onClick={[Function]}
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
         tabIndex={0}
         target="_blank"
       >
@@ -1627,12 +1627,12 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
     <div
       className="shrinkingPanelButton"
       data-testid="shrinking-panel-button"
-      onKeyPress={[Function]}
+      onKeyDown={[Function]}
     >
       <a
         className="hoverColor"
         onClick={[Function]}
-        onKeyPress={[Function]}
+        onKeyDown={[Function]}
         tabIndex={0}
         target="_blank"
       >

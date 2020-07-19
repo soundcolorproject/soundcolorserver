@@ -55,9 +55,9 @@ export function ShrinkingPanelButton (props: Props) {
   }, [onClick])
 
   const handleKeypress = React.useMemo(() => !onClick ? noop : (ev: React.KeyboardEvent) => {
-    ev.preventDefault()
-    ev.stopPropagation()
     if (ev.key === ' ' || ev.key === 'Enter') {
+      ev.preventDefault()
+      ev.stopPropagation()
       onClick()
     }
   }, [onClick])
@@ -69,14 +69,14 @@ export function ShrinkingPanelButton (props: Props) {
       data-testid='shrinking-panel-button'
       onClick={shrink ? handleClick : undefined}
       tabIndex={shrink ? 0 : undefined}
-      onKeyPress={handleKeypress}
+      onKeyDown={handleKeypress}
     >
       <a
         href={href}
         className={hoverColor}
         onClick={shrink ? undefined : handleClick}
         tabIndex={shrink ? undefined : 0}
-        onKeyPress={handleKeypress}
+        onKeyDown={handleKeypress}
         target='_blank'
       >
         <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} />

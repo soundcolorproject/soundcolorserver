@@ -9,14 +9,18 @@ import { PanelButton } from '../../components/PanelButton'
 
 import { patternSelector } from './patternSelector.pcss'
 import { PatternName } from '../../state/patternsStore'
+import { togglePattern } from '../../state/renderStateStore'
 
 export interface PatternSelectorProps extends RouteComponentProps {
 }
 
 export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = function PatternSelector (_props) {
-  const { patterns, routing } = useStores()
+  const { patterns, routing, renderState } = useStores()
   const setPattern = (name: PatternName) => React.useMemo(() => () => {
     patterns.currentPattern = name
+    if (!renderState.showColors) {
+      togglePattern(patterns, renderState)
+    }
   }, [patterns, name])
 
   const setCustomPattern = React.useMemo(() => () => {
