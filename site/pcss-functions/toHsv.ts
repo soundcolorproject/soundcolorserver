@@ -32,7 +32,7 @@ export class HSVa {
     return toRgb(this).toString()
   }
 
-  valueOf () {
+  valueOf (): [number, number, number, number] {
     return [this.h,this.s,this.v,this.a]
   }
 
