@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import { Link, RouteComponentProps } from '@reach/router'
+import { RouteComponentProps } from '@reach/router'
 
 import { logger } from '../../../shared/logger'
 
@@ -10,7 +10,7 @@ import { RenderStateProp } from '../../state/renderStateStore'
 import { RoutingProp, PanelRoute } from '../../state/routingStore'
 
 import { HomeRow } from '../../components/HomeRow'
-import { Panel } from '../../components/Panel'
+import { Panel } from '../../components/Panel.old'
 import { PanelLayout } from '../../components/PanelLayout'
 
 import { ShaderCanvas } from '../../containers/ShaderCanvas'
@@ -20,7 +20,7 @@ import { FavoriteSelector } from '../../containers/FavoriteSelector'
 import { HueGroupSelector } from '../../containers/HueGroupSelector'
 import { HueRoot } from '../../containers/HueRoot'
 import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
-import { PatternSelector } from '../../containers/PatternSelector'
+import { PatternSelector } from '../../containers/PatternSelector.old'
 import { Settings } from '../../containers/Settings'
 import { ShaderSliders } from '../../containers/ShaderSliders'
 import { Shortcuts } from '../../containers/Shortcuts'

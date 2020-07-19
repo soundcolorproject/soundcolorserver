@@ -1,71 +1,73 @@
 
 import * as React from 'react'
-import * as cn from 'classnames'
+import { useObserver } from 'mobx-react'
+import { RouteComponentProps } from '@reach/router'
+import { useStores } from '../../state/useStores'
 
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { PatternsProp, PatternName } from '../../state/patternsStore'
-import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
-import { RoutingProp } from '../../state/routingStore'
+import { Panel } from '../../components/Panel'
+import { PanelButton } from '../../components/PanelButton'
 
-import { patternSelector, patternOption, selected } from './patternSelector.pcss'
+import { patternSelector } from './patternSelector.pcss'
+import { PatternName } from '../../state/patternsStore'
 
-interface OwnProps {
-  height?: number
-  domRef?: React.Ref<HTMLDivElement>
+export interface PatternSelectorProps extends RouteComponentProps {
 }
 
-type StateProps =
-  & PatternsProp
-  & RenderStateProp
-  & RoutingProp
+export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = function PatternSelector (_props) {
+  const { patterns, routing } = useStores()
+  const setPattern = (name: PatternName) => React.useMemo(() => () => {
+    patterns.currentPattern = name
+  }, [patterns, name])
 
-export type PatternSelectorProps = OwnProps & StateProps
+  const setCustomPattern = React.useMemo(() => () => {
+    patterns.currentPattern = 'custom'
+    routing.goToSubroute('customPalette')
+  }, [patterns, routing])
 
-export const PatternSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
-  class PatternSelector extends React.Component<PatternSelectorProps> {
-    setPattern = (pattern: PatternName) => {
-      const { patterns, renderState, routing } = this.props
-      patterns.currentPattern = pattern
-      if (pattern === 'custom') {
-        routing.goToSubroute('customPalette')
-      }
-      if (!renderState.showColors) {
-        togglePattern(patterns, renderState)
-      }
-    }
+  const goToSavedPalletes = React.useMemo(() => () => {
+    routing.goToSubroute('favoriteCusom')
+  }, [routing])
 
-    renderPatternOption = (pattern: PatternName) => {
-      const { patterns: { patternData, currentPattern } } = this.props
-      return (
-        <button
-          key={pattern}
-          type='button'
-          role='button'
-          className={cn({
-            [patternOption]: true,
-            [selected]: currentPattern === pattern,
-          })}
-          onClick={(ev) => {
-            ev.preventDefault()
-            this.setPattern(pattern)
-          }}
-        >
-          {patternData[pattern].label}
-        </button>
-      )
-    }
-
-    render () {
-      const { patterns: { patternData }, domRef } = this.props
-      const possiblePatterns = Object.keys(patternData) as PatternName[]
-      return (
-        <div ref={domRef} className={patternSelector}>
-          {
-            possiblePatterns.map(this.renderPatternOption)
+  return useObserver(() => (
+    <Panel title='Color Patterns'>
+      {
+        patterns.patternNames.map(name => {
+          if (name === 'custom') {
+            const data = patterns.patternData.custom
+            return (
+              <PanelButton
+                key={name}
+                onClick={setCustomPattern}
+                active={patterns.currentPattern === name}
+                hoverColor={data.defaultColors[data.buttonNoteColor].toString()}
+                endIcon='play'
+              >
+                {data.label}
+              </PanelButton>
+            )
           }
-        </div>
-      )
-    }
-  },
-)
+
+          const data = patterns.patternData[name]
+          return (
+            <PanelButton
+              key={name}
+              onClick={setPattern(name)}
+              active={patterns.currentPattern === name}
+              hoverColor={data.colors[data.buttonNoteColor].toString()}
+
+            >
+              {data.label}
+            </PanelButton>
+          )
+        })
+      }
+      <PanelButton
+        onClick={goToSavedPalletes}
+        endIcon='play'
+        suffix={Object.keys(patterns.favorites).length}
+      >
+        Saved
+      </PanelButton>
+    </Panel>
+  ))
+}
