@@ -1,0 +1,64 @@
+
+:root {
+  --panel-button-hover-background: var(--black);
+  --panel-button-hover-color: var(--white);
+
+  --panel-button-active-background: var(--grey-80);
+  --panel-button-active-color: var(--white);
+}
+
+.panel-button {
+  padding: 8px;
+  background: var(--white);
+  color: var(--black);
+  transition: background 0.3s;
+
+  .hover-button {
+    color: var(--black);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    padding: 6px 8px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    .text {
+      flex-grow: 1;
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .suffix-text {
+        font-weight: normal;
+      }
+    }
+
+    .button-icon {
+      flex-shrink: 0;
+      fill: var(--black);
+      transition: fill 0.3s, opacity 0.3s, flex-grow 0.3s, flex-shrink 0.3s;
+    }
+
+    &:hover, &.hilight {
+      background-color: var(--panel-button-hover-background);
+      color: var(--panel-button-hover-color);
+
+      .button-icon {
+        fill: var(--panel-button-hover-color);
+      }
+    }
+
+    &:active {
+      background: var(--panel-button-active-background);
+      color: var(--panel-button-active-color);
+
+      .button-icon {
+        fill: var(--panel-button-active-color);
+      }
+    }
+  }
+}
