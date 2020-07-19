@@ -152,6 +152,14 @@ function getPanelChild (routing: RoutingStore) {
 export function SovisRoute (props: SovisRouteProps) {
   const { routing, renderState } = useStores()
 
+  const goBack = React.useMemo(() => () => {
+    if (routing.subRoutes.length > 0) {
+      routing.popSubroute()
+    } else {
+      routing.panelRoute = 'home'
+    }
+  }, [routing])
+
   const setPanelRoute = (route: PanelRoute) => () => {
     if (route === 'info') {
       logger.info('firing screen view event for', 'info')
@@ -184,7 +192,7 @@ export function SovisRoute (props: SovisRouteProps) {
         shrink={shrink}
         active={panel === 'home'}
         href={shrink ? undefined : '/'}
-        onClick={shrink ? setPanelRoute('home') : undefined}
+        onClick={shrink ? goBack : undefined}
       >
         Sound Color Project
       </ShrinkingPanelButton>
