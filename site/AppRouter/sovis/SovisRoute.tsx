@@ -4,10 +4,7 @@ import { RouteComponentProps } from '@reach/router'
 
 import { logger } from '../../../shared/logger'
 
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { PatternsProp } from '../../state/patternsStore'
-import { RenderStateProp } from '../../state/renderStateStore'
-import { RoutingProp, PanelRoute, RoutingStore } from '../../state/routingStore'
+import { PanelRoute, RoutingStore } from '../../state/routingStore'
 
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
@@ -62,7 +59,7 @@ const audioSourceRoute = (
 )
 
 const customPaletteRoute = (
-  <CustomPatternSelector height={300} />
+  <CustomPatternSelector />
 )
 
 const hueRootRoute = (
@@ -152,7 +149,7 @@ function getPanelChild (routing: RoutingStore) {
 export function SovisRoute (props: SovisRouteProps) {
   const { routing, renderState } = useStores()
 
-  const goBack = React.useMemo(() => () => {
+  const goBack = React.useCallback(() => {
     if (routing.subRoutes.length > 0) {
       routing.popSubroute()
     } else {

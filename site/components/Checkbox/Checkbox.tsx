@@ -27,29 +27,26 @@ export function Checkbox (props: SliderProps) {
 
   const switchRef = React.useRef<HTMLDivElement>(null)
 
-  const handleChange = React.useMemo(() => (
+  const handleChange = React.useCallback(
     function handleChange (ev: React.ChangeEvent<HTMLInputElement>) {
       onChange(ev.currentTarget.checked)
-    }
-  ), [onChange])
+    },
+    [onChange],
+  )
 
-  const handleLabelClick = React.useMemo(() => (
-    function handleLabelClick () {
-      if (switchRef.current) {
-        switchRef.current.focus()
-      }
+  const handleLabelClick = React.useCallback(() => {
+    if (switchRef.current) {
+      switchRef.current.focus()
     }
-  ), [])
+  }, [])
 
-  const handleKeydown = React.useMemo(() => (
-    function handleKeypress (ev: React.KeyboardEvent<HTMLInputElement>) {
-      if (ev.key === 'Enter' || ev.key === ' ') {
-        ev.preventDefault()
-        ev.stopPropagation()
-        onChange(!checked)
-      }
+  const handleKeydown = React.useCallback((ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      ev.preventDefault()
+      ev.stopPropagation()
+      onChange(!checked)
     }
-  ), [onChange, checked])
+  }, [onChange, checked])
 
   return (
     <label className={cn(checkboxLabel, className)} onClick={handleLabelClick}>

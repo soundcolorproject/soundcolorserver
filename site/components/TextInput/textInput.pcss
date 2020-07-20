@@ -1,22 +1,33 @@
 
 .text-input {
-  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
 
+  .input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+
+    & + * {
+      margin-left: 8px;
+    }
+  }
+
   input {
     flex: 1;
     border: 2px solid var(--grey-05);
+    width: 10px;
     background: var(--white);
     color: var(--black);
     font-size: 12px;
     line-height: 20px;
     outline: none;
-    padding: 6px 9px;
+    padding: 4px 7px;
     border-radius: 4px;
     font-weight: normal;
-    font-family: 'Inter', 'IBM Plex Sans', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
     &:hover {
       border-color: var(--grey-10);
@@ -46,7 +57,7 @@
     bottom: 0;
     font-size: 12px;
     line-height: 20px;
-    padding: 8px 11px;
+    padding: 6px 9px;
     color: var(--grey-60);
     font-weight: normal;
     white-space: nowrap;
@@ -55,9 +66,5 @@
     opacity: 0;
     pointer-events: none;
     z-index: 1;
-
-    & + * {
-      margin-left: 8px;
-    }
   }
 }

@@ -21,6 +21,7 @@ export interface Props {
   href?: string
   endIcon?: IconName
   hoverColor?: string
+  noActiveColor?: boolean
   active?: boolean
   noBold?: boolean
   className?: string
@@ -45,6 +46,7 @@ export function PanelButton (props: Props) {
     href,
     endIcon,
     hoverColor,
+    noActiveColor,
     active = false,
     noBold = false,
     className,
@@ -62,14 +64,21 @@ export function PanelButton (props: Props) {
   }
 
   if (hoverColor) {
-    const hoverTextColor = getContrastingColor(hoverColor)
-    fullStyle['--panel-button-hover-background'] = hoverColor
-    fullStyle['--panel-button-hover-color'] = hoverTextColor
+    if (noActiveColor) {
+      fullStyle['--panel-button-hover-background'] = hoverColor
+      fullStyle['--panel-button-hover-color'] = 'var(--white)'
+      fullStyle['--panel-button-active-background'] = hoverColor
+      fullStyle['--panel-button-active-color'] = 'var(--white)'
+    } else {
+      const hoverTextColor = getContrastingColor(hoverColor)
+      fullStyle['--panel-button-hover-background'] = hoverColor
+      fullStyle['--panel-button-hover-color'] = hoverTextColor
 
-    const activeColor = darken(hoverColor, 0.2)
-    const activeTextColor = getContrastingColor(activeColor)
-    fullStyle['--panel-button-active-background'] = activeColor.toString()
-    fullStyle['--panel-button-active-color'] = activeTextColor
+      const activeColor = darken(hoverColor, 0.2)
+      const activeTextColor = getContrastingColor(activeColor)
+      fullStyle['--panel-button-active-background'] = activeColor.toString()
+      fullStyle['--panel-button-active-color'] = activeTextColor
+    }
   }
 
   const handleClick = React.useMemo(() => !onClick ? noop : (ev: React.SyntheticEvent) => {

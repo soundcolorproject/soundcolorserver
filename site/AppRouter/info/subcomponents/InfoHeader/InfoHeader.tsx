@@ -24,7 +24,7 @@ import { logger } from '../../../../../shared/logger'
 export function InfoHeader () {
   const [showVideo, setShowVideo] = React.useState(false)
   const videoRef = React.useRef<HTMLVideoElement>(null)
-  const videoLoaded = React.useMemo(() => (ev: React.SyntheticEvent<HTMLVideoElement>) => {
+  const videoLoaded = React.useCallback((ev: React.SyntheticEvent<HTMLVideoElement>) => {
     ev.currentTarget.play().then(() => {
       setShowVideo(true)
     }).catch(() => {

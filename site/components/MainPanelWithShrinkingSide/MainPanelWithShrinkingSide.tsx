@@ -40,7 +40,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
     style,
   } = props
 
-  const [prevChildren, shouldTransition] = useTransition(children, 600)
+  const [prevChildren, shouldTransition] = useTransition(children, 400)
 
   if (!prevChildren) {
     return (

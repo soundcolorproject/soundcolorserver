@@ -4,6 +4,7 @@ import * as classNames from 'classnames'
 
 import {
   textInput,
+  inputWrapper,
   placeholderText,
 } from './textInput.pcss'
 
@@ -28,7 +29,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>((pro
     'data-testid': testid = 'text-input',
   } = props
 
-  const handleChange = React.useMemo(() => (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     onChange(ev.currentTarget.value)
   }, [onChange])
 
@@ -38,9 +39,11 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>((pro
       style={style}
       data-testid={testid}
     >
-      <input ref={ref} value={value} onChange={handleChange} data-testid={`${testid}-input`} />
-      <div className={placeholderText} data-testid={`${testid}-placeholder`}>
-        {placeholder}
+      <div className={inputWrapper}>
+        <input ref={ref} value={value} onChange={handleChange} data-testid={`${testid}-input`} />
+        <div className={placeholderText} data-testid={`${testid}-placeholder`}>
+          {placeholder}
+        </div>
       </div>
       {children}
     </div>

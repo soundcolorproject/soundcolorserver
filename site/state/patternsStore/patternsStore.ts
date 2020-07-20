@@ -97,9 +97,10 @@ function deleteFavorite (key: string) {
   localStorage.setItem(`custom:favorites`, JSON.stringify(faves))
 }
 
-function saveFavorite () {
-  const name = randStr()
-
+function saveFavorite (name: string) {
+  if (!name) {
+    name = randStr()
+  }
   const colors = patternsStore.patternData.custom.colors
   notes.forEach(note => {
     saveCustomColorValue(name, note, colors[note])
@@ -325,8 +326,8 @@ export const patternsStore = observable({
     },
   },
   favorites: getFavorites(),
-  saveFavorite: action('saveFavorite', () => {
-    patternsStore.favoriteKey = saveFavorite()
+  saveFavorite: action('saveFavorite', (name: string) => {
+    patternsStore.favoriteKey = saveFavorite(name)
     patternsStore.favorites = getFavorites()
     patternsStore.hasNewFavorite = true
   }),

@@ -1,46 +1,29 @@
 
 .custom-pattern-selector {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  height: 300px;
-
-  .navigation {
+  .color-pickers {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 
-    .navigation-button {
+    .picker-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      margin-bottom: 12px;
+    }
+
+    .picker {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 1;
-      margin: 0;
-      padding: 24px 0;
-      border: none;
-      border-radius: 0;
-
-      &:hover {
-          background-color: var(--grey-10);
-      }
-
-      &:active {
-          background-color: var(--grey-20);
-      }
     }
   }
 
-  .color-buttons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-
-    .color-button {
-      flex-basis: 25%;
-      margin: 0;
-      padding: 30px 0;
-      border: none;
-      border-radius: 0;
-    }
+  .pattern-name {
+    flex: 1;
+    margin: 16px;
+    margin-top: 0;
   }
 }

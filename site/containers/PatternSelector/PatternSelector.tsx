@@ -16,19 +16,19 @@ export interface PatternSelectorProps extends RouteComponentProps {
 
 export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = function PatternSelector (_props) {
   const { patterns, routing, renderState } = useStores()
-  const setPattern = (name: PatternName) => React.useMemo(() => () => {
+  const setPattern = (name: PatternName) => React.useCallback(() => {
     patterns.currentPattern = name
     if (!renderState.showColors) {
       togglePattern(patterns, renderState)
     }
   }, [patterns, name])
 
-  const setCustomPattern = React.useMemo(() => () => {
+  const setCustomPattern = React.useCallback(() => {
     patterns.currentPattern = 'custom'
     routing.goToSubroute('customPalette')
   }, [patterns, routing])
 
-  const goToSavedPalletes = React.useMemo(() => () => {
+  const goToSavedPalletes = React.useCallback(() => {
     routing.goToSubroute('favoriteCusom')
   }, [routing])
 
