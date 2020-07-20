@@ -1,4 +1,6 @@
 
+import { requireSvg } from './requireSvg'
+
 export type IconSize = keyof typeof iconSizes
 
 export const iconSizes = {
