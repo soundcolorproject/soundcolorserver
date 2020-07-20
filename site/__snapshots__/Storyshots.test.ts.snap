@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Button Example 1`] = `
+<button
+  className="button"
+  data-testid="button"
+  onClick={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
 exports[`Storyshots ColorPicker Stateful Example 1`] = `
 <div
   style={
@@ -23,6 +33,234 @@ exports[`Storyshots ColorPicker Stateful Example 1`] = `
   >
     C
   </button>
+</div>
+`;
+
+exports[`Storyshots CustomPatternSelector Example 1`] = `
+<div
+  className="panel"
+  data-testid="panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Custom
+    </div>
+    <button
+      className="button titleButton"
+      data-testid="button"
+      onClick={[Function]}
+      style={Object {}}
+      type="button"
+    >
+      Reset
+    </button>
+  </div>
+  <div
+    className="customPatternSelector"
+    data-testid="custom-pattern-selector"
+  >
+    <div
+      className="colorPickers"
+      data-testid="custom-pattern-selector-color-pickers"
+    >
+      <div
+        className="pickerRow"
+        data-testid="custom-pattern-selector-pickers-row-0"
+      >
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-A"
+          style={
+            Object {
+              "backgroundColor": "#eed0c6",
+              "color": "var(--black)",
+            }
+          }
+        >
+          A
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-A#"
+          style={
+            Object {
+              "backgroundColor": "#dbc9c8",
+              "color": "var(--black)",
+            }
+          }
+        >
+          A#
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-B"
+          style={
+            Object {
+              "backgroundColor": "#c7c2ca",
+              "color": "var(--black)",
+            }
+          }
+        >
+          B
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-C"
+          style={
+            Object {
+              "backgroundColor": "#b4bbcc",
+              "color": "var(--black)",
+            }
+          }
+        >
+          C
+        </button>
+      </div>
+      <div
+        className="pickerRow"
+        data-testid="custom-pattern-selector-pickers-row-1"
+      >
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-C#"
+          style={
+            Object {
+              "backgroundColor": "#a1b4ce",
+              "color": "var(--black)",
+            }
+          }
+        >
+          C#
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-D"
+          style={
+            Object {
+              "backgroundColor": "#8eadd0",
+              "color": "var(--black)",
+            }
+          }
+        >
+          D
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-D#"
+          style={
+            Object {
+              "backgroundColor": "#7aa7d2",
+              "color": "var(--black)",
+            }
+          }
+        >
+          D#
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-E"
+          style={
+            Object {
+              "backgroundColor": "#67a0d4",
+              "color": "var(--black)",
+            }
+          }
+        >
+          E
+        </button>
+      </div>
+      <div
+        className="pickerRow"
+        data-testid="custom-pattern-selector-pickers-row-2"
+      >
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-F"
+          style={
+            Object {
+              "backgroundColor": "#5499d6",
+              "color": "var(--black)",
+            }
+          }
+        >
+          F
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-F#"
+          style={
+            Object {
+              "backgroundColor": "#4192d8",
+              "color": "var(--black)",
+            }
+          }
+        >
+          F#
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-G"
+          style={
+            Object {
+              "backgroundColor": "#2d8bda",
+              "color": "var(--black)",
+            }
+          }
+        >
+          G
+        </button>
+        <button
+          className="colorPicker picker"
+          data-testid="custom-pattern-selector-picker-G#"
+          style={
+            Object {
+              "backgroundColor": "#1a84dc",
+              "color": "var(--black)",
+            }
+          }
+        >
+          G#
+        </button>
+      </div>
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="textInput patternName"
+        data-testid="text-input"
+      >
+        <div
+          className="inputWrapper"
+        >
+          <input
+            data-testid="text-input-input"
+            onChange={[Function]}
+            value=""
+          />
+          <div
+            className="placeholderText"
+            data-testid="text-input-placeholder"
+          >
+            Custom Pattern Name
+          </div>
+        </div>
+        <button
+          className="button"
+          data-testid="button"
+          onClick={[Function]}
+          style={Object {}}
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 `;
 
@@ -578,231 +816,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
 </div>
 `;
 
-exports[`Storyshots Panel Contained 1`] = `
-<div
-  style={
-    Object {
-      "alignItems": "center",
-      "display": "flex",
-      "justifyContent": "center",
-    }
-  }
->
-  <div
-    style={
-      Object {
-        "height": 288,
-        "width": 272,
-      }
-    }
-  >
-    <div
-      className="panel"
-      data-testid="panel"
-    >
-      <div
-        className="panelTitle"
-      >
-        My Panel
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            This is a panel button
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            So is this
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            And another
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Just making enough
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            That it will require
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            The ability to scroll
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Does it work?
-          </div>
-        </a>
-      </div>
-      <div
-        className="panelButton"
-        data-testid="panel-button"
-        style={Object {}}
-      >
-        <a
-          className="hoverButton"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex={0}
-          target="_blank"
-        >
-          <div
-            className="text"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            This one should also have ellipses due to it being a very long button name
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Panel Uncontained 1`] = `
+exports[`Storyshots Panel Example 1`] = `
 <div
   className="panel"
   data-testid="panel"
@@ -810,7 +824,35 @@ exports[`Storyshots Panel Uncontained 1`] = `
   <div
     className="panelTitle"
   >
-    My Panel
+    <div
+      className="titleText"
+    >
+      My Panel
+    </div>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="panel-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        This button should have ellipses due to it being very long text and when the panel is contained (or the window small enough), it is not wide enough to show it all
+      </div>
+    </a>
   </div>
   <div
     className="panelButton"
@@ -947,7 +989,11 @@ exports[`Storyshots PatternSelector Example 1`] = `
   <div
     className="panelTitle"
   >
-    Color Patterns
+    <div
+      className="titleText"
+    >
+      Color Patterns
+    </div>
   </div>
   <div
     className="panelButton"
@@ -1734,16 +1780,20 @@ exports[`Storyshots TextInput Knobs With Icon 1`] = `
       }
     }
   >
-    <input
-      data-testid="text-input-input"
-      onChange={[Function]}
-      value="I am a value"
-    />
     <div
-      className="placeholderText"
-      data-testid="text-input-placeholder"
+      className="inputWrapper"
     >
-      I am a placeholder
+      <input
+        data-testid="text-input-input"
+        onChange={[Function]}
+        value="I am a value"
+      />
+      <div
+        className="placeholderText"
+        data-testid="text-input-placeholder"
+      >
+        I am a placeholder
+      </div>
     </div>
     <svg
       className="icon"
@@ -1791,16 +1841,20 @@ exports[`Storyshots TextInput Plain Knobs 1`] = `
       }
     }
   >
-    <input
-      data-testid="text-input-input"
-      onChange={[Function]}
-      value="I am a value"
-    />
     <div
-      className="placeholderText"
-      data-testid="text-input-placeholder"
+      className="inputWrapper"
     >
-      I am a placeholder
+      <input
+        data-testid="text-input-input"
+        onChange={[Function]}
+        value="I am a value"
+      />
+      <div
+        className="placeholderText"
+        data-testid="text-input-placeholder"
+      >
+        I am a placeholder
+      </div>
     </div>
   </div>
 </div>
@@ -1828,16 +1882,20 @@ exports[`Storyshots TextInput Stateful 1`] = `
       }
     }
   >
-    <input
-      data-testid="text-input-input"
-      onChange={[Function]}
-      value=""
-    />
     <div
-      className="placeholderText"
-      data-testid="text-input-placeholder"
+      className="inputWrapper"
     >
-      I am a placeholder
+      <input
+        data-testid="text-input-input"
+        onChange={[Function]}
+        value=""
+      />
+      <div
+        className="placeholderText"
+        data-testid="text-input-placeholder"
+      >
+        I am a placeholder
+      </div>
     </div>
   </div>
 </div>

@@ -11,20 +11,7 @@ const defaultProps: ColorPickerProps = {
   onChange: noop,
 }
 
-jest.mock('@simonwep/pickr', () => ({
-  default: {
-    create: jest.fn((options) => {
-      const self = {
-        setColor: () => true,
-        on: () => self,
-        destroyAndRemove: noop,
-        options,
-      } as Partial<Pickr>
-
-      return self as Pickr
-    }),
-  },
-}))
+jest.mock('@simonwep/pickr')
 
 describe(ColorPicker.name, () => {
   it('should render the given class', () => {

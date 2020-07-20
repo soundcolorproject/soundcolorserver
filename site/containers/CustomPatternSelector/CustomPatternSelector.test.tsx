@@ -4,8 +4,11 @@ import { render } from '@testing-library/react'
 import { mockUseStores } from '../../state/mockUseStores'
 
 import { CustomPatternSelector } from './CustomPatternSelector'
-import { PatternsStore } from '../../state/patternsStore'
+import { PatternsStore, Note } from '../../state/patternsStore'
+import { toHsv } from '../../pcss-functions'
 
+jest.mock('@simonwep/pickr')
+const noop = () => undefined
 describe(CustomPatternSelector.name, () => {
   const useStoresSpy = mockUseStores()
 
@@ -14,20 +17,28 @@ describe(CustomPatternSelector.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'A'
+    const notes: Note[] = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
+    const colors: any = {
+      reset: noop,
+    }
+    notes.forEach(note => {
+      colors[note] = toHsv('#fff')
+    })
 
     const patterns: DeepPartial<PatternsStore> = {
       currentPattern: 'chakras',
       patternData: {
-        chakras: {
-          description: expected,
+        custom: {
+          colors,
         },
       },
+      notes,
     }
     useStoresSpy.mockReturnValue({ patterns })
 
     const mounted = render(<CustomPatternSelector />)
-    const el = mounted.getByTestId('custom-pattern-selector')
+    const el = mounted.getByTestId('custom-pattern-selector-picker-A')
 
     expect(el).toHaveTextContent(expected)
   })
