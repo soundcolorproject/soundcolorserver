@@ -15,5 +15,3 @@ export { toHsv, HSVa } from './toHsv'
 export { toRgb, RGBa } from './toRgb'
 export { toSRgb, SRGBa } from './toSRgb'
 export { Color, ParsedColor } from './types'
-
-// export { Color, ParsedColor }
