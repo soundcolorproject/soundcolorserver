@@ -178,18 +178,17 @@ export function SovisRoute (props: SovisRouteProps) {
     routing.setPanelRoute(route, isDown ? 'down' : 'up')
   }
 
-  const panel = routing.panelRoute
-  const shrink = panel !== 'home'
+  const panel = () => routing.panelRoute
+  const shrink = () => panel() !== 'home'
 
   const sidePanel = () => (
-    <ShrinkingSidePanel shrink={shrink}>
+    <ShrinkingSidePanel shrink={shrink()}>
       <ShrinkingPanelButton
-        icon={shrink ? 'arrow_back' : 'logo'}
+        icon={shrink() ? 'arrow_back' : 'logo'}
         noBold
-        shrink={shrink}
-        active={panel === 'home'}
-        href={shrink ? undefined : '/'}
-        onClick={shrink ? goBack : undefined}
+        shrink={shrink()}
+        href={shrink() ? undefined : '/'}
+        onClick={shrink() ? goBack : undefined}
       >
         Sound Color Project
       </ShrinkingPanelButton>
@@ -198,8 +197,8 @@ export function SovisRoute (props: SovisRouteProps) {
           <ShrinkingPanelButton
             key={name}
             icon={panelDetails[name].icon}
-            shrink={shrink}
-            active={panel === name}
+            shrink={shrink()}
+            active={panel() === name}
             onClick={setPanelRoute(name)}
           >
             {panelDetails[name].title}
@@ -216,9 +215,9 @@ export function SovisRoute (props: SovisRouteProps) {
         <div id={sovisPanel}>
           <MainPanelWithShrinkingSide
             sidePanel={sidePanel()}
-            height={panel === 'palette' && routing.subRoutes.length === 0 ? 384 : 288}
+            height={panel() === 'palette' && routing.subRoutes.length === 0 ? 384 : 288}
             transitionDirection={routing.transitionDirection}
-            open={shrink}
+            open={shrink()}
           >
             {getPanelChild(routing)}
           </MainPanelWithShrinkingSide>
