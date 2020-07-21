@@ -5,7 +5,16 @@ import * as classNames from 'classnames'
 import { button } from './button.pcss'
 import { Color, getContrastingColor, darken, lighten } from '../../pcss-functions'
 
-interface Props {
+export interface SlimButtonProps {
+  text: string
+  onClick: () => void
+  className?: string
+  color?: string
+  hoverColor?: string
+  preventDefault?: boolean
+}
+
+export interface ButtonProps {
   onClick?: () => void
   children?: React.ReactNode
   type?: 'button' | 'submit'
@@ -26,7 +35,11 @@ interface CssVars {
   '--button-active-color'?: string
 }
 
-export function Button (props: Props) {
+export function renderSlimButton ({ text, ...remainingProps }: SlimButtonProps) {
+  return <Button {...remainingProps}>{text}</Button>
+}
+
+export function Button (props: ButtonProps) {
   const {
     onClick,
     children,
@@ -58,11 +71,11 @@ export function Button (props: Props) {
 
     if (!hoverColor) {
       const hoverColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
-      ? lighten(color, 0.2)
-      : darken(color, 0.2)
-      const activeColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
       ? lighten(color, 0.4)
       : darken(color, 0.4)
+      const activeColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
+      ? lighten(color, 0.6)
+      : darken(color, 0.6)
 
       fullStyle['--button-hover-background'] = hoverColor.toString()
       fullStyle['--button-hover-color'] = getContrastingColor(hoverColor)

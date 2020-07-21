@@ -8,7 +8,7 @@ import { PanelRoute, RoutingStore } from '../../state/routingStore'
 
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
-import { FavoriteSelector } from '../../containers/FavoriteSelector'
+import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
 import { HueGroupSelector } from '../../containers/HueGroupSelector'
 import { HueRoot } from '../../containers/HueRoot'
 import { PatternSelector } from '../../containers/PatternSelector'
@@ -71,7 +71,7 @@ const hueGroupRoute = (
 )
 
 const favoritesRoute = (
-  <FavoriteSelector />
+  <SavedPaletteSelector />
 )
 
 const shaderSlidersRoute = (

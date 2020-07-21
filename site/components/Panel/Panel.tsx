@@ -3,16 +3,11 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 
 import { panel, panelTitle, titleText, titleButton } from './panel.pcss'
-import { Button } from '../Button'
+import { SlimButtonProps, renderSlimButton } from '../Button'
 
 interface Props {
   title: string
-  button?: {
-    text: string
-    onClick: () => void
-    color?: string
-    hoverColor?: string
-  }
+  button?: SlimButtonProps
   children?: React.ReactNode
   className?: string
   style?: React.CSSProperties
@@ -37,17 +32,7 @@ export function Panel (props: Props) {
     >
       <div className={panelTitle}>
         <div className={titleText}>{title}</div>
-        {
-          button &&
-            <Button
-              className={titleButton}
-              onClick={button.onClick}
-              color={button.color}
-              hoverColor={button.hoverColor}
-            >
-              {button.text}
-            </Button>
-        }
+        {button && renderSlimButton({ ...button, className: titleButton })}
       </div>
       {children}
     </div>
