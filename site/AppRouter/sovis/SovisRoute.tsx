@@ -10,7 +10,6 @@ import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
 import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
 import { HueGroupSelector } from '../../containers/HueGroupSelector'
-import { HueRoot } from '../../containers/HueRoot'
 import { PatternSelector } from '../../containers/PatternSelector'
 import { ShaderSliders } from '../../containers/ShaderSliders'
 import { Sliders } from '../../containers/Sliders'
@@ -60,10 +59,6 @@ const connectionsRoute = (
 
 const customPaletteRoute = (
   <CustomPatternSelector />
-)
-
-const hueRootRoute = (
-  <HueRoot />
 )
 
 const hueGroupRoute = (
@@ -124,7 +119,6 @@ function getPanelChild (routing: RoutingStore) {
     switch (routing.subRoutes[0]) {
       case 'audioSource': return audioSourceRoute
       case 'customPalette': return customPaletteRoute
-      case 'hueRoot': return hueRootRoute
       case 'hueGroupSelector': return hueGroupRoute
       case 'favoriteCusom': return favoritesRoute
       case 'shaderSliders': return shaderSlidersRoute

@@ -6,7 +6,6 @@ import { useStores } from '../../state/useStores'
 
 import { Panel } from '../../components/Panel'
 
-import { connectionsPanel } from './connectionsPanel.pcss'
 import { PanelButton } from '../../components/PanelButton'
 
 export interface ConnectionsPanelProps extends RouteComponentProps {

@@ -17,7 +17,6 @@ export type PanelRoute =
 
 export type SubRoute =
   | 'audioSource'
-  | 'hueRoot'
   | 'hueGroupSelector'
   | 'customPalette'
   | 'favoriteCusom'
@@ -26,7 +25,6 @@ export type SubRoute =
 
 const routeNames: { [key in SubRoute]: string } = {
   audioSource: 'Audio Source',
-  hueRoot: 'Philips Hue',
   hueGroupSelector: 'Light Group',
   customPalette: 'Custom',
   favoriteCusom: 'Favorites',

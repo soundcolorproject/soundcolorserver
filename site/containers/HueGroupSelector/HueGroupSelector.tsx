@@ -21,7 +21,7 @@ export const HueGroupSelector = injectAndObserve<StateProps, OwnProps>(
     onClick = (lightGroupId: number | undefined) => () => {
       const { apiStatus, routing } = this.props
       apiStatus.lightGroupId = lightGroupId
-      routing.popSubrouteTo('hueRoot')
+      routing.popSubrouteToRoot()
     }
 
     renderContent = () => {
