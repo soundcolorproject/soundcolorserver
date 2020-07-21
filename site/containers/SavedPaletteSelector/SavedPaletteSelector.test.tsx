@@ -14,20 +14,17 @@ describe(SavedPaletteSelector.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'My Custom Palette'
 
     const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
+      favorites: {
+        [expected]: {},
       },
     }
     useStoresSpy.mockReturnValue({ patterns })
 
     const mounted = render(<SavedPaletteSelector />)
-    const el = mounted.getByTestId('saved-palette-selector')
+    const el = mounted.getByTestId('saved-palette-selector-palette-button-0')
 
     expect(el).toHaveTextContent(expected)
   })

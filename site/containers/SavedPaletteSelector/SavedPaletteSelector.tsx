@@ -35,7 +35,7 @@ export const SavedPaletteSelector: React.FunctionComponent<SavedPaletteSelectorP
 
   const renderFavorites = () => {
     const names = Object.keys(patterns.favorites)
-    return names.map(name => (
+    return names.map((name, i) => (
       <PanelButton
         key={name}
         className={favoriteButton}
@@ -45,6 +45,7 @@ export const SavedPaletteSelector: React.FunctionComponent<SavedPaletteSelectorP
           onClick: deleteFavorite(name),
           color: '#FC5719',
         }}
+        data-testid={`${testid}-palette-button-${i}`}
       >
         {name}
       </PanelButton>

@@ -842,7 +842,7 @@ exports[`Storyshots Panel Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -851,7 +851,7 @@ exports[`Storyshots Panel Example 1`] = `
         }
       >
         This button should have ellipses due to it being very long text and when the panel is contained (or the window small enough), it is not wide enough to show it all
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -866,7 +866,7 @@ exports[`Storyshots Panel Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -875,7 +875,7 @@ exports[`Storyshots Panel Example 1`] = `
         }
       >
         This is a panel button
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -890,7 +890,7 @@ exports[`Storyshots Panel Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -899,7 +899,7 @@ exports[`Storyshots Panel Example 1`] = `
         }
       >
         So is this
-      </div>
+      </span>
     </a>
   </div>
 </div>
@@ -918,7 +918,7 @@ exports[`Storyshots PanelButton Example 1`] = `
     tabIndex={0}
     target="_blank"
   >
-    <div
+    <span
       className="text"
       style={
         Object {
@@ -1014,7 +1014,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1023,7 +1023,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         }
       >
         Chakras
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -1045,7 +1045,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1054,7 +1054,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         }
       >
         Chromesthesia
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -1076,7 +1076,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1085,7 +1085,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         }
       >
         Emotion
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -1107,7 +1107,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1116,7 +1116,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         }
       >
         Chromotherapy
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -1138,7 +1138,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1147,7 +1147,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         }
       >
         Adolescence
-      </div>
+      </span>
     </a>
   </div>
   <div
@@ -1169,7 +1169,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1178,7 +1178,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         }
       >
         Custom
-      </div>
+      </span>
       <svg
         className="icon buttonIcon"
         height={30}
@@ -1210,7 +1210,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       tabIndex={0}
       target="_blank"
     >
-      <div
+      <span
         className="text"
         style={
           Object {
@@ -1225,7 +1225,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
            - 
           0
         </span>
-      </div>
+      </span>
       <svg
         className="icon buttonIcon"
         height={30}
@@ -1244,6 +1244,23 @@ exports[`Storyshots PatternSelector Example 1`] = `
         <use />
       </svg>
     </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SavedPaletteSelector Example 1`] = `
+<div
+  className="panel savedPaletteSelector"
+  data-testid="saved-palette-selector"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Saved
+    </div>
   </div>
 </div>
 `;
