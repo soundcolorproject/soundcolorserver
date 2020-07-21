@@ -921,6 +921,13 @@ exports[`Storyshots PanelButton Example 1`] = `
 </div>
 `;
 
+exports[`Storyshots PanelDetail Example 1`] = `
+<div
+  className="panelDetail"
+  data-testid="panel-detail"
+/>
+`;
+
 exports[`Storyshots PanelLayout With Content 1`] = `
 <div
   className="panelLayout"
@@ -1762,6 +1769,88 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         </svg>
       </a>
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SoundDetails Example 1`] = `
+<div
+  className="panel soundDetails"
+  data-testid="sound-details"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Sound Details
+    </div>
+  </div>
+  <div
+    className="panelDetail"
+    data-testid="sound-details-noise"
+  >
+    <span
+      className="detailName"
+    >
+      Noise volume: 
+    </span>
+    <span>
+      •
+    </span>
+  </div>
+  <div
+    className="panelDetail"
+    data-testid="sound-details-tone"
+  >
+    <span
+      className="detailName"
+    >
+      Tone volume: 
+    </span>
+    <span>
+      •
+    </span>
+  </div>
+  <div
+    className="panelDetail"
+    data-testid="sound-details-freq"
+  >
+    <span
+      className="detailName"
+    >
+      Frequency: 
+    </span>
+    <span>
+      •
+    </span>
+  </div>
+  <div
+    className="panelDetail"
+    data-testid="sound-details-note"
+  >
+    <span
+      className="detailName"
+    >
+      Note: 
+    </span>
+    <span>
+      •
+    </span>
+  </div>
+  <div
+    className="panelDetail"
+    data-testid="sound-details-cents"
+  >
+    <span
+      className="detailName"
+    >
+      Cents ♭: 
+    </span>
+    <span>
+      •
+    </span>
   </div>
 </div>
 `;

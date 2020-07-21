@@ -19,7 +19,6 @@ import { SoundDetails } from '../../containers/SoundDetails'
 import { TextHider } from '../../components/TextHider'
 
 import { sovis, sovisPanel } from './sovis.pcss'
-import { NoColorNotification } from '../../containers/NoColorNotification'
 import { ShaderSelector } from '../../containers/ShaderSelector'
 import { useStores } from '../../state/useStores'
 import { ShrinkingSidePanel } from '../../components/ShrinkingSidePanel'
