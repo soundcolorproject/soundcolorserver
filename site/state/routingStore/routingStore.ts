@@ -13,7 +13,6 @@ export type PanelRoute =
   | 'connections'
   | 'filters'
   | 'sound'
-  | 'settings'
   | 'info'
 
 export type SubRoute =

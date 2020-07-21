@@ -25,6 +25,17 @@
     transition: background-color 0.3s;
     cursor: pointer;
 
+    &.disabled-button {
+      background: var(--grey-10) !important;
+      color: var(--grey-60) !important;
+      cursor: default;
+
+      &:hover, &:active {
+        background: var(--grey-10) !important;
+        color: var(--grey-60) !important;
+      }
+    }
+
     & > button {
       margin: -6px -8px;
       margin-left: 8px;

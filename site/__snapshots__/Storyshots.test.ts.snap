@@ -36,6 +36,114 @@ exports[`Storyshots ColorPicker Stateful Example 1`] = `
 </div>
 `;
 
+exports[`Storyshots ConnectionsPanel Example 1`] = `
+<div
+  className="panel"
+  data-testid="connections-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Connections
+    </div>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="connections-panel-audio-source-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <span
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Audio Source
+        <span
+          className="suffixText"
+        >
+           - 
+          None
+        </span>
+      </span>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="connections-panel-tracks-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton disabledButton"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <span
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Tracks
+        <span
+          className="suffixText"
+        >
+           - 
+          No audio source with tracks
+        </span>
+      </span>
+    </a>
+  </div>
+  <div
+    className="panelButton"
+    data-testid="connections-panel-philips-hue-button"
+    style={Object {}}
+  >
+    <a
+      className="hoverButton"
+      href="/login"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <span
+        className="text"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Philips Hue
+        <span
+          className="suffixText"
+        >
+           - 
+          Login
+        </span>
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
 exports[`Storyshots CustomPatternSelector Example 1`] = `
 <div
   className="panel"
@@ -261,123 +369,6 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
       </div>
     </form>
   </div>
-</div>
-`;
-
-exports[`Storyshots HomeRow Stateful 1`] = `
-<div
-  id="homeRow"
->
-  <button
-    className="homeRowButton selected"
-    onClick={[Function]}
-  >
-    <svg
-      className="icon"
-      height={24}
-      style={
-        Object {
-          "marginBottom": undefined,
-          "marginLeft": undefined,
-          "marginRight": undefined,
-          "marginTop": undefined,
-        }
-      }
-      viewBox="0 0 24 24"
-      width={24}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use />
-    </svg>
-  </button>
-  <button
-    className="homeRowButton"
-    onClick={[Function]}
-  >
-    <svg
-      className="icon"
-      height={24}
-      style={
-        Object {
-          "marginBottom": undefined,
-          "marginLeft": undefined,
-          "marginRight": undefined,
-          "marginTop": undefined,
-        }
-      }
-      viewBox="0 0 24 24"
-      width={24}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use />
-    </svg>
-  </button>
-  <button
-    className="homeRowButton"
-    onClick={[Function]}
-  >
-    <svg
-      className="icon"
-      height={24}
-      style={
-        Object {
-          "marginBottom": undefined,
-          "marginLeft": undefined,
-          "marginRight": undefined,
-          "marginTop": undefined,
-        }
-      }
-      viewBox="0 0 24 24"
-      width={24}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use />
-    </svg>
-  </button>
-  <button
-    className="homeRowButton"
-    onClick={[Function]}
-  >
-    <svg
-      className="icon"
-      height={36}
-      style={
-        Object {
-          "marginBottom": -6,
-          "marginLeft": -6,
-          "marginRight": -6,
-          "marginTop": -6,
-        }
-      }
-      viewBox="0 0 24 24"
-      width={36}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use />
-    </svg>
-  </button>
-  <button
-    className="homeRowButton"
-    onClick={[Function]}
-  >
-    <svg
-      className="icon"
-      height={24}
-      style={
-        Object {
-          "marginBottom": undefined,
-          "marginLeft": undefined,
-          "marginRight": undefined,
-          "marginTop": undefined,
-        }
-      }
-      viewBox="0 0 24 24"
-      width={24}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use />
-    </svg>
-  </button>
 </div>
 `;
 

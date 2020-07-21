@@ -9,6 +9,7 @@ import { SlimButtonProps, renderSlimButton } from '../Button'
 import {
   panelButton,
   hoverButton,
+  disabledButton,
   text,
   suffixText,
   buttonIcon,
@@ -25,6 +26,7 @@ export interface Props {
   hoverColor?: string
   noActiveColor?: boolean
   active?: boolean
+  disabled?: boolean
   noBold?: boolean
   className?: string
   style?: React.CSSProperties
@@ -51,6 +53,7 @@ export function PanelButton (props: Props) {
     hoverColor,
     noActiveColor,
     active = false,
+    disabled = false,
     noBold = false,
     className,
     style,
@@ -85,7 +88,7 @@ export function PanelButton (props: Props) {
   }
 
   const skipHandling = (ev: React.SyntheticEvent) => (
-    ev.currentTarget !== ev.target && (ev.target as HTMLElement).tagName === 'BUTTON'
+    disabled || ev.currentTarget !== ev.target && (ev.target as HTMLElement).tagName === 'BUTTON'
   )
 
   const handleClick = React.useMemo(() => !onClick ? noop : (ev: React.SyntheticEvent) => {
@@ -117,7 +120,7 @@ export function PanelButton (props: Props) {
     >
       <a
         href={href}
-        className={classNames(hoverButton, { [hilight]: active })}
+        className={classNames(hoverButton, { [hilight]: active, [disabledButton]: disabled })}
         onClick={handleClick}
         tabIndex={0}
         onKeyDown={handleKeypress}

@@ -12,7 +12,6 @@ import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
 import { HueGroupSelector } from '../../containers/HueGroupSelector'
 import { HueRoot } from '../../containers/HueRoot'
 import { PatternSelector } from '../../containers/PatternSelector'
-import { Settings } from '../../containers/Settings'
 import { ShaderSliders } from '../../containers/ShaderSliders'
 import { Sliders } from '../../containers/Sliders'
 import { SoundDetails } from '../../containers/SoundDetails'
@@ -32,15 +31,12 @@ import { useObserver } from 'mobx-react'
 import { ShaderCanvas } from '../../containers/ShaderCanvas'
 import { Shortcuts } from '../../containers/Shortcuts'
 import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
+import { ConnectionsPanel } from '../../containers/ConnectionsPanel'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
 
 // ROUTES
-const settingsRoute = (
-  <Settings height={140} />
-)
-
 const soundDetails = (
   <SoundDetails />
 )
@@ -56,6 +52,10 @@ const paletteRoute = (
 // SUB-ROUTES
 const audioSourceRoute = (
   <AudioSourceSelector />
+)
+
+const connectionsRoute = (
+  <ConnectionsPanel />
 )
 
 const customPaletteRoute = (
@@ -87,7 +87,7 @@ interface PanelDetail {
   icon: IconName
 }
 
-const panels: PanelRoute[] = ['palette', 'settings', 'filters', 'sound']
+const panels: PanelRoute[] = ['palette', 'connections', 'filters', 'sound']
 const panelDetails: Record<PanelRoute, PanelDetail> = {
   home: {
     title: 'Sound Color Project',
@@ -108,10 +108,6 @@ const panelDetails: Record<PanelRoute, PanelDetail> = {
   sound: {
     title: 'Sound Details',
     icon: 'music_note',
-  },
-  settings: {
-    title: 'Connections',
-    icon: 'connections',
   },
   info: {
     title: 'Sound Details',
@@ -138,7 +134,7 @@ function getPanelChild (routing: RoutingStore) {
   }
 
   switch (routing.panelRoute) {
-    case 'settings': return settingsRoute
+    case 'connections': return connectionsRoute
     case 'filters': return filtersRoute
     case 'palette': return paletteRoute
     case 'sound': return soundDetails
@@ -228,43 +224,3 @@ export function SovisRoute (props: SovisRouteProps) {
     </div>
   ))
 }
-
-// export const SovisRoute = injectAndObserve<StateProps, OwnProps>(
-//   ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
-//   class Root extends React.Component<SovisRouteProps> {
-
-//     render () {
-//       const { routing, renderState } = this.props
-//       return (
-//         <div id={detailsView}>
-//           {/* <ColorRenderer/> */}
-//           <ShaderCanvas shaderName={renderState.shader} />
-//           <TextHider>
-//             <PanelLayout
-//               above={<NoColorNotification />}
-//               preSpacer={<Shortcuts />}
-//               inSpacer={<CanvasMiniAnalyser/>}
-//               postSpacer={
-//                 <Panel recompute={this.panelRecompute()} back={routing.isBack}>
-//                   {this.renderPanelChild()}
-//                 </Panel>
-//               }
-//               footer={
-//                 <HomeRow
-//                   selected={routing.panelRoute}
-//                   buttons={{
-//                     palette: 'colors',
-//                     settings: 'connections',
-//                     filters: 'tune',
-//                     home: 'music_note',
-//                     info: 'about',
-//                   }}
-//                   onChange={this.setPanelRoute}
-//                 />
-//               }
-//             />
-//           </TextHider>
-//         </div>
-//       )
-//     }
-//   },
