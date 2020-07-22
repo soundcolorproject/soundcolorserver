@@ -59,6 +59,7 @@ vec4 addNoise( in vec2 uv ) {
 }
 
 void render( out vec4 fragColor, in vec2 fragCoord ) {
+    vec4 black = fragColor;
 	vec2 diffusionXY = basis() * u_diffusion / u_dimensions.xy;
     vec2 uv = fragCoord.xy / u_dimensions.xy;
     
@@ -70,7 +71,9 @@ void render( out vec4 fragColor, in vec2 fragCoord ) {
     vec4 v2 = b2 * u_color2;
     vec4 v3 = b3 * u_color3;
     
-    fragColor = v1 + v2 + v3 + addNoise(uv);
+    vec4 renderedColor = v1 + v2 + v3 + addNoise(uv);
+    fragColor = black * (1.0 - renderedColor.w) + renderedColor * renderedColor.w;
+    fragColor.w = 1.0;
 }
 
 void main() {

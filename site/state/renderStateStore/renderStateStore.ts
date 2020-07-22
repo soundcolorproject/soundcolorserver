@@ -7,7 +7,6 @@ import { patternsStore, PatternsStore } from '../patternsStore'
 import { startAnalysis, pauseAnalysis } from '../analysisStore'
 import { errorString } from '../../../shared/errorHelpers'
 import { startAudio, stopAudio } from '../../audio'
-import { promptInstall } from '../../registerServiceWorker'
 import { ShaderName } from '../../containers/ShaderCanvas/shaderName'
 
 export type RenderStateStore = typeof renderStateStore
@@ -42,9 +41,9 @@ export const renderStateStore = observable({
   shaderSliders: {} as {
     [name: string]: number | undefined
   },
+  takeScreenshot: async () => { /* noop */ },
 })
 
-let installPrompted = false
 reaction(
   () => renderStateStore.showColors,
   async (show) => {
@@ -61,10 +60,6 @@ reaction(
             event_label: 'request wake lock exception',
           })
         })
-      }
-      if (!installPrompted) {
-        await promptInstall()
-        installPrompted = true
       }
     } else {
       pauseAnalysis()

@@ -1,5 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots ActionsPanel Example 1`] = `
+<div
+  className="panel actionsPanel"
+  data-testid="actions-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Ations
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <div
+      className="panelButton"
+      data-testid="actions-panel-install-button"
+      style={Object {}}
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Install SOVIS App
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="actions-panel-screenshot-button"
+      style={Object {}}
+    >
+      <a
+        className="hoverButton disabledButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Take a screenshot
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots AudioSourceSelector Example 1`] = `
 <div
   className="panel audioSourceSelector"

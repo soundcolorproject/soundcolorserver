@@ -30,7 +30,8 @@
     overflow-x: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--grey-50) var(--grey-10);
 
 
     &::-webkit-scrollbar {
@@ -39,14 +40,13 @@
     }
 
     &::-webkit-scrollbar-track {
-      background: transparent;
+      background: var(--grey-10);
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
       background: var(--grey-50);
       cursor: ns-resize;
-      border-radius: 8px;
     }
 
     /* Handle on hover */

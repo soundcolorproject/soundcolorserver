@@ -32,11 +32,16 @@ import { sovis, sovisPanel } from './sovis.pcss'
 import { ColorOptionsPanel } from '../../containers/ColorOptionsPanel'
 import { TimingOptionsPanel } from '../../containers/TimingOptionsPanel'
 import { VisualizationOptionsPanel } from '../../containers/VisualizationOptionsPanel'
+import { ActionsPanel } from '../../containers/ActionsPanel'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
 
 // ROUTES
+const actionsPanel = (
+  <ActionsPanel />
+)
+
 const soundDetails = (
   <SoundDetails />
 )
@@ -86,7 +91,7 @@ interface PanelDetail {
   icon: IconName
 }
 
-const panels: PanelRoute[] = ['palette', 'connections', 'options', 'sound']
+const panels: PanelRoute[] = ['palette', 'connections', 'options', 'sound', 'actions']
 const panelDetails: Record<PanelRoute, PanelDetail> = {
   home: {
     title: 'Sound Color Project',
@@ -112,10 +117,10 @@ const panelDetails: Record<PanelRoute, PanelDetail> = {
     title: 'Sound Details',
     icon: 'music_note',
   },
-  // actions: {
-  //   title: 'Actions',
-  //   icon: 'download',
-  // },
+  actions: {
+    title: 'Actions',
+    icon: 'download',
+  },
 }
 
 function getPanelChild (routing: RoutingStore) {
@@ -137,6 +142,7 @@ function getPanelChild (routing: RoutingStore) {
     case 'options': return optionsRoute
     case 'palette': return paletteRoute
     case 'sound': return soundDetails
+    case 'actions': return actionsPanel
     default: return null
   }
 }

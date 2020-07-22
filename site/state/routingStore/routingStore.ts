@@ -14,6 +14,7 @@ export type PanelRoute =
   | 'options'
   | 'sound'
   | 'info'
+  | 'actions'
 
 export type SubRoute =
   | 'audioSource'
@@ -23,9 +24,6 @@ export type SubRoute =
   | 'colorOptions'
   | 'visualizationOptions'
   | 'timingOptions'
-  // TODO: Remove these
-  | 'shaderSliders'
-  | 'shaderSelector'
 
 export class RoutingStore {
   constructor () {

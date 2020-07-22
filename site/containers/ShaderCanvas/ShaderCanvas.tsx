@@ -31,8 +31,27 @@ type StateProps =
   & PatternsProp
   & RenderStateProp
 
-export type ShaderCanvasProps = OwnProps & StateProps
+function downloadFile (data: Blob, fileName: string) {
+  // Create an invisible A element
+  const a = document.createElement('a')
+  a.style.display = 'none'
+  document.body.appendChild(a)
 
+  // Set the HREF to a Blob representation of the data to be downloaded
+  a.href = window.URL.createObjectURL(data)
+
+  // Use download attribute to set set desired file name
+  a.setAttribute('download', fileName)
+
+  // Trigger the download by simulating click
+  a.click()
+
+  // Cleanup
+  window.URL.revokeObjectURL(a.href)
+  document.body.removeChild(a)
+}
+
+export type ShaderCanvasProps = OwnProps & StateProps
 export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
   ({ analysis, patterns, renderState }) => ({ analysis, patterns, renderState }),
   class ShaderCanvas extends React.PureComponent<ShaderCanvasProps> {
@@ -41,10 +60,12 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
     private _renderId?: number
     private _startTime = Date.now()
     private _shader?: BuiltProgramWithUniforms<typeof COMMON_UNIFORMS, CommonMeta>
+    private _takingScreenshot = false
     private _noop: any
 
     componentDidMount () {
       const { renderState } = this.props
+      renderState.takeScreenshot = this._screenshot
       if (renderState.showColors) {
         this.start()
       }
@@ -52,6 +73,7 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
 
     componentDidUpdate (prevProps: ShaderCanvasProps) {
       const { shaderName, renderState } = this.props
+      renderState.takeScreenshot = this._screenshot
       if (this._gl && shaderName !== prevProps.shaderName) {
         logger.info('Using shader:', shaderName)
         this._shader = shaderMap.get(shaderName)!(this._gl)
@@ -62,6 +84,46 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
         this.pause()
       }
     }
+
+    private _screenshot = async () => {
+      try {
+        logger.info('taking screenshot')
+        if (!this._canvas) {
+          logger.warn('no canvas for screenshot!')
+          return
+        }
+        this._takingScreenshot = true
+        logger.info('creating image')
+        const img = await this._getCanvasImage()
+        const d = new Date()
+        logger.info('using date', d)
+        const filename = `SOVIS ${d.getFullYear()}-${d.getMonth()}-${d.getDate()} ${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}.png`
+        logger.info('using filename', filename)
+        downloadFile(img, filename)
+        logger.info('download done!')
+      } finally {
+        this._takingScreenshot = false
+      }
+    }
+
+    private _getCanvasImage = () => (
+      new Promise<Blob>((resolve, reject) => {
+        if (!this._canvas) {
+          return reject()
+        }
+
+        this._clearScene(true)
+        this._drawScene()
+
+        this._canvas.toBlob((b) => {
+          if (b === null) {
+            reject()
+          } else {
+            resolve(b)
+          }
+        }, 'image/png', 1)
+      })
+    )
 
     private _setCanvas = (canvas: HTMLCanvasElement) => {
       this._canvas = canvas
@@ -82,9 +144,11 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
         return
       }
 
-      this._setUniforms()
-      this._clearScene()
-      this._drawScene()
+      if (!this._takingScreenshot) {
+        this._setUniforms()
+        this._clearScene()
+        this._drawScene()
+      }
 
       this._renderId = requestAnimationFrame(this._renderLoop)
     }
@@ -137,7 +201,7 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       // this._shader.uniforms.u_color3([0, 0, 1, 1])
     }
 
-    private _clearScene = () => {
+    private _clearScene = (black = false) => {
       if (!this._gl || !this._shader) {
         return
       }
@@ -148,7 +212,11 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
 
       // Clear the canvas
-      gl.clearColor(0, 0, 0, 0)
+      if (black) {
+        gl.clearColor(27 / 255, 33 / 255, 40 / 255, 1)
+      } else {
+        gl.clearColor(0, 0, 0, 0)
+      }
       gl.clear(gl.COLOR_BUFFER_BIT)
     }
 

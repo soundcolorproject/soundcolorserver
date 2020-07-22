@@ -23,10 +23,6 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
     }
   }, [patterns, name])
 
-  const setCustomPattern = React.useCallback(() => {
-    patterns.currentPattern = 'custom'
-  }, [patterns, routing])
-
   return useObserver(() => (
     <Panel title='Color Patterns' data-testid='pattern-selector'>
       <PanelButton
@@ -43,7 +39,7 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
             return (
               <PanelButton
                 key={name}
-                onClick={setCustomPattern}
+                onClick={setPattern('custom')}
                 toRoute='customPalette'
                 active={patterns.currentPattern === name}
                 hoverColor={data.defaultColors[data.buttonNoteColor].toString()}
