@@ -361,52 +361,6 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
     </div>
     <div
       className="panelButton"
-      data-testid="connections-panel-tracks-button"
-      style={Object {}}
-    >
-      <a
-        className="hoverButton disabledButton"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        tabIndex={0}
-      >
-        <span
-          className="text"
-          style={
-            Object {
-              "fontWeight": "bold",
-            }
-          }
-        >
-          Tracks
-          <span
-            className="suffixText"
-          >
-             - 
-            No audio source with tracks
-          </span>
-        </span>
-        <svg
-          className="icon buttonIcon"
-          height={30}
-          style={
-            Object {
-              "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
-              "marginTop": -5,
-            }
-          }
-          viewBox="0 0 24 24"
-          width={30}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <use />
-        </svg>
-      </a>
-    </div>
-    <div
-      className="panelButton"
       data-testid="connections-panel-philips-hue-button"
       style={Object {}}
     >
@@ -714,7 +668,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
 
 exports[`Storyshots HowItWorks Example 1`] = `
 <div
-  className="howItWorks"
+  className="howItWorks hidden"
   data-testid="how-it-works"
 >
   <h1>
