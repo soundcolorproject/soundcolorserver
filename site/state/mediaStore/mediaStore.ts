@@ -33,14 +33,19 @@ reaction(
   },
 )
 
-async function updateDevices () {
-  const devices = await navigator.mediaDevices.enumerateDevices()
-  logger.debug('audio devices', devices)
-  const possibleDevices = devices.filter(({ kind }) => kind === 'audioinput')
-  mediaStore.possibleDevices = possibleDevices
-  const currentDeviceId = mediaStore.currentDeviceId
-  if (currentDeviceId !== 'default' && !devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
-    mediaStore.currentDeviceId = 'default'
+export async function updateDevices () {
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices()
+    logger.debug('audio devices', devices)
+    const possibleDevices = devices.filter(({ kind }) => kind === 'audioinput')
+    mediaStore.possibleDevices = possibleDevices
+    const currentDeviceId = mediaStore.currentDeviceId
+    if (currentDeviceId !== 'default' && !devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
+      mediaStore.currentDeviceId = 'default'
+    }
+    mediaStore.ready = true
+  } catch (err) {
+    mediaStore.error = !!err
   }
 }
 

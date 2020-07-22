@@ -1,47 +1,43 @@
 
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { MediaProp } from '../../state/mediaStore'
-
-import { ClickableMenuOption } from '../../components/MenuOption'
-import { BackOption } from '../BackOption'
+import { useObserver } from 'mobx-react'
+import { RouteComponentProps } from '@reach/router'
+import { useStores } from '../../state/useStores'
 
 import { audioSourceSelector } from './audioSourceSelector.pcss'
-import { RoutingProp } from '../../state/routingStore'
+import { Panel } from '../../components/Panel'
+import { PanelButton } from '../../components/PanelButton'
 
-interface OwnProps {
-  height?: number
-  domRef?: React.Ref<HTMLDivElement>
+export interface AudioSourceSelectorProps extends RouteComponentProps {
+  'data-testid'?: string
 }
 
-type StateProps = MediaProp & RoutingProp
+export const AudioSourceSelector: React.FunctionComponent<AudioSourceSelectorProps> = function AudioSourceSelector (props: AudioSourceSelectorProps) {
+  const {
+    'data-testid': testid = 'audio-source-selector',
+  } = props
+  const { media, routing } = useStores()
 
-export type AudioSourceSelectorProps = OwnProps & StateProps
+  const handleClick = (deviceId: string) => () => {
+    media.currentDeviceId = deviceId
+    routing.popSubroute()
+  }
 
-export const AudioSourceSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ media, routing }) => ({ media, routing }),
-  class AudioSourceSelector extends React.Component<AudioSourceSelectorProps> {
-    onClick = (deviceId: string) => () => {
-      this.props.media.currentDeviceId = deviceId
-      this.props.routing.popSubroute()
-    }
+  const renderDevice = (device: MediaDeviceInfo, index: number) => (
+    <PanelButton key={device.deviceId} onClick={handleClick(device.deviceId)}>
+      {device.label || `Device ${index + 1}`}
+    </PanelButton>
+  )
 
-    renderDevice = (device: MediaDeviceInfo, index: number) => (
-      <ClickableMenuOption key={device.deviceId} onClick={this.onClick(device.deviceId)}>
-        <>{device.label || `Device ${index}`}</>
-      </ClickableMenuOption>
-    )
-
-    render () {
-      const { media: { possibleDevices }, domRef } = this.props
-      return (
-        <div ref={domRef} className={audioSourceSelector}>
-          <BackOption name='Audio Source' />
-          {
-            possibleDevices.map(this.renderDevice)
-          }
-        </div>
-      )
-    }
-  },
-)
+  return useObserver(() => (
+    <Panel title='Audio Source' className={audioSourceSelector} data-testid={testid}>
+      {
+        media.error || !media.ready
+          ? 'Please allow microphone access to view audio sources.'
+          : media.possibleDevices.length === 0
+          ? 'No audio sources connected.'
+          : media.possibleDevices.map(renderDevice)
+      }
+    </Panel>
+  ))
+}

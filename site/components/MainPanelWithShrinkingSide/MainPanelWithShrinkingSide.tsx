@@ -13,6 +13,7 @@ import {
   transitionDown,
   prev,
   next,
+  current,
 } from './mainPanelWithShrinkingSide.pcss'
 import { useTransition } from '../../hooks/useTransition'
 import { logger } from '../../../shared/logger'
@@ -51,8 +52,10 @@ export function MainPanelWithShrinkingSide (props: Props) {
       >
         {sidePanel}
         <div className={panelContentWrapper}>
-          <div className={cn(panelContent, swapper)} style={{ width: open ? undefined : 0 }}>
-            {children}
+          <div className={swapper}>
+            <div className={cn(panelContent, current)} style={{ width: open ? undefined : 0 }}>
+              {children}
+            </div>
           </div>
         </div>
       </div>
