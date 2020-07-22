@@ -1,2 +1,2 @@
 
-export * from './HueGroupSelector'
+export { HueGroupSelector } from './HueGroupSelector'

@@ -26,13 +26,21 @@
     cursor: pointer;
 
     &.disabled-button {
-      background: var(--grey-10) !important;
-      color: var(--grey-60) !important;
+      background: var(--grey-10);
+      color: var(--grey-60);
       cursor: default;
 
+      & svg {
+        fill: var(--grey-60);
+      }
+
       &:hover, &:active {
-        background: var(--grey-10) !important;
-        color: var(--grey-60) !important;
+        background: var(--grey-10);
+        color: var(--grey-60);
+
+        & svg {
+          fill: var(--grey-60);
+        }
       }
     }
 

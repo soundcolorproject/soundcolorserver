@@ -45,8 +45,11 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
         </PanelButton>
       )
     } else {
+      const suffix = apiStatus.lightGroupId
+        ? apiStatus.lightGroups?.find(g => g.id === apiStatus.lightGroupId)?.name || ''
+        : 'Select one'
       return (
-        <PanelButton suffix='Logged in' data-testid={`${testid}-philips-hue-button`} onClick={hueClicked}>
+        <PanelButton suffix={suffix} data-testid={`${testid}-philips-hue-button`} onClick={hueClicked} endIcon='play'>
           Philips Hue
         </PanelButton>
       )
@@ -55,10 +58,10 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
 
   return useObserver(() => (
     <Panel title='Connections' data-testid={testid}>
-      <PanelButton onClick={audioSourceClicked} suffix={currentSource()} data-testid={`${testid}-audio-source-button`}>
+      <PanelButton onClick={audioSourceClicked} suffix={currentSource()} data-testid={`${testid}-audio-source-button`} endIcon='play'>
         Audio Source
       </PanelButton>
-      <PanelButton disabled suffix='No audio source with tracks' data-testid={`${testid}-tracks-button`}>
+      <PanelButton disabled suffix='No audio source with tracks' data-testid={`${testid}-tracks-button`} endIcon='play'>
         Tracks
       </PanelButton>
       {renderHueButton()}
