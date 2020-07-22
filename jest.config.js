@@ -1,6 +1,6 @@
 
 module.exports = {
-  rootDir: '../..',
+  rootDir: '.',
   testEnvironment: 'jsdom',
   collectCoverage: true,
   collectCoverageFrom: [
@@ -44,7 +44,7 @@ module.exports = {
     '__DEV__': true,
     '__BUILD_VERSION__': 'development',
     'ts-jest': {
-      tsConfig: require.resolve('../../tsconfig.test.json'),
+      tsConfig: require.resolve('./tsconfig.test.json'),
     },
   },
   coverageThreshold: {
