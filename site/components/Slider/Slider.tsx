@@ -17,6 +17,7 @@ export interface SliderProps {
   max: number
   step?: number
   className?: string
+  'data-testid'?: string
 }
 
 export function Slider (props: SliderProps) {
@@ -28,6 +29,7 @@ export function Slider (props: SliderProps) {
     max,
     step = (max - min) / 100,
     className,
+    'data-testid': testid = 'slider',
   } = props
 
   const handleChange = React.useMemo(() => function handleChange (ev: React.ChangeEvent<HTMLInputElement>) {
@@ -40,10 +42,10 @@ export function Slider (props: SliderProps) {
   }, [onChange])
 
   return (
-    <label className={cn(sliderLabel, className)}>
+    <label className={cn(sliderLabel, className)} data-testid={testid}>
       <div className={sliderDetails}>
-        <div>{label}</div>
-        <div className={sliderValue}>
+        <div data-testid={`${testid}-label`}>{label}</div>
+        <div className={sliderValue} data-testid={`${testid}-value`}>
           {((value - min) / (max - min)).toFixed(2)}
         </div>
       </div>

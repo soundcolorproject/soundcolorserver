@@ -14,20 +14,16 @@ describe(TimingOptionsPanel.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'Color Transition Speed0.5'
 
     const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
+      transitionSpeed: 0.55,
+      timeSmoothing: 0.5,
     }
     useStoresSpy.mockReturnValue({ patterns })
 
     const mounted = render(<TimingOptionsPanel />)
-    const el = mounted.getByTestId('timing-options-panel')
+    const el = mounted.getByTestId('timing-options-panel-slider-transitionSpeed')
 
     expect(el).toHaveTextContent(expected)
   })

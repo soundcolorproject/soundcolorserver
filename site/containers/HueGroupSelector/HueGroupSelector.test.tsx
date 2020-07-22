@@ -5,6 +5,8 @@ import { mockUseStores } from '../../state/mockUseStores'
 
 import { HueGroupSelector } from './HueGroupSelector'
 import { PatternsStore } from '../../state/patternsStore'
+import { ApiStatusStore } from '../../state/apiStatusStore'
+import { RoutingStore } from '../../state/routingStore'
 
 describe(HueGroupSelector.name, () => {
   const useStoresSpy = mockUseStores()
@@ -14,17 +16,14 @@ describe(HueGroupSelector.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'No light groups found'
 
-    const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
+    const apiStatus: DeepPartial<ApiStatusStore> = {
+      lightGroups: [],
     }
-    useStoresSpy.mockReturnValue({ patterns })
+    const routing: DeepPartial<RoutingStore> = {
+    }
+    useStoresSpy.mockReturnValue({ apiStatus, routing })
 
     const mounted = render(<HueGroupSelector />)
     const el = mounted.getByTestId('hue-group-selector')

@@ -10,7 +10,7 @@ class App extends React.Component {
       logger.error('something went wrong while bootstrapping the app:\n', err)
     })
   }
-  
+
   public render () {
     return (
       <AppRouter />

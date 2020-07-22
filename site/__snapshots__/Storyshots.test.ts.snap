@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AudioSourceSelector Example 1`] = `
+<div
+  className="panel audioSourceSelector"
+  data-testid="audio-source-selector"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Audio Source
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    Please allow microphone access to view audio sources.
+  </div>
+</div>
+`;
+
 exports[`Storyshots Button Example 1`] = `
 <button
   className="button"
@@ -8,6 +30,140 @@ exports[`Storyshots Button Example 1`] = `
   style={Object {}}
   type="button"
 />
+`;
+
+exports[`Storyshots ColorOptionsPanel Example 1`] = `
+<div
+  className="panel colorOptionsPanel"
+  data-testid="color-options-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Color
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <label
+      className="sliderLabel"
+      data-testid="color-options-panel-slider-vibranceMultiplier"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="color-options-panel-slider-vibranceMultiplier-label"
+        >
+          Vibrance
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="color-options-panel-slider-vibranceMultiplier-value"
+        >
+          0.50
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={5}
+        min={0}
+        onChange={[Function]}
+        step={0.05}
+        type="range"
+        value={2.5}
+      />
+    </label>
+    <label
+      className="sliderLabel"
+      data-testid="color-options-panel-slider-noiseMultiplier"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="color-options-panel-slider-noiseMultiplier-label"
+        >
+          Saturation
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="color-options-panel-slider-noiseMultiplier-value"
+        >
+          0.90
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={10}
+        min={0}
+        onChange={[Function]}
+        step={0.1}
+        type="range"
+        value={9}
+      />
+    </label>
+    <label
+      className="sliderLabel"
+      data-testid="color-options-panel-slider-minimumBrightness"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="color-options-panel-slider-minimumBrightness-label"
+        >
+          Minimum Brightness
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="color-options-panel-slider-minimumBrightness-value"
+        >
+          0.00
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={1}
+        min={0}
+        onChange={[Function]}
+        step={0.01}
+        type="range"
+        value={0}
+      />
+    </label>
+    <label
+      className="checkboxLabel"
+      onClick={[Function]}
+    >
+      <div
+        className="checkboxDetails"
+      >
+        Monochromacy
+        <div
+          className="checkboxValue"
+        >
+          Off
+        </div>
+      </div>
+      <input
+        checked={false}
+        className="checkboxInput"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <div
+        className="switchMark"
+        onKeyDown={[Function]}
+        tabIndex={0}
+      />
+    </label>
+  </div>
+</div>
 `;
 
 exports[`Storyshots ColorPicker Stateful Example 1`] = `
@@ -65,7 +221,6 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -83,6 +238,23 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
             None
           </span>
         </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
       </a>
     </div>
     <div
@@ -95,7 +267,6 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -113,6 +284,23 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
             No audio source with tracks
           </span>
         </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
       </a>
     </div>
     <div
@@ -126,7 +314,6 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -423,6 +610,42 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
 </div>
 `;
 
+exports[`Storyshots HueGroupSelector Example 1`] = `
+<div
+  className="panel"
+  data-testid="hue-group-selector"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Philips Hue
+    </div>
+    <button
+      className="button titleButton"
+      data-testid="button"
+      onClick={[Function]}
+      style={Object {}}
+      type="button"
+    >
+      Logout
+    </button>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <div
+      className="panelDetail"
+      data-testid="panel-detail"
+    >
+      Finding light groups...
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Icon Specific Icon 1`] = `
 <div
   style={
@@ -561,7 +784,6 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
-          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -619,7 +841,6 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
-          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -677,7 +898,6 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
-          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -735,7 +955,6 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
-          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -793,7 +1012,6 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
-          target="_blank"
         >
           <svg
             className="icon buttonIcon"
@@ -846,13 +1064,158 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       className="panelContentWrapper"
     >
       <div
-        className="panelContent swapper"
-        style={
-          Object {
-            "width": 0,
+        className="swapper"
+      >
+        <div
+          className="panelContent current"
+          style={
+            Object {
+              "width": 0,
+            }
           }
-        }
-      />
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots OptionsPanel Example 1`] = `
+<div
+  className="panel optionsPanel"
+  data-testid="options-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Options
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <div
+      className="panelButton"
+      data-testid="options-panel-color-button"
+      style={Object {}}
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Color
+        </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="options-panel-visualization-button"
+      style={Object {}}
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Visualization
+        </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="options-panel-timing-button"
+      style={Object {}}
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Timing
+        </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </a>
     </div>
   </div>
 </div>
@@ -885,7 +1248,6 @@ exports[`Storyshots Panel Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -909,7 +1271,6 @@ exports[`Storyshots Panel Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -933,7 +1294,6 @@ exports[`Storyshots Panel Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -962,7 +1322,6 @@ exports[`Storyshots PanelButton Example 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
-    target="_blank"
   >
     <span
       className="text"
@@ -981,57 +1340,6 @@ exports[`Storyshots PanelDetail Example 1`] = `
   className="panelDetail"
   data-testid="panel-detail"
 />
-`;
-
-exports[`Storyshots PanelLayout With Content 1`] = `
-<div
-  className="panelLayout"
->
-  <div
-    className="layoutColumn"
-  >
-    <div
-      className="gt-mobile grow center"
-    />
-    <div
-      style={
-        Object {
-          "color": "#444",
-          "padding": 10,
-        }
-      }
-    >
-      Foo
-    </div>
-    <div
-      className="layoutSpacer"
-    >
-      <div
-        className="lt-mobile grow center"
-      />
-    </div>
-    <div
-      className="afterSpacer"
-    >
-      <div
-        style={
-          Object {
-            "background": "#888",
-            "color": "white",
-            "padding": 10,
-          }
-        }
-      >
-        Bar
-      </div>
-    </div>
-    <div
-      className="layoutFooter"
-    >
-      <div />
-    </div>
-  </div>
-</div>
 `;
 
 exports[`Storyshots PatternSelector Example 1`] = `
@@ -1061,7 +1369,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1115,7 +1422,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1163,7 +1469,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1194,7 +1499,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1225,7 +1529,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1256,7 +1559,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1287,7 +1589,6 @@ exports[`Storyshots PatternSelector Example 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <span
           className="text"
@@ -1343,7 +1644,6 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
-    target="_blank"
   >
     <svg
       className="icon buttonIcon"
@@ -1404,7 +1704,6 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
-    target="_blank"
   >
     <svg
       className="icon buttonIcon"
@@ -1465,7 +1764,6 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
-    target="_blank"
   >
     <svg
       className="icon buttonIcon"
@@ -1558,7 +1856,6 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1616,7 +1913,6 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1674,7 +1970,6 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1732,7 +2027,6 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -1790,7 +2084,6 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
-        target="_blank"
       >
         <svg
           className="icon buttonIcon"
@@ -2067,6 +2360,193 @@ exports[`Storyshots TextInput Stateful 1`] = `
         I am a placeholder
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TimingOptionsPanel Example 1`] = `
+<div
+  className="panel timingOptionsPanel"
+  data-testid="timing-options-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Timing
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <label
+      className="sliderLabel"
+      data-testid="timing-options-panel-slider-transitionSpeed"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="timing-options-panel-slider-transitionSpeed-label"
+        >
+          Color Transition Speed
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="timing-options-panel-slider-transitionSpeed-value"
+        >
+          0.89
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={1}
+        min={0.1}
+        onChange={[Function]}
+        step={0.009000000000000001}
+        type="range"
+        value={0.9}
+      />
+    </label>
+    <label
+      className="sliderLabel"
+      data-testid="timing-options-panel-slider-timeSmoothing"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="timing-options-panel-slider-timeSmoothing-label"
+        >
+          Time Smoothing
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="timing-options-panel-slider-timeSmoothing-value"
+        >
+          0.81
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={0.99}
+        min={0}
+        onChange={[Function]}
+        step={0.009899999999999999}
+        type="range"
+        value={0.8}
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
+<div
+  className="panel visualizationOptionsPanel"
+  data-testid="visualization-options-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Visualization
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <label
+      className="sliderLabel"
+      data-testid="visualization-options-panel-slider-u_diffusion"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_diffusion-label"
+        >
+          Spread
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="visualization-options-panel-slider-u_diffusion-value"
+        >
+          0.33
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={3}
+        min={0}
+        onChange={[Function]}
+        step={0.03}
+        type="range"
+        value={1}
+      />
+    </label>
+    <label
+      className="sliderLabel"
+      data-testid="visualization-options-panel-slider-u_lightRotation"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_lightRotation-label"
+        >
+          Rotation Speed
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="visualization-options-panel-slider-u_lightRotation-value"
+        >
+          0.11
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={3}
+        min={0}
+        onChange={[Function]}
+        step={0.03}
+        type="range"
+        value={0.3333333333333333}
+      />
+    </label>
+    <label
+      className="sliderLabel"
+      data-testid="visualization-options-panel-slider-u_noise"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_noise-label"
+        >
+          Texture
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="visualization-options-panel-slider-u_noise-value"
+        >
+          0.10
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={1}
+        min={0}
+        onChange={[Function]}
+        step={0.01}
+        type="range"
+        value={0.1}
+      />
+    </label>
   </div>
 </div>
 `;

@@ -14,20 +14,12 @@ describe(OptionsPanel.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'Color'
 
-    const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
-    }
-    useStoresSpy.mockReturnValue({ patterns })
+    useStoresSpy.mockReturnValue({})
 
     const mounted = render(<OptionsPanel />)
-    const el = mounted.getByTestId('options-panel')
+    const el = mounted.getByTestId('options-panel-color-button')
 
     expect(el).toHaveTextContent(expected)
   })

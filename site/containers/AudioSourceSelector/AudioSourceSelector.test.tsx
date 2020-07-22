@@ -5,6 +5,8 @@ import { mockUseStores } from '../../state/mockUseStores'
 
 import { AudioSourceSelector } from './AudioSourceSelector'
 import { PatternsStore } from '../../state/patternsStore'
+import { MediaStore } from '../../state/mediaStore'
+import { RoutingStore } from '../../state/routingStore'
 
 describe(AudioSourceSelector.name, () => {
   const useStoresSpy = mockUseStores()
@@ -14,17 +16,15 @@ describe(AudioSourceSelector.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'No audio sources connected.'
 
-    const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
+    const media: DeepPartial<MediaStore> = {
+      ready: true,
+      possibleDevices: [],
     }
-    useStoresSpy.mockReturnValue({ patterns })
+    const routing: DeepPartial<RoutingStore> = {
+    }
+    useStoresSpy.mockReturnValue({ media, routing })
 
     const mounted = render(<AudioSourceSelector />)
     const el = mounted.getByTestId('audio-source-selector')

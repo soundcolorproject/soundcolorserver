@@ -14,20 +14,18 @@ describe(ColorOptionsPanel.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'Vibrance0.2'
 
     const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
+      vibranceMultiplier: 1,
+      noiseMultiplier: 1,
+      minimumBrightness: 0.5,
+      monochrome: false,
     }
     useStoresSpy.mockReturnValue({ patterns })
 
     const mounted = render(<ColorOptionsPanel />)
-    const el = mounted.getByTestId('color-options-panel')
+    const el = mounted.getByTestId('color-options-panel-slider-vibranceMultiplier')
 
     expect(el).toHaveTextContent(expected)
   })

@@ -16,7 +16,6 @@ export const OptionsPanel: React.FunctionComponent<OptionsPanelProps> = function
   const {
     'data-testid': testid = 'options-panel',
   } = props
-  const { patterns } = useStores()
 
   return useObserver(() => (
     <Panel title='Options' className={optionsPanel} data-testid={testid}>

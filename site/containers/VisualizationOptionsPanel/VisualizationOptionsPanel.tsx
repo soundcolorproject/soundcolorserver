@@ -38,6 +38,7 @@ export const VisualizationOptionsPanel: React.FunctionComponent<VisualizationOpt
         max={max}
         step={step}
         onChange={setValue(name)}
+        data-testid={`${testid}-slider-${name}`}
       />
     )
   }

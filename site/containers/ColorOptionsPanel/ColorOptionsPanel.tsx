@@ -17,8 +17,6 @@ type SliderName =
   | 'vibranceMultiplier'
   | 'noiseMultiplier'
   | 'minimumBrightness'
-  // | 'transitionSpeed'
-  // | 'timeSmoothing'
 
 interface SliderInfo {
   label: string
@@ -30,16 +28,6 @@ interface SliderInfo {
 }
 
 const SLIDER_INFO: { [name in SliderName]: SliderInfo } = {
-  // transitionSpeed: {
-  //   label: 'Color Transition Speed',
-  //   min: 0.1,
-  //   max: 1,
-  // },
-  // timeSmoothing: {
-  //   label: 'Time Smoothing',
-  //   min: 0,
-  //   max: 0.99,
-  // },
   vibranceMultiplier: {
     label: 'Vibrance',
     min: 0,
@@ -90,6 +78,7 @@ export const ColorOptionsPanel: React.FunctionComponent<ColorOptionsPanelProps> 
         min={min}
         max={max}
         step={step}
+        data-testid={`${testid}-slider-${name}`}
       />
     )
   }

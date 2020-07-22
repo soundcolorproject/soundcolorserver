@@ -65,6 +65,7 @@ export const TimingOptionsPanel: React.FunctionComponent<TimingOptionsPanelProps
         min={min}
         max={max}
         step={step}
+        data-testid={`${testid}-slider-${name}`}
       />
     )
   }
