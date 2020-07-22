@@ -21,14 +21,12 @@ import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
 import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
 import { HueGroupSelector } from '../../containers/HueGroupSelector'
 import { PatternSelector } from '../../containers/PatternSelector'
-import { ShaderSliders } from '../../containers/ShaderSliders'
 import { SoundDetails } from '../../containers/SoundDetails'
 import { ShaderCanvas } from '../../containers/ShaderCanvas'
 import { Shortcuts } from '../../containers/Shortcuts'
 import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
 import { ConnectionsPanel } from '../../containers/ConnectionsPanel'
 import { OptionsPanel } from '../../containers/OptionsPanel'
-import { ShaderSelector } from '../../containers/ShaderSelector'
 
 import { sovis, sovisPanel } from './sovis.pcss'
 import { ColorOptionsPanel } from '../../containers/ColorOptionsPanel'
@@ -73,14 +71,6 @@ const hueGroupRoute = (
 
 const favoritesRoute = (
   <SavedPaletteSelector />
-)
-
-const shaderSlidersRoute = (
-  <ShaderSliders />
-)
-
-const shaderSelectorRoute = (
-  <ShaderSelector />
 )
 
 const timingOptionsRoute = (
@@ -136,8 +126,6 @@ function getPanelChild (routing: RoutingStore) {
       case 'customPalette': return customPaletteRoute
       case 'hueGroupSelector': return hueGroupRoute
       case 'favoriteCusom': return favoritesRoute
-      case 'shaderSliders': return shaderSlidersRoute
-      case 'shaderSelector': return shaderSelectorRoute
       case 'timingOptions': return timingOptionsRoute
       case 'visualizationOptions': return visualizationOptionsRoute
       default: break
