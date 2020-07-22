@@ -29,14 +29,6 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
     return 'None'
   }
 
-  const audioSourceClicked = React.useCallback(() => {
-    routing.goToSubroute('audioSource')
-  }, [routing])
-
-  const hueClicked = React.useCallback(() => {
-    routing.goToSubroute('hueGroupSelector')
-  }, [routing])
-
   const renderHueButton = () => {
     if (!apiStatus.authenticated) {
       return (
@@ -49,7 +41,7 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
         ? apiStatus.lightGroups?.find(g => g.id === apiStatus.lightGroupId)?.name || ''
         : 'Select one'
       return (
-        <PanelButton suffix={suffix} data-testid={`${testid}-philips-hue-button`} onClick={hueClicked} endIcon='play'>
+        <PanelButton toRoute='hueGroupSelector' suffix={suffix} data-testid={`${testid}-philips-hue-button`}>
           Philips Hue
         </PanelButton>
       )
@@ -58,7 +50,7 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
 
   return useObserver(() => (
     <Panel title='Connections' data-testid={testid}>
-      <PanelButton onClick={audioSourceClicked} suffix={currentSource()} data-testid={`${testid}-audio-source-button`} endIcon='play'>
+      <PanelButton toRoute='audioSource' suffix={currentSource()} data-testid={`${testid}-audio-source-button`}>
         Audio Source
       </PanelButton>
       <PanelButton disabled suffix='No audio source with tracks' data-testid={`${testid}-tracks-button`} endIcon='play'>

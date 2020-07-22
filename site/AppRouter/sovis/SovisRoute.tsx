@@ -1,10 +1,20 @@
 
 import * as React from 'react'
+import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
 
 import { logger } from '../../../shared/logger'
+import { useStores } from '../../state/useStores'
 
 import { PanelRoute, RoutingStore } from '../../state/routingStore'
+
+import { ShrinkingSidePanel } from '../../components/ShrinkingSidePanel'
+import { ShrinkingPanelButton } from '../../components/ShrinkingPanelButton'
+import { IconName } from '../../components/Icon'
+import { MainPanelWithShrinkingSide } from '../../components/MainPanelWithShrinkingSide'
+
+// Should be a container
+import { TextHider } from '../../components/TextHider'
 
 import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
 import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
@@ -12,24 +22,18 @@ import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
 import { HueGroupSelector } from '../../containers/HueGroupSelector'
 import { PatternSelector } from '../../containers/PatternSelector'
 import { ShaderSliders } from '../../containers/ShaderSliders'
-import { Sliders } from '../../containers/Sliders'
 import { SoundDetails } from '../../containers/SoundDetails'
-
-// Should be a container
-import { TextHider } from '../../components/TextHider'
-
-import { sovis, sovisPanel } from './sovis.pcss'
-import { ShaderSelector } from '../../containers/ShaderSelector'
-import { useStores } from '../../state/useStores'
-import { ShrinkingSidePanel } from '../../components/ShrinkingSidePanel'
-import { ShrinkingPanelButton } from '../../components/ShrinkingPanelButton'
-import { IconName } from '../../components/Icon'
-import { MainPanelWithShrinkingSide } from '../../components/MainPanelWithShrinkingSide'
-import { useObserver } from 'mobx-react'
 import { ShaderCanvas } from '../../containers/ShaderCanvas'
 import { Shortcuts } from '../../containers/Shortcuts'
 import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
 import { ConnectionsPanel } from '../../containers/ConnectionsPanel'
+import { OptionsPanel } from '../../containers/OptionsPanel'
+import { ShaderSelector } from '../../containers/ShaderSelector'
+
+import { sovis, sovisPanel } from './sovis.pcss'
+import { ColorOptionsPanel } from '../../containers/ColorOptionsPanel'
+import { TimingOptionsPanel } from '../../containers/TimingOptionsPanel'
+import { VisualizationOptionsPanel } from '../../containers/VisualizationOptionsPanel'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
@@ -39,8 +43,8 @@ const soundDetails = (
   <SoundDetails />
 )
 
-const filtersRoute = (
-  <Sliders />
+const optionsRoute = (
+  <OptionsPanel />
 )
 
 const paletteRoute = (
@@ -50,6 +54,9 @@ const paletteRoute = (
 // SUB-ROUTES
 const audioSourceRoute = (
   <AudioSourceSelector />
+)
+const colorOptions = (
+  <ColorOptionsPanel />
 )
 
 const connectionsRoute = (
@@ -76,12 +83,20 @@ const shaderSelectorRoute = (
   <ShaderSelector />
 )
 
+const timingOptionsRoute = (
+  <TimingOptionsPanel />
+)
+
+const visualizationOptionsRoute = (
+  <VisualizationOptionsPanel />
+)
+
 interface PanelDetail {
   title: string
   icon: IconName
 }
 
-const panels: PanelRoute[] = ['palette', 'connections', 'filters', 'sound']
+const panels: PanelRoute[] = ['palette', 'connections', 'options', 'sound']
 const panelDetails: Record<PanelRoute, PanelDetail> = {
   home: {
     title: 'Sound Color Project',
@@ -95,7 +110,7 @@ const panelDetails: Record<PanelRoute, PanelDetail> = {
     title: 'Connections',
     icon: 'connections',
   },
-  filters: {
+  options: {
     title: 'Options',
     icon: 'tune',
   },
@@ -117,18 +132,21 @@ function getPanelChild (routing: RoutingStore) {
   if (routing.subRoutes.length > 0) {
     switch (routing.subRoutes[0]) {
       case 'audioSource': return audioSourceRoute
+      case 'colorOptions': return colorOptions
       case 'customPalette': return customPaletteRoute
       case 'hueGroupSelector': return hueGroupRoute
       case 'favoriteCusom': return favoritesRoute
       case 'shaderSliders': return shaderSlidersRoute
       case 'shaderSelector': return shaderSelectorRoute
+      case 'timingOptions': return timingOptionsRoute
+      case 'visualizationOptions': return visualizationOptionsRoute
       default: break
     }
   }
 
   switch (routing.panelRoute) {
     case 'connections': return connectionsRoute
-    case 'filters': return filtersRoute
+    case 'options': return optionsRoute
     case 'palette': return paletteRoute
     case 'sound': return soundDetails
     default: return null

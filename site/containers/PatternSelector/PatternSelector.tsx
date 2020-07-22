@@ -25,17 +25,12 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
 
   const setCustomPattern = React.useCallback(() => {
     patterns.currentPattern = 'custom'
-    routing.goToSubroute('customPalette')
   }, [patterns, routing])
-
-  const goToSavedPalletes = React.useCallback(() => {
-    routing.goToSubroute('favoriteCusom')
-  }, [routing])
 
   return useObserver(() => (
     <Panel title='Color Patterns' data-testid='pattern-selector'>
       <PanelButton
-        onClick={goToSavedPalletes}
+        toRoute='favoriteCusom'
         endIcon='play'
         suffix={Object.keys(patterns.favorites).length}
       >
@@ -49,6 +44,7 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
               <PanelButton
                 key={name}
                 onClick={setCustomPattern}
+                toRoute='customPalette'
                 active={patterns.currentPattern === name}
                 hoverColor={data.defaultColors[data.buttonNoteColor].toString()}
                 endIcon='play'

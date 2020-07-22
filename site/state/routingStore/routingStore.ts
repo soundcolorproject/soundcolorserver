@@ -11,7 +11,7 @@ export type PanelRoute =
   | 'home'
   | 'palette'
   | 'connections'
-  | 'filters'
+  | 'options'
   | 'sound'
   | 'info'
 
@@ -20,17 +20,12 @@ export type SubRoute =
   | 'hueGroupSelector'
   | 'customPalette'
   | 'favoriteCusom'
+  | 'colorOptions'
+  | 'visualizationOptions'
+  | 'timingOptions'
+  // TODO: Remove these
   | 'shaderSliders'
   | 'shaderSelector'
-
-const routeNames: { [key in SubRoute]: string } = {
-  audioSource: 'Audio Source',
-  hueGroupSelector: 'Light Group',
-  customPalette: 'Custom',
-  favoriteCusom: 'Favorites',
-  shaderSliders: 'Shader',
-  shaderSelector: 'Visualization',
-}
 
 export class RoutingStore {
   constructor () {
@@ -64,13 +59,6 @@ export class RoutingStore {
   @observable panelRoute: PanelRoute = 'home'
   @observable subRoutes: SubRoute[] = []
   @observable transitionDirection: TransitionDirection = 'right'
-
-  getSubRouteName () {
-    if (this.subRoutes.length === 0) {
-      return ''
-    }
-    return routeNames[this.subRoutes[0]]
-  }
 
   @action
   setPanelRoute = (route: PanelRoute, direction: TransitionDirection = 'left') => {

@@ -15,6 +15,8 @@ import {
   buttonIcon,
   hilight,
 } from './panelButton.pcss'
+import { SubRoute } from '../../state/routingStore'
+import { useStores } from '../../state/useStores'
 
 export interface Props {
   children?: React.ReactNode
@@ -22,6 +24,7 @@ export interface Props {
   onClick?: () => void
   href?: string
   newTab?: boolean
+  toRoute?: SubRoute
   endIcon?: IconName
   endButton?: SlimButtonProps
   hoverColor?: string
@@ -50,7 +53,8 @@ export function PanelButton (props: Props) {
     onClick,
     href,
     newTab = false,
-    endIcon,
+    toRoute,
+    endIcon = toRoute ? 'play' : href ? 'launch' : undefined,
     endButton,
     hoverColor,
     noActiveColor,
@@ -61,6 +65,8 @@ export function PanelButton (props: Props) {
     style,
     'data-testid': testid = 'panel-button',
   } = props
+
+  const { routing } = useStores()
 
   const cn = classNames(
     panelButton,
@@ -93,14 +99,21 @@ export function PanelButton (props: Props) {
     disabled || ev.currentTarget !== ev.target && (ev.target as HTMLElement).tagName === 'BUTTON'
   )
 
-  const handleClick = React.useMemo(() => !onClick ? noop : (ev: React.SyntheticEvent) => {
+  const handleClick = React.useMemo(() => (ev: React.SyntheticEvent) => {
     if (skipHandling(ev)) {
       return
     }
 
     ev.preventDefault()
-    onClick()
-  }, [onClick])
+
+    if (onClick) {
+      onClick()
+    }
+
+    if (toRoute) {
+      routing.goToSubroute(toRoute)
+    }
+  }, [onClick, toRoute])
 
   const handleKeypress = React.useMemo(() => !onClick ? noop : (ev: React.KeyboardEvent) => {
     if (skipHandling(ev)) {

@@ -51,6 +51,13 @@ export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
     label: 'Circulator',
     description: '',
     sliders: {
+      u_diffusion: {
+        label: 'Spread',
+        description: '',
+        defaultValue: 1,
+        min: 0,
+        max: 3,
+      },
       u_lightRotation: {
         label: 'Rotation Speed',
         description: '',
@@ -58,13 +65,6 @@ export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
         min: 0,
         max: 3,
         mapper: multiplyTime,
-      },
-      u_diffusion: {
-        label: 'Spread',
-        description: '',
-        defaultValue: 1,
-        min: 0,
-        max: 3,
       },
       u_noise: {
         label: 'Texture',

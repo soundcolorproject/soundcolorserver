@@ -34,7 +34,7 @@ export const BackOption = injectAndObserve<StateProps, OwnProps>(
           >
             <Icon color='var(--grey-60)' name='arrow_back' />
           </button>
-          <div className={routeName}>{name || routing.getSubRouteName()}</div>
+          <div className={routeName}>{name}</div>
         </div>
       )
     }
