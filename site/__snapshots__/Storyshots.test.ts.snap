@@ -261,6 +261,41 @@ exports[`Storyshots ColorPicker Stateful Example 1`] = `
 </div>
 `;
 
+exports[`Storyshots ColorWarning Example 1`] = `
+<div
+  className="colorWarning"
+  data-testid="color-warning"
+>
+  <h1>
+    Warning:
+  </h1>
+  <p>
+    SOVIS displays varying degrees of flashing lights and color, and may potentially trigger seizures for people with photosensitive epilepsy.
+  </p>
+  <p>
+    Viewer discretion is advised.
+  </p>
+  <button
+    className="button button"
+    data-testid="button"
+    onClick={[Function]}
+    style={
+      Object {
+        "--button-active-background": "#a4a4a4",
+        "--button-active-color": "var(--black)",
+        "--button-background": "#ffffff",
+        "--button-color": "var(--black)",
+        "--button-hover-background": "#c5c5c5",
+        "--button-hover-color": "var(--black)",
+      }
+    }
+    type="button"
+  >
+    Proceed
+  </button>
+</div>
+`;
+
 exports[`Storyshots ConnectionsPanel Example 1`] = `
 <div
   className="panel"
@@ -674,6 +709,51 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
       </form>
     </div>
   </div>
+</div>
+`;
+
+exports[`Storyshots HowItWorks Example 1`] = `
+<div
+  className="howItWorks"
+  data-testid="how-it-works"
+>
+  <h1>
+    How it works:
+  </h1>
+  <ol
+    className="list"
+  >
+    <li>
+      Start SOVIS
+    </li>
+    <li>
+      Allow microphone access if prompted
+    </li>
+    <li>
+      Make any noise or sound and watch the light and color react.
+    </li>
+    <li>
+      Change color patterns, connections, and options according to your liking.
+    </li>
+  </ol>
+  <button
+    className="button button"
+    data-testid="how-it-works-button"
+    onClick={[Function]}
+    style={
+      Object {
+        "--button-active-background": "#728ba9",
+        "--button-active-color": "var(--black)",
+        "--button-background": "#1B2128",
+        "--button-color": "var(--white)",
+        "--button-hover-background": "#55687e",
+        "--button-hover-color": "var(--white)",
+      }
+    }
+    type="button"
+  >
+    Start SOVIS
+  </button>
 </div>
 `;
 

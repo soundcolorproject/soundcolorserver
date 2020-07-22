@@ -23,6 +23,7 @@ export type TransitionDirection = 'up' | 'down' | 'left' | 'right'
 export interface Props {
   sidePanel: React.ReactElement
   children: React.ReactElement | null
+  overtop?: React.ReactNode
   height: number
   transitionDirection: TransitionDirection
   open: boolean
@@ -34,6 +35,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
   const {
     sidePanel,
     children,
+    overtop,
     height,
     transitionDirection,
     open,
@@ -50,6 +52,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
         style={{ ...style, height }}
         data-testid='main-panel-with-shrinking-side'
       >
+        {overtop}
         {sidePanel}
         <div className={panelContentWrapper}>
           <div className={swapper}>
@@ -84,6 +87,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
       style={{ ...style, height }}
       data-testid='main-panel-with-shrinking-side'
     >
+      {overtop}
       {sidePanel}
       <div className={panelContentWrapper} style={{ width: open ? undefined : 0 }}>
         <div className={cn(

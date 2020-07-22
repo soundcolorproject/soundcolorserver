@@ -1,0 +1,2 @@
+
+export { HowItWorks } from './HowItWorks'

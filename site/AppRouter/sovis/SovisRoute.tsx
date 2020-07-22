@@ -33,6 +33,8 @@ import { ColorOptionsPanel } from '../../containers/ColorOptionsPanel'
 import { TimingOptionsPanel } from '../../containers/TimingOptionsPanel'
 import { VisualizationOptionsPanel } from '../../containers/VisualizationOptionsPanel'
 import { ActionsPanel } from '../../containers/ActionsPanel'
+import { ColorWarning } from '../../containers/ColorWarning'
+import { HowItWorks } from '../../containers/HowItWorks'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
@@ -122,6 +124,13 @@ const panelDetails: Record<PanelRoute, PanelDetail> = {
     icon: 'download',
   },
 }
+
+const intro = (
+  <>
+    <ColorWarning />
+    <HowItWorks />
+  </>
+)
 
 function getPanelChild (routing: RoutingStore) {
   if (routing.subRoutes.length > 0) {
@@ -219,6 +228,7 @@ export function SovisRoute (props: SovisRouteProps) {
             height={288}
             transitionDirection={routing.transitionDirection}
             open={shrink()}
+            overtop={intro}
           >
             {getPanelChild(routing)}
           </MainPanelWithShrinkingSide>
