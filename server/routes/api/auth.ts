@@ -61,7 +61,7 @@ if (config.remoteApi) {
 
     const api = await createApiFromAccessCode(session, code)
     if (api) {
-      return res.redirect('/')
+      return res.redirect('/return-from-hue')
     }
 
     res.status(400).send('Something went wrong, please try again.')

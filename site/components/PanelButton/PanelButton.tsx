@@ -21,6 +21,7 @@ export interface Props {
   suffix?: React.ReactNode
   onClick?: () => void
   href?: string
+  newTab?: boolean
   endIcon?: IconName
   endButton?: SlimButtonProps
   hoverColor?: string
@@ -48,6 +49,7 @@ export function PanelButton (props: Props) {
     suffix,
     onClick,
     href,
+    newTab = false,
     endIcon,
     endButton,
     hoverColor,
@@ -124,7 +126,7 @@ export function PanelButton (props: Props) {
         onClick={handleClick}
         tabIndex={0}
         onKeyDown={handleKeypress}
-        target='_blank'
+        target={newTab ? '_blank' : undefined}
       >
         <span className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>
           {children}

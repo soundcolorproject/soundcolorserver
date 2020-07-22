@@ -20,6 +20,7 @@ export interface Props {
   noBold?: boolean
   onClick?: () => void
   href?: string
+  newTab?: boolean
   shrink?: boolean
   active?: boolean
   className?: string
@@ -33,6 +34,7 @@ export function ShrinkingPanelButton (props: Props) {
     icon,
     onClick,
     href,
+    newTab = false,
     iconSize = 'xs',
     endIcon = onClick ? 'play' : href ? 'launch' : undefined,
     noBold = false,
@@ -77,7 +79,7 @@ export function ShrinkingPanelButton (props: Props) {
         onClick={shrink ? undefined : handleClick}
         tabIndex={shrink ? undefined : 0}
         onKeyDown={handleKeypress}
-        target='_blank'
+        target={newTab ? '_blank' : undefined}
       >
         <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} />
         <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>{children}</div>

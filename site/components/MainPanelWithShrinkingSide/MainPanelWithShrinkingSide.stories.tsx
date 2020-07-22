@@ -78,6 +78,7 @@ function StatefulExample () {
         shrink={shrink}
         active={panel === 'home'}
         href={shrink ? undefined : '/'}
+        newTab
         onClick={shrink ? changePanel('home') : undefined}
       >
         Sound Color Project

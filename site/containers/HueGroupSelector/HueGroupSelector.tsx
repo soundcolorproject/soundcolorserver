@@ -50,20 +50,24 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
     }
 
     return (
-      <>
-        {
-          apiStatus.lightGroups.map(group => (
-            <PanelButton key={group.id} onClick={onClick(group.id)}>
-              {group.name}
-            </PanelButton>
-          ))
-        }
-      </>
+      apiStatus.lightGroups.map(group => (
+        <PanelButton key={group.id} onClick={onClick(group.id)}>
+          {group.name}
+        </PanelButton>
+      ))
     )
   }
 
+  const logout = () => {
+    window.location = '/logout' as any
+  }
+
   return useObserver(() => (
-    <Panel title='Philips Hue' data-testid={testid}>
+    <Panel
+      title='Philips Hue'
+      button={{ text: 'Logout', onClick: logout }}
+      data-testid={testid}
+    >
       {renderContent()}
     </Panel>
   ))

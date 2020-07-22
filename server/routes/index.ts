@@ -12,7 +12,7 @@ if (config.remoteApi) {
   router.get('/login', asyncHandler(async (req, res) => {
     const api = await getApi(req.getSessionId())
     if (api) {
-      res.redirect('/')
+      res.redirect('/return-from-hue')
     }
   }))
 
@@ -20,7 +20,7 @@ if (config.remoteApi) {
     const session = req.getSessionId()
     await deleteRemoteCredentials(session)
     await res.clearSession()
-    res.redirect('/')
+    res.redirect('/sovis')
   }))
 }
 
