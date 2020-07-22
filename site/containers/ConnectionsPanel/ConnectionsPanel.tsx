@@ -55,14 +55,15 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
     }
   }
 
+  // TODO: https://github.com/soundcolorproject/soundcolorserver/issues/3
   return useObserver(() => (
     <Panel title='Connections' data-testid={testid}>
       <PanelButton toRoute='audioSource' suffix={currentSource()} data-testid={`${testid}-audio-source-button`}>
         Audio Source
       </PanelButton>
-      <PanelButton disabled suffix='No audio source with tracks' data-testid={`${testid}-tracks-button`} endIcon='play'>
+      {/* <PanelButton disabled suffix='No audio source with tracks' data-testid={`${testid}-tracks-button`} endIcon='play'>
         Tracks
-      </PanelButton>
+      </PanelButton> */}
       {renderHueButton()}
     </Panel>
   ))

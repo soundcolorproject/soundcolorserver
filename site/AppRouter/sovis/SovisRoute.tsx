@@ -125,10 +125,10 @@ const panelDetails: Record<PanelRoute, PanelDetail> = {
   },
 }
 
-const intro = (
+const introPanes = (
   <>
-    <ColorWarning />
     <HowItWorks />
+    <ColorWarning />
   </>
 )
 
@@ -157,7 +157,7 @@ function getPanelChild (routing: RoutingStore) {
 }
 
 export function SovisRoute (props: SovisRouteProps) {
-  const { routing, renderState } = useStores()
+  const { routing, renderState, intro } = useStores()
 
   const goBack = React.useCallback(() => {
     if (routing.subRoutes.length > 0) {
@@ -228,7 +228,8 @@ export function SovisRoute (props: SovisRouteProps) {
             height={288}
             transitionDirection={routing.transitionDirection}
             open={shrink()}
-            overtop={intro}
+            overtop={introPanes}
+            onlyOvertop={!(intro.seenHowItWorks || intro.warningAccepted)}
           >
             {getPanelChild(routing)}
           </MainPanelWithShrinkingSide>

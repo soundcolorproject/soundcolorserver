@@ -24,6 +24,7 @@ export interface Props {
   sidePanel: React.ReactElement
   children: React.ReactElement | null
   overtop?: React.ReactNode
+  onlyOvertop?: boolean
   height: number
   transitionDirection: TransitionDirection
   open: boolean
@@ -36,6 +37,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
     sidePanel,
     children,
     overtop,
+    onlyOvertop = false,
     height,
     transitionDirection,
     open,
@@ -52,15 +54,19 @@ export function MainPanelWithShrinkingSide (props: Props) {
         style={{ ...style, height }}
         data-testid='main-panel-with-shrinking-side'
       >
-        {overtop}
-        {sidePanel}
-        <div className={panelContentWrapper}>
-          <div className={swapper}>
-            <div className={cn(panelContent, current)} style={{ width: open ? undefined : 0 }}>
-              {children}
+        {
+          !onlyOvertop && <>
+            {sidePanel}
+            <div className={panelContentWrapper}>
+              <div className={swapper}>
+                <div className={cn(panelContent, current)} style={{ width: open ? undefined : 0 }}>
+                  {children}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        }
+        {overtop}
       </div>
     )
   }
@@ -87,21 +93,25 @@ export function MainPanelWithShrinkingSide (props: Props) {
       style={{ ...style, height }}
       data-testid='main-panel-with-shrinking-side'
     >
+      {
+        !onlyOvertop && <>
+          {sidePanel}
+          <div className={panelContentWrapper} style={{ width: open ? undefined : 0 }}>
+            <div className={cn(
+              swapper,
+              { [transitionClass]: shouldTransition },
+            )}>
+              <div className={cn(panelContent, prev)}>
+                {prevChildren}
+              </div>
+              <div className={cn(panelContent, next)}>
+                {children}
+              </div>
+            </div>
+          </div>
+        </>
+      }
       {overtop}
-      {sidePanel}
-      <div className={panelContentWrapper} style={{ width: open ? undefined : 0 }}>
-        <div className={cn(
-          swapper,
-          { [transitionClass]: shouldTransition },
-        )}>
-          <div className={cn(panelContent, prev)}>
-            {prevChildren}
-          </div>
-          <div className={cn(panelContent, next)}>
-            {children}
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

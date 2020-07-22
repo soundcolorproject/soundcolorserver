@@ -40,7 +40,7 @@ export const HowItWorks: React.FunctionComponent<HowItWorksProps> = function How
     }
 
     return (
-      <div className={cn(howItWorks, { [hidden]: intro.seenHowItWorks })} data-testid={testid}>
+      <div className={cn(howItWorks, { [hidden]: intro.seenHowItWorks || !intro.warningAccepted })} data-testid={testid}>
         <h1>How it works:</h1>
         <ol className={list}>
           <li>Start SOVIS</li>
