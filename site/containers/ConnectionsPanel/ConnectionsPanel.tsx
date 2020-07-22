@@ -30,6 +30,13 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
   }
 
   const renderHueButton = () => {
+    if (apiStatus.offline) {
+      return (
+        <PanelButton disabled suffix='Requires internet access' data-testid={`${testid}-philips-hue-button`}>
+          Philips Hue
+        </PanelButton>
+      )
+    }
     if (!apiStatus.authenticated) {
       return (
         <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='launch'>

@@ -17,11 +17,6 @@ const TEN_SECONDS = 1000 * 10
 export class ApiStatusStore {
   constructor () {
     reaction(
-      () => this.offline,
-      this._testOnlineStatus,
-    )
-
-    reaction(
       () => this.lightGroupId,
       this._setLightGroup,
     )
@@ -49,11 +44,19 @@ export class ApiStatusStore {
         event_label: 'hue login status exception',
       })
     })
+
+    window.addEventListener('offline', () => {
+      this.offline = true
+    })
+
+    window.addEventListener('online', () => {
+      this.offline = false
+    })
   }
 
   readonly remoteApi = !__REMOTE_API__
   @observable authenticated = false
-  @observable offline = false
+  @observable offline = !navigator.onLine
 
   @observable loadingLightGroups = false
   @observable lightGroups: ApiGroupInfo[] | null = null
@@ -93,27 +96,6 @@ export class ApiStatusStore {
   private _setLightGroupError = (error: Error | null) => {
     this.lightGroupFetchError = error
     this.loadingLightGroups = false
-  }
-
-  private _onlineTester: any = null
-  private _testOnlineStatus = (offline: boolean) => {
-    if (!offline) {
-      if (this._onlineTester) {
-        clearInterval(this._onlineTester)
-        this._onlineTester = null
-      }
-      return
-    }
-
-    if (this._onlineTester) {
-      return
-    }
-
-    this._onlineTester = setInterval(() => {
-      isLoggedIn().catch(e => {
-        logger.info('Still offline:', e)
-      })
-    }, TEN_SECONDS)
   }
 
   private _setLightGroup = (groupId: number | undefined) => {
