@@ -49,7 +49,6 @@ function buildSvgContainer (name: string) {
 export type IconName = keyof typeof iconOptions
 
 export const iconOptions = {
-  about: buildSvgContainer('about'),
   arrow_back: buildSvgContainer('arrow_back'),
   arrow_forward: buildSvgContainer('arrow_forward'),
   colors: buildSvgContainer('colors'),
@@ -122,9 +121,6 @@ function buildIconSizes (iconWidth: number, iconTrueWidth: number, iconHeight = 
 
 const newIconSizes = buildIconSizes(16, 24)
 export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
-  about: {
-    ...newIconSizes,
-  },
   arrow_back: {
     ...newIconSizes,
   },
@@ -138,6 +134,9 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
     ...newIconSizes,
   },
   fullscreen: {
+    ...newIconSizes,
+  },
+  launch: {
     ...newIconSizes,
   },
   logo: {

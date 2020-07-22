@@ -40,13 +40,13 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
   const renderHueButton = () => {
     if (!apiStatus.authenticated) {
       return (
-        <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`}>
+        <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='launch'>
           Philips Hue
         </PanelButton>
       )
     } else {
       return (
-        <PanelButton suffix='Logged in!' data-testid={`${testid}-philips-hue-button`} onClick={hueClicked}>
+        <PanelButton suffix='Logged in' data-testid={`${testid}-philips-hue-button`} onClick={hueClicked}>
           Philips Hue
         </PanelButton>
       )

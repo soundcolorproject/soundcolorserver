@@ -2,7 +2,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import { panel, panelTitle, titleText, titleButton } from './panel.pcss'
+import { panel, panelTitle, titleText, titleButton, panelContent } from './panel.pcss'
 import { SlimButtonProps, renderSlimButton } from '../Button'
 
 interface Props {
@@ -34,7 +34,9 @@ export function Panel (props: Props) {
         <div className={titleText}>{title}</div>
         {button && renderSlimButton({ ...button, className: titleButton })}
       </div>
-      {children}
+      <div className={panelContent}>
+        {children}
+      </div>
     </div>
   )
 }

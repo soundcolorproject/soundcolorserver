@@ -190,7 +190,7 @@ export const patternsStore = observable({
   timeSmoothing: 0.8,
   monochrome: false,
   currentPattern: '' as PatternName,
-  patternNames: ['chakras', 'chromesthesia', 'emotion', 'chromotherapy', 'adolescence', 'custom'] as PatternName[],
+  patternNames: [ 'custom', 'chakras', 'chromesthesia', 'emotion', 'chromotherapy', 'adolescence'] as PatternName[],
   patternData: {
     chakras: {
       label: 'Chakras',

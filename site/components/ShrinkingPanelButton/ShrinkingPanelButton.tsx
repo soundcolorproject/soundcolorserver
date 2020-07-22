@@ -34,7 +34,7 @@ export function ShrinkingPanelButton (props: Props) {
     onClick,
     href,
     iconSize = 'xs',
-    endIcon = onClick ? 'play' : href ? 'about' : undefined,
+    endIcon = onClick ? 'play' : href ? 'launch' : undefined,
     noBold = false,
     shrink = false,
     active = false,

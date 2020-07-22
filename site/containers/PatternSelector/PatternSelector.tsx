@@ -34,6 +34,13 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
 
   return useObserver(() => (
     <Panel title='Color Patterns' data-testid='pattern-selector'>
+      <PanelButton
+        onClick={goToSavedPalletes}
+        endIcon='play'
+        suffix={Object.keys(patterns.favorites).length}
+      >
+        Saved
+      </PanelButton>
       {
         patterns.patternNames.map(name => {
           if (name === 'custom') {
@@ -65,13 +72,6 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
           )
         })
       }
-      <PanelButton
-        onClick={goToSavedPalletes}
-        endIcon='play'
-        suffix={Object.keys(patterns.favorites).length}
-      >
-        Saved
-      </PanelButton>
     </Panel>
   ))
 }

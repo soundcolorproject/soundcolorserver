@@ -6,31 +6,7 @@
   color: var(--black);
   font-size: 12px;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    overflow: visible;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: var(--grey-50);
-    cursor: ns-resize;
-    border-radius: 8px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--grey-70);
-  }
+  overflow: hidden;
 
   .panel-title {
     display: flex;
@@ -45,6 +21,37 @@
     .title-button {
       margin: -6px -8px;
       margin-left: 8px;
+    }
+  }
+
+  .panel-content {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      overflow: visible;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--grey-50);
+      cursor: ns-resize;
+      border-radius: 8px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--grey-70);
     }
   }
 }

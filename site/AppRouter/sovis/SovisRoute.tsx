@@ -204,7 +204,7 @@ export function SovisRoute (props: SovisRouteProps) {
         <div id={sovisPanel}>
           <MainPanelWithShrinkingSide
             sidePanel={sidePanel()}
-            height={panel() === 'palette' && routing.subRoutes.length === 0 ? 384 : 288}
+            height={288}
             transitionDirection={routing.transitionDirection}
             open={shrink()}
           >

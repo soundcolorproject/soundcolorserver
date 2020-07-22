@@ -14,6 +14,8 @@ import {
   favoriteText,
   deleteButton,
 } from './savedPaletteSelector.pcss'
+import { togglePattern } from '../../state/renderStateStore'
+import { PanelDetail } from '../../components/PanelDetail'
 
 export interface SavedPaletteSelectorProps extends RouteComponentProps {
   'data-testid'?: string
@@ -23,10 +25,13 @@ export const SavedPaletteSelector: React.FunctionComponent<SavedPaletteSelectorP
   const {
     'data-testid': testid = 'saved-palette-selector',
   } = props
-  const { patterns } = useStores()
+  const { patterns, renderState } = useStores()
 
   const setCustomColors = (name: string) => () => {
     patterns.loadFavorite(name)
+    if (!renderState.showColors) {
+      togglePattern(patterns, renderState)
+    }
   }
 
   const deleteFavorite = (name: string) => () => {
@@ -35,6 +40,11 @@ export const SavedPaletteSelector: React.FunctionComponent<SavedPaletteSelectorP
 
   const renderFavorites = () => {
     const names = Object.keys(patterns.favorites)
+    if (names.length === 0) {
+      return (
+        <PanelDetail>You have no custom patterns saved yet.</PanelDetail>
+      )
+    }
     return names.map((name, i) => (
       <PanelButton
         key={name}

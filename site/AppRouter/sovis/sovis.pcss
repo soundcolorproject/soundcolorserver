@@ -9,6 +9,11 @@
   justify-content: flex-end;
   align-items: center;
   position: relative;
+  transition: height 0.3s;
+
+  @mixin breakpoint mobile, min {
+    height: calc(100vh - 32px);
+  }
 
   #sovis-panel {
     height: 100%;

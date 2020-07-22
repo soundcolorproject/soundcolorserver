@@ -6,6 +6,7 @@ import Pickr from '@simonwep/pickr'
 import { Color, HSVa, toHsv, getContrastingColor } from '../../pcss-functions'
 
 import { colorPicker } from './colorPicker.pcss'
+import { logger } from '../../../shared/logger'
 
 export interface ColorPickerProps {
   value: Color
@@ -14,6 +15,64 @@ export interface ColorPickerProps {
   className?: string
   style?: React.CSSProperties
   'data-testid'?: string
+}
+
+interface PickrDetails {
+  pickr: Pickr
+  wrapper: HTMLElement
+}
+
+function killSave (instance = pickr) {
+  if (instance && activeSave) {
+    instance.off('save', activeSave)
+    activeSave = null
+  }
+}
+
+let activeSave: Function | null = null
+let pickr: Pickr | null = null
+let pickrWrapper: HTMLDivElement | null = null
+function getPickr (): PickrDetails {
+  if (!pickr || !pickrWrapper) {
+    logger.info('creating pickr')
+
+    pickrWrapper = document.createElement('div')
+    pickrWrapper.style.position = 'fixed'
+    pickrWrapper.style.top = '-10000px'
+    pickrWrapper.style.left = '-10000px'
+
+    pickr = Pickr.create({
+      el: pickrWrapper,
+      theme: 'nano',
+      useAsButton: true,
+      components: {
+        palette: false,
+        preview: true,
+        opacity: false,
+        hue: true,
+        interaction: {
+          input: true,
+          save: true,
+          cancel: true,
+        },
+      },
+    })
+
+    const onCancel = (hide = false) => (instance: Pickr) => {
+      killSave(instance)
+      pickrWrapper!.style.top = '-10000px'
+      pickrWrapper!.style.left = '-10000px'
+      if (hide) instance.hide()
+    }
+
+    pickr.on('hide', onCancel())
+    pickr.on('cancel', onCancel(true))
+  }
+
+  return {
+    pickr,
+    wrapper: pickrWrapper,
+  }
 }
 
 export function ColorPicker (props: ColorPickerProps) {
@@ -27,67 +86,44 @@ export function ColorPicker (props: ColorPickerProps) {
   } = props
 
   const buttonRef = React.useRef<HTMLButtonElement>(null)
-  const pickrRef = React.useRef<Pickr>()
-  const savingRef = React.useRef<boolean>()
-
-  function killPickrRef (force?: boolean) {
-    if (
-      force ||
-      pickrRef.current &&
-      (pickrRef.current as any).options.el !== buttonRef.current &&
-      (pickrRef.current as any)._eventBindings
-    ) {
-      pickrRef.current?.destroyAndRemove()
-    }
-  }
+  const pickrRef = React.useRef<PickrDetails>()
 
   React.useEffect(() => {
-    if (buttonRef.current) {
-      const newPicker = Pickr.create({
-        el: buttonRef.current,
-        theme: 'nano',
-        useAsButton: true,
-        default: value.toString(),
-        components: {
-          palette: false,
-          preview: true,
-          opacity: false,
-          hue: true,
-          interaction: {
-            input: true,
-            save: true,
-            cancel: true,
-          },
-        },
-      })
+    pickrRef.current = getPickr()
+  }, [])
 
-      newPicker.on('cancel', (instance: Pickr) => {
-        instance.hide()
-      })
-
-      newPicker.on('save', (color: Pickr.HSVaColor, instance: Pickr) => {
-        if (!savingRef.current) {
-          onChange(toHsv(color.toHEXA().toString()))
-          instance.hide()
-        }
-      })
-
-      pickrRef.current = newPicker
+  const onClick = React.useCallback(() => {
+    const pickr = pickrRef.current?.pickr
+    const wrapper = pickrRef.current?.wrapper
+    if (!pickr || !wrapper) {
+      return
     }
 
-    return killPickrRef
-  }, [buttonRef.current])
+    const buttonRect = buttonRef.current!.getBoundingClientRect()
+    const onSave = (color: Pickr.HSVaColor, instance: Pickr) => {
+      logger.info('Saving')
+      onChange(toHsv(color.toHEXA().toString()))
+      instance.hide()
+      killSave(instance)
+    }
 
-  React.useEffect(() => {
-    savingRef.current = true
-    pickrRef.current?.setColor(value.toString())
-    savingRef.current = false
-  }, [value])
+    const { app } = pickr.getRoot() as { app: HTMLElement }
+
+    killSave(pickr)
+    pickr.setColor(value.toString())
+    activeSave = onSave
+    pickr.on('save', onSave)
+    pickr.show()
+    app.style.left = `${buttonRect.left}px`
+    app.style.top = `${buttonRect.top}px`
+
+  }, [pickrRef.current, pickr, value, onChange])
 
   return (
     <button
       ref={buttonRef}
-      key='color-pickr'
+      type='button'
+      onClick={onClick}
       className={classNames(colorPicker, className)}
       style={{
         ...style,

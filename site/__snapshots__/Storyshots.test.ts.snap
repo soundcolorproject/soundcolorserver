@@ -24,12 +24,14 @@ exports[`Storyshots ColorPicker Stateful Example 1`] = `
   <button
     className="colorPicker"
     data-testid="color-picker"
+    onClick={[Function]}
     style={
       Object {
         "backgroundColor": "#baa3fa",
         "color": "var(--black)",
       }
     }
+    type="button"
   >
     C
   </button>
@@ -51,95 +53,116 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
     </div>
   </div>
   <div
-    className="panelButton"
-    data-testid="connections-panel-audio-source-button"
-    style={Object {}}
+    className="panelContent"
   >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+    <div
+      className="panelButton"
+      data-testid="connections-panel-audio-source-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        Audio Source
         <span
-          className="suffixText"
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
         >
-           - 
-          None
+          Audio Source
+          <span
+            className="suffixText"
+          >
+             - 
+            None
+          </span>
         </span>
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="connections-panel-tracks-button"
-    style={Object {}}
-  >
-    <a
-      className="hoverButton disabledButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="connections-panel-tracks-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton disabledButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        Tracks
         <span
-          className="suffixText"
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
         >
-           - 
-          No audio source with tracks
+          Tracks
+          <span
+            className="suffixText"
+          >
+             - 
+            No audio source with tracks
+          </span>
         </span>
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="connections-panel-philips-hue-button"
-    style={Object {}}
-  >
-    <a
-      className="hoverButton"
-      href="/login"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="connections-panel-philips-hue-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton"
+        href="/login"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        Philips Hue
         <span
-          className="suffixText"
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
         >
-           - 
-          Login
+          Philips Hue
+          <span
+            className="suffixText"
+          >
+             - 
+            Login
+          </span>
         </span>
-      </span>
-    </a>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </a>
+    </div>
   </div>
 </div>
 `;
@@ -168,206 +191,234 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
     </button>
   </div>
   <div
-    className="customPatternSelector"
-    data-testid="custom-pattern-selector"
+    className="panelContent"
   >
     <div
-      className="colorPickers"
-      data-testid="custom-pattern-selector-color-pickers"
+      className="customPatternSelector"
+      data-testid="custom-pattern-selector"
     >
       <div
-        className="pickerRow"
-        data-testid="custom-pattern-selector-pickers-row-0"
-      >
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-A"
-          style={
-            Object {
-              "backgroundColor": "#eed0c6",
-              "color": "var(--black)",
-            }
-          }
-        >
-          A
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-A#"
-          style={
-            Object {
-              "backgroundColor": "#dbc9c8",
-              "color": "var(--black)",
-            }
-          }
-        >
-          A#
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-B"
-          style={
-            Object {
-              "backgroundColor": "#c7c2ca",
-              "color": "var(--black)",
-            }
-          }
-        >
-          B
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-C"
-          style={
-            Object {
-              "backgroundColor": "#b4bbcc",
-              "color": "var(--black)",
-            }
-          }
-        >
-          C
-        </button>
-      </div>
-      <div
-        className="pickerRow"
-        data-testid="custom-pattern-selector-pickers-row-1"
-      >
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-C#"
-          style={
-            Object {
-              "backgroundColor": "#a1b4ce",
-              "color": "var(--black)",
-            }
-          }
-        >
-          C#
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-D"
-          style={
-            Object {
-              "backgroundColor": "#8eadd0",
-              "color": "var(--black)",
-            }
-          }
-        >
-          D
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-D#"
-          style={
-            Object {
-              "backgroundColor": "#7aa7d2",
-              "color": "var(--black)",
-            }
-          }
-        >
-          D#
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-E"
-          style={
-            Object {
-              "backgroundColor": "#67a0d4",
-              "color": "var(--black)",
-            }
-          }
-        >
-          E
-        </button>
-      </div>
-      <div
-        className="pickerRow"
-        data-testid="custom-pattern-selector-pickers-row-2"
-      >
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-F"
-          style={
-            Object {
-              "backgroundColor": "#5499d6",
-              "color": "var(--black)",
-            }
-          }
-        >
-          F
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-F#"
-          style={
-            Object {
-              "backgroundColor": "#4192d8",
-              "color": "var(--black)",
-            }
-          }
-        >
-          F#
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-G"
-          style={
-            Object {
-              "backgroundColor": "#2d8bda",
-              "color": "var(--black)",
-            }
-          }
-        >
-          G
-        </button>
-        <button
-          className="colorPicker picker"
-          data-testid="custom-pattern-selector-picker-G#"
-          style={
-            Object {
-              "backgroundColor": "#1a84dc",
-              "color": "var(--black)",
-            }
-          }
-        >
-          G#
-        </button>
-      </div>
-    </div>
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="textInput patternName"
-        data-testid="text-input"
+        className="colorPickers"
+        data-testid="custom-pattern-selector-color-pickers"
       >
         <div
-          className="inputWrapper"
+          className="pickerRow"
+          data-testid="custom-pattern-selector-pickers-row-0"
         >
-          <input
-            data-testid="text-input-input"
-            onChange={[Function]}
-            value=""
-          />
-          <div
-            className="placeholderText"
-            data-testid="text-input-placeholder"
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-A"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#eed0c6",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
           >
-            Custom Pattern Name
-          </div>
+            A
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-A#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#dbc9c8",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            A#
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-B"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#c7c2ca",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            B
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-C"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#b4bbcc",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            C
+          </button>
         </div>
-        <button
-          className="button"
-          data-testid="button"
-          onClick={[Function]}
-          style={Object {}}
-          type="submit"
+        <div
+          className="pickerRow"
+          data-testid="custom-pattern-selector-pickers-row-1"
         >
-          Save
-        </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-C#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a1b4ce",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            C#
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-D"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#8eadd0",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            D
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-D#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#7aa7d2",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            D#
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-E"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#67a0d4",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            E
+          </button>
+        </div>
+        <div
+          className="pickerRow"
+          data-testid="custom-pattern-selector-pickers-row-2"
+        >
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-F"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#5499d6",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            F
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-F#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4192d8",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            F#
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-G"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#2d8bda",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            G
+          </button>
+          <button
+            className="colorPicker picker"
+            data-testid="custom-pattern-selector-picker-G#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#1a84dc",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            G#
+          </button>
+        </div>
       </div>
-    </form>
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="textInput patternName"
+          data-testid="text-input"
+        >
+          <div
+            className="inputWrapper"
+          >
+            <input
+              data-testid="text-input-input"
+              onChange={[Function]}
+              value=""
+            />
+            <div
+              className="placeholderText"
+              data-testid="text-input-placeholder"
+            >
+              Custom Pattern Name
+            </div>
+          </div>
+          <button
+            className="button"
+            data-testid="button"
+            onClick={[Function]}
+            style={Object {}}
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 `;
@@ -822,76 +873,80 @@ exports[`Storyshots Panel Example 1`] = `
     </div>
   </div>
   <div
-    className="panelButton"
-    data-testid="panel-button"
-    style={Object {}}
+    className="panelContent"
   >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+    <div
+      className="panelButton"
+      data-testid="panel-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        This button should have ellipses due to it being very long text and when the panel is contained (or the window small enough), it is not wide enough to show it all
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="panel-button"
-    style={Object {}}
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          This button should have ellipses due to it being very long text and when the panel is contained (or the window small enough), it is not wide enough to show it all
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="panel-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        This is a panel button
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="panel-button"
-    style={Object {}}
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          This is a panel button
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="panel-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        So is this
-      </span>
-    </a>
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          So is this
+        </span>
+      </a>
+    </div>
   </div>
 </div>
 `;
@@ -994,254 +1049,258 @@ exports[`Storyshots PatternSelector Example 1`] = `
     </div>
   </div>
   <div
-    className="panelButton"
-    data-testid="pattern-button-chakras"
-    style={
-      Object {
-        "--panel-button-active-background": "#006fe0",
-        "--panel-button-active-color": "var(--white)",
-        "--panel-button-hover-background": "#0080ff",
-        "--panel-button-hover-color": "var(--black)",
-      }
-    }
+    className="panelContent"
   >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
+    <div
+      className="panelButton"
+      data-testid="panel-button"
+      style={Object {}}
     >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        Chakras
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="pattern-button-chromesthesia"
-    style={
-      Object {
-        "--panel-button-active-background": "#b9a57b",
-        "--panel-button-active-color": "var(--black)",
-        "--panel-button-hover-background": "#d3bd8d",
-        "--panel-button-hover-color": "var(--black)",
-      }
-    }
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
-    >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Chromesthesia
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="pattern-button-emotion"
-    style={
-      Object {
-        "--panel-button-active-background": "#ba00bb",
-        "--panel-button-active-color": "var(--white)",
-        "--panel-button-hover-background": "#d400d6",
-        "--panel-button-hover-color": "var(--white)",
-      }
-    }
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
-    >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Emotion
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="pattern-button-chromotherapy"
-    style={
-      Object {
-        "--panel-button-active-background": "#dd4b14",
-        "--panel-button-active-color": "var(--white)",
-        "--panel-button-hover-background": "#fc5719",
-        "--panel-button-hover-color": "var(--black)",
-      }
-    }
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
-    >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Chromotherapy
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="pattern-button-adolescence"
-    style={
-      Object {
-        "--panel-button-active-background": "#14a58d",
-        "--panel-button-active-color": "var(--black)",
-        "--panel-button-hover-background": "#19bda2",
-        "--panel-button-hover-color": "var(--black)",
-      }
-    }
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
-    >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Adolescence
-      </span>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="panel-button"
-    style={
-      Object {
-        "--panel-button-active-background": "#c5aaa9",
-        "--panel-button-active-color": "var(--black)",
-        "--panel-button-hover-background": "#dbc9c8",
-        "--panel-button-hover-color": "var(--black)",
-      }
-    }
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
-    >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Custom
-      </span>
-      <svg
-        className="icon buttonIcon"
-        height={30}
-        style={
-          Object {
-            "marginBottom": -5,
-            "marginLeft": -5,
-            "marginRight": -5,
-            "marginTop": -5,
-          }
-        }
-        viewBox="0 0 24 24"
-        width={30}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <use />
-      </svg>
-    </a>
-  </div>
-  <div
-    className="panelButton"
-    data-testid="panel-button"
-    style={Object {}}
-  >
-    <a
-      className="hoverButton"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      tabIndex={0}
-      target="_blank"
-    >
-      <span
-        className="text"
-        style={
-          Object {
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Saved
         <span
-          className="suffixText"
-        >
-           - 
-          0
-        </span>
-      </span>
-      <svg
-        className="icon buttonIcon"
-        height={30}
-        style={
-          Object {
-            "marginBottom": -5,
-            "marginLeft": -5,
-            "marginRight": -5,
-            "marginTop": -5,
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
           }
+        >
+          Saved
+          <span
+            className="suffixText"
+          >
+             - 
+            0
+          </span>
+        </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="panel-button"
+      style={
+        Object {
+          "--panel-button-active-background": "#c5aaa9",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#dbc9c8",
+          "--panel-button-hover-color": "var(--black)",
         }
-        viewBox="0 0 24 24"
-        width={30}
-        xmlns="http://www.w3.org/2000/svg"
+      }
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
       >
-        <use />
-      </svg>
-    </a>
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Custom
+        </span>
+        <svg
+          className="icon buttonIcon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": -5,
+              "marginRight": -5,
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="pattern-button-chakras"
+      style={
+        Object {
+          "--panel-button-active-background": "#006fe0",
+          "--panel-button-active-color": "var(--white)",
+          "--panel-button-hover-background": "#0080ff",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Chakras
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="pattern-button-chromesthesia"
+      style={
+        Object {
+          "--panel-button-active-background": "#b9a57b",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#d3bd8d",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Chromesthesia
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="pattern-button-emotion"
+      style={
+        Object {
+          "--panel-button-active-background": "#ba00bb",
+          "--panel-button-active-color": "var(--white)",
+          "--panel-button-hover-background": "#d400d6",
+          "--panel-button-hover-color": "var(--white)",
+        }
+      }
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Emotion
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="pattern-button-chromotherapy"
+      style={
+        Object {
+          "--panel-button-active-background": "#dd4b14",
+          "--panel-button-active-color": "var(--white)",
+          "--panel-button-hover-background": "#fc5719",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Chromotherapy
+        </span>
+      </a>
+    </div>
+    <div
+      className="panelButton"
+      data-testid="pattern-button-adolescence"
+      style={
+        Object {
+          "--panel-button-active-background": "#14a58d",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#19bda2",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+        target="_blank"
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Adolescence
+        </span>
+      </a>
+    </div>
   </div>
 </div>
 `;
@@ -1258,6 +1317,16 @@ exports[`Storyshots SavedPaletteSelector Example 1`] = `
       className="titleText"
     >
       Saved
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <div
+      className="panelDetail"
+      data-testid="panel-detail"
+    >
+      You have no custom patterns saved yet.
     </div>
   </div>
 </div>
@@ -1788,69 +1857,73 @@ exports[`Storyshots SoundDetails Example 1`] = `
     </div>
   </div>
   <div
-    className="panelDetail"
-    data-testid="sound-details-noise"
+    className="panelContent"
   >
-    <span
-      className="detailName"
+    <div
+      className="panelDetail"
+      data-testid="sound-details-noise"
     >
-      Noise volume: 
-    </span>
-    <span>
-      •
-    </span>
-  </div>
-  <div
-    className="panelDetail"
-    data-testid="sound-details-tone"
-  >
-    <span
-      className="detailName"
+      <span
+        className="detailName"
+      >
+        Noise volume: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panelDetail"
+      data-testid="sound-details-tone"
     >
-      Tone volume: 
-    </span>
-    <span>
-      •
-    </span>
-  </div>
-  <div
-    className="panelDetail"
-    data-testid="sound-details-freq"
-  >
-    <span
-      className="detailName"
+      <span
+        className="detailName"
+      >
+        Tone volume: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panelDetail"
+      data-testid="sound-details-freq"
     >
-      Frequency: 
-    </span>
-    <span>
-      •
-    </span>
-  </div>
-  <div
-    className="panelDetail"
-    data-testid="sound-details-note"
-  >
-    <span
-      className="detailName"
+      <span
+        className="detailName"
+      >
+        Frequency: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panelDetail"
+      data-testid="sound-details-note"
     >
-      Note: 
-    </span>
-    <span>
-      •
-    </span>
-  </div>
-  <div
-    className="panelDetail"
-    data-testid="sound-details-cents"
-  >
-    <span
-      className="detailName"
+      <span
+        className="detailName"
+      >
+        Note: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panelDetail"
+      data-testid="sound-details-cents"
     >
-      Cents ♭: 
-    </span>
-    <span>
-      •
-    </span>
+      <span
+        className="detailName"
+      >
+        Cents ♭: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
   </div>
 </div>
 `;
