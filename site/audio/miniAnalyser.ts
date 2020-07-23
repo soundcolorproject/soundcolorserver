@@ -30,17 +30,6 @@ export async function getMiniAnalyser () {
   return analyserPromise
 }
 
-export function setSource (newSource: AudioNode) {
-  if (prevSource && analyser) {
-    prevSource.disconnect(analyser)
-  }
-  if (analyser) {
-    newSource.connect(analyser)
-  }
-
-  prevSource = newSource
-}
-
 const emptyArray = new Float32Array(0)
 export function getMiniFft () {
   if (!analyser) {

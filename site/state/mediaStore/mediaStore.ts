@@ -1,10 +1,8 @@
 
 import { observable, reaction } from 'mobx'
 import { getAudioSource } from '../../audio/microphoneSource'
-import { setSource as setSource1 } from '../../audio/analyzer'
-import { setSource as setSource2 } from '../../audio/miniAnalyser'
+import { setSource } from '../../audio/analyzer'
 import { logger } from '../../../shared/logger'
-import { errorString } from '../../../shared/errorHelpers'
 
 export type MediaStore = typeof mediaStore
 
@@ -21,8 +19,7 @@ export const mediaStore = observable({
 
 async function setDevice (newDeviceId: string) {
   const newAudioSource = await getAudioSource(newDeviceId)
-  setSource1(newAudioSource)
-  setSource2(newAudioSource)
+  setSource(newAudioSource)
 }
 
 reaction(
