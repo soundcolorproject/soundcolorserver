@@ -27,6 +27,9 @@ uniform vec2 u_dimensions;
 uniform vec4 u_color1;
 uniform vec4 u_color2;
 uniform vec4 u_color3;
+uniform vec4 u_color4;
+uniform vec4 u_color5;
+uniform int u_lightCount;
 
 vec2 circ( in float t ) {
     return vec2(cos(t), sin(t));
@@ -43,9 +46,9 @@ vec2 lightPositionAt( in float diam, in float t ) {
     return circ(t) * size + 0.5;
 }
 
-vec2 lightPosition( in float num, in float t ) {
+vec2 lightPosition( in float num, in float t, in float total ) {
     // return vec2(0.9, 0.1);
-    return lightPositionAt(0.9, t + num * PHI / 3.0);
+    return lightPositionAt(0.9, t + num * PHI / total);
 }
 
 float brightness( in vec2 uv, in vec2 lightPosition, in vec2 diffusion ) {
@@ -62,16 +65,21 @@ void render( out vec4 fragColor, in vec2 fragCoord ) {
     vec4 black = fragColor;
 	vec2 diffusionXY = basis() * u_diffusion / u_dimensions.xy;
     vec2 uv = fragCoord.xy / u_dimensions.xy;
-    
-    float b1 = brightness(uv, lightPosition(0.0, u_lightRotation), diffusionXY);
-    float b2 = brightness(uv, lightPosition(1.0, u_lightRotation), diffusionXY);
-    float b3 = brightness(uv, lightPosition(2.0, u_lightRotation), diffusionXY);
 
-    vec4 v1 = b1 * u_color1;
-    vec4 v2 = b2 * u_color2;
-    vec4 v3 = b3 * u_color3;
+    vec4 vtot = vec4(0.0);
+    vtot += u_color1 * brightness(uv, lightPosition(0.0, u_lightRotation, float(u_lightCount)), diffusionXY);
+    vtot += u_color2 * brightness(uv, lightPosition(1.0, u_lightRotation, float(u_lightCount)), diffusionXY);
+    if (u_lightCount >= 3) {
+        vtot += u_color3 * brightness(uv, lightPosition(2.0, u_lightRotation, float(u_lightCount)), diffusionXY);
+    }
+    if (u_lightCount >= 4) {
+        vtot += u_color4 * brightness(uv, lightPosition(3.0, u_lightRotation, float(u_lightCount)), diffusionXY);
+    }
+    if (u_lightCount >= 5) {
+        vtot += u_color5 * brightness(uv, lightPosition(4.0, u_lightRotation, float(u_lightCount)), diffusionXY);
+    }
     
-    vec4 renderedColor = v1 + v2 + v3 + addNoise(uv);
+    vec4 renderedColor = vtot + addNoise(uv);
     fragColor = black * (1.0 - renderedColor.w) + renderedColor * renderedColor.w;
     fragColor.w = 1.0;
 }

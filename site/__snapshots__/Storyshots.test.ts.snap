@@ -2563,6 +2563,35 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
   >
     <label
       className="sliderLabel"
+      data-testid="visualization-options-panel-slider-u_lightCount"
+    >
+      <div
+        className="sliderDetails"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_lightCount-label"
+        >
+          Lights
+        </div>
+        <div
+          className="sliderValue"
+          data-testid="visualization-options-panel-slider-u_lightCount-value"
+        >
+          3
+        </div>
+      </div>
+      <input
+        className="sliderInput"
+        max={5}
+        min={2}
+        onChange={[Function]}
+        step={1}
+        type="range"
+        value={3}
+      />
+    </label>
+    <label
+      className="sliderLabel"
       data-testid="visualization-options-panel-slider-u_diffusion"
     >
       <div

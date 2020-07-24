@@ -174,6 +174,8 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
       this._shader.uniforms.u_color1([0, 0, 0, 1])
       this._shader.uniforms.u_color2([0, 0, 0, 1])
       this._shader.uniforms.u_color3([0, 0, 0, 1])
+      this._shader.uniforms.u_color4([0, 0, 0, 1])
+      this._shader.uniforms.u_color5([0, 0, 0, 1])
 
       const { analysis, patterns, renderState } = this.props
       const { currentPattern, patternData } = patterns
@@ -190,15 +192,15 @@ export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
         this._shader.uniforms.u_color1(colorArrays[0])
         this._shader.uniforms.u_color2(colorArrays[1] || colorArrays[0])
         this._shader.uniforms.u_color3(colorArrays[2] || colorArrays[0])
+        this._shader.uniforms.u_color4(colorArrays[3] || colorArrays[0])
+        this._shader.uniforms.u_color5(colorArrays[4] || colorArrays[0])
       } else {
         this._shader.uniforms.u_color1([0, 0, 0, 1])
         this._shader.uniforms.u_color2([0, 0, 0, 1])
         this._shader.uniforms.u_color3([0, 0, 0, 1])
+        this._shader.uniforms.u_color4([0, 0, 0, 1])
+        this._shader.uniforms.u_color5([0, 0, 0, 1])
       }
-
-      // this._shader.uniforms.u_color1([1, 0, 0, 1])
-      // this._shader.uniforms.u_color2([0, 1, 0, 1])
-      // this._shader.uniforms.u_color3([0, 0, 1, 1])
     }
 
     private _clearScene = (black = false) => {

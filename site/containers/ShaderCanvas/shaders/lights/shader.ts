@@ -38,6 +38,7 @@ const buildSimpleShader: Builder = function buildSimpleShader (gl: WebGLRenderin
       u_lightRotation: 'float',
       u_diffusion: 'float',
       u_noise: 'float',
+      u_lightCount: 'int',
     },
     meta: {
       ...COMMON_META,

@@ -26,7 +26,7 @@ export const VisualizationOptionsPanel: React.FunctionComponent<VisualizationOpt
   const renderSlider = (name: string) => {
     const { shader, shaderSliders } = renderState
     const info = shaderInfo[shader]
-    const { label, defaultValue, min, max, step } = info.sliders![name]
+    const { label, defaultValue, min, max, step, displayMapper } = info.sliders![name]
     let { [name]: currentValue = defaultValue } = shaderSliders
 
     return (
@@ -38,6 +38,7 @@ export const VisualizationOptionsPanel: React.FunctionComponent<VisualizationOpt
         max={max}
         step={step}
         onChange={setValue(name)}
+        displayMapper={displayMapper}
         data-testid={`${testid}-slider-${name}`}
       />
     )

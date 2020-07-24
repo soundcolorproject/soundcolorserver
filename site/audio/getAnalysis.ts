@@ -6,7 +6,7 @@ import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
 
 export const MIN_FOR_STATS = -100
-export const MAX_TONES = 3
+export const MAX_TONES = 5
 const MAX_STRENGTHS = MAX_TONES * 10
 const DEFAULT_STATS = {
   dB: {
@@ -195,8 +195,8 @@ export function getAnalysis (): Analysis {
   const noise = volumeTodB(noiseVolume)
 
   return {
-    noise: noise,
-    tones: tones,
+    noise,
+    tones,
     fft,
   }
 }

@@ -8,6 +8,7 @@ import {
   sliderValue,
   sliderInput,
 } from './slider.pcss'
+import { DisplayMapper } from '../../containers/ShaderCanvas/shaderName'
 
 export interface SliderProps {
   label: string
@@ -17,9 +18,11 @@ export interface SliderProps {
   max: number
   step?: number
   className?: string
+  displayMapper?: DisplayMapper
   'data-testid'?: string
 }
 
+const DEFAULT_DISPLAY_MAPPER: DisplayMapper = (value, min, max) => ((value - min) / (max - min)).toFixed(2)
 export function Slider (props: SliderProps) {
   const {
     label,
@@ -29,6 +32,7 @@ export function Slider (props: SliderProps) {
     max,
     step = (max - min) / 100,
     className,
+    displayMapper = DEFAULT_DISPLAY_MAPPER,
     'data-testid': testid = 'slider',
   } = props
 
@@ -46,7 +50,7 @@ export function Slider (props: SliderProps) {
       <div className={sliderDetails}>
         <div data-testid={`${testid}-label`}>{label}</div>
         <div className={sliderValue} data-testid={`${testid}-value`}>
-          {((value - min) / (max - min)).toFixed(2)}
+          {displayMapper(value, min, max)}
         </div>
       </div>
       <input

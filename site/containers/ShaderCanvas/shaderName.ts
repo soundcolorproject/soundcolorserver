@@ -20,9 +20,12 @@ interface ShaderInfo {
       max: number
       step?: number
       mapper?: (val: number) => number
+      displayMapper?: DisplayMapper
     }
   }
 }
+
+export type DisplayMapper = (val: number, min: number, max: number) => string
 
 let previousTime = Date.now()
 let previousValue = 0
@@ -51,6 +54,15 @@ export const shaderInfo: { [name in ShaderName]: ShaderInfo } = {
     label: 'Circulator',
     description: '',
     sliders: {
+      u_lightCount: {
+        label: 'Lights',
+        description: '',
+        defaultValue: 3,
+        min: 2,
+        max: 5,
+        step: 1,
+        displayMapper: (val) => val.toFixed(0),
+      },
       u_diffusion: {
         label: 'Spread',
         description: '',
