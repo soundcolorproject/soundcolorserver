@@ -1,10 +1,11 @@
 
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
 import { AnalysisProp } from '../../state/analysisStore'
 
 import { miniAnalyser, bar } from './miniAnalyser.pcss'
 import { RenderStateProp } from '../../state/renderStateStore'
+import { useStores } from '../../state/useStores'
+import { useCanvasContext } from '../../hooks/useCanvasContext'
 
 interface OwnProps {
 }
@@ -30,39 +31,22 @@ function renderAnalyser (context: CanvasRenderingContext2D, fft: Float32Array, w
   context.fill(path)
 }
 
-function useContext (): [React.RefObject<HTMLCanvasElement>, CanvasRenderingContext2D | null] {
-  const ref = React.useRef<HTMLCanvasElement>(null)
-  const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null)
+export function CanvasMiniAnalyser () {
+  const { analysis, renderState } = useStores()
+  const [canvasRef, context] = useCanvasContext('2d')
+  // tslint:disable-next-line: no-unused-expression
+  analysis.tones // required in order to force-re-render on update
 
-  React.useEffect(() => {
-    if (ref.current) {
-      setContext(ref.current.getContext('2d'))
+  if (context) {
+    const width = canvasRef.current?.width || window.innerWidth
+    if (!renderState.showColors) {
+      context.clearRect(0, 0, width, 500)
     } else {
-      setContext(null)
+      renderAnalyser(context, analysis.miniFft, width, 500)
     }
-  }, [ref.current])
+  }
 
-  return [ref, context]
+  return (
+    <canvas ref={canvasRef} id={miniAnalyser} height={500} width={window.innerWidth} />
+  )
 }
-
-export const CanvasMiniAnalyser = injectAndObserve<StateProps, OwnProps>(
-  ({ analysis, renderState }) => ({ analysis, renderState }),
-  function CanvasMiniAnalyser (props: CanvasMiniAnalyserProps) {
-    const { analysis, renderState } = props
-    const [ref, context] = useContext()
-    // tslint:disable-next-line: no-unused-expression
-    analysis.tones // required in order to force-re-render on update
-
-    if (context) {
-      const width = ref.current?.width || window.innerWidth
-      if (!renderState.showColors) {
-        context.clearRect(0, 0, width, 500)
-      } else {
-        renderAnalyser(context, analysis.miniFft, width, 500)
-      }
-    }
-    return (
-      <canvas ref={ref} id={miniAnalyser} height={500} width={window.innerWidth} />
-    )
-  },
-)

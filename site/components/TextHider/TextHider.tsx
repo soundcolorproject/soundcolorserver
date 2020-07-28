@@ -1,33 +1,26 @@
 
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { RenderStateProp } from '../../state/renderStateStore'
+import { useStores } from '../../state/useStores'
 
 import { clickReshow, textHider, hidden } from './textHider.pcss'
+import { useObserver } from 'mobx-react'
 
-interface OwnProps {
+export interface TextHiderProps {
+  children?: React.ReactNode
 }
 
-type StateProps = RenderStateProp
+export function TextHider ({ children }: TextHiderProps) {
+  const { renderState } = useStores()
+  const reshow = React.useCallback(() => {
+    renderState.showText = true
+  }, [renderState])
 
-export type TextHiderProps = OwnProps & StateProps
-
-export const TextHider = injectAndObserve<StateProps, OwnProps>(
-  ({ renderState }) => ({ renderState }),
-  class TextHider extends React.Component<TextHiderProps> {
-    reshow = () => {
-      this.props.renderState.showText = true
-    }
-    render () {
-      const { children, renderState: { showText } } = this.props
-      return (
-        <>
-          { showText || <div id={clickReshow} onClick={this.reshow} /> }
-          <div id={textHider} className={showText ? '' : hidden}>
-            {children}
-          </div>
-        </>
-      )
-    }
-  },
-)
+  return useObserver(() => (
+    <>
+      { renderState.showText || <div id={clickReshow} onClick={reshow} /> }
+      <div id={textHider} className={renderState.showText ? '' : hidden}>
+        {children}
+      </div>
+    </>
+  ))
+}

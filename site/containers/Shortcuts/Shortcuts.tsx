@@ -1,12 +1,12 @@
 
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
 import { RenderStateProp, toggleFullscreen, togglePattern } from '../../state/renderStateStore'
 import { PatternsProp } from '../../state/patternsStore'
 
 import { shortcuts, iconButton } from './shortcuts.pcss'
 import { logger } from '../../../shared/logger'
 import { IconName, Icon } from '../../components/Icon'
+import { useStores } from '../../state/useStores'
 
 interface OwnProps {
 }
@@ -28,58 +28,51 @@ const stopBubblingEnterAndSpace = (handler: () => void) => (ev: React.KeyboardEv
   }
 }
 
-export const Shortcuts = injectAndObserve<StateProps, OwnProps>(
-  ({ renderState, patterns }) => ({ renderState, patterns }),
-  class Shortcuts extends React.Component<ShortcutsProps> {
-    private renderIconButton = (icon: IconName, action: (ev: React.KeyboardEvent | React.MouseEvent) => void) => (
-      <button
-        className={iconButton}
-        type='button'
-        role='button'
-        onClick={action}
-        onKeyDown={action}
-      >
-        <Icon name={icon} size='xs' />
-      </button>
-    )
+export function Shortcuts () {
+  const { renderState, patterns } = useStores()
 
-    hideText = stopBubblingEnterAndSpace(() => {
-      const { renderState } = this.props
-      renderState.showText = !renderState.showText
-    })
+  const renderIconButton = (icon: IconName, action: (ev: React.KeyboardEvent | React.MouseEvent) => void) => (
+    <button
+      className={iconButton}
+      type='button'
+      role='button'
+      onClick={action}
+      onKeyDown={action}
+    >
+      <Icon name={icon} size='xs' />
+    </button>
+  )
 
-    togglePattern = stopBubblingEnterAndSpace(() => {
-      const { renderState, patterns } = this.props
-      togglePattern(patterns, renderState)
-    })
+  const _hideText = stopBubblingEnterAndSpace(() => {
+    renderState.showText = !renderState.showText
+  })
 
-    toggleFullscreen = stopBubblingEnterAndSpace(() => {
-      toggleFullscreen(this.props.renderState)
-    })
+  const _togglePattern = stopBubblingEnterAndSpace(() => {
+    togglePattern(patterns, renderState)
+  })
 
-    render () {
-      const { renderState } = this.props
+  const _toggleFullscreen = stopBubblingEnterAndSpace(() => {
+    toggleFullscreen(renderState)
+  })
 
-      return (
-        <div id={shortcuts}>
-          {
-            this.renderIconButton(
-              renderState.showColors ? 'pause_circle' : 'play_circle',
-              this.togglePattern,
-            )
-          }
-          {
-            this.renderIconButton('visibility_off', this.hideText)
-          }
-          {
-            document.fullscreenEnabled
-            && this.renderIconButton(
-              renderState.isFullscreen ? 'minimize' : 'fullscreen',
-              this.toggleFullscreen,
-            )
-          }
-        </div>
-      )
-    }
-  },
-)
+  return (
+    <div id={shortcuts}>
+      {
+        renderIconButton(
+          renderState.showColors ? 'pause_circle' : 'play_circle',
+          _togglePattern,
+        )
+      }
+      {
+        renderIconButton('visibility_off', _hideText)
+      }
+      {
+        document.fullscreenEnabled
+        && renderIconButton(
+          renderState.isFullscreen ? 'minimize' : 'fullscreen',
+          _toggleFullscreen,
+        )
+      }
+    </div>
+  )
+}

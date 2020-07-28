@@ -4,9 +4,8 @@ import * as cn from 'classnames'
 import { AnalysisProp } from '../../state/analysisStore'
 import { PatternsProp } from '../../state/patternsStore'
 import { RenderStateProp } from '../../state/renderStateStore'
-import { injectAndObserve } from '../../state/injectAndObserve'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
-import { toRgb } from '../../pcss-functions'
+import { toRgb, HSVa } from '../../pcss-functions'
 import { logger } from '../../../shared/logger'
 
 import { backgroundColors } from './shaderCanvas.pcss'
@@ -14,13 +13,16 @@ import { ShaderName, shaderNames } from './shaderName'
 import { BuiltProgramWithUniforms } from './helpers/buildProgram'
 import { COMMON_UNIFORMS, CommonMeta, CommonShaderBuilder } from './helpers/common'
 import { requireShader } from './requireShader'
+import { useObserver } from 'mobx-react'
+import { useStores } from '../../state/useStores'
+import { useCanvasContext } from '../../hooks/useCanvasContext'
 
 const shaderMap = new Map<ShaderName, CommonShaderBuilder>()
 shaderNames.forEach(name => {
   shaderMap.set(name, requireShader(`./${name}/shader.ts`).default)
 })
 
-interface OwnProps {
+export interface OwnProps {
   id?: string
   className?: string
   shaderName: ShaderName
@@ -52,215 +54,168 @@ function downloadFile (data: Blob, fileName: string) {
 }
 
 export type ShaderCanvasProps = OwnProps & StateProps
-export const ShaderCanvas = injectAndObserve<StateProps, OwnProps>(
-  ({ analysis, patterns, renderState }) => ({ analysis, patterns, renderState }),
-  class ShaderCanvas extends React.PureComponent<ShaderCanvasProps> {
-    private _canvas?: HTMLCanvasElement
-    private _gl?: WebGLRenderingContext
-    private _renderId?: number
-    private _startTime = Date.now()
-    private _shader?: BuiltProgramWithUniforms<typeof COMMON_UNIFORMS, CommonMeta>
-    private _takingScreenshot = false
-    private _noop: any
 
-    componentDidMount () {
-      const { renderState } = this.props
-      renderState.takeScreenshot = this._screenshot
-      if (renderState.showColors) {
-        this.start()
-      }
+function getCanvasImage (canvas: HTMLCanvasElement) {
+  return new Promise<Blob>((resolve, reject) => {
+    if (!canvas) {
+      return reject()
     }
 
-    componentDidUpdate (prevProps: ShaderCanvasProps) {
-      const { shaderName, renderState } = this.props
-      renderState.takeScreenshot = this._screenshot
-      if (this._gl && shaderName !== prevProps.shaderName) {
-        logger.info('Using shader:', shaderName)
-        this._shader = shaderMap.get(shaderName)!(this._gl)
-      }
-      if (renderState.showColors) {
-        this.start()
+    canvas.toBlob((b) => {
+      if (b === null) {
+        reject()
       } else {
-        this.pause()
+        resolve(b)
       }
+    }, 'image/png', 1)
+  })
+}
+
+interface UniformsOpts {
+  gl: WebGLRenderingContext | null
+  canvas: HTMLCanvasElement | null
+  shader: BuiltProgramWithUniforms<typeof COMMON_UNIFORMS, CommonMeta> | null
+  startTime: number
+  colors: HSVa[]
+}
+const GL_BLACK = Object.freeze([0, 0, 0, 1]) as [number, number, number, number]
+const setUniforms = ({ gl, canvas, shader, startTime, colors }: UniformsOpts) => {
+  if (!gl || !canvas || !shader) {
+    return
+  }
+
+  const width = canvas.clientWidth | 0
+  const height = canvas.clientHeight | 0
+
+  if (canvas.width !== width || canvas.height !== height) {
+    canvas.width = width
+    canvas.height = height
+  }
+
+  gl.useProgram(shader.program)
+
+  shader.uniforms.u_time([(Date.now() - startTime) / 1000])
+  shader.uniforms.u_dimensions([width, height])
+  shader.uniforms.u_color1(GL_BLACK)
+  shader.uniforms.u_color2(GL_BLACK)
+  shader.uniforms.u_color3(GL_BLACK)
+  shader.uniforms.u_color4(GL_BLACK)
+  shader.uniforms.u_color5(GL_BLACK)
+
+  if (colors.length) {
+    const colorArrays = colors.map(c => toRgb(c).toArray())
+    shader.uniforms.u_color1(colorArrays[0])
+    shader.uniforms.u_color2(colorArrays[1] || colorArrays[0])
+    shader.uniforms.u_color3(colorArrays[2] || colorArrays[0])
+    shader.uniforms.u_color4(colorArrays[3] || colorArrays[0])
+    shader.uniforms.u_color5(colorArrays[4] || colorArrays[0])
+  }
+}
+
+const clearScene = (gl: WebGLRenderingContext | null, black = false) => {
+  if (!gl) {
+    return
+  }
+
+  // Tell WebGL how to convert from clip space to pixels
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+
+  // Clear the canvas
+  if (black) {
+    gl.clearColor(27 / 255, 33 / 255, 40 / 255, 1)
+  } else {
+    gl.clearColor(0, 0, 0, 0)
+  }
+  gl.clear(gl.COLOR_BUFFER_BIT)
+}
+
+const drawScene = (gl: WebGLRenderingContext | null, shader: BuiltProgramWithUniforms<typeof COMMON_UNIFORMS, CommonMeta> | null) => {
+  if (!gl || !shader) {
+    return
+  }
+
+  // Render the scene
+  shader.meta.render(gl, shader.program)
+}
+
+export function ShaderCanvas ({ id, className, shaderName }: OwnProps) {
+  const { analysis, patterns, renderState } = useStores()
+  const [canvasRef, gl] = useCanvasContext('webgl')
+  const renderId = React.useRef<number>()
+  const startTime = React.useRef<number>()
+  const takingScreenshot = React.useRef<boolean>()
+  if (!startTime.current) {
+    startTime.current = Date.now()
+  }
+
+  const shader = React.useMemo(() => {
+    const shaderBuilder = shaderMap.get(shaderName)
+    if (!gl || !shaderBuilder) {
+      return null
     }
 
-    private _screenshot = async () => {
-      try {
-        logger.info('taking screenshot')
-        if (!this._canvas) {
-          logger.warn('no canvas for screenshot!')
-          return
-        }
-        this._takingScreenshot = true
-        logger.info('creating image')
-        const img = await this._getCanvasImage()
-        const d = new Date()
-        logger.info('using date', d)
-        const filename = `SOVIS ${d.getFullYear()}-${d.getMonth()}-${d.getDate()} ${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}.png`
-        logger.info('using filename', filename)
-        downloadFile(img, filename)
-        logger.info('download done!')
-      } finally {
-        this._takingScreenshot = false
+    return shaderBuilder(gl)
+  }, [shaderName, gl])
+
+  const takeScreenshot = React.useCallback(async () => {
+    try {
+      logger.info('taking screenshot')
+      if (!canvasRef.current) {
+        logger.warn('no canvas for screenshot!')
+        return
       }
+      takingScreenshot.current = true
+      logger.info('creating image')
+
+      clearScene(gl, true)
+      drawScene(gl, shader)
+      const img = await getCanvasImage(canvasRef.current)
+      const d = new Date()
+      logger.info('using date', d)
+      const filename = `SOVIS ${d.getFullYear()}-${d.getMonth()}-${d.getDate()} ${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}.png`
+      logger.info('using filename', filename)
+      downloadFile(img, filename)
+      logger.info('download done!')
+    } finally {
+      takingScreenshot.current = false
+    }
+  }, [gl, canvasRef.current, shader, takingScreenshot])
+
+  React.useEffect(() => {
+    renderState.takeScreenshot = takeScreenshot
+  }, [renderState, takeScreenshot])
+
+  const renderLoop = () => {
+    if (!canvasRef.current) {
+      return
     }
 
-    private _getCanvasImage = () => (
-      new Promise<Blob>((resolve, reject) => {
-        if (!this._canvas) {
-          return reject()
-        }
+    if (!takingScreenshot.current) {
+      setUniforms({ gl, canvas: canvasRef.current, shader, startTime: startTime.current!, colors: getColorsFromAnalysis(analysis, patterns) })
+      clearScene(gl)
+      drawScene(gl, shader)
+    }
 
-        this._clearScene(true)
-        this._drawScene()
+    renderId.current = requestAnimationFrame(renderLoop)
+  }
 
-        this._canvas.toBlob((b) => {
-          if (b === null) {
-            reject()
-          } else {
-            resolve(b)
-          }
-        }, 'image/png', 1)
-      })
+  return useObserver(() => {
+    React.useEffect(() => {
+      if (renderState.showColors && !renderId.current) {
+        renderLoop()
+      } else if (!renderState.showColors && renderId.current) {
+        cancelAnimationFrame(renderId.current)
+        renderId.current = undefined
+        clearScene(gl)
+      }
+    }, [renderState.showColors, renderId])
+
+    return (
+      <canvas
+        id={id}
+        className={cn(backgroundColors, className)}
+        ref={canvasRef}
+      />
     )
-
-    private _setCanvas = (canvas: HTMLCanvasElement) => {
-      this._canvas = canvas
-      if (!canvas) {
-        this._shader = undefined
-        this._startTime = 0
-        this.pause()
-        return
-      }
-
-      const gl = this._gl = canvas.getContext('webgl')!
-      this._shader = shaderMap.get(this.props.shaderName)!(gl)
-      this._startTime = Date.now()
-    }
-
-    private _renderLoop = () => {
-      if (!this._canvas) {
-        return
-      }
-
-      if (!this._takingScreenshot) {
-        this._setUniforms()
-        this._clearScene()
-        this._drawScene()
-      }
-
-      this._renderId = requestAnimationFrame(this._renderLoop)
-    }
-
-    private _setUniforms = () => {
-      if (!this._gl || !this._canvas || !this._shader) {
-        return
-      }
-      const canvas = this._canvas
-
-      const width = canvas.clientWidth | 0
-      const height = canvas.clientHeight | 0
-
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width
-        canvas.height = height
-      }
-
-      this._gl.useProgram(this._shader.program)
-
-      this._shader.uniforms.u_time([(Date.now() - this._startTime) / 1000])
-      this._shader.uniforms.u_dimensions([width, height])
-      this._shader.uniforms.u_color1([0, 0, 0, 1])
-      this._shader.uniforms.u_color2([0, 0, 0, 1])
-      this._shader.uniforms.u_color3([0, 0, 0, 1])
-      this._shader.uniforms.u_color4([0, 0, 0, 1])
-      this._shader.uniforms.u_color5([0, 0, 0, 1])
-
-      const { analysis, patterns, renderState } = this.props
-      const { currentPattern, patternData } = patterns
-      const pattern = patternData[currentPattern]
-
-      if (!renderState.showColors || !pattern) {
-        return
-      }
-
-      const colors = getColorsFromAnalysis(analysis, patterns)
-
-      if (colors.length) {
-        const colorArrays = colors.map(c => toRgb(c).toArray())
-        this._shader.uniforms.u_color1(colorArrays[0])
-        this._shader.uniforms.u_color2(colorArrays[1] || colorArrays[0])
-        this._shader.uniforms.u_color3(colorArrays[2] || colorArrays[0])
-        this._shader.uniforms.u_color4(colorArrays[3] || colorArrays[0])
-        this._shader.uniforms.u_color5(colorArrays[4] || colorArrays[0])
-      } else {
-        this._shader.uniforms.u_color1([0, 0, 0, 1])
-        this._shader.uniforms.u_color2([0, 0, 0, 1])
-        this._shader.uniforms.u_color3([0, 0, 0, 1])
-        this._shader.uniforms.u_color4([0, 0, 0, 1])
-        this._shader.uniforms.u_color5([0, 0, 0, 1])
-      }
-    }
-
-    private _clearScene = (black = false) => {
-      if (!this._gl || !this._shader) {
-        return
-      }
-
-      const gl = this._gl
-
-      // Tell WebGL how to convert from clip space to pixels
-      gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
-
-      // Clear the canvas
-      if (black) {
-        gl.clearColor(27 / 255, 33 / 255, 40 / 255, 1)
-      } else {
-        gl.clearColor(0, 0, 0, 0)
-      }
-      gl.clear(gl.COLOR_BUFFER_BIT)
-    }
-
-    private _drawScene = () => {
-      if (!this._gl || !this._shader) {
-        return
-      }
-
-      const gl = this._gl
-
-      // Render the scene
-      this._shader.meta.render(gl, this._shader.program)
-    }
-
-    start = () => {
-      if (!this._renderId) {
-        this._renderLoop()
-      }
-    }
-
-    pause = () => {
-      if (this._renderId) {
-        cancelAnimationFrame(this._renderId)
-        this._clearScene()
-      }
-      delete this._renderId
-    }
-
-    render () {
-      const { id, className, renderState } = this.props
-
-      // We have to reference renderState.showColors during render,
-      // otherwise the component won't be re-rendered when the value changes
-      this._noop = renderState.showColors
-
-      return (
-        <canvas
-          id={id}
-          className={cn(backgroundColors, className)}
-          ref={this._setCanvas}
-        />
-      )
-    }
-  },
-)
+  })
+}
