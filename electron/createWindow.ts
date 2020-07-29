@@ -16,8 +16,7 @@ export async function createWindow () {
   })
 
   logger.info('Loading app into browser window...')
-  await win.loadURL(`http://localhost:${config.port}`)
-
+  await win.loadURL(`http://localhost:${config.port}/sovis`)
   win.show()
 
   if (config.dev) {
