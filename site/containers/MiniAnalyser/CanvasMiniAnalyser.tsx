@@ -6,6 +6,7 @@ import { miniAnalyser, bar } from './miniAnalyser.pcss'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 import { useCanvasContext } from '../../hooks/useCanvasContext'
+import { useObserver } from 'mobx-react'
 
 interface OwnProps {
 }
@@ -34,19 +35,22 @@ function renderAnalyser (context: CanvasRenderingContext2D, fft: Float32Array, w
 export function CanvasMiniAnalyser () {
   const { analysis, renderState } = useStores()
   const [canvasRef, context] = useCanvasContext('2d')
-  // tslint:disable-next-line: no-unused-expression
-  analysis.tones // required in order to force-re-render on update
 
-  if (context) {
-    const width = canvasRef.current?.width || window.innerWidth
-    if (!renderState.showColors) {
-      context.clearRect(0, 0, width, 500)
-    } else {
-      renderAnalyser(context, analysis.miniFft, width, 500)
+  return useObserver(() => {
+    // tslint:disable-next-line: no-unused-expression
+    analysis.tones // required in order to force-re-render on update
+
+    if (context) {
+      const width = canvasRef.current?.width || window.innerWidth
+      if (!renderState.showColors) {
+        context.clearRect(0, 0, width, 500)
+      } else {
+        renderAnalyser(context, analysis.miniFft, width, 500)
+      }
     }
-  }
 
-  return (
-    <canvas ref={canvasRef} id={miniAnalyser} height={500} width={window.innerWidth} />
-  )
+    return (
+      <canvas ref={canvasRef} id={miniAnalyser} height={500} width={window.innerWidth} />
+    )
+  })
 }
