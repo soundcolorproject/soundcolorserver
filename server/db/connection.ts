@@ -3,9 +3,12 @@ import { connect, MongoClient, Db } from 'mongodb'
 import { config } from '../config'
 import { FatalError, FatalErrorCode } from '../errors/FatalError'
 
-let mongoClient: MongoClient
-let db: Db
+let mongoClient: MongoClient | null = null
+let db: Db | null = null
 export async function initClient () {
+  if (!config.remoteApi) {
+    return
+  }
   try {
     // tslint:disable-next-line: no-console
     console.info('Connecting to database...')

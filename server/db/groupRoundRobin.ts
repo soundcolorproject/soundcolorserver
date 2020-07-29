@@ -1,6 +1,7 @@
 
 import { getDb } from './connection'
 import { DbWriteError } from '../errors/DbWriteError'
+import { config } from '../config'
 
 interface GroupRoundRobinState {
   session: string
@@ -11,12 +12,18 @@ interface GroupRoundRobinState {
 }
 const COLLECTION_NAME = 'groupRoundRobinState'
 function getCollection () {
-  return getDb().collection<GroupRoundRobinState>(COLLECTION_NAME)
+  if (!config.remoteApi) {
+    return null
+  }
+  return getDb()!.collection<GroupRoundRobinState>(COLLECTION_NAME)
 }
 
 const TEN_MINUTES_IN_SECONDS = 60 * 10
 export async function initCollection () {
-  const collection = await getDb().createCollection<GroupRoundRobinState>(COLLECTION_NAME)
+  if (!config.remoteApi) {
+    return
+  }
+  const collection = await getDb()!.createCollection<GroupRoundRobinState>(COLLECTION_NAME)
 
   await collection.createIndex(
     {
@@ -33,7 +40,10 @@ export async function initCollection () {
 }
 
 export async function getNextLightId (session: string, groupId: number): Promise<number> {
-  const coll = getCollection()
+  if (!config.remoteApi) {
+    return -1
+  }
+  const coll = getCollection()!
   const { ok, value } = await coll.findOneAndUpdate(
     {
       session: { $eq: session },
@@ -56,7 +66,10 @@ export async function getNextLightId (session: string, groupId: number): Promise
 }
 
 export async function setupRoundRobin (session: string, groupId: number, lightIds: number[]): Promise<void> {
-  const coll = getCollection()
+  if (!config.remoteApi) {
+    return
+  }
+  const coll = getCollection()!
   const { result: { ok, n } } = await coll.insertOne({
     session,
     groupId,

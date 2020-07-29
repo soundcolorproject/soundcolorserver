@@ -66,7 +66,7 @@ export class ApiStatusStore {
   @observable lightGroupId: number | undefined = undefined
   @observable lightGroupFetchError: Error | null = null
 
-  @observable transmitToLightGroup = false
+  @observable transmitToLightGroup = true
   @observable transmitMode: GroupColorMode = 'group'
 
   @action

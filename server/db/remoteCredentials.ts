@@ -2,6 +2,7 @@
 import { getDb } from './connection'
 import { RemoteCredentials, Tokens } from '../hue/api/remote'
 import { DbWriteError } from '../errors/DbWriteError'
+import { config } from '../config'
 
 export interface CredentialData {
   _id: string
@@ -12,11 +13,17 @@ export interface CredentialData {
 
 const COLLECTION_NAME = 'remoteCredentials'
 function getCollection () {
-  return getDb().collection<CredentialData>(COLLECTION_NAME)
+  if (!config.remoteApi) {
+    return null
+  }
+  return getDb()!.collection<CredentialData>(COLLECTION_NAME)
 }
 
 export async function initCollection () {
-  const collection = await getDb().createCollection<CredentialData>(COLLECTION_NAME)
+  if (!config.remoteApi) {
+    return
+  }
+  const collection = await getDb()!.createCollection<CredentialData>(COLLECTION_NAME)
   await collection.createIndex(
     'expirationDate',
     { expireAfterSeconds: 0 },
@@ -24,7 +31,10 @@ export async function initCollection () {
 }
 
 export async function saveRemoteCredentials (session: string, { username, tokens }: RemoteCredentials) {
-  const coll = getCollection()
+  if (!config.remoteApi) {
+    return
+  }
+  const coll = getCollection()!
   const expirationDate = new Date(tokens.refresh.expiresAt)
   const value: CredentialData = {
     _id: session,
@@ -47,15 +57,22 @@ export async function saveRemoteCredentials (session: string, { username, tokens
   }
 }
 
-export async function getRemoteCredentials (session: string) {
-  const coll = getCollection()
+export async function getRemoteCredentials (session: string): Promise<CredentialData | null> {
+  if (!config.remoteApi) {
+    return null
+  }
+  const coll = getCollection()!
   return coll.findOne(
     { _id: { $eq: session } },
   )
 }
 
 export async function deleteRemoteCredentials (session: string) {
-  const coll = getCollection()
+  if (!config.remoteApi) {
+    return false
+  }
+
+  const coll = getCollection()!
   const { deletedCount = 0 } = await coll.deleteOne(
     { _id: { $eq: session } },
   )
