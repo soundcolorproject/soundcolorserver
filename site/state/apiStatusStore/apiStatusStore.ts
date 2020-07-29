@@ -1,19 +1,20 @@
 
-import { observable, reaction, action } from 'mobx'
+import { observable, reaction, action, runInAction } from 'mobx'
 import { isLoggedIn } from '../../api/isLoggedIn'
 import { logger } from '../../../shared/logger'
 import { selectGroup, setColor, getGroups } from '../../api/groups'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
-import { GroupColorMode, ApiGroupInfo } from '../../../shared/apiTypes/hue'
+import { GroupColorMode, ApiGroupInfo, ConnectionStatus } from '../../../shared/apiTypes/hue'
 import { patternsStore } from '../patternsStore'
 import { renderStateStore } from '../renderStateStore'
 import { errorString } from '../../../shared/errorHelpers'
+import { connectToLocalApi } from '../../api/connect'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore
 }
 
-const TEN_SECONDS = 1000 * 10
+declare const __REMOTE_API__: boolean
 export class ApiStatusStore {
   constructor () {
     reaction(
@@ -54,9 +55,11 @@ export class ApiStatusStore {
     })
   }
 
-  readonly remoteApi = !__REMOTE_API__
+  readonly remoteApi = __REMOTE_API__
   @observable authenticated = false
   @observable offline = !navigator.onLine
+  @observable connectingLocal = false
+  @observable localConnectionStatus: ConnectionStatus = 'not connected'
 
   @observable loadingLightGroups = false
   @observable lightGroups: ApiGroupInfo[] | null = null
@@ -82,6 +85,24 @@ export class ApiStatusStore {
       gtag('event', 'exception', {
         description: 'Failed to fetch hue light groups: ' + errorString(error),
         event_label: 'hue light group fetch exception',
+      })
+    }
+  }
+
+  @action
+  connectLocal = async () => {
+    this.connectingLocal = true
+    try {
+      const response = await connectToLocalApi()
+      runInAction(() => {
+        this.localConnectionStatus = response.status
+        this.authenticated = response.status === 'connected'
+        this.connectingLocal = false
+      })
+    } catch (e) {
+      runInAction(() => {
+        this.authenticated = false
+        this.connectingLocal = false
       })
     }
   }

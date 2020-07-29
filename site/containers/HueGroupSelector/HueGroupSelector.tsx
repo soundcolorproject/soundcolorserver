@@ -65,7 +65,7 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
   return useObserver(() => (
     <Panel
       title='Philips Hue'
-      button={{ text: 'Logout', onClick: logout }}
+      button={apiStatus.remoteApi ? { text: 'Logout', onClick: logout } : undefined}
       data-testid={testid}
     >
       {renderContent()}

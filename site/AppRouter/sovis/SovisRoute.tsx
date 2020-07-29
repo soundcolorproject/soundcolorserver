@@ -35,56 +35,61 @@ import { VisualizationOptionsPanel } from '../../containers/VisualizationOptions
 import { ActionsPanel } from '../../containers/ActionsPanel'
 import { ColorWarning } from '../../containers/ColorWarning'
 import { HowItWorks } from '../../containers/HowItWorks'
+import { HueConnectLocal } from '../../containers/HueConnectLocal'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
 
 // ROUTES
-const actionsPanel = (
+const actionsPanel = () => (
   <ActionsPanel />
 )
 
-const soundDetails = (
+const connectionsRoute = () => (
+  <ConnectionsPanel />
+)
+
+const soundDetails = () => (
   <SoundDetails />
 )
 
-const optionsRoute = (
+const optionsRoute = () => (
   <OptionsPanel />
 )
 
-const paletteRoute = (
+const paletteRoute = () => (
   <PatternSelector />
 )
 
 // SUB-ROUTES
-const audioSourceRoute = (
+const audioSourceRoute = () => (
   <AudioSourceSelector />
 )
-const colorOptions = (
+const colorOptions = () => (
   <ColorOptionsPanel />
 )
 
-const connectionsRoute = (
-  <ConnectionsPanel />
-)
-
-const customPaletteRoute = (
+const customPaletteRoute = () => (
   <CustomPatternSelector />
 )
 
-const hueGroupRoute = (
+const hueConnectLocal = () => (
+  <HueConnectLocal />
+)
+
+const hueGroupRoute = () => (
   <HueGroupSelector />
 )
 
-const favoritesRoute = (
+const favoritesRoute = () => (
   <SavedPaletteSelector />
 )
 
-const timingOptionsRoute = (
+const timingOptionsRoute = () => (
   <TimingOptionsPanel />
 )
 
-const visualizationOptionsRoute = (
+const visualizationOptionsRoute = () => (
   <VisualizationOptionsPanel />
 )
 
@@ -125,7 +130,7 @@ const panelDetails: Record<PanelRoute, PanelDetail> = {
   },
 }
 
-const introPanes = (
+const introPanes = () => (
   <>
     <HowItWorks />
     <ColorWarning />
@@ -135,23 +140,24 @@ const introPanes = (
 function getPanelChild (routing: RoutingStore) {
   if (routing.subRoutes.length > 0) {
     switch (routing.subRoutes[0]) {
-      case 'audioSource': return audioSourceRoute
-      case 'colorOptions': return colorOptions
-      case 'customPalette': return customPaletteRoute
-      case 'hueGroupSelector': return hueGroupRoute
-      case 'favoriteCusom': return favoritesRoute
-      case 'timingOptions': return timingOptionsRoute
-      case 'visualizationOptions': return visualizationOptionsRoute
+      case 'audioSource': return audioSourceRoute()
+      case 'colorOptions': return colorOptions()
+      case 'customPalette': return customPaletteRoute()
+      case 'hueConnectLocal': return hueConnectLocal()
+      case 'hueGroupSelector': return hueGroupRoute()
+      case 'favoriteCusom': return favoritesRoute()
+      case 'timingOptions': return timingOptionsRoute()
+      case 'visualizationOptions': return visualizationOptionsRoute()
       default: break
     }
   }
 
   switch (routing.panelRoute) {
-    case 'connections': return connectionsRoute
-    case 'options': return optionsRoute
-    case 'palette': return paletteRoute
-    case 'sound': return soundDetails
-    case 'actions': return actionsPanel
+    case 'connections': return connectionsRoute()
+    case 'options': return optionsRoute()
+    case 'palette': return paletteRoute()
+    case 'sound': return soundDetails()
+    case 'actions': return actionsPanel()
     default: return null
   }
 }
@@ -228,7 +234,7 @@ export function SovisRoute (props: SovisRouteProps) {
             height={288}
             transitionDirection={routing.transitionDirection}
             open={shrink()}
-            overtop={introPanes}
+            overtop={introPanes()}
             onlyOvertop={!(intro.seenHowItWorks || intro.warningAccepted)}
           >
             {getPanelChild(routing)}

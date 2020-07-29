@@ -7,6 +7,8 @@ import { logger } from '../../../shared/logger'
 import { OAuthProvider, verifyOauthState } from '../../db/oauthState'
 import { NoHeaderError } from '../../errors/NoHeaderError'
 import { InvalidOauthCallbackError } from '../../errors/InvalidOauthCallbackError'
+import { ConnectResponse, ConnectionStatus } from '../../../shared/apiTypes/hue'
+import { NoLocalBridgesError } from '../../errors/NoLocalBridgesError'
 
 export const authRouter = Router()
 
@@ -68,10 +70,23 @@ if (config.remoteApi) {
   }))
 } else {
   authRouter.get('/connect', asyncHandler(async (req, res) => {
-    await getLocalApi()
-    res.json({
-      status: 'connected',
-    })
+    let status: ConnectionStatus = 'not connected'
+    try {
+      const api = await getLocalApi()
+      if (api) {
+        status = 'connected'
+      }
+    } catch (err) {
+      if (err instanceof NoLocalBridgesError) {
+        status = 'no bridges'
+      }
+    }
+
+    const response: ConnectResponse = {
+      status,
+    }
+
+    res.json(response)
   }))
 }
 

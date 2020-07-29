@@ -7,6 +7,7 @@ import { useStores } from '../../state/useStores'
 import { Panel } from '../../components/Panel'
 
 import { PanelButton } from '../../components/PanelButton'
+import api from '@storybook/addon-storyshots'
 
 export interface ConnectionsPanelProps extends RouteComponentProps {
   'data-testid'?: string
@@ -37,12 +38,21 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
         </PanelButton>
       )
     }
+
     if (!apiStatus.authenticated) {
-      return (
-        <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='launch'>
-          Philips Hue
-        </PanelButton>
-      )
+      if (apiStatus.remoteApi) {
+        return (
+          <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='launch'>
+            Philips Hue
+          </PanelButton>
+        )
+      } else {
+        return (
+          <PanelButton toRoute='hueConnectLocal' suffix='Connect' data-testid={`${testid}-philips-hue-button`} endIcon='play'>
+            Philips Hue
+          </PanelButton>
+        )
+      }
     } else {
       const suffix = apiStatus.lightGroupId
         ? apiStatus.lightGroups?.find(g => g.id === apiStatus.lightGroupId)?.name || ''

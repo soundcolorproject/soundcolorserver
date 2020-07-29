@@ -13,15 +13,16 @@ export type PanelRoute =
   | 'connections'
   | 'options'
   | 'sound'
-  | 'info'
   | 'actions'
+  | 'info'
 
 export type SubRoute =
   | 'audioSource'
-  | 'hueGroupSelector'
+  | 'colorOptions'
   | 'customPalette'
   | 'favoriteCusom'
-  | 'colorOptions'
+  | 'hueConnectLocal'
+  | 'hueGroupSelector'
   | 'visualizationOptions'
   | 'timingOptions'
 
