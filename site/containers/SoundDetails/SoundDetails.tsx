@@ -35,15 +35,15 @@ export const SoundDetails: React.FunctionComponent<SoundDetailsProps> = function
           <span>{noiseVolume}</span>
         </PanelDetail>
         <PanelDetail data-testid={`${testid}-tone`}>
-          <span className={detailName}>Tone volume: </span>
+          <span className={detailName}>Primary Tone Volume: </span>
           <span>{toneVolume}</span>
         </PanelDetail>
         <PanelDetail data-testid={`${testid}-freq`}>
-          <span className={detailName}>Frequency: </span>
+          <span className={detailName}>Primary Frequency: </span>
           <span>{frequency}</span>
         </PanelDetail>
         <PanelDetail data-testid={`${testid}-note`}>
-          <span className={detailName}>Note: </span>
+          <span className={detailName}>Primary Note: </span>
           <span>{note}</span>
         </PanelDetail>
         <PanelDetail data-testid={`${testid}-cents`}>

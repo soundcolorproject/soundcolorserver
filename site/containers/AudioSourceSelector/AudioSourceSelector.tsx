@@ -24,7 +24,7 @@ export const AudioSourceSelector: React.FunctionComponent<AudioSourceSelectorPro
   }
 
   const renderDevice = (device: MediaDeviceInfo, index: number) => (
-    <PanelButton key={device.deviceId} onClick={handleClick(device.deviceId)}>
+    <PanelButton active={device.deviceId === media.currentDeviceId} key={device.deviceId} onClick={handleClick(device.deviceId)}>
       {device.label || `Device ${index + 1}`}
     </PanelButton>
   )

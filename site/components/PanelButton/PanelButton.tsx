@@ -104,13 +104,13 @@ export function PanelButton (props: Props) {
       return
     }
 
-    ev.preventDefault()
-
     if (onClick) {
+      ev.preventDefault()
       onClick()
     }
 
     if (toRoute) {
+      ev.preventDefault()
       routing.goToSubroute(toRoute)
     }
   }, [onClick, toRoute])
