@@ -17,6 +17,9 @@ function prepareRequest (url: string, init: RequestInit) {
   if (!init.headers.has('Content-Type')) {
     init.headers.set('Content-Type', 'application/json')
   }
+  if (apiStatusStore.allowCookies) {
+    init.headers.set('allow-cookie', 'true')
+  }
 
   if (url.startsWith('/')) {
     url = `/api${url}`

@@ -41,11 +41,19 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
 
     if (!apiStatus.authenticated) {
       if (apiStatus.remoteApi) {
-        return (
-          <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='launch'>
-            Philips Hue
-          </PanelButton>
-        )
+        if (apiStatus.allowCookies) {
+          return (
+            <PanelButton href='/login' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='launch'>
+              Philips Hue
+            </PanelButton>
+          )
+        } else {
+          return (
+            <PanelButton toRoute='' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='play'>
+              Philips Hue
+            </PanelButton>
+          )
+        }
       } else {
         return (
           <PanelButton toRoute='hueConnectLocal' suffix='Connect' data-testid={`${testid}-philips-hue-button`} endIcon='play'>

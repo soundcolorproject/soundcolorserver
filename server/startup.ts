@@ -7,7 +7,7 @@ import { join } from 'path'
 import { readFileSync } from 'fs'
 import { buildApp } from './app'
 import { logger } from '../shared/logger'
-import { config } from './config'
+import { config, init } from './config'
 import { FatalError, FatalErrorCode } from './errors/FatalError'
 import { initDb } from './initDb'
 
@@ -67,6 +67,7 @@ async function startServer (app: Application) {
 }
 
 export async function startup () {
+  init()
   let app = buildApp()
   await initDb()
   const server = await startServer(app)

@@ -13,7 +13,8 @@
     "express-async-handler": "^1.1.4",
     "node-cache": "^5.1.0",
     "node-hue-api": "^4.0.5",
-    "nodemailer": "^6.4.6"
+    "nodemailer": "^6.4.6",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
     "electron": "9.0.4"

@@ -1,0 +1,42 @@
+
+import * as React from 'react'
+import { useObserver } from 'mobx-react'
+import { RouteComponentProps } from '@reach/router'
+import { useStores } from '../../state/useStores'
+
+import { cookiePolicyPanel } from './cookiePolicyPanel.pcss'
+import { Button } from '../../components/Button'
+import { Panel } from '../../components/Panel'
+
+export interface CookiePolicyPanelProps extends RouteComponentProps {
+  'data-testid'?: string
+}
+
+export const CookiePolicyPanel: React.FunctionComponent<CookiePolicyPanelProps> = function CookiePolicyPanel (props: CookiePolicyPanelProps) {
+  const {
+    'data-testid': testid = 'cookie-policy-panel',
+  } = props
+  const { apiStatus, routing } = useStores()
+
+  const acceptCookies = React.useCallback(() => {
+    apiStatus.setCookiePolicy(true).then(() => {
+      window.location.href = '/login'
+    }).catch()
+  }, [apiStatus])
+
+  const goBack = React.useCallback(() => {
+    routing.popSubroute()
+  }, [routing])
+
+  return useObserver(() => (
+    <Panel title='Cookie Policy' className={cookiePolicyPanel} data-testid={testid}>
+      <div>In order to use our Hue functionality, you need to accept the use of cookies.</div>
+      <div>We only use your cookie to connect your browser with your hue login.</div>
+
+      <div>
+        <Button onClick={acceptCookies}>Accept</Button>
+        <Button onClick={goBack}>Go Back</Button>
+      </div>
+    </Panel>
+  ))
+}

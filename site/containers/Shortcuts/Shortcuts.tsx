@@ -7,6 +7,7 @@ import { shortcuts, iconButton } from './shortcuts.pcss'
 import { logger } from '../../../shared/logger'
 import { IconName, Icon } from '../../components/Icon'
 import { useStores } from '../../state/useStores'
+import { useObserver } from 'mobx-react'
 
 interface OwnProps {
 }
@@ -55,7 +56,7 @@ export function Shortcuts () {
     toggleFullscreen(renderState)
   })
 
-  return (
+  return useObserver(() => (
     <div id={shortcuts}>
       {
         renderIconButton(
@@ -67,12 +68,12 @@ export function Shortcuts () {
         renderIconButton('visibility_off', _hideText)
       }
       {
-        document.fullscreenEnabled
+        !__FORCED_FULLSCREEN__ && document.fullscreenEnabled
         && renderIconButton(
           renderState.isFullscreen ? 'minimize' : 'fullscreen',
           _toggleFullscreen,
         )
       }
     </div>
-  )
+  ))
 }

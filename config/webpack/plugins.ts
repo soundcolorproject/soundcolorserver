@@ -22,6 +22,7 @@ export function buildDefinePlugin (appMode = false) {
     '__DEV__': JSON.stringify(config.dev),
     '__BUILD_VERSION__': JSON.stringify(process.env.CI_BUILD_NUMBER || process.env.SOURCE_VERSION || 'development'),
     '__APP_MODE__': JSON.stringify(appMode),
+    '__FORCED_FULLSCREEN__': JSON.stringify(config.forcedFullscreen),
   })
 }
 

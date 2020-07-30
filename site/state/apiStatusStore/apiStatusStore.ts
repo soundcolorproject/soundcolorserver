@@ -15,6 +15,7 @@ export interface ApiStatusProp {
 }
 
 declare const __REMOTE_API__: boolean
+const ALLOW_COOKIES_KEY = 'allow-cookies'
 export class ApiStatusStore {
   constructor () {
     reaction(
@@ -31,14 +32,14 @@ export class ApiStatusStore {
       this._transmitColorData,
     )
 
-    isLoggedIn().then(loggedIn => {
-      this.authenticated = loggedIn
-      if (loggedIn) {
-        this.fetchLightGroups().catch(e => {
-          logger.error('Failed to fetch light groups:', e)
-        })
-      }
-    }).catch(e => {
+    reaction(
+      () => this.allowCookies,
+      (allow) => {
+        localStorage.setItem(ALLOW_COOKIES_KEY, allow ? 'true' : 'false')
+      },
+    )
+
+    this.checkLoginStatus().catch(e => {
       logger.warn('Failed to check if the user is logged in:', e)
       gtag('event', 'exception', {
         description: 'Failed to verify hue login status: ' + errorString(e),
@@ -68,6 +69,17 @@ export class ApiStatusStore {
 
   @observable transmitToLightGroup = true
   @observable transmitMode: GroupColorMode = 'group'
+  @observable allowCookies = localStorage.getItem(ALLOW_COOKIES_KEY) === 'true'
+
+  checkLoginStatus = async () => {
+    const loggedIn = await isLoggedIn()
+    this.authenticated = loggedIn
+    if (loggedIn) {
+      this.fetchLightGroups().catch(e => {
+        logger.error('Failed to fetch light groups:', e)
+      })
+    }
+  }
 
   @action
   fetchLightGroups = async () => {
@@ -105,6 +117,12 @@ export class ApiStatusStore {
         this.connectingLocal = false
       })
     }
+  }
+
+  @action
+  setCookiePolicy = async (allow: boolean) => {
+    this.allowCookies = allow
+    await this.checkLoginStatus()
   }
 
   @action

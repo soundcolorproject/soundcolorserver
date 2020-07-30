@@ -17,7 +17,7 @@ describe(ConnectionsPanel.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Philips Hue - Login'
+    const expected = 'Philips Hue - Connect'
     const media: DeepPartial<MediaStore> = {
       currentDeviceId: undefined,
     }

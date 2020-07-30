@@ -6,6 +6,7 @@ declare const __LOG_LEVEL__: 'debug' | 'info' | 'log' | 'warn' | 'error' | 'fata
 declare const __DEV__: boolean
 declare const __BUILD_VERSION__: string
 declare const __APP_MODE__: boolean
+declare const __FORCED_FULLSCREEN__: boolean
 
 declare module '*.webm' {
   const result: string

@@ -2,6 +2,7 @@
 import { join } from 'path'
 import { app, BrowserWindow } from 'electron'
 import { sleep } from './helpers'
+import { args } from './args'
 
 let loadingWindow: BrowserWindow | null = null
 
@@ -22,6 +23,10 @@ export async function createLoadingWindow (waitFor: Promise<void>) {
     center: true,
     closable: false,
   })
+
+  if (args.fullscreen) {
+    loadingWindow.setFullScreen(true)
+  }
 
   await loadingWindow.loadFile(join(__dirname, './static/loading.html'))
   await Promise.all([waitFor, sleep(1000)])

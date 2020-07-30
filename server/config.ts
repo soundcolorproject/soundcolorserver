@@ -28,6 +28,8 @@ try {
 
 export const config = {
   standaloneApp: false,
+  forcedFullscreen: false,
+  serviceMode: false,
   logLevel: getLogLevel(),
   port: process.env.PORT ? parseInt(process.env.PORT, 10) : 9000,
   dev: process.env.DEV === 'true',
@@ -45,8 +47,16 @@ export const config = {
   toJSON: () => { throw new CannotStringifyError('config file') },
 }
 
-if (config.remoteApi) {
-  console.info('Using remote api')
-} else {
-  console.info('Using local api')
+let initialized = false
+export function init () {
+  if (initialized) {
+    return
+  }
+
+  initialized = true
+  if (config.remoteApi) {
+    console.info('Using remote api')
+  } else {
+    console.info('Using local api')
+  }
 }
