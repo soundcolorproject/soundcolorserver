@@ -1,13 +1,14 @@
 
 import * as React from 'react'
+import { useObserver } from 'mobx-react'
+import * as cn from 'classnames'
 import { RenderStateProp, toggleFullscreen, togglePattern } from '../../state/renderStateStore'
 import { PatternsProp } from '../../state/patternsStore'
-
-import { shortcuts, iconButton } from './shortcuts.pcss'
 import { logger } from '../../../shared/logger'
 import { IconName, Icon } from '../../components/Icon'
 import { useStores } from '../../state/useStores'
-import { useObserver } from 'mobx-react'
+
+import { shortcuts, hidden, iconButton } from './shortcuts.pcss'
 
 interface OwnProps {
 }
@@ -30,7 +31,7 @@ const stopBubblingEnterAndSpace = (handler: () => void) => (ev: React.KeyboardEv
 }
 
 export function Shortcuts () {
-  const { renderState, patterns } = useStores()
+  const { intro, renderState, patterns } = useStores()
 
   const renderIconButton = (icon: IconName, action: (ev: React.KeyboardEvent | React.MouseEvent) => void) => (
     <button
@@ -57,7 +58,7 @@ export function Shortcuts () {
   })
 
   return useObserver(() => (
-    <div id={shortcuts}>
+    <div id={shortcuts} className={cn({ [hidden]: !(intro.seenHowItWorks && intro.warningAccepted) })}>
       {
         renderIconButton(
           renderState.showColors ? 'pause_circle' : 'play_circle',

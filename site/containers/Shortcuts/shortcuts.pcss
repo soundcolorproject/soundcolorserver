@@ -2,6 +2,12 @@
 #shortcuts {
   display: flex;
   flex-direction: row;
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  &.hidden {
+    opacity: 0;
+  }
 
   .icon-button {
     padding: 28px;
