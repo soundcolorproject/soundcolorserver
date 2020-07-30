@@ -366,7 +366,6 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
     >
       <a
         className="hoverButton"
-        href="/login"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -405,6 +404,75 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
           <use />
         </svg>
       </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots CookiePolicyPanel Example 1`] = `
+<div
+  className="panel"
+  data-testid="cookie-policy-panel"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Cookie Policy
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <div
+      className="cookiePolicyPanel"
+    >
+      <div
+        className="panelDetail"
+        data-testid="cookie-policy-panel-desc-1"
+      >
+        In order to use our Hue functionality, you need to accept the use of cookies.
+      </div>
+      <div
+        className="panelDetail"
+        data-testid="cookie-policy-panel-desc-2"
+      >
+        We only use your cookie to connect your browser with your hue login, and never for advertising or marketing purposes.
+      </div>
+      <div
+        className="panelDetail buttons"
+        data-testid="cookie-policy-panel-buttons"
+      >
+        <button
+          className="button"
+          data-testid="cookie-policy-panel-button-back"
+          onClick={[Function]}
+          style={Object {}}
+          type="button"
+        >
+          Go Back
+        </button>
+        <button
+          className="button"
+          data-testid="cookie-policy-panel-button-accept"
+          onClick={[Function]}
+          style={
+            Object {
+              "--button-active-background": "#0050a4",
+              "--button-active-color": "var(--white)",
+              "--button-background": "#0080FF",
+              "--button-color": "var(--black)",
+              "--button-hover-background": "#0061c5",
+              "--button-hover-color": "var(--white)",
+            }
+          }
+          type="button"
+        >
+          Accept
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -708,6 +776,56 @@ exports[`Storyshots HowItWorks Example 1`] = `
   >
     Start SOVIS
   </button>
+</div>
+`;
+
+exports[`Storyshots HueConnectLocal Example 1`] = `
+<div
+  className="panel hueConnectLocal"
+  data-testid="hue-connect-local"
+>
+  <div
+    className="panelTitle"
+  >
+    <div
+      className="titleText"
+    >
+      Philips Hue
+    </div>
+  </div>
+  <div
+    className="panelContent"
+  >
+    <div
+      className="panelDetail"
+      data-testid="panel-detail"
+    >
+      Unable to connect to a hue bridge on the current network.  You may have to press the button on your hue bridge, then try connecting again.
+    </div>
+    <div
+      className="panelButton"
+      data-testid="panel-button"
+      style={Object {}}
+    >
+      <a
+        className="hoverButton"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Retry connecting to hue bridge
+        </span>
+      </a>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2273,7 +2391,7 @@ exports[`Storyshots SoundDetails Example 1`] = `
       <span
         className="detailName"
       >
-        Tone volume: 
+        Primary Tone Volume: 
       </span>
       <span>
         •
@@ -2286,7 +2404,7 @@ exports[`Storyshots SoundDetails Example 1`] = `
       <span
         className="detailName"
       >
-        Frequency: 
+        Primary Frequency: 
       </span>
       <span>
         •
@@ -2299,7 +2417,7 @@ exports[`Storyshots SoundDetails Example 1`] = `
       <span
         className="detailName"
       >
-        Note: 
+        Primary Note: 
       </span>
       <span>
         •

@@ -5,6 +5,7 @@ import { mockUseStores } from '../../state/mockUseStores'
 
 import { HueConnectLocal } from './HueConnectLocal'
 import { PatternsStore } from '../../state/patternsStore'
+import { ApiStatusStore } from '../../state/apiStatusStore'
 
 describe(HueConnectLocal.name, () => {
   const useStoresSpy = mockUseStores()
@@ -14,8 +15,13 @@ describe(HueConnectLocal.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'You are already connected to your hue bridge.'
 
+    const apiStatus: DeepPartial<ApiStatusStore> = {
+      offline: false,
+      localConnectionStatus: 'connected',
+      connectLocal: () => Promise.resolve(),
+    }
     const patterns: DeepPartial<PatternsStore> = {
       currentPattern: 'chakras',
       patternData: {
@@ -24,7 +30,7 @@ describe(HueConnectLocal.name, () => {
         },
       },
     }
-    useStoresSpy.mockReturnValue({ patterns })
+    useStoresSpy.mockReturnValue({ apiStatus, patterns })
 
     const mounted = render(<HueConnectLocal />)
     const el = mounted.getByTestId('hue-connect-local')

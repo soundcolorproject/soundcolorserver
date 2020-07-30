@@ -15,7 +15,7 @@ describe(SoundDetails.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Tone volume: •'
+    const expected = 'Primary Tone Volume: •'
 
     const analysis: DeepPartial<AnalysisStore> = {
       noise: 0,

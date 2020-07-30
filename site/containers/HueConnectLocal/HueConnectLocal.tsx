@@ -55,7 +55,9 @@ export const HueConnectLocal: React.FunctionComponent<HueConnectLocalProps> = fu
     }
 
     return (
-      <PanelDetail>hyup</PanelDetail>
+      <PanelDetail>
+        You are already connected to your hue bridge.
+      </PanelDetail>
     )
   }
 

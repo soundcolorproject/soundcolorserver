@@ -14,7 +14,7 @@ describe(CookiePolicyPanel.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'In order to use our Hue functionality, you need to accept the use of cookies.'
 
     const patterns: DeepPartial<PatternsStore> = {
       currentPattern: 'chakras',
@@ -29,6 +29,6 @@ describe(CookiePolicyPanel.name, () => {
     const mounted = render(<CookiePolicyPanel />)
     const el = mounted.getByTestId('cookie-policy-panel')
 
-    expect(el).toHaveTextContent(expected)
+    expect(el).toContainHTML(expected)
   })
 })
