@@ -18,28 +18,41 @@ export const CookiePolicyPanel: React.FunctionComponent<CookiePolicyPanelProps> 
     'data-testid': testid = 'cookie-policy-panel',
   } = props
   const { apiStatus, routing } = useStores()
+  const [redirecting, setRedirecting] = React.useState(false)
 
   const acceptCookies = React.useCallback(() => {
+    setRedirecting(true)
     apiStatus.setCookiePolicy(true).then(() => {
       window.location.href = '/login'
-    }).catch()
+    }).catch(() => {
+      setRedirecting(false)
+    })
   }, [apiStatus])
 
   const goBack = React.useCallback(() => {
     routing.popSubroute()
   }, [routing])
 
-  return useObserver(() => (
-    <Panel title='Cookie Policy' data-testid={testid}>
-      <div className={cookiePolicyPanel}>
-        <PanelDetail>In order to use our Hue functionality, you need to accept the use of cookies.</PanelDetail>
-        <PanelDetail>We only use your cookie to connect your browser with your hue login, and never for advertising or marketing purposes.</PanelDetail>
-
-        <PanelDetail className={buttons}>
-          <Button onClick={goBack}>Go Back</Button>
-          <Button color='#40C0AD' onClick={acceptCookies}>Accept</Button>
-        </PanelDetail>
-      </div>
-    </Panel>
-  ))
+  return useObserver(() => {
+    if (redirecting) {
+      return (
+        <Panel title='Cookie Policy' data-testid={testid}>
+          <PanelDetail>Redirecting to Hue login...</PanelDetail>
+        </Panel>
+      )
+    }
+    return (
+      <Panel title='Cookie Policy' data-testid={testid}>
+        <div className={cookiePolicyPanel}>
+          <PanelDetail>In order to use our Hue functionality, you need to accept the use of cookies.</PanelDetail>
+          <PanelDetail>We only use your cookie to connect your browser with your hue login, and never for advertising or marketing purposes.</PanelDetail>
+  
+          <PanelDetail className={buttons}>
+            <Button onClick={goBack}>Go Back</Button>
+            <Button color='#40C0AD' onClick={acceptCookies}>Accept</Button>
+          </PanelDetail>
+        </div>
+      </Panel>
+    )
+  })
 }
