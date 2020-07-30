@@ -4,9 +4,10 @@ import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
 import { useStores } from '../../state/useStores'
 
-import { cookiePolicyPanel } from './cookiePolicyPanel.pcss'
+import { cookiePolicyPanel, buttons } from './cookiePolicyPanel.pcss'
 import { Button } from '../../components/Button'
 import { Panel } from '../../components/Panel'
+import { PanelDetail } from '../../components/PanelDetail'
 
 export interface CookiePolicyPanelProps extends RouteComponentProps {
   'data-testid'?: string
@@ -29,13 +30,15 @@ export const CookiePolicyPanel: React.FunctionComponent<CookiePolicyPanelProps> 
   }, [routing])
 
   return useObserver(() => (
-    <Panel title='Cookie Policy' className={cookiePolicyPanel} data-testid={testid}>
-      <div>In order to use our Hue functionality, you need to accept the use of cookies.</div>
-      <div>We only use your cookie to connect your browser with your hue login.</div>
+    <Panel title='Cookie Policy' data-testid={testid}>
+      <div className={cookiePolicyPanel}>
+        <PanelDetail>In order to use our Hue functionality, you need to accept the use of cookies.</PanelDetail>
+        <PanelDetail>We only use your cookie to connect your browser with your hue login, and never for advertising or marketing purposes.</PanelDetail>
 
-      <div>
-        <Button onClick={acceptCookies}>Accept</Button>
-        <Button onClick={goBack}>Go Back</Button>
+        <PanelDetail className={buttons}>
+          <Button onClick={goBack}>Go Back</Button>
+          <Button color='#40C0AD' onClick={acceptCookies}>Accept</Button>
+        </PanelDetail>
       </div>
     </Panel>
   ))

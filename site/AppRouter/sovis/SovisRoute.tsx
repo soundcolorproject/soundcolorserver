@@ -36,6 +36,7 @@ import { ActionsPanel } from '../../containers/ActionsPanel'
 import { ColorWarning } from '../../containers/ColorWarning'
 import { HowItWorks } from '../../containers/HowItWorks'
 import { HueConnectLocal } from '../../containers/HueConnectLocal'
+import { CookiePolicyPanel } from '../../containers/CookiePolicyPanel'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
@@ -65,8 +66,13 @@ const paletteRoute = () => (
 const audioSourceRoute = () => (
   <AudioSourceSelector />
 )
+
 const colorOptions = () => (
   <ColorOptionsPanel />
+)
+
+const cookiePolicyRoute = () => (
+  <CookiePolicyPanel />
 )
 
 const customPaletteRoute = () => (
@@ -142,6 +148,7 @@ function getPanelChild (routing: RoutingStore) {
     switch (routing.subRoutes[0]) {
       case 'audioSource': return audioSourceRoute()
       case 'colorOptions': return colorOptions()
+      case 'cookiePolicy': return cookiePolicyRoute()
       case 'customPalette': return customPaletteRoute()
       case 'hueConnectLocal': return hueConnectLocal()
       case 'hueGroupSelector': return hueGroupRoute()

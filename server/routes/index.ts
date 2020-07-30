@@ -17,8 +17,6 @@ if (config.remoteApi) {
   }))
 
   router.get('/logout', asyncHandler(async (req, res) => {
-    const session = req.getSessionId()
-    await deleteRemoteCredentials(session)
     await res.clearSession()
     res.redirect('/sovis')
   }))

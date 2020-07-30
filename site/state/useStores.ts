@@ -20,14 +20,20 @@ export type MobxStoresProps =
   & RenderStateProp
   & RoutingProp
 
+const stores: MobxStoresProps = Object.freeze({
+  analysis: analysisStore,
+  apiStatus: apiStatusStore,
+  intro: introStore,
+  media: mediaStore,
+  patterns: patternsStore,
+  renderState: renderStateStore,
+  routing: routingStore,
+})
+
 export function useStores () {
-  return useMemo<MobxStoresProps>(() => Object.freeze({
-    analysis: analysisStore,
-    apiStatus: apiStatusStore,
-    intro: introStore,
-    media: mediaStore,
-    patterns: patternsStore,
-    renderState: renderStateStore,
-    routing: routingStore,
-  }), [])
+  return useMemo<MobxStoresProps>(() => stores, [])
+}
+
+if (__DEV__) {
+  (window as any).stores = stores
 }

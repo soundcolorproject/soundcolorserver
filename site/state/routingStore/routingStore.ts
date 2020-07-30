@@ -19,6 +19,7 @@ export type PanelRoute =
 export type SubRoute =
   | 'audioSource'
   | 'colorOptions'
+  | 'cookiePolicy'
   | 'customPalette'
   | 'favoriteCusom'
   | 'hueConnectLocal'

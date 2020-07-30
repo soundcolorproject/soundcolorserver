@@ -49,7 +49,7 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
           )
         } else {
           return (
-            <PanelButton toRoute='' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='play'>
+            <PanelButton toRoute='cookiePolicy' suffix='Login' data-testid={`${testid}-philips-hue-button`} endIcon='play'>
               Philips Hue
             </PanelButton>
           )

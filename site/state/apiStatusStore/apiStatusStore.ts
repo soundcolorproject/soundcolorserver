@@ -39,13 +39,15 @@ export class ApiStatusStore {
       },
     )
 
-    this.checkLoginStatus().catch(e => {
-      logger.warn('Failed to check if the user is logged in:', e)
-      gtag('event', 'exception', {
-        description: 'Failed to verify hue login status: ' + errorString(e),
-        event_label: 'hue login status exception',
+    setTimeout(() => {
+      this.checkLoginStatus().catch(e => {
+        logger.warn('Failed to check if the user is logged in:', e)
+        gtag('event', 'exception', {
+          description: 'Failed to verify hue login status: ' + errorString(e),
+          event_label: 'hue login status exception',
+        })
       })
-    })
+    }, 500)
 
     window.addEventListener('offline', () => {
       this.offline = true
