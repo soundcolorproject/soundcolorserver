@@ -51,7 +51,7 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
 
     return (
       apiStatus.lightGroups.map(group => (
-        <PanelButton key={group.id} onClick={onClick(group.id)}>
+        <PanelButton key={group.id} active={group.id === apiStatus.lightGroupId} onClick={onClick(group.id)}>
           {group.name}
         </PanelButton>
       ))
@@ -59,7 +59,8 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
   }
 
   const logout = () => {
-    window.location = '/logout' as any
+    apiStatus.logout().catch()
+    routing.popSubroute()
   }
 
   return useObserver(() => (

@@ -128,6 +128,12 @@ export class ApiStatusStore {
   }
 
   @action
+  logout = async () => {
+    this.authenticated = false
+    await fetch('/logout')
+  }
+
+  @action
   private _setLightGroups = (lightGroups: ApiGroupInfo[]) => {
     this.lightGroups = lightGroups
     this.loadingLightGroups = false
