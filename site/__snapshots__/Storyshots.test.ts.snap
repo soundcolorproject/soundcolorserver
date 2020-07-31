@@ -522,7 +522,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#eed0c6",
+                "backgroundColor": "#efe2dd",
                 "color": "var(--black)",
               }
             }
@@ -536,7 +536,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#dbc9c8",
+                "backgroundColor": "#e7dede",
                 "color": "var(--black)",
               }
             }
@@ -550,7 +550,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#c7c2ca",
+                "backgroundColor": "#dddbdf",
                 "color": "var(--black)",
               }
             }
@@ -564,7 +564,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#b4bbcc",
+                "backgroundColor": "#d4d7e0",
                 "color": "var(--black)",
               }
             }
@@ -583,7 +583,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#a1b4ce",
+                "backgroundColor": "#c9d4e1",
                 "color": "var(--black)",
               }
             }
@@ -597,7 +597,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#8eadd0",
+                "backgroundColor": "#bed0e2",
                 "color": "var(--black)",
               }
             }
@@ -611,7 +611,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#7aa7d2",
+                "backgroundColor": "#b2cde2",
                 "color": "var(--black)",
               }
             }
@@ -625,7 +625,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#67a0d4",
+                "backgroundColor": "#a5c9e3",
                 "color": "var(--black)",
               }
             }
@@ -644,7 +644,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#5499d6",
+                "backgroundColor": "#96c5e4",
                 "color": "var(--black)",
               }
             }
@@ -658,7 +658,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#4192d8",
+                "backgroundColor": "#86c1e5",
                 "color": "var(--black)",
               }
             }
@@ -672,7 +672,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#2d8bda",
+                "backgroundColor": "#71bce6",
                 "color": "var(--black)",
               }
             }
@@ -686,7 +686,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#1a84dc",
+                "backgroundColor": "#57b8e7",
                 "color": "var(--black)",
               }
             }
@@ -764,12 +764,12 @@ exports[`Storyshots HowItWorks Example 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "--button-active-background": "#728ba9",
+        "--button-active-background": "#a2b3c4",
         "--button-active-color": "var(--black)",
         "--button-background": "#1B2128",
         "--button-color": "var(--white)",
-        "--button-hover-background": "#55687e",
-        "--button-hover-color": "var(--white)",
+        "--button-hover-background": "#8a97a6",
+        "--button-hover-color": "var(--black)",
       }
     }
     type="button"
@@ -1629,9 +1629,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="panel-button"
       style={
         Object {
-          "--panel-button-active-background": "#c5aaa9",
+          "--panel-button-active-background": "#cebebe",
           "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#dbc9c8",
+          "--panel-button-hover-background": "#e7dede",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1676,9 +1676,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-chakras"
       style={
         Object {
-          "--panel-button-active-background": "#006fe0",
-          "--panel-button-active-color": "var(--white)",
-          "--panel-button-hover-background": "#0080ff",
+          "--panel-button-active-background": "#009fd9",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#00b6f7",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1706,9 +1706,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-chromesthesia"
       style={
         Object {
-          "--panel-button-active-background": "#b9a57b",
+          "--panel-button-active-background": "#d1c199",
           "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#d3bd8d",
+          "--panel-button-hover-background": "#e3d8be",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1736,10 +1736,10 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-emotion"
       style={
         Object {
-          "--panel-button-active-background": "#ba00bb",
+          "--panel-button-active-background": "#c700c8",
           "--panel-button-active-color": "var(--white)",
-          "--panel-button-hover-background": "#d400d6",
-          "--panel-button-hover-color": "var(--white)",
+          "--panel-button-hover-background": "#e300e4",
+          "--panel-button-hover-color": "var(--black)",
         }
       }
     >
@@ -1766,9 +1766,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-chromotherapy"
       style={
         Object {
-          "--panel-button-active-background": "#dd4b14",
-          "--panel-button-active-color": "var(--white)",
-          "--panel-button-hover-background": "#fc5719",
+          "--panel-button-active-background": "#d78548",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#f59955",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1796,9 +1796,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-adolescence"
       style={
         Object {
-          "--panel-button-active-background": "#14a58d",
+          "--panel-button-active-background": "#49bdb1",
           "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#19bda2",
+          "--panel-button-hover-background": "#55d8ca",
           "--panel-button-hover-color": "var(--black)",
         }
       }
