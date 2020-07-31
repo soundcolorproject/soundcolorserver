@@ -144,6 +144,12 @@ export function ShaderCanvas ({ id, className, shaderName }: OwnProps) {
   const renderId = React.useRef<number>()
   const startTime = React.useRef<number>()
   const takingScreenshot = React.useRef<boolean>()
+  const [, dummyState] = React.useState(0)
+
+  const forceRender = React.useCallback(() => {
+    dummyState(Math.random())
+  }, [dummyState])
+
   if (!startTime.current) {
     startTime.current = Date.now()
   }
@@ -185,8 +191,9 @@ export function ShaderCanvas ({ id, className, shaderName }: OwnProps) {
     renderState.takeScreenshot = takeScreenshot
   }, [renderState, takeScreenshot])
 
-  const renderLoop = () => {
-    if (!canvasRef.current) {
+  const renderLoop = React.useCallback(() => {
+    if (!canvasRef.current || !gl) {
+      renderId.current = requestAnimationFrame(renderLoop)
       return
     }
 
@@ -197,10 +204,14 @@ export function ShaderCanvas ({ id, className, shaderName }: OwnProps) {
     }
 
     renderId.current = requestAnimationFrame(renderLoop)
-  }
+  }, [canvasRef.current, gl, shader, startTime, analysis, patterns])
 
   return useObserver(() => {
     React.useEffect(() => {
+      if (!gl) {
+        forceRender()
+        return
+      }
       if (renderState.showColors && !renderId.current) {
         renderLoop()
       } else if (!renderState.showColors && renderId.current) {
@@ -208,7 +219,7 @@ export function ShaderCanvas ({ id, className, shaderName }: OwnProps) {
         renderId.current = undefined
         clearScene(gl)
       }
-    }, [renderState.showColors, renderId])
+    }, [renderState.showColors, renderId, gl])
 
     return (
       <canvas

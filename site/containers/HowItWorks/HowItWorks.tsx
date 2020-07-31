@@ -8,7 +8,6 @@ import { useStores } from '../../state/useStores'
 import { howItWorks, hidden, button, list } from './howItWorks.pcss'
 import { Button } from '../../components/Button'
 import { getDefault } from '../../pcss-functions'
-import { togglePattern } from '../../state/renderStateStore'
 
 export interface HowItWorksProps extends RouteComponentProps {
   'data-testid'?: string
@@ -18,7 +17,7 @@ export const HowItWorks: React.FunctionComponent<HowItWorksProps> = function How
   const {
     'data-testid': testid = 'how-it-works',
   } = props
-  const { intro, renderState, patterns } = useStores()
+  const { intro } = useStores()
   const [actuallyHide, setActuallyHide] = React.useState(intro.seenHowItWorks)
 
   React.useEffect(() => {
@@ -29,9 +28,6 @@ export const HowItWorks: React.FunctionComponent<HowItWorksProps> = function How
 
   const handleClick = React.useCallback(() => {
     intro.seenHowItWorks = true
-    if (!renderState.showColors) {
-      togglePattern(patterns, renderState)
-    }
   }, [intro])
 
   return useObserver(() => {

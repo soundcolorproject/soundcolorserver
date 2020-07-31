@@ -1,5 +1,7 @@
 
 import { observable, reaction } from 'mobx'
+import { togglePattern, renderStateStore } from '../renderStateStore'
+import { patternsStore } from '../patternsStore'
 
 export interface IntroStoreProp {
   intro: IntroStore
@@ -23,6 +25,14 @@ export class IntroStore {
       () => this.seenHowItWorks,
       (b) => {
         sessionStorage.setItem('seenHowItWorks', b.toString())
+      },
+    )
+    reaction(
+      () => [this.warningAccepted, this.seenHowItWorks],
+      ([a, b]) => {
+        if (a && b && !renderStateStore.showColors) {
+          togglePattern(patternsStore, renderStateStore)
+        }
       },
     )
   }
