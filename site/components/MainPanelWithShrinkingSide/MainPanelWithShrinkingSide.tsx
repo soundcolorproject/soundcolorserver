@@ -21,6 +21,7 @@ import { logger } from '../../../shared/logger'
 export type TransitionDirection = 'up' | 'down' | 'left' | 'right'
 
 export interface Props {
+  prePanel?: React.ReactNode
   sidePanel: React.ReactElement
   children: React.ReactElement | null
   overtop?: React.ReactNode
@@ -34,6 +35,7 @@ export interface Props {
 
 export function MainPanelWithShrinkingSide (props: Props) {
   const {
+    prePanel,
     sidePanel,
     children,
     overtop,
@@ -54,6 +56,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
         style={{ ...style, height }}
         data-testid='main-panel-with-shrinking-side'
       >
+        {prePanel}
         {
           !onlyOvertop && <>
             {sidePanel}

@@ -1,0 +1,21 @@
+
+.share-link {
+  background: transparent;
+  color: var(--white);
+  text-decoration: underline;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 20px;
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    cursor: default;
+  }
+}

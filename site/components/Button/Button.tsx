@@ -2,7 +2,9 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import { button } from './button.pcss'
+import { IconName, Icon } from '../Icon'
+
+import { button, iconBeforeText } from './button.pcss'
 import { Color, getContrastingColor, darken, lighten } from '../../pcss-functions'
 
 export interface SlimButtonProps {
@@ -15,8 +17,11 @@ export interface SlimButtonProps {
 }
 
 export interface ButtonProps {
+  preIcon?: IconName
   onClick?: () => void
   children?: React.ReactNode
+  forceLightText?: boolean
+  forceDarkText?: boolean
   type?: 'button' | 'submit'
   color?: Color
   hoverColor?: Color
@@ -39,10 +44,15 @@ export function renderSlimButton ({ text, ...remainingProps }: SlimButtonProps) 
   return <Button {...remainingProps}>{text}</Button>
 }
 
+const WHITE = 'var(--white)'
+const BLACK = 'var(--black)'
 export function Button (props: ButtonProps) {
   const {
+    preIcon,
     onClick,
     children,
+    forceLightText,
+    forceDarkText,
     type = 'button',
     color,
     hoverColor,
@@ -65,17 +75,17 @@ export function Button (props: ButtonProps) {
   }
 
   if (color) {
-    const contrastingColor = getContrastingColor(color)
+    const contrastingColor = forceLightText ? WHITE : forceDarkText ? WHITE : getContrastingColor(color)
     fullStyle['--button-background'] = color.toString()
     fullStyle['--button-color'] = contrastingColor
 
     if (!hoverColor) {
       const hoverColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
-      ? lighten(color, 0.4)
-      : darken(color, 0.4)
+      ? darken(color, 0.4)
+      : lighten(color, 0.4)
       const activeColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
-      ? lighten(color, 0.6)
-      : darken(color, 0.6)
+      ? darken(color, 0.6)
+      : lighten(color, 0.6)
 
       fullStyle['--button-hover-background'] = hoverColor.toString()
       fullStyle['--button-hover-color'] = getContrastingColor(hoverColor)
@@ -105,6 +115,7 @@ export function Button (props: ButtonProps) {
       style={fullStyle}
       data-testid={testid}
     >
+      {preIcon && <Icon size='xxs' name={preIcon} className={iconBeforeText} />}
       {children}
     </button>
   )

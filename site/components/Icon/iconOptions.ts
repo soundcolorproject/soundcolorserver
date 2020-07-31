@@ -55,6 +55,7 @@ export const iconOptions = {
   connections: buildSvgContainer('connections'),
   delete: buildSvgContainer('delete'),
   download: buildSvgContainer('download'),
+  facebook: buildSvgContainer('facebook'),
   favorite_border: buildSvgContainer('favorite_border'),
   favorite: buildSvgContainer('favorite'),
   fullscreen: buildSvgContainer('fullscreen'),
@@ -74,6 +75,7 @@ export const iconOptions = {
   settings: buildSvgContainer('settings'),
   stop_circle: buildSvgContainer('stop_circle'),
   tune: buildSvgContainer('tune'),
+  twitter: buildSvgContainer('twitter'),
   visibility_off: buildSvgContainer('visibility_off'),
 }
 
@@ -133,6 +135,9 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
   download: {
     ...newIconSizes,
   },
+  facebook: {
+    ...buildIconSizes(1365.3333, 1365.3333),
+  },
   fullscreen: {
     ...newIconSizes,
   },
@@ -165,6 +170,9 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
   },
   tune: {
     ...newIconSizes,
+  },
+  twitter: {
+    ...buildIconSizes(250, 400),
   },
   visibility_off: {
     ...newIconSizes,

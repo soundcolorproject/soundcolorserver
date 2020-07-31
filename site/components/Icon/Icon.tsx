@@ -44,8 +44,8 @@ export function Icon ({ name, color, size = 'med', className, style }: IconProps
       style={{
         marginTop: -sizeDetails.marginHeight || undefined,
         marginBottom: -sizeDetails.marginHeight || undefined,
-        marginLeft: -sizeDetails.marginWidth || undefined,
-        marginRight: -sizeDetails.marginWidth || undefined,
+        marginLeft: sizeDetails.marginWidth ? `calc(var(--pre-icon-padding) - ${sizeDetails.marginWidth}px)` : undefined,
+        marginRight: sizeDetails.marginWidth ? `calc(var(--post-icon-padding) - ${sizeDetails.marginWidth}px)` : undefined,
         ...style,
       }}
     >

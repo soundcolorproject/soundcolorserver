@@ -59,6 +59,7 @@ export class RoutingStore {
   @observable panelRoute: PanelRoute = 'home'
   @observable subRoutes: SubRoute[] = []
   @observable transitionDirection: TransitionDirection = 'right'
+  @observable showSharePanel = false
 
   @action
   setPanelRoute = (route: PanelRoute, direction: TransitionDirection = 'left') => {

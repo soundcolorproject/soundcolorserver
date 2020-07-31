@@ -8,6 +8,8 @@
 
   --button-active-background: var(--grey-80);
   --button-active-color: var(--white);
+
+  --icon-color: var(--white);
 }
 
 .button {
@@ -18,14 +20,31 @@
   border-radius: 4px;
   padding: 6px 8px;
   margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .icon-before-text {
+    --post-icon-padding: 8px;
+    fill: var(--button-color) !important;
+    transition: fill 0.3s;
+  }
 
   &:hover {
     background: var(--button-hover-background);
     color: var(--button-hover-color);
+
+    .icon-before-text {
+      fill: var(--button-hover-color) !important;
+    }
   }
 
   &:active {
     background: var(--button-active-background);
     color: var(--button-active-color);
+
+    .icon-before-text {
+      fill: var(--button-active-color) !important;
+    }
   }
 }

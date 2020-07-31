@@ -37,6 +37,7 @@ import { ColorWarning } from '../../containers/ColorWarning'
 import { HowItWorks } from '../../containers/HowItWorks'
 import { HueConnectLocal } from '../../containers/HueConnectLocal'
 import { CookiePolicyPanel } from '../../containers/CookiePolicyPanel'
+import { SharePanel } from '../../containers/SharePanel'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
@@ -238,6 +239,7 @@ export function SovisRoute (props: SovisRouteProps) {
       <TextHider>
         <div id={sovisPanel}>
           <MainPanelWithShrinkingSide
+            prePanel={<SharePanel />}
             sidePanel={sidePanel()}
             height={288}
             transitionDirection={routing.transitionDirection}

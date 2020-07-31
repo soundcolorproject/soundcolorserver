@@ -1,0 +1,41 @@
+
+.share-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  height: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--white);
+  color: var(--black);
+  overflow: hidden;
+  transition: height 0.3s, padding 0.3s;
+  padding: 0 32px;
+  font-size: 12px;
+  line-height: 20px;
+  
+  &.show {
+    padding: 32px;
+    height: 224px;
+  }
+
+  .big-button {
+    padding: 10px 24px;
+  }
+
+  a {
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--black);
+    text-decoration: underline;
+  }
+
+  .last-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
