@@ -211,6 +211,7 @@ export function SovisRoute (props: SovisRouteProps) {
         noBold
         shrink={shrink()}
         href={shrink() ? undefined : '/'}
+        newTab
         onClick={shrink() ? goBack : undefined}
       >
         Sound Color Project
