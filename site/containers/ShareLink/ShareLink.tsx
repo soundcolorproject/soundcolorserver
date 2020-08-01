@@ -13,7 +13,7 @@ interface ShareArgs {
   title?: string
   text?: string
   url?: string
-  files?: ReadonlyArray<any>
+  files?: ReadonlyArray<File> | FileList
 }
 
 declare global {
@@ -31,7 +31,7 @@ export const ShareLink: React.FunctionComponent<ShareLinkProps> = function Share
   const {
     'data-testid': testid = 'share-link',
   } = props
-  const { routing } = useStores()
+  const { intro, routing } = useStores()
 
   const handleClick = () => {
     if ('share' in navigator) {
@@ -46,7 +46,11 @@ export const ShareLink: React.FunctionComponent<ShareLinkProps> = function Share
   }
 
   return useObserver(() => (
-    <div onClick={handleClick} className={cn(shareLink, { [hidden]: routing.showSharePanel })} data-testid={testid}>
+    <div
+      onClick={handleClick}
+      className={cn(shareLink, { [hidden]: routing.showSharePanel || !intro.seenHowItWorks || !intro.warningAccepted })}
+      data-testid={testid}
+    >
       Share Sound Color Project
     </div>
   ))
