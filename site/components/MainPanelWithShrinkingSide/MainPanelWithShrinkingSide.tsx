@@ -96,6 +96,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
       style={{ ...style, height }}
       data-testid='main-panel-with-shrinking-side'
     >
+      {prePanel}
       {
         !onlyOvertop && <>
           {sidePanel}

@@ -6,6 +6,7 @@ import { RouteComponentProps } from '@reach/router'
 import { useStores } from '../../state/useStores'
 
 import { shareLink, hidden } from './shareLink.pcss'
+import { shareTitle, shareText, shareUrl } from '../../helpers/share'
 
 interface Navigator {
 
@@ -24,9 +25,9 @@ export const ShareLink: React.FunctionComponent<ShareLinkProps> = function Share
   const handleClick = () => {
     if ('share' in navigator) {
       (navigator as any).share({
-        title: 'Sound Color Project',
-        text: 'Play around with light and sound with Sound Color Project',
-        url: 'https://soundcolorproject.com/sovis'
+        title: shareTitle,
+        text: shareText,
+        url: shareUrl,
       })
     } else {
       routing.showSharePanel = true

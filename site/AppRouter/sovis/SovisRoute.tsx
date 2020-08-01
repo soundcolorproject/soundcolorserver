@@ -38,6 +38,7 @@ import { HowItWorks } from '../../containers/HowItWorks'
 import { HueConnectLocal } from '../../containers/HueConnectLocal'
 import { CookiePolicyPanel } from '../../containers/CookiePolicyPanel'
 import { SharePanel } from '../../containers/SharePanel'
+import { ShareLink } from '../../containers/ShareLink'
 
 export interface SovisRouteProps extends RouteComponentProps {
 }
@@ -238,6 +239,7 @@ export function SovisRoute (props: SovisRouteProps) {
       <ShaderCanvas shaderName={renderState.shader} />
       <TextHider>
         <div id={sovisPanel}>
+          <ShareLink />
           <MainPanelWithShrinkingSide
             prePanel={<SharePanel />}
             sidePanel={sidePanel()}

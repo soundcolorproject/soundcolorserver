@@ -75,7 +75,7 @@ export function Button (props: ButtonProps) {
   }
 
   if (color) {
-    const contrastingColor = forceLightText ? WHITE : forceDarkText ? WHITE : getContrastingColor(color)
+    const contrastingColor = forceLightText ? WHITE : forceDarkText ? BLACK : getContrastingColor(color)
     fullStyle['--button-background'] = color.toString()
     fullStyle['--button-color'] = contrastingColor
 
