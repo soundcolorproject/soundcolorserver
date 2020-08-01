@@ -1854,7 +1854,7 @@ exports[`Storyshots SavedPaletteSelector Example 1`] = `
 
 exports[`Storyshots ShareLink Example 1`] = `
 <div
-  className="shareLink"
+  className="shareLink hidden"
   data-testid="share-link"
   onClick={[Function]}
 >
