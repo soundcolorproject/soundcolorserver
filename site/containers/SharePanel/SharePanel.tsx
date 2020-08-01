@@ -5,7 +5,7 @@ import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
 import { useStores } from '../../state/useStores'
 
-import { sharePanel, show, bigButton, lastButton } from './sharePanel.pcss'
+import { sharePanel, show, innerPanel, bigButton, lastButton } from './sharePanel.pcss'
 import { Button } from '../../components/Button'
 import { LinkButton } from '../../components/LinkButton'
 import { fullShareText, shareUrl, shareText, shareTitle, shareImage } from '../../helpers/share'
@@ -68,11 +68,13 @@ export const SharePanel: React.FunctionComponent<SharePanelProps> = function Sha
 
   return useObserver(() => (
     <div className={cn(sharePanel, { [show]: shouldShow || routing.showSharePanel })} data-testid={testid}>
-      <div>Share Sound Color Project on:</div>
-      <div><Button forceLightText className={bigButton} preIcon='facebook' color='#1877F2' onClick={shareFacebook}>Facebook</Button></div>
-      <div><Button forceLightText className={bigButton} preIcon='twitter' color='#1DA1F2' onClick={shareTwitter}>Twitter</Button></div>
-      <div><a href='/sovis' onClick={copyLink}>{linkCopied ? 'Link Copied!' : 'Copy Link'}</a></div>
-      <div className={lastButton}><Button onClick={() => routing.showSharePanel = false}>Cancel</Button></div>
+      <div className={innerPanel}>
+        <div>Share Sound Color Project on:</div>
+        <div><Button forceLightText className={bigButton} preIcon='facebook' color='#1877F2' onClick={shareFacebook}>Facebook</Button></div>
+        <div><Button forceLightText className={bigButton} preIcon='twitter' color='#1DA1F2' onClick={shareTwitter}>Twitter</Button></div>
+        <div><a href='/sovis' onClick={copyLink}>{linkCopied ? 'Link Copied!' : 'Copy Link'}</a></div>
+        <div className={lastButton}><Button onClick={() => routing.showSharePanel = false}>Cancel</Button></div>
+      </div>
     </div>
   ))
 }
