@@ -1,5 +1,6 @@
 
 import { RequestHandler } from 'express'
+
 import { config } from '../config'
 
 const TWO_YEARS = 60 * 60 * 24 * 365 * 2

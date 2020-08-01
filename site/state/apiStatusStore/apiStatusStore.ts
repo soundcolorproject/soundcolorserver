@@ -1,14 +1,15 @@
 
-import { observable, reaction, action, runInAction } from 'mobx'
-import { isLoggedIn } from '../../api/isLoggedIn'
+import { action, observable, reaction, runInAction } from 'mobx'
+
+import { ApiGroupInfo, ConnectionStatus, GroupColorMode } from '../../../shared/apiTypes/hue'
+import { errorString } from '../../../shared/errorHelpers'
 import { logger } from '../../../shared/logger'
-import { selectGroup, setColor, getGroups } from '../../api/groups'
+import { connectToLocalApi } from '../../api/connect'
+import { getGroups, selectGroup, setColor } from '../../api/groups'
+import { isLoggedIn } from '../../api/isLoggedIn'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
-import { GroupColorMode, ApiGroupInfo, ConnectionStatus } from '../../../shared/apiTypes/hue'
 import { patternsStore } from '../patternsStore'
 import { renderStateStore } from '../renderStateStore'
-import { errorString } from '../../../shared/errorHelpers'
-import { connectToLocalApi } from '../../api/connect'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore

@@ -1,9 +1,10 @@
 
 // tslint:disable: no-console
 import * as ac from 'ansi-colors'
-import { LogLevel, getLogLevel, LogLevelStr, validLevels } from './getLogLevel'
-import { isBrowser } from './isBrowser'
+
 import { browserAnsi } from './browserAnsi'
+import { getLogLevel, LogLevel, LogLevelStr, validLevels } from './getLogLevel'
+import { isBrowser } from './isBrowser'
 
 let colors: typeof ac | null = null
 try {

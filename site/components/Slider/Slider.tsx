@@ -1,14 +1,15 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import * as React from 'react'
+
+import { DisplayMapper } from '../../containers/ShaderCanvas/shaderName'
 
 import {
-  sliderLabel,
   sliderDetails,
-  sliderValue,
   sliderInput,
+  sliderLabel,
+  sliderValue,
 } from './slider.pcss'
-import { DisplayMapper } from '../../containers/ShaderCanvas/shaderName'
 
 export interface SliderProps {
   label: string

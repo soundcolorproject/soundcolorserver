@@ -1,8 +1,9 @@
 
-import { getDb } from './connection'
-import { DbWriteError } from '../../errors/DbWriteError'
 import { config } from '../../config'
-import { CredentialData, SaveRemoteCredentialsFn, GetRemoteCredentialsFn, DeleteRemoteCredentialsFn } from '../types/RemoteCredentials'
+import { DbWriteError } from '../../errors/DbWriteError'
+import { CredentialData, DeleteRemoteCredentialsFn, GetRemoteCredentialsFn, SaveRemoteCredentialsFn } from '../types/RemoteCredentials'
+
+import { getDb } from './connection'
 
 const COLLECTION_NAME = 'remoteCredentials'
 function getCollection () {

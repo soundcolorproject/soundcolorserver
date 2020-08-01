@@ -1,13 +1,14 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
+import { Panel } from '../../components/Panel'
+import { PanelButton } from '../../components/PanelButton'
+import { PanelDetail } from '../../components/PanelDetail'
 import { useStores } from '../../state/useStores'
 
 import { hueGroupSelector } from './hueGroupSelector.pcss'
-import { Panel } from '../../components/Panel'
-import { PanelDetail } from '../../components/PanelDetail'
-import { PanelButton } from '../../components/PanelButton'
 
 export interface HueGroupSelectorProps extends RouteComponentProps {
   'data-testid'?: string

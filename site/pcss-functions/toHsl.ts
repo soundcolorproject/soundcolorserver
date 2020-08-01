@@ -1,9 +1,8 @@
 
 import { printDigits } from '../helpers/numbers'
+
 import { parseColor } from './parseColor'
-
-import { toRgb, RGBa } from './toRgb'
-
+import { RGBa, toRgb } from './toRgb'
 import { Color } from './types'
 
 export function toHsl (color: Color): HSLa {

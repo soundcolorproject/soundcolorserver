@@ -1,9 +1,10 @@
 
 import { createTransport, Transporter } from 'nodemailer'
-import { EmailCredentialsNotFoundError } from '../errors/EmailCredentialsNotFoundError'
+
 import { logger } from '../../shared/logger'
-import { EmailFailedToSendError } from '../errors/EmailFailedToSendError'
 import { config } from '../config'
+import { EmailCredentialsNotFoundError } from '../errors/EmailCredentialsNotFoundError'
+import { EmailFailedToSendError } from '../errors/EmailFailedToSendError'
 
 let emailTransport: Transporter
 function getEmailTransport () {

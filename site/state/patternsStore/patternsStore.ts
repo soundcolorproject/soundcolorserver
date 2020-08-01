@@ -1,10 +1,11 @@
 
-import { observable, reaction, action } from 'mobx'
+import { action, observable, reaction } from 'mobx'
+
+import { errorString } from '../../../shared/errorHelpers'
 import { getAnalyser } from '../../audio/analyzer'
 import { getMiniAnalyser } from '../../audio/miniAnalyser'
-import { toHsv, HSVa } from '../../pcss-functions/toHsv'
 import { randStr } from '../../helpers/random'
-import { errorString } from '../../../shared/errorHelpers'
+import { HSVa, toHsv } from '../../pcss-functions/toHsv'
 
 const defaultCustomColors = {
   'C': toHsv('#B4BBCC'),

@@ -1,6 +1,7 @@
 /// <reference path="./globals.d.ts" />
 
 import { logger } from '../shared/logger'
+
 import { FatalError } from './errors/FatalError'
 import { startup } from './startup'
 

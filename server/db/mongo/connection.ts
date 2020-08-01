@@ -1,5 +1,6 @@
 
-import { connect, MongoClient, Db } from 'mongodb'
+import { connect, Db, MongoClient } from 'mongodb'
+
 import { config } from '../../config'
 import { FatalError, FatalErrorCode } from '../../errors/FatalError'
 

@@ -1,8 +1,8 @@
 
-import { FetchError } from '../errors/FetchError'
-import { ServerErrorResponse } from '../../shared/ServerErrorResponse'
-import { apiStatusStore } from '../state/apiStatusStore'
 import { ServerErrorCode } from '../../shared/ServerErrorCode'
+import { ServerErrorResponse } from '../../shared/ServerErrorResponse'
+import { FetchError } from '../errors/FetchError'
+import { apiStatusStore } from '../state/apiStatusStore'
 
 function prepareRequest (url: string, init: RequestInit) {
   if (init.headers) {

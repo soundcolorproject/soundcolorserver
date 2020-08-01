@@ -1,8 +1,9 @@
 
-import { join } from 'path'
 import { readdirSync } from 'fs'
-import { initClient } from './db/connection'
+import { join } from 'path'
+
 import { config } from './config'
+import { initClient } from './db/connection'
 
 interface InittableCollection {
   initCollection?: () => Promise<void>

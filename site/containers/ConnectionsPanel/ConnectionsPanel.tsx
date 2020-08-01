@@ -1,13 +1,12 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import api from '@storybook/addon-storyshots'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
 
 import { Panel } from '../../components/Panel'
-
 import { PanelButton } from '../../components/PanelButton'
-import api from '@storybook/addon-storyshots'
+import { useStores } from '../../state/useStores'
 
 export interface ConnectionsPanelProps extends RouteComponentProps {
   'data-testid'?: string

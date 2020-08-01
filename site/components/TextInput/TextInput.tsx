@@ -1,11 +1,11 @@
 
-import * as React from 'react'
 import * as classNames from 'classnames'
+import * as React from 'react'
 
 import {
-  textInput,
   inputWrapper,
   placeholderText,
+  textInput,
 } from './textInput.pcss'
 
 export interface TextInputProps {

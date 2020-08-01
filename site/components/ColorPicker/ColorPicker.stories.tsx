@@ -1,6 +1,6 @@
 
-import * as React from 'react'
 import { text } from '@storybook/addon-knobs'
+import * as React from 'react'
 
 import { Color } from '../../pcss-functions'
 

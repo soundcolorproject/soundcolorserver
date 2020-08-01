@@ -1,9 +1,9 @@
 
-import * as React from 'react'
+import Pickr from '@simonwep/pickr'
 import { render } from '@testing-library/react'
+import * as React from 'react'
 
 import { ColorPicker, ColorPickerProps } from './ColorPicker'
-import Pickr from '@simonwep/pickr'
 
 const noop = () => undefined
 const defaultProps: ColorPickerProps = {

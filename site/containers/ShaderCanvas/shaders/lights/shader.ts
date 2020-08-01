@@ -1,11 +1,11 @@
 
 import { buildProgram, BuiltProgramWithUniforms } from '../../helpers/buildProgram'
 import {
-  COMMON_UNIFORMS,
-  typesafeUniformMap,
   CommonShaderBuilder,
   COMMON_META,
+  COMMON_UNIFORMS,
   defaultShaderRenderer,
+  typesafeUniformMap,
 } from '../../helpers/common'
 // import { logger } from '../../../../../shared/logger'
 

@@ -1,13 +1,14 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
+
+import { ApiStatusStore } from '../../state/apiStatusStore'
+import { MediaStore } from '../../state/mediaStore'
 import { mockUseStores } from '../../state/mockUseStores'
+import { PatternsStore } from '../../state/patternsStore'
+import { RoutingStore } from '../../state/routingStore'
 
 import { ConnectionsPanel } from './ConnectionsPanel'
-import { PatternsStore } from '../../state/patternsStore'
-import { MediaStore } from '../../state/mediaStore'
-import { ApiStatusStore } from '../../state/apiStatusStore'
-import { RoutingStore } from '../../state/routingStore'
 
 describe(ConnectionsPanel.name, () => {
   const useStoresSpy = mockUseStores()

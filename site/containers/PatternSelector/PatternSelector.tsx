@@ -1,15 +1,15 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
 
 import { Panel } from '../../components/Panel'
 import { PanelButton } from '../../components/PanelButton'
-
-import { patternSelector } from './patternSelector.pcss'
 import { PatternName } from '../../state/patternsStore'
 import { togglePattern } from '../../state/renderStateStore'
+import { useStores } from '../../state/useStores'
+
+import { patternSelector } from './patternSelector.pcss'
 
 export interface PatternSelectorProps extends RouteComponentProps {
 }

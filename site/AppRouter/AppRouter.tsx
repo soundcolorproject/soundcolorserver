@@ -1,9 +1,10 @@
 
+import { Redirect, Router } from '@reach/router'
 import * as React from 'react'
-import { Router, Redirect } from '@reach/router'
-import { SovisRoute } from './sovis'
-import { InfoRoute } from './info'
+
 import { ConnectHueRoute } from './connect-hue'
+import { InfoRoute } from './info'
+import { SovisRoute } from './sovis'
 
 export class AppRouter extends React.Component {
   render () {

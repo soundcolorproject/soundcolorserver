@@ -1,14 +1,15 @@
 
 import { ErrorRequestHandler } from 'express'
-import { config } from '../config'
 import { ApiError } from 'node-hue-api'
-import { HueErrorCode } from '../hue/HueErrorCode'
+import HueError = require('node-hue-api/lib/HueError')
+
 import { logger } from '../../shared/logger'
-import { ServerError, DEFAULT_ERROR_MESSAGE } from '../errors/ServerError'
-import { RedirectError } from '../errors/RedirectError'
 import { ServerErrorCode } from '../../shared/ServerErrorCode'
 import { ServerErrorResponse } from '../../shared/ServerErrorResponse'
-import HueError = require('node-hue-api/lib/HueError')
+import { config } from '../config'
+import { RedirectError } from '../errors/RedirectError'
+import { DEFAULT_ERROR_MESSAGE, ServerError } from '../errors/ServerError'
+import { HueErrorCode } from '../hue/HueErrorCode'
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   let status = 500

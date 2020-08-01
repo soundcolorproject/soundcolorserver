@@ -1,10 +1,11 @@
 
 import { RequestHandler } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { config } from '../config'
+
 import { logger } from '../../shared/logger'
-import { randomString } from '../helpers/random'
+import { config } from '../config'
 import { deleteRemoteCredentials } from '../db/remoteCredentials'
+import { randomString } from '../helpers/random'
 import { apiCache } from '../hue-helpers/cache'
 
 export const sessionMiddleware: RequestHandler = config.remoteApi

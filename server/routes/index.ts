@@ -1,10 +1,12 @@
 
 import { Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { apiRouter } from './api'
+
 import { config } from '../config'
-import { getApi } from '../hue-helpers/getApi'
 import { deleteRemoteCredentials } from '../db/remoteCredentials'
+import { getApi } from '../hue-helpers/getApi'
+
+import { apiRouter } from './api'
 
 export const router = Router()
 

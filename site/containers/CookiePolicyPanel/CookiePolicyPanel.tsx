@@ -1,13 +1,14 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
 
-import { cookiePolicyPanel, buttons } from './cookiePolicyPanel.pcss'
 import { Button } from '../../components/Button'
 import { Panel } from '../../components/Panel'
 import { PanelDetail } from '../../components/PanelDetail'
+import { useStores } from '../../state/useStores'
+
+import { buttons, cookiePolicyPanel } from './cookiePolicyPanel.pcss'
 
 export interface CookiePolicyPanelProps extends RouteComponentProps {
   'data-testid'?: string

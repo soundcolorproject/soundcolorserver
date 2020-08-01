@@ -1,8 +1,9 @@
 
-import { getDb } from './connection'
-import { DbWriteError } from '../../errors/DbWriteError'
 import { config } from '../../config'
-import { GroupRoundRobinState, GetNextLightIdFn, SetupRoundRobinFn } from '../types/GroupRoundRobin'
+import { DbWriteError } from '../../errors/DbWriteError'
+import { GetNextLightIdFn, GroupRoundRobinState, SetupRoundRobinFn } from '../types/GroupRoundRobin'
+
+import { getDb } from './connection'
 
 const COLLECTION_NAME = 'groupRoundRobinState'
 function getCollection () {

@@ -1,5 +1,6 @@
 
 import * as Cache from 'node-cache'
+
 import { HueApi } from '../hue/api'
 import { OAuthTokens, RemoteCredentials } from '../hue/api/remote'
 

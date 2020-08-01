@@ -1,12 +1,13 @@
 
-import * as React from 'react'
+import { RouteComponentProps } from '@reach/router'
 import * as cn from 'classnames'
 import { useObserver } from 'mobx-react'
-import { RouteComponentProps } from '@reach/router'
+import * as React from 'react'
+
+import { Button } from '../../components/Button'
 import { useStores } from '../../state/useStores'
 
-import { colorWarning, hidden, button } from './colorWarning.pcss'
-import { Button } from '../../components/Button'
+import { button, colorWarning, hidden } from './colorWarning.pcss'
 
 export interface ColorWarningProps extends RouteComponentProps {
   'data-testid'?: string

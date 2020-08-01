@@ -1,13 +1,12 @@
 
+import { printDigits } from '../helpers/numbers'
+
 import { colorConversion } from './constants'
 import { parseColor } from './parseColor'
-
 import { HSLa } from './toHsl'
-import { toSRgb, SRGBa } from './toSRgb'
-
-import { Color } from './types'
 import { HSVa } from './toHsv'
-import { printDigits } from '../helpers/numbers'
+import { SRGBa, toSRgb } from './toSRgb'
+import { Color } from './types'
 
 export function toRgb (color: Color): RGBa {
   if (typeof color === 'string') {

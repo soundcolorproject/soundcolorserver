@@ -1,21 +1,22 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
+import { logger } from '../../../shared/logger'
+import { getColorsFromAnalysis } from '../../helpers/analysisColors'
+import { useCanvasContext } from '../../hooks/useCanvasContext'
+import { HSVa, toRgb } from '../../pcss-functions'
 import { AnalysisProp } from '../../state/analysisStore'
 import { PatternsProp } from '../../state/patternsStore'
 import { RenderStateProp } from '../../state/renderStateStore'
-import { getColorsFromAnalysis } from '../../helpers/analysisColors'
-import { toRgb, HSVa } from '../../pcss-functions'
-import { logger } from '../../../shared/logger'
+import { useStores } from '../../state/useStores'
 
+import { BuiltProgramWithUniforms } from './helpers/buildProgram'
+import { CommonMeta, CommonShaderBuilder, COMMON_UNIFORMS } from './helpers/common'
+import { requireShader } from './requireShader'
 import { backgroundColors } from './shaderCanvas.pcss'
 import { ShaderName, shaderNames } from './shaderName'
-import { BuiltProgramWithUniforms } from './helpers/buildProgram'
-import { COMMON_UNIFORMS, CommonMeta, CommonShaderBuilder } from './helpers/common'
-import { requireShader } from './requireShader'
-import { useObserver } from 'mobx-react'
-import { useStores } from '../../state/useStores'
-import { useCanvasContext } from '../../hooks/useCanvasContext'
 
 const shaderMap = new Map<ShaderName, CommonShaderBuilder>()
 shaderNames.forEach(name => {

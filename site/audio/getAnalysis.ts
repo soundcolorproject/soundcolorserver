@@ -1,9 +1,10 @@
 
-import { getContext } from './context'
-import { getFft, fftSize } from './analyzer'
-import { getNoteInformation, NoteInfo } from './getNoteInformation'
-import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
+import { patternsStore } from '../state/patternsStore'
+
+import { fftSize, getFft } from './analyzer'
+import { getContext } from './context'
+import { getNoteInformation, NoteInfo } from './getNoteInformation'
 
 export const MIN_FOR_STATS = -100
 export const MAX_TONES = 5

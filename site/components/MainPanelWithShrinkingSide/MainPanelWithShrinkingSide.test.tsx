@@ -1,8 +1,8 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
 
-import { Props, MainPanelWithShrinkingSide } from './MainPanelWithShrinkingSide'
+import { MainPanelWithShrinkingSide, Props } from './MainPanelWithShrinkingSide'
 
 const defaultProps: Props = {
   sidePanel: <div key='side-panel' />,

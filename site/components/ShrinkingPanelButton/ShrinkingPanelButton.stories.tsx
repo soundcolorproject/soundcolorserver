@@ -1,7 +1,8 @@
 
-import * as React from 'react'
-import { select, text, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
+import { boolean, select, text } from '@storybook/addon-knobs'
+import * as React from 'react'
+
 import { iconNames } from '../Icon'
 
 import { ShrinkingPanelButton } from './ShrinkingPanelButton'

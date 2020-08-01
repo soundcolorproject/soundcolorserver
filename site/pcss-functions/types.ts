@@ -1,6 +1,6 @@
 
-import { HSVa } from './toHsv'
 import { HSLa } from './toHsl'
+import { HSVa } from './toHsv'
 import { RGBa } from './toRgb'
 import { SRGBa } from './toSRgb'
 

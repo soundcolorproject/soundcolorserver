@@ -1,11 +1,11 @@
 
-import * as React from 'react'
 import * as classNames from 'classnames'
+import * as React from 'react'
 
-import { IconName, Icon } from '../Icon'
+import { Color, darken, getContrastingColor, lighten } from '../../pcss-functions'
+import { Icon, IconName } from '../Icon'
 
 import { button, iconBeforeText } from './button.pcss'
-import { Color, getContrastingColor, darken, lighten } from '../../pcss-functions'
 
 export interface SlimButtonProps {
   text: string

@@ -1,7 +1,8 @@
 
-import { UniformMap, BuiltUniformMap, buildUniformMap } from './buildUniformMap'
-import { BuildShaderOpts, buildShader } from './buildShader'
 import { logger } from '../../../../shared/logger'
+
+import { buildShader, BuildShaderOpts } from './buildShader'
+import { buildUniformMap, BuiltUniformMap, UniformMap } from './buildUniformMap'
 
 interface BuildProgramOpts<T extends UniformMap, Meta> {
   gl: WebGLRenderingContext

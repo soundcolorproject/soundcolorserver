@@ -1,12 +1,12 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import * as React from 'react'
 
 import {
-  checkboxLabel,
   checkboxDetails,
-  checkboxValue,
   checkboxInput,
+  checkboxLabel,
+  checkboxValue,
   switchMark,
 } from './checkbox.pcss'
 

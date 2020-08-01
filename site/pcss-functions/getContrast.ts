@@ -1,7 +1,6 @@
 
 import { colorConversion } from './constants'
 import { getLuminance } from './getLuminance'
-
 import { Color } from './types'
 
 export function getContrast (c1: Color, c2: Color) {

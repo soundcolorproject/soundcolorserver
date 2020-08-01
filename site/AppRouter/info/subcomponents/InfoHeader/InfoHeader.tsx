@@ -1,25 +1,25 @@
 
-import * as React from 'react'
 import { Link } from '@reach/router'
+import * as React from 'react'
 
-import { Logo } from '../../../../components/Logo'
-import {
-  infoHeader,
-  headerBackdrop,
-  headerPadding,
-  nav,
-  logoWrapper,
-  logo,
-  buttons,
-  headerText,
-  header,
-} from './infoHeader.pcss'
-
+import { logger } from '../../../../../shared/logger'
 import { LinkButton } from '../../../../components/LinkButton'
+import { Logo } from '../../../../components/Logo'
+import { PatreonLink } from '../../../../components/PatreonLink'
+
 import headerBackdropImage from './header-backdrop.png'
 import headerBackdropVideo from './header.webm'
-import { PatreonLink } from '../../../../components/PatreonLink'
-import { logger } from '../../../../../shared/logger'
+import {
+  buttons,
+  header,
+  headerBackdrop,
+  headerPadding,
+  headerText,
+  infoHeader,
+  logo,
+  logoWrapper,
+  nav,
+} from './infoHeader.pcss'
 
 export function InfoHeader () {
   const [showVideo, setShowVideo] = React.useState(false)

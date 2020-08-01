@@ -2,7 +2,9 @@
 // tslint:disable: no-console
 import { readFileSync } from 'fs'
 import { join } from 'path'
+
 import { getLogLevel } from '../shared/getLogLevel'
+
 import { CannotStringifyError } from './errors/CannotStringifyError'
 
 try {

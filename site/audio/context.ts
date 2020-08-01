@@ -1,6 +1,6 @@
 
-import { renderStateStore } from '../state/renderStateStore'
 import { logger } from '../../shared/logger'
+import { renderStateStore } from '../state/renderStateStore'
 
 let context: AudioContext | null = null
 

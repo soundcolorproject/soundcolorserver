@@ -1,6 +1,6 @@
-import { Color } from './types'
-import { getLuminance } from './getLuminance'
 import { colorConversion } from './constants'
+import { getLuminance } from './getLuminance'
+import { Color } from './types'
 
 export function calculateCentralLuminance (white: Color, black: Color) {
   const whiteLum = getLuminance(white)

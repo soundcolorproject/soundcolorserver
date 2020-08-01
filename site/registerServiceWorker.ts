@@ -1,5 +1,6 @@
 
 import { logger } from '../shared/logger'
+
 import { renderStateStore } from './state/renderStateStore'
 
 let registration: ServiceWorkerRegistration | null = null

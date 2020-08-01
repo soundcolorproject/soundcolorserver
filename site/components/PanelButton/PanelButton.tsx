@@ -1,22 +1,22 @@
 
-import * as React from 'react'
 import * as classNames from 'classnames'
+import * as React from 'react'
 
-import { getContrastingColor, darken } from '../../pcss-functions'
-import { Icon, IconName } from '../Icon'
-import { SlimButtonProps, renderSlimButton } from '../Button'
-
-import {
-  panelButton,
-  hoverButton,
-  disabledButton,
-  text,
-  suffixText,
-  buttonIcon,
-  hilight,
-} from './panelButton.pcss'
+import { darken, getContrastingColor } from '../../pcss-functions'
 import { SubRoute } from '../../state/routingStore'
 import { useStores } from '../../state/useStores'
+import { renderSlimButton, SlimButtonProps } from '../Button'
+import { Icon, IconName } from '../Icon'
+
+import {
+  buttonIcon,
+  disabledButton,
+  hilight,
+  hoverButton,
+  panelButton,
+  suffixText,
+  text,
+} from './panelButton.pcss'
 
 export interface Props {
   children?: React.ReactNode

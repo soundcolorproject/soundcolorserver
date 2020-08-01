@@ -1,13 +1,13 @@
 
-import { observable, action, reaction } from 'mobx'
-import { resume } from '../../audio/context'
-import { logger } from '../../../shared/logger'
+import { action, observable, reaction } from 'mobx'
 
-import { patternsStore, PatternsStore } from '../patternsStore'
-import { startAnalysis, pauseAnalysis } from '../analysisStore'
 import { errorString } from '../../../shared/errorHelpers'
+import { logger } from '../../../shared/logger'
 import { startAudio, stopAudio } from '../../audio'
+import { resume } from '../../audio/context'
 import { ShaderName } from '../../containers/ShaderCanvas/shaderName'
+import { pauseAnalysis, startAnalysis } from '../analysisStore'
+import { patternsStore, PatternsStore } from '../patternsStore'
 
 export type RenderStateStore = typeof renderStateStore
 

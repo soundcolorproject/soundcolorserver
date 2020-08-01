@@ -1,6 +1,6 @@
 
+import { boolean, select, text } from '@storybook/addon-knobs'
 import * as React from 'react'
-import { select, boolean, text } from '@storybook/addon-knobs'
 
 import { Icon } from './Icon'
 import { iconNames, iconSizeNames } from './iconOptions'

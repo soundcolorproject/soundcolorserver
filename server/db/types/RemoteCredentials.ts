@@ -1,5 +1,5 @@
 
-import { Tokens, RemoteCredentials } from '../../hue/api/remote'
+import { RemoteCredentials, Tokens } from '../../hue/api/remote'
 
 export interface CredentialData {
   _id: string

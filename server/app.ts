@@ -1,14 +1,15 @@
 
-import * as path from 'path'
-import * as express from 'express'
-import * as cookieParser from 'cookie-parser'
 import * as compression from 'compression'
-import { router } from './routes'
+import * as cookieParser from 'cookie-parser'
+import * as express from 'express'
+import * as path from 'path'
+
 import { errorHandler } from './middleware/errorHandler'
-import { sessionMiddleware } from './middleware/session'
-import { webpackMiddleware, webpackHotMiddleware, html5Fallback } from './middleware/webpack'
 import { hstsMiddleware } from './middleware/hsts'
+import { sessionMiddleware } from './middleware/session'
 import { storybookMiddleware } from './middleware/storybook'
+import { html5Fallback, webpackHotMiddleware, webpackMiddleware } from './middleware/webpack'
+import { router } from './routes'
 
 export function buildApp () {
   const app = express()

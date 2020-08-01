@@ -1,44 +1,41 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
 
 import { logger } from '../../../shared/logger'
-import { useStores } from '../../state/useStores'
-
-import { PanelRoute, RoutingStore } from '../../state/routingStore'
-
-import { ShrinkingSidePanel } from '../../components/ShrinkingSidePanel'
-import { ShrinkingPanelButton } from '../../components/ShrinkingPanelButton'
 import { IconName } from '../../components/Icon'
 import { MainPanelWithShrinkingSide } from '../../components/MainPanelWithShrinkingSide'
-
-// Should be a container
+import { ShrinkingPanelButton } from '../../components/ShrinkingPanelButton'
+import { ShrinkingSidePanel } from '../../components/ShrinkingSidePanel'
 import { TextHider } from '../../components/TextHider'
-
-import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
-import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
-import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
-import { HueGroupSelector } from '../../containers/HueGroupSelector'
-import { PatternSelector } from '../../containers/PatternSelector'
-import { SoundDetails } from '../../containers/SoundDetails'
-import { ShaderCanvas } from '../../containers/ShaderCanvas'
-import { Shortcuts } from '../../containers/Shortcuts'
-import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
-import { ConnectionsPanel } from '../../containers/ConnectionsPanel'
-import { OptionsPanel } from '../../containers/OptionsPanel'
-
-import { sovis, sovisPanel } from './sovis.pcss'
-import { ColorOptionsPanel } from '../../containers/ColorOptionsPanel'
-import { TimingOptionsPanel } from '../../containers/TimingOptionsPanel'
-import { VisualizationOptionsPanel } from '../../containers/VisualizationOptionsPanel'
 import { ActionsPanel } from '../../containers/ActionsPanel'
+import { AudioSourceSelector } from '../../containers/AudioSourceSelector'
+import { ColorOptionsPanel } from '../../containers/ColorOptionsPanel'
 import { ColorWarning } from '../../containers/ColorWarning'
+import { ConnectionsPanel } from '../../containers/ConnectionsPanel'
+import { CookiePolicyPanel } from '../../containers/CookiePolicyPanel'
+import { CustomPatternSelector } from '../../containers/CustomPatternSelector'
 import { HowItWorks } from '../../containers/HowItWorks'
 import { HueConnectLocal } from '../../containers/HueConnectLocal'
-import { CookiePolicyPanel } from '../../containers/CookiePolicyPanel'
-import { SharePanel } from '../../containers/SharePanel'
+import { HueGroupSelector } from '../../containers/HueGroupSelector'
+import { CanvasMiniAnalyser } from '../../containers/MiniAnalyser'
+import { OptionsPanel } from '../../containers/OptionsPanel'
+import { PatternSelector } from '../../containers/PatternSelector'
+import { SavedPaletteSelector } from '../../containers/SavedPaletteSelector'
+import { ShaderCanvas } from '../../containers/ShaderCanvas'
 import { ShareLink } from '../../containers/ShareLink'
+import { SharePanel } from '../../containers/SharePanel'
+import { Shortcuts } from '../../containers/Shortcuts'
+import { SoundDetails } from '../../containers/SoundDetails'
+import { TimingOptionsPanel } from '../../containers/TimingOptionsPanel'
+import { VisualizationOptionsPanel } from '../../containers/VisualizationOptionsPanel'
+import { PanelRoute, RoutingStore } from '../../state/routingStore'
+import { useStores } from '../../state/useStores'
+
+import { sovis, sovisPanel } from './sovis.pcss'
+
+// Should be a container
 
 export interface SovisRouteProps extends RouteComponentProps {
 }

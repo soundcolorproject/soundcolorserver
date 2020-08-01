@@ -1,9 +1,10 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
+
+import { HSVa } from '../../pcss-functions/toHsv'
 import { mockUseStores } from '../../state/mockUseStores'
 import { PatternsStore } from '../../state/patternsStore'
-import { HSVa } from '../../pcss-functions/toHsv'
 
 import { PatternSelector } from './PatternSelector'
 

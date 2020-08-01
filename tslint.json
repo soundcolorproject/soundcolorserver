@@ -1,6 +1,12 @@
 {
   "extends": "tslint-config-standard",
   "rules": {
+    "ordered-imports": {
+      "severity": "warn",
+      "options": {
+        "grouped-imports": true
+      }
+    },
     "deprecation": {
       "severity": "warn"
     },

@@ -1,10 +1,11 @@
 
-import * as React from 'react'
-import { select, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
+import { boolean, select } from '@storybook/addon-knobs'
+import * as React from 'react'
+
+import { ShrinkingPanelButton } from '../ShrinkingPanelButton'
 
 import { ShrinkingSidePanel } from './ShrinkingSidePanel'
-import { ShrinkingPanelButton } from '../ShrinkingPanelButton'
 
 export default {
   title: 'ShrinkingSidePanel',

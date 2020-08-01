@@ -1,19 +1,20 @@
 
 import { hostname } from 'os'
 
-import { v3 } from '../hue'
-import { config } from '../config'
-import { apiCache } from './cache'
-import { BridgeInfo } from '../hue/discovery'
-import { NewUser } from '../hue/api/users'
-import { writeJsonFile, readJsonFile, dataFileExists } from './appData'
-import { HueApi } from '../hue/api'
-import { getLocalBridges } from './getLocalBridges'
 import { logger } from '../../shared/logger'
-import { RedirectError } from '../errors/RedirectError'
-import { NoLocalBridgesError } from '../errors/NoLocalBridgesError'
-import { saveRemoteCredentials, getRemoteCredentials, deleteRemoteCredentials, CredentialData } from '../db/remoteCredentials'
+import { config } from '../config'
 import { generateOauthState } from '../db/oauthState'
+import { CredentialData, deleteRemoteCredentials, getRemoteCredentials, saveRemoteCredentials } from '../db/remoteCredentials'
+import { NoLocalBridgesError } from '../errors/NoLocalBridgesError'
+import { RedirectError } from '../errors/RedirectError'
+import { v3 } from '../hue'
+import { HueApi } from '../hue/api'
+import { NewUser } from '../hue/api/users'
+import { BridgeInfo } from '../hue/discovery'
+
+import { dataFileExists, readJsonFile, writeJsonFile } from './appData'
+import { apiCache } from './cache'
+import { getLocalBridges } from './getLocalBridges'
 
 function bridgeUserFile (bridge: BridgeInfo) {
   return `user.${bridge.name}.${bridge.ipaddress}.${bridge.modelid}.json`

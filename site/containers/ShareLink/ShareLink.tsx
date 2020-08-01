@@ -1,12 +1,13 @@
 
-import * as React from 'react'
+import { RouteComponentProps } from '@reach/router'
 import * as cn from 'classnames'
 import { useObserver } from 'mobx-react'
-import { RouteComponentProps } from '@reach/router'
+import * as React from 'react'
+
+import { shareText, shareTitle, shareUrl } from '../../helpers/share'
 import { useStores } from '../../state/useStores'
 
-import { shareLink, hidden } from './shareLink.pcss'
-import { shareTitle, shareText, shareUrl } from '../../helpers/share'
+import { hidden, shareLink } from './shareLink.pcss'
 
 interface Navigator {
 

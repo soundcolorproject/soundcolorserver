@@ -1,8 +1,9 @@
 
+import { logger } from '../../shared/logger'
+import { patternsStore } from '../state/patternsStore'
+
 import { getContext } from './context'
 import { getAudioSource } from './microphoneSource'
-import { patternsStore } from '../state/patternsStore'
-import { logger } from '../../shared/logger'
 
 export const fftSize = 32768 // maximum size allowed
 let analyser: AnalyserNode

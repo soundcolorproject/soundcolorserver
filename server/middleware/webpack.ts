@@ -1,9 +1,10 @@
 
-import * as path from 'path'
 import * as express from 'express'
+import * as path from 'path'
 import * as wp from 'webpack'
 import * as wdm from 'webpack-dev-middleware'
 import * as whm from 'webpack-hot-middleware'
+
 import { config } from '../config'
 
 let compiler: wp.Compiler | null = null

@@ -1,12 +1,12 @@
 
-import * as React from 'react'
-import * as classNames from 'classnames'
 import Pickr from '@simonwep/pickr'
+import * as classNames from 'classnames'
+import * as React from 'react'
 
-import { Color, HSVa, toHsv, getContrastingColor } from '../../pcss-functions'
+import { logger } from '../../../shared/logger'
+import { Color, getContrastingColor, HSVa, toHsv } from '../../pcss-functions'
 
 import { colorPicker } from './colorPicker.pcss'
-import { logger } from '../../../shared/logger'
 
 export interface ColorPickerProps {
   value: Color

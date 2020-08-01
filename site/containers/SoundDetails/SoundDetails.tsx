@@ -1,15 +1,14 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
+import { ToneInfo } from '../../audio/getAnalysis'
+import { Panel } from '../../components/Panel'
+import { PanelDetail } from '../../components/PanelDetail'
 import { useStores } from '../../state/useStores'
 
-import { Panel } from '../../components/Panel'
-
-import { PanelDetail } from '../../components/PanelDetail'
-import { ToneInfo } from '../../audio/getAnalysis'
-
-import { soundDetails, detailName } from './soundDetails.pcss'
+import { detailName, soundDetails } from './soundDetails.pcss'
 
 export interface SoundDetailsProps extends RouteComponentProps {
   'data-testid'?: string

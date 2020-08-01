@@ -1,13 +1,14 @@
 
-import * as React from 'react'
+import { RouteComponentProps } from '@reach/router'
 import * as cn from 'classnames'
 import { useObserver } from 'mobx-react'
-import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import * as React from 'react'
 
-import { howItWorks, hidden, button, list } from './howItWorks.pcss'
 import { Button } from '../../components/Button'
 import { getDefault } from '../../pcss-functions'
+import { useStores } from '../../state/useStores'
+
+import { button, hidden, howItWorks, list } from './howItWorks.pcss'
 
 export interface HowItWorksProps extends RouteComponentProps {
   'data-testid'?: string

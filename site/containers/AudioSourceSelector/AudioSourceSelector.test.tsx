@@ -1,12 +1,13 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
+
+import { MediaStore } from '../../state/mediaStore'
 import { mockUseStores } from '../../state/mockUseStores'
+import { PatternsStore } from '../../state/patternsStore'
+import { RoutingStore } from '../../state/routingStore'
 
 import { AudioSourceSelector } from './AudioSourceSelector'
-import { PatternsStore } from '../../state/patternsStore'
-import { MediaStore } from '../../state/mediaStore'
-import { RoutingStore } from '../../state/routingStore'
 
 describe(AudioSourceSelector.name, () => {
   const useStoresSpy = mockUseStores()

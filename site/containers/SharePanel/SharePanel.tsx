@@ -1,14 +1,15 @@
 
-import * as React from 'react'
+import { RouteComponentProps } from '@reach/router'
 import * as cn from 'classnames'
 import { useObserver } from 'mobx-react'
-import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import * as React from 'react'
 
-import { sharePanel, show, innerPanel, bigButton, lastButton } from './sharePanel.pcss'
 import { Button } from '../../components/Button'
 import { LinkButton } from '../../components/LinkButton'
-import { fullShareText, shareUrl, shareText, shareTitle, shareImage } from '../../helpers/share'
+import { fullShareText, shareImage, shareText, shareTitle, shareUrl } from '../../helpers/share'
+import { useStores } from '../../state/useStores'
+
+import { bigButton, innerPanel, lastButton, sharePanel, show } from './sharePanel.pcss'
 
 export interface SharePanelProps extends RouteComponentProps {
   show?: boolean

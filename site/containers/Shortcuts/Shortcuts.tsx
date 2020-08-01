@@ -1,14 +1,15 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import * as cn from 'classnames'
-import { RenderStateProp, toggleFullscreen, togglePattern } from '../../state/renderStateStore'
-import { PatternsProp } from '../../state/patternsStore'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
 import { logger } from '../../../shared/logger'
-import { IconName, Icon } from '../../components/Icon'
+import { Icon, IconName } from '../../components/Icon'
+import { PatternsProp } from '../../state/patternsStore'
+import { RenderStateProp, toggleFullscreen, togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
-import { shortcuts, hidden, iconButton } from './shortcuts.pcss'
+import { hidden, iconButton, shortcuts } from './shortcuts.pcss'
 
 interface OwnProps {
 }

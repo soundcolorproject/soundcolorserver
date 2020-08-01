@@ -1,9 +1,10 @@
 
+import { text } from '@storybook/addon-knobs'
 import * as React from 'react'
 
-import { TextInput } from './TextInput'
-import { text } from '@storybook/addon-knobs'
 import { Icon } from '../Icon'
+
+import { TextInput } from './TextInput'
 
 export default {
   title: 'TextInput',

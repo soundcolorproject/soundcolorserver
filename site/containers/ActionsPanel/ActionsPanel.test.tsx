@@ -1,11 +1,12 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
-import { mockUseStores } from '../../state/mockUseStores'
+import * as React from 'react'
 
-import { ActionsPanel } from './ActionsPanel'
+import { mockUseStores } from '../../state/mockUseStores'
 import { PatternsStore } from '../../state/patternsStore'
 import { RenderStateStore } from '../../state/renderStateStore'
+
+import { ActionsPanel } from './ActionsPanel'
 
 describe(ActionsPanel.name, () => {
   const useStoresSpy = mockUseStores()

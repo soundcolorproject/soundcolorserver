@@ -1,11 +1,12 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
+
+import { ApiStatusStore } from '../../state/apiStatusStore'
 import { mockUseStores } from '../../state/mockUseStores'
+import { PatternsStore } from '../../state/patternsStore'
 
 import { HueConnectLocal } from './HueConnectLocal'
-import { PatternsStore } from '../../state/patternsStore'
-import { ApiStatusStore } from '../../state/apiStatusStore'
 
 describe(HueConnectLocal.name, () => {
   const useStoresSpy = mockUseStores()

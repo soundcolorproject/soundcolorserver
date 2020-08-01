@@ -1,9 +1,8 @@
 
-import { toHsv } from './toHsv'
 import { toHsl } from './toHsl'
+import { toHsv } from './toHsv'
 import { RGBa, toRgb } from './toRgb'
 import { SRGBa, toSRgb } from './toSRgb'
-
 import { Color } from './types'
 
 function toStandard (color: Color) {

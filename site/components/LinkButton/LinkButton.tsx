@@ -1,11 +1,11 @@
 
-import * as React from 'react'
 import { Link } from '@reach/router'
+import * as React from 'react'
 
-import { getContrastingColor, lighten, darken } from '../../pcss-functions'
+import { darken, getContrastingColor, lighten } from '../../pcss-functions'
+import { Color } from '../../pcss-functions/types'
 
 import { linkButton } from './linkButton.pcss'
-import { Color } from '../../pcss-functions/types'
 
 export interface LinkButtonProps {
   color?: Color

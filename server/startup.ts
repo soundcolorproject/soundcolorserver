@@ -1,12 +1,14 @@
 /// <reference path="./globals.d.ts" />
 
 import { Application } from 'express'
+import { readFileSync } from 'fs'
 import { createServer, Server } from 'http'
 import { createServer as createHttpsServer } from 'https'
 import { join } from 'path'
-import { readFileSync } from 'fs'
-import { buildApp } from './app'
+
 import { logger } from '../shared/logger'
+
+import { buildApp } from './app'
 import { config, init } from './config'
 import { FatalError, FatalErrorCode } from './errors/FatalError'
 import { initDb } from './initDb'

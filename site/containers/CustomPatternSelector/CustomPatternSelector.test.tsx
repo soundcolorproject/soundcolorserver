@@ -1,11 +1,12 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
+
+import { toHsv } from '../../pcss-functions'
 import { mockUseStores } from '../../state/mockUseStores'
+import { Note, PatternsStore } from '../../state/patternsStore'
 
 import { CustomPatternSelector } from './CustomPatternSelector'
-import { PatternsStore, Note } from '../../state/patternsStore'
-import { toHsv } from '../../pcss-functions'
 
 jest.mock('@simonwep/pickr')
 const noop = () => undefined

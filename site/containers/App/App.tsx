@@ -1,8 +1,9 @@
 
 import * as React from 'react'
+
+import { logger } from '../../../shared/logger'
 import { AppRouter } from '../../AppRouter'
 import { bootstrap } from '../../bootstrap'
-import { logger } from '../../../shared/logger'
 
 class App extends React.Component {
   componentDidMount () {

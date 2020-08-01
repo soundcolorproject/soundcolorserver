@@ -1,9 +1,10 @@
 
-import { getDb } from './connection'
-import { DbWriteError } from '../../errors/DbWriteError'
-import { randomString, randomLetter } from '../../helpers/random'
 import { config } from '../../config'
-import { OAuthState, GenerateOauthStateFn, VerifyOauthStateFn } from '../types/OAuthState'
+import { DbWriteError } from '../../errors/DbWriteError'
+import { randomLetter, randomString } from '../../helpers/random'
+import { GenerateOauthStateFn, OAuthState, VerifyOauthStateFn } from '../types/OAuthState'
+
+import { getDb } from './connection'
 
 async function generateStateString () {
   let state = await randomString(24)

@@ -1,10 +1,9 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import * as React from 'react'
 
 import { icon } from './icon.pcss'
-
-import { IconSize, IconName, iconSizes, iconOptions, iconProperties, IconProperties, IconViewBox } from './iconOptions'
+import { IconName, iconOptions, iconProperties, IconProperties, IconSize, iconSizes, IconViewBox } from './iconOptions'
 
 export interface IconProps {
   name: IconName

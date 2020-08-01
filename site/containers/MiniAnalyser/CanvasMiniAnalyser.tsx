@@ -1,12 +1,13 @@
 
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
-import { AnalysisProp } from '../../state/analysisStore'
 
-import { miniAnalyser, bar } from './miniAnalyser.pcss'
+import { useCanvasContext } from '../../hooks/useCanvasContext'
+import { AnalysisProp } from '../../state/analysisStore'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
-import { useCanvasContext } from '../../hooks/useCanvasContext'
-import { useObserver } from 'mobx-react'
+
+import { bar, miniAnalyser } from './miniAnalyser.pcss'
 
 interface OwnProps {
 }

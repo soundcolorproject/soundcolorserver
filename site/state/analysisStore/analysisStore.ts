@@ -1,8 +1,9 @@
 
-import { observable, action } from 'mobx'
-import { getAnalysis, Analysis } from '../../audio/getAnalysis'
-import { getMiniFft } from '../../audio/miniAnalyser'
+import { action, observable } from 'mobx'
+
 import { logger } from '../../../shared/logger'
+import { Analysis, getAnalysis } from '../../audio/getAnalysis'
+import { getMiniFft } from '../../audio/miniAnalyser'
 
 export type AnalysisStore = typeof analysisStore
 export interface AnalysisProp {

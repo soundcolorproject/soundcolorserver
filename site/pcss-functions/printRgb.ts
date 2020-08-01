@@ -1,5 +1,6 @@
 
 import { printDigits } from '../helpers/numbers'
+
 import { toRgb } from './toRgb'
 import { Color } from './types'
 

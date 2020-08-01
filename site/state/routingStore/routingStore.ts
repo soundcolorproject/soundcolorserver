@@ -1,5 +1,6 @@
 
-import { observable, action, reaction } from 'mobx'
+import { action, observable, reaction } from 'mobx'
+
 import { logger } from '../../../shared/logger'
 import { TransitionDirection } from '../../components/MainPanelWithShrinkingSide'
 

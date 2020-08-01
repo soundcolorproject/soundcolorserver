@@ -1,9 +1,10 @@
 
-import * as React from 'react'
 import * as classNames from 'classnames'
+import * as React from 'react'
 
-import { panel, panelTitle, titleText, titleButton, panelContent } from './panel.pcss'
-import { SlimButtonProps, renderSlimButton } from '../Button'
+import { renderSlimButton, SlimButtonProps } from '../Button'
+
+import { panel, panelContent, panelTitle, titleButton, titleText } from './panel.pcss'
 
 interface Props {
   title: string

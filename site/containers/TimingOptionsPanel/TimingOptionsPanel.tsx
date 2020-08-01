@@ -1,12 +1,13 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
+import { Panel } from '../../components/Panel'
+import { Slider } from '../../components/Slider'
 import { useStores } from '../../state/useStores'
 
 import { timingOptionsPanel } from './timingOptionsPanel.pcss'
-import { Slider } from '../../components/Slider'
-import { Panel } from '../../components/Panel'
 
 export interface TimingOptionsPanelProps extends RouteComponentProps {
   'data-testid'?: string

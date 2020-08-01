@@ -1,10 +1,11 @@
 
 import * as React from 'react'
 
-import { MainPanelWithShrinkingSide, TransitionDirection } from './MainPanelWithShrinkingSide'
-import { ShrinkingSidePanel } from '../ShrinkingSidePanel'
-import { ShrinkingPanelButton } from '../ShrinkingPanelButton'
 import { IconName } from '../Icon'
+import { ShrinkingPanelButton } from '../ShrinkingPanelButton'
+import { ShrinkingSidePanel } from '../ShrinkingSidePanel'
+
+import { MainPanelWithShrinkingSide, TransitionDirection } from './MainPanelWithShrinkingSide'
 
 export default {
   title: 'MainPanelWithShrinkingSide',

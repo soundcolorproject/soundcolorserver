@@ -1,9 +1,10 @@
 
-import { getContext } from './context'
-import { getAnalyser } from './analyzer'
-import { patternsStore } from '../state/patternsStore'
-import { logger } from '../../shared/logger'
 import { errorString } from '../../shared/errorHelpers'
+import { logger } from '../../shared/logger'
+import { patternsStore } from '../state/patternsStore'
+
+import { getAnalyser } from './analyzer'
+import { getContext } from './context'
 
 export const fftSize = 1024
 let analyser: AnalyserNode

@@ -1,11 +1,12 @@
 
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import * as React from 'react'
+
+import { IntroStore } from '../../state/introStore'
 import { mockUseStores } from '../../state/mockUseStores'
+import { PatternsStore } from '../../state/patternsStore'
 
 import { ColorWarning } from './ColorWarning'
-import { PatternsStore } from '../../state/patternsStore'
-import { IntroStore } from '../../state/introStore'
 
 describe(ColorWarning.name, () => {
   const useStoresSpy = mockUseStores()

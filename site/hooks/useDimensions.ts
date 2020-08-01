@@ -1,5 +1,6 @@
 
-import { useLayoutEffect, useRef, useState, RefObject } from 'react'
+import { RefObject, useLayoutEffect, useRef, useState } from 'react'
+
 import { logger } from '../../shared/logger'
 
 export interface DimensionObject {

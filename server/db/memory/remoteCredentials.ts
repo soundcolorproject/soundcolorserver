@@ -1,5 +1,5 @@
 
-import { SaveRemoteCredentialsFn, GetRemoteCredentialsFn, DeleteRemoteCredentialsFn } from '../types/RemoteCredentials'
+import { DeleteRemoteCredentialsFn, GetRemoteCredentialsFn, SaveRemoteCredentialsFn } from '../types/RemoteCredentials'
 
 export const saveRemoteCredentials: SaveRemoteCredentialsFn = async function () {
   // noop

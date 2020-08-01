@@ -1,13 +1,14 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
+import { Panel } from '../../components/Panel'
+import { Slider } from '../../components/Slider'
 import { useStores } from '../../state/useStores'
+import { shaderInfo } from '../ShaderCanvas/shaderName'
 
 import { visualizationOptionsPanel } from './visualizationOptionsPanel.pcss'
-import { Panel } from '../../components/Panel'
-import { shaderInfo } from '../ShaderCanvas/shaderName'
-import { Slider } from '../../components/Slider'
 
 export interface VisualizationOptionsPanelProps extends RouteComponentProps {
   'data-testid'?: string

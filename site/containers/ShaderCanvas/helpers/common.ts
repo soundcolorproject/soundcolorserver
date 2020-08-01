@@ -1,7 +1,8 @@
-import { UniformMap, UniformSetter } from './buildUniformMap'
-import { BuiltProgramWithUniforms } from './buildProgram'
-import { ShaderName, shaderInfo } from '../shaderName'
 import { renderStateStore } from '../../../state/renderStateStore'
+import { shaderInfo, ShaderName } from '../shaderName'
+
+import { BuiltProgramWithUniforms } from './buildProgram'
+import { UniformMap, UniformSetter } from './buildUniformMap'
 
 export interface CommonMeta {
   render: (gl: WebGLRenderingContext, program: WebGLProgram) => void

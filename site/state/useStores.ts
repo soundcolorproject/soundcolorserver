@@ -5,11 +5,11 @@ import { logger } from '../../shared/logger'
 
 import { AnalysisProp, analysisStore } from './analysisStore'
 import { ApiStatusProp, apiStatusStore } from './apiStatusStore'
+import { introStore, IntroStoreProp } from './introStore'
 import { MediaProp, mediaStore } from './mediaStore'
 import { PatternsProp, patternsStore } from './patternsStore'
 import { RenderStateProp, renderStateStore } from './renderStateStore'
 import { RoutingProp, routingStore } from './routingStore'
-import { IntroStoreProp, introStore } from './introStore'
 
 export type MobxStoresProps =
   & AnalysisProp

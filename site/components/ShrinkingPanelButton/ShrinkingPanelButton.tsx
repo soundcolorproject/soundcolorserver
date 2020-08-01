@@ -1,14 +1,15 @@
 
-import * as React from 'react'
 import * as classNames from 'classnames'
+import * as React from 'react'
+
 import { Icon, IconName, IconSize } from '../Icon'
 
 import {
+  activeStyle,
+  buttonIcon,
+  hoverColor,
   shrinkingPanelButton,
   shrunk,
-  activeStyle,
-  hoverColor,
-  buttonIcon,
   text,
 } from './shrinkingPanelButton.pcss'
 

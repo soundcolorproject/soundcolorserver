@@ -1,14 +1,15 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
 
-import { actionsPanel } from './actionsPanel.pcss'
+import { logger } from '../../../shared/logger'
 import { Panel } from '../../components/Panel'
 import { PanelButton } from '../../components/PanelButton'
 import { promptInstall } from '../../registerServiceWorker'
-import { logger } from '../../../shared/logger'
+import { useStores } from '../../state/useStores'
+
+import { actionsPanel } from './actionsPanel.pcss'
 
 export interface ActionsPanelProps extends RouteComponentProps {
   'data-testid'?: string

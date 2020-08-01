@@ -1,13 +1,14 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
+
+import { Checkbox } from '../../components/Checkbox'
 import { Panel } from '../../components/Panel'
 import { Slider } from '../../components/Slider'
+import { useStores } from '../../state/useStores'
 
 import { colorOptionsPanel } from './colorOptionsPanel.pcss'
-import { Checkbox } from '../../components/Checkbox'
 
 export interface ColorOptionsPanelProps extends RouteComponentProps {
   'data-testid'?: string

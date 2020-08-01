@@ -1,10 +1,11 @@
 
-import * as React from 'react'
-import { text, boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
+import { boolean, select, text } from '@storybook/addon-knobs'
+import * as React from 'react'
+
+import { PanelButton } from '../PanelButton'
 
 import { Panel } from './Panel'
-import { PanelButton } from '../PanelButton'
 
 export default {
   title: 'Panel',

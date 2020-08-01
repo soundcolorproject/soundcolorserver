@@ -1,23 +1,24 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import * as React from 'react'
+
+import { logger } from '../../../shared/logger'
+import { useTransition } from '../../hooks/useTransition'
 
 import {
-  mainPanelWithShrinkingSide,
-  panelContentWrapper,
-  panelContent,
-  swapper,
-  transitionRight,
-  transitionLeft,
-  transitionUp,
-  transitionDown,
-  transitionNone,
-  prev,
-  next,
   current,
+  mainPanelWithShrinkingSide,
+  next,
+  panelContent,
+  panelContentWrapper,
+  prev,
+  swapper,
+  transitionDown,
+  transitionLeft,
+  transitionNone,
+  transitionRight,
+  transitionUp,
 } from './mainPanelWithShrinkingSide.pcss'
-import { useTransition } from '../../hooks/useTransition'
-import { logger } from '../../../shared/logger'
 
 export type TransitionDirection = 'up' | 'down' | 'left' | 'right' | 'none'
 

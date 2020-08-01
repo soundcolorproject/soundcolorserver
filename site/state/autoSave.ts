@@ -1,5 +1,6 @@
 
-import { reaction, set, values, toJS, IReactionDisposer } from 'mobx'
+import { IReactionDisposer, reaction, set, toJS, values } from 'mobx'
+
 import { logger } from '../../shared/logger'
 
 interface SavingStore {

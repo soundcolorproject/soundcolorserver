@@ -1,19 +1,19 @@
 
-import * as React from 'react'
-import { useObserver } from 'mobx-react'
 import { RouteComponentProps } from '@reach/router'
-import { useStores } from '../../state/useStores'
-import { Note } from '../../state/patternsStore'
-import { HSVa } from '../../pcss-functions'
+import { useObserver } from 'mobx-react'
+import * as React from 'react'
 
-import { Panel } from '../../components/Panel'
-import { ColorPicker } from '../../components/ColorPicker'
-
-import { customPatternSelector, colorPickers, pickerRow, picker, patternName } from './customPatternSelector.pcss'
-import { TextInput } from '../../components/TextInput'
-import { Icon } from '../../components/Icon'
-import { Button } from '../../components/Button'
 import { logger } from '../../../shared/logger'
+import { Button } from '../../components/Button'
+import { ColorPicker } from '../../components/ColorPicker'
+import { Icon } from '../../components/Icon'
+import { Panel } from '../../components/Panel'
+import { TextInput } from '../../components/TextInput'
+import { HSVa } from '../../pcss-functions'
+import { Note } from '../../state/patternsStore'
+import { useStores } from '../../state/useStores'
+
+import { colorPickers, customPatternSelector, patternName, picker, pickerRow } from './customPatternSelector.pcss'
 
 export interface CustomPatternSelectorProps extends RouteComponentProps {
   'data-testid'?: string

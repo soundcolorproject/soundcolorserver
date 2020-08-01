@@ -1,9 +1,10 @@
 
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
+
 import { useStores } from '../../state/useStores'
 
-import { clickReshow, textHider, hidden } from './textHider.pcss'
-import { useObserver } from 'mobx-react'
+import { clickReshow, hidden, textHider } from './textHider.pcss'
 
 export interface TextHiderProps {
   children?: React.ReactNode

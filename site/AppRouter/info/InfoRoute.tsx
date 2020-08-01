@@ -1,21 +1,19 @@
 
+import { navigate, RouteComponentProps } from '@reach/router'
 import * as React from 'react'
-import { RouteComponentProps, navigate } from '@reach/router'
 
 import { LinkButton } from '../../components/LinkButton'
 import { PatreonLink } from '../../components/PatreonLink'
-
 import { PatternName, PatternsProp } from '../../state/patternsStore'
 import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
+import hirshhornLogo from './hirshhorn.svg'
+import { footer, infoBody, link, linkWrapper, list, subsection } from './info.pcss'
+import sequoiaLogo from './sequoia.svg'
 import { InfoHeader } from './subcomponents/InfoHeader'
 import { InfoSection } from './subcomponents/InfoSection'
 import { PatternInfo } from './subcomponents/PatternInfo'
-
-import hirshhornLogo from './hirshhorn.svg'
-import sequoiaLogo from './sequoia.svg'
-import { infoBody, subsection, footer, list, linkWrapper, link } from './info.pcss'
 
 export interface OwnProps extends RouteComponentProps {
 }

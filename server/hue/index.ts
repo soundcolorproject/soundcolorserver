@@ -1,8 +1,8 @@
 
 import { v3 as oldV3 } from 'node-hue-api'
 
-import { Discovery } from './discovery'
 import { Bootstrap } from './bootstrap'
+import { Discovery } from './discovery'
 import { LightStateApi } from './LightState'
 
 export interface V3 {

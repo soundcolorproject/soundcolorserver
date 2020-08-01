@@ -1,14 +1,15 @@
 
-import { Router, Request } from 'express'
+import { Request, Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { config } from '../../config'
-import { createApiFromAccessCode, getLocalApi, getApi } from '../../hue-helpers/getApi'
+
+import { ConnectionStatus, ConnectResponse } from '../../../shared/apiTypes/hue'
 import { logger } from '../../../shared/logger'
+import { config } from '../../config'
 import { OAuthProvider, verifyOauthState } from '../../db/oauthState'
-import { NoHeaderError } from '../../errors/NoHeaderError'
 import { InvalidOauthCallbackError } from '../../errors/InvalidOauthCallbackError'
-import { ConnectResponse, ConnectionStatus } from '../../../shared/apiTypes/hue'
+import { NoHeaderError } from '../../errors/NoHeaderError'
 import { NoLocalBridgesError } from '../../errors/NoLocalBridgesError'
+import { createApiFromAccessCode, getApi, getLocalApi } from '../../hue-helpers/getApi'
 
 export const authRouter = Router()
 

@@ -1,6 +1,7 @@
 
 import { config } from '../config'
-import { SetupRoundRobinFn, GetNextLightIdFn } from './types/GroupRoundRobin'
+
+import { GetNextLightIdFn, SetupRoundRobinFn } from './types/GroupRoundRobin'
 
 export * from './types/GroupRoundRobin'
 

@@ -1,8 +1,9 @@
 
 import { observable, reaction } from 'mobx'
-import { getAudioSource } from '../../audio/microphoneSource'
-import { setSource } from '../../audio/analyzer'
+
 import { logger } from '../../../shared/logger'
+import { setSource } from '../../audio/analyzer'
+import { getAudioSource } from '../../audio/microphoneSource'
 
 export type MediaStore = typeof mediaStore
 

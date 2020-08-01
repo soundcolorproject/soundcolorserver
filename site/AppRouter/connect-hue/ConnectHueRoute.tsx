@@ -1,8 +1,9 @@
 
-import * as React from 'react'
 import { redirectTo, RouteComponentProps, useNavigate } from '@reach/router'
-import { useStores } from '../../state/useStores'
+import * as React from 'react'
+
 import { logger } from '../../../shared/logger'
+import { useStores } from '../../state/useStores'
 
 export interface ConnectHueRouteProps extends RouteComponentProps {
 }

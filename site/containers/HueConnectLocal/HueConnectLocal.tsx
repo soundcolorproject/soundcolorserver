@@ -1,13 +1,14 @@
 
-import * as React from 'react'
+import { Redirect, RouteComponentProps } from '@reach/router'
 import { useObserver } from 'mobx-react'
-import { RouteComponentProps, Redirect } from '@reach/router'
+import * as React from 'react'
+
+import { Panel } from '../../components/Panel'
+import { PanelButton } from '../../components/PanelButton'
+import { PanelDetail } from '../../components/PanelDetail'
 import { useStores } from '../../state/useStores'
 
 import { hueConnectLocal } from './hueConnectLocal.pcss'
-import { PanelDetail } from '../../components/PanelDetail'
-import { PanelButton } from '../../components/PanelButton'
-import { Panel } from '../../components/Panel'
 
 export interface HueConnectLocalProps extends RouteComponentProps {
   'data-testid'?: string

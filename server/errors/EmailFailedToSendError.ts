@@ -1,6 +1,7 @@
 
-import { ServerError } from './ServerError'
 import { ServerErrorCode } from '../../shared/ServerErrorCode'
+
+import { ServerError } from './ServerError'
 
 export class EmailFailedToSendError extends ServerError<Error> {
   constructor (cause: Error) {

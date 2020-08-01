@@ -1,5 +1,5 @@
 
-import { GroupRoundRobinState, SetupRoundRobinFn, GetNextLightIdFn } from '../types/GroupRoundRobin'
+import { GetNextLightIdFn, GroupRoundRobinState, SetupRoundRobinFn } from '../types/GroupRoundRobin'
 
 const state = new Map<number, GroupRoundRobinState>()
 export const setupRoundRobin: SetupRoundRobinFn = async function (session, groupId, lightIds) {

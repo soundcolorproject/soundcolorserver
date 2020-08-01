@@ -1,7 +1,8 @@
 
 import { observable, reaction } from 'mobx'
-import { togglePattern, renderStateStore } from '../renderStateStore'
+
 import { patternsStore } from '../patternsStore'
+import { renderStateStore, togglePattern } from '../renderStateStore'
 
 export interface IntroStoreProp {
   intro: IntroStore

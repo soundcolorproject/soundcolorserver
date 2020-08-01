@@ -1,5 +1,5 @@
 
-import { useRef, useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 
 export type ContextType = '2d' | 'bitmaprenderer' | 'webgl' | 'webgl2'
 interface CanvasContextMapping {
