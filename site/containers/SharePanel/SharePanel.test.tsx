@@ -5,6 +5,7 @@ import { mockUseStores } from '../../state/mockUseStores'
 
 import { SharePanel } from './SharePanel'
 import { PatternsStore } from '../../state/patternsStore'
+import { RoutingStore } from '../../state/routingStore'
 
 describe(SharePanel.name, () => {
   const useStoresSpy = mockUseStores()
@@ -14,20 +15,15 @@ describe(SharePanel.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'Facebook'
 
-    const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
+    const routing: DeepPartial<RoutingStore> = {
+      showSharePanel: false,
     }
-    useStoresSpy.mockReturnValue({ patterns })
+    useStoresSpy.mockReturnValue({ routing })
 
     const mounted = render(<SharePanel />)
-    const el = mounted.getByTestId('share-panel')
+    const el = mounted.getByTestId('share-panel-facebook-button')
 
     expect(el).toHaveTextContent(expected)
   })

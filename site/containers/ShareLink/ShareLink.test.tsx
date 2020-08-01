@@ -5,6 +5,7 @@ import { mockUseStores } from '../../state/mockUseStores'
 
 import { ShareLink } from './ShareLink'
 import { PatternsStore } from '../../state/patternsStore'
+import { RoutingStore } from '../../state/routingStore'
 
 describe(ShareLink.name, () => {
   const useStoresSpy = mockUseStores()
@@ -14,17 +15,12 @@ describe(ShareLink.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'Chaky-Ras'
+    const expected = 'Share Sound Color Project'
 
-    const patterns: DeepPartial<PatternsStore> = {
-      currentPattern: 'chakras',
-      patternData: {
-        chakras: {
-          description: expected,
-        },
-      },
+    const routing: DeepPartial<RoutingStore> = {
+      showSharePanel: false,
     }
-    useStoresSpy.mockReturnValue({ patterns })
+    useStoresSpy.mockReturnValue({ routing })
 
     const mounted = render(<ShareLink />)
     const el = mounted.getByTestId('share-link')

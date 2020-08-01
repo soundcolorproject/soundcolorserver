@@ -281,11 +281,11 @@ exports[`Storyshots ColorWarning Example 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "--button-active-background": "#a4a4a4",
+        "--button-active-background": "#fcfcfc",
         "--button-active-color": "var(--black)",
         "--button-background": "#ffffff",
         "--button-color": "var(--black)",
-        "--button-hover-background": "#c5c5c5",
+        "--button-hover-background": "#fafafa",
         "--button-hover-color": "var(--black)",
       }
     }
@@ -346,8 +346,8 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -392,8 +392,8 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -460,12 +460,12 @@ exports[`Storyshots CookiePolicyPanel Example 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "--button-active-background": "#0050a4",
-              "--button-active-color": "var(--white)",
+              "--button-active-background": "#00b9fc",
+              "--button-active-color": "var(--black)",
               "--button-background": "#0080FF",
               "--button-color": "var(--black)",
-              "--button-hover-background": "#0061c5",
-              "--button-hover-color": "var(--white)",
+              "--button-hover-background": "#00b8fa",
+              "--button-hover-color": "var(--black)",
             }
           }
           type="button"
@@ -764,12 +764,12 @@ exports[`Storyshots HowItWorks Example 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "--button-active-background": "#a2b3c4",
-        "--button-active-color": "var(--black)",
+        "--button-active-background": "#0d1116",
+        "--button-active-color": "var(--white)",
         "--button-background": "#1B2128",
         "--button-color": "var(--white)",
-        "--button-hover-background": "#8a97a6",
-        "--button-hover-color": "var(--black)",
+        "--button-hover-background": "#12171c",
+        "--button-hover-color": "var(--white)",
       }
     }
     type="button"
@@ -953,7 +953,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -4,
-                "marginLeft": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
                 "marginRight": 6,
                 "marginTop": -4,
               }
@@ -980,8 +980,8 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -5,
-                "marginLeft": -5,
-                "marginRight": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
                 "marginTop": -5,
               }
             }
@@ -1010,7 +1010,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -4,
-                "marginLeft": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
                 "marginRight": 6,
                 "marginTop": -4,
               }
@@ -1037,8 +1037,8 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -5,
-                "marginLeft": -5,
-                "marginRight": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
                 "marginTop": -5,
               }
             }
@@ -1067,7 +1067,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -4,
-                "marginLeft": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
                 "marginRight": 6,
                 "marginTop": -4,
               }
@@ -1094,8 +1094,8 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -5,
-                "marginLeft": -5,
-                "marginRight": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
                 "marginTop": -5,
               }
             }
@@ -1124,7 +1124,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -4,
-                "marginLeft": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
                 "marginRight": 6,
                 "marginTop": -4,
               }
@@ -1151,8 +1151,8 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -5,
-                "marginLeft": -5,
-                "marginRight": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
                 "marginTop": -5,
               }
             }
@@ -1181,7 +1181,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -4,
-                "marginLeft": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
                 "marginRight": 6,
                 "marginTop": -4,
               }
@@ -1208,8 +1208,8 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -5,
-                "marginLeft": -5,
-                "marginRight": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
                 "marginTop": -5,
               }
             }
@@ -1238,7 +1238,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -4,
-                "marginLeft": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
                 "marginRight": 6,
                 "marginTop": -4,
               }
@@ -1265,8 +1265,8 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             style={
               Object {
                 "marginBottom": -5,
-                "marginLeft": -5,
-                "marginRight": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
                 "marginTop": -5,
               }
             }
@@ -1343,8 +1343,8 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -1383,8 +1383,8 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -1423,8 +1423,8 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -1611,8 +1611,8 @@ exports[`Storyshots PatternSelector Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -1658,8 +1658,8 @@ exports[`Storyshots PatternSelector Example 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -1852,6 +1852,129 @@ exports[`Storyshots SavedPaletteSelector Example 1`] = `
 </div>
 `;
 
+exports[`Storyshots ShareLink Example 1`] = `
+<div
+  className="shareLink"
+  data-testid="share-link"
+  onClick={[Function]}
+>
+  Share Sound Color Project
+</div>
+`;
+
+exports[`Storyshots SharePanel Example 1`] = `
+<div
+  className="sharePanel show"
+  data-testid="share-panel"
+>
+  <div
+    className="innerPanel"
+  >
+    <div
+      data-testid="share-panel-start-text"
+    >
+      Share Sound Color Project on:
+    </div>
+    <div>
+      <button
+        className="button bigButton"
+        data-testid="share-panel-facebook-button"
+        onClick={[Function]}
+        style={
+          Object {
+            "--button-active-background": "#0b4a9b",
+            "--button-active-color": "var(--white)",
+            "--button-background": "#1877F2",
+            "--button-color": "var(--white)",
+            "--button-hover-background": "#105abb",
+            "--button-hover-color": "var(--white)",
+          }
+        }
+        type="button"
+      >
+        <svg
+          className="icon iconBeforeText"
+          height={12}
+          style={
+            Object {
+              "marginBottom": undefined,
+              "marginLeft": undefined,
+              "marginRight": undefined,
+              "marginTop": undefined,
+            }
+          }
+          viewBox="0 0 1365.3333 1365.3333"
+          width={12}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        Facebook
+      </button>
+    </div>
+    <div>
+      <button
+        className="button bigButton"
+        data-testid="share-panel-twitter-button"
+        onClick={[Function]}
+        style={
+          Object {
+            "--button-active-background": "#0e669b",
+            "--button-active-color": "var(--white)",
+            "--button-background": "#1DA1F2",
+            "--button-color": "var(--white)",
+            "--button-hover-background": "#147bbb",
+            "--button-hover-color": "var(--white)",
+          }
+        }
+        type="button"
+      >
+        <svg
+          className="icon iconBeforeText"
+          height={19.200000000000003}
+          style={
+            Object {
+              "marginBottom": -3.6000000000000014,
+              "marginLeft": "calc(var(--pre-icon-padding) - 3.6000000000000014px)",
+              "marginRight": "calc(var(--post-icon-padding) - 3.6000000000000014px)",
+              "marginTop": -3.6000000000000014,
+            }
+          }
+          viewBox="0 0 400 400"
+          width={19.200000000000003}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use />
+        </svg>
+        Twitter
+      </button>
+    </div>
+    <div>
+      <a
+        data-testid="share-panel-copy-link"
+        href="/sovis"
+        onClick={[Function]}
+      >
+        Copy Link
+      </a>
+    </div>
+    <div
+      className="lastButton"
+    >
+      <button
+        className="button"
+        data-testid="share-panel-cancel-button"
+        onClick={[Function]}
+        style={Object {}}
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
 <div
   className="shrinkingPanelButton"
@@ -1870,7 +1993,7 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
       style={
         Object {
           "marginBottom": -4,
-          "marginLeft": -4,
+          "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
           "marginRight": 6,
           "marginTop": -4,
         }
@@ -1897,8 +2020,8 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
       style={
         Object {
           "marginBottom": -5,
-          "marginLeft": -5,
-          "marginRight": -5,
+          "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+          "marginRight": "calc(var(--post-icon-padding) - 5px)",
           "marginTop": -5,
         }
       }
@@ -1930,7 +2053,7 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
       style={
         Object {
           "marginBottom": -4,
-          "marginLeft": -4,
+          "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
           "marginRight": 6,
           "marginTop": -4,
         }
@@ -1957,8 +2080,8 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
       style={
         Object {
           "marginBottom": -5,
-          "marginLeft": -5,
-          "marginRight": -5,
+          "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+          "marginRight": "calc(var(--post-icon-padding) - 5px)",
           "marginTop": -5,
         }
       }
@@ -1990,7 +2113,7 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
       style={
         Object {
           "marginBottom": -4,
-          "marginLeft": -4,
+          "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
           "marginRight": 6,
           "marginTop": -4,
         }
@@ -2017,8 +2140,8 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
       style={
         Object {
           "marginBottom": -5,
-          "marginLeft": -5,
-          "marginRight": -5,
+          "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+          "marginRight": "calc(var(--post-icon-padding) - 5px)",
           "marginTop": -5,
         }
       }
@@ -2082,7 +2205,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -4,
-              "marginLeft": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
               "marginRight": 6,
               "marginTop": -4,
             }
@@ -2109,8 +2232,8 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -2139,7 +2262,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -4,
-              "marginLeft": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
               "marginRight": 6,
               "marginTop": -4,
             }
@@ -2166,8 +2289,8 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -2196,7 +2319,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -4,
-              "marginLeft": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
               "marginRight": 6,
               "marginTop": -4,
             }
@@ -2223,8 +2346,8 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -2253,7 +2376,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -4,
-              "marginLeft": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
               "marginRight": 6,
               "marginTop": -4,
             }
@@ -2280,8 +2403,8 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }
@@ -2310,7 +2433,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -4,
-              "marginLeft": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
               "marginRight": 6,
               "marginTop": -4,
             }
@@ -2337,8 +2460,8 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           style={
             Object {
               "marginBottom": -5,
-              "marginLeft": -5,
-              "marginRight": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
               "marginTop": -5,
             }
           }

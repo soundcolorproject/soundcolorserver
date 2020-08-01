@@ -69,11 +69,42 @@ export const SharePanel: React.FunctionComponent<SharePanelProps> = function Sha
   return useObserver(() => (
     <div className={cn(sharePanel, { [show]: shouldShow || routing.showSharePanel })} data-testid={testid}>
       <div className={innerPanel}>
-        <div>Share Sound Color Project on:</div>
-        <div><Button forceLightText className={bigButton} preIcon='facebook' color='#1877F2' onClick={shareFacebook}>Facebook</Button></div>
-        <div><Button forceLightText className={bigButton} preIcon='twitter' color='#1DA1F2' onClick={shareTwitter}>Twitter</Button></div>
-        <div><a href='/sovis' onClick={copyLink}>{linkCopied ? 'Link Copied!' : 'Copy Link'}</a></div>
-        <div className={lastButton}><Button onClick={() => routing.showSharePanel = false}>Cancel</Button></div>
+        <div data-testid={`${testid}-start-text`}>Share Sound Color Project on:</div>
+        <div>
+          <Button
+            forceLightText
+            className={bigButton}
+            preIcon='facebook'
+            color='#1877F2'
+            onClick={shareFacebook}
+            data-testid={`${testid}-facebook-button`}
+          >
+            Facebook
+          </Button>
+        </div>
+        <div>
+          <Button
+            forceLightText
+            className={bigButton}
+            preIcon='twitter'
+            color='#1DA1F2'
+            onClick={shareTwitter}
+            data-testid={`${testid}-twitter-button`}
+          >
+            Twitter
+          </Button>
+        </div>
+        <div>
+          <a href='/sovis' onClick={copyLink} data-testid={`${testid}-copy-link`}>{linkCopied ? 'Link Copied!' : 'Copy Link'}</a>
+        </div>
+        <div className={lastButton}>
+          <Button
+            onClick={() => routing.showSharePanel = false}
+            data-testid={`${testid}-cancel-button`}
+          >
+            Cancel
+          </Button>
+        </div>
       </div>
     </div>
   ))
