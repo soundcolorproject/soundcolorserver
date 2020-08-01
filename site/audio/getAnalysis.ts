@@ -22,7 +22,7 @@ const DEFAULT_STATS = {
 }
 
 function getStats (fft: Float32Array) {
-  const meanStats = fft.reduce((val, curr, idx) => {
+  const meanStats = fft.reduce((val, curr) => {
     if (curr > MIN_FOR_STATS) {
       val.total += curr
       val.count++
@@ -34,7 +34,7 @@ function getStats (fft: Float32Array) {
   }
   const meandB = meanStats.total / meanStats.count
 
-  const varianceStats = fft.reduce((val, curr, idx) => {
+  const varianceStats = fft.reduce((val, curr) => {
     if (curr > MIN_FOR_STATS) {
       val.total += (curr - meandB) ** 2
       val.count++

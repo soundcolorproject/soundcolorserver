@@ -1,6 +1,5 @@
 
 import { RouteComponentProps } from '@reach/router'
-import api from '@storybook/addon-storyshots'
 import { useObserver } from 'mobx-react'
 import * as React from 'react'
 
@@ -16,7 +15,7 @@ export const ConnectionsPanel: React.FunctionComponent<ConnectionsPanelProps> = 
   const {
     'data-testid': testid = 'connections-panel',
   } = props
-  const { media, apiStatus, routing } = useStores()
+  const { media, apiStatus } = useStores()
 
   const currentSource = () => {
     if (media.currentDeviceId) {

@@ -1,6 +1,4 @@
 
-import { printDigits } from '../helpers/numbers'
-
 import { parseColor } from './parseColor'
 import { RGBa, toRgb } from './toRgb'
 import { SRGBa, toSRgb } from './toSRgb'

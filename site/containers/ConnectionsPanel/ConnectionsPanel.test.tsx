@@ -5,7 +5,6 @@ import * as React from 'react'
 import { ApiStatusStore } from '../../state/apiStatusStore'
 import { MediaStore } from '../../state/mediaStore'
 import { mockUseStores } from '../../state/mockUseStores'
-import { PatternsStore } from '../../state/patternsStore'
 import { RoutingStore } from '../../state/routingStore'
 
 import { ConnectionsPanel } from './ConnectionsPanel'

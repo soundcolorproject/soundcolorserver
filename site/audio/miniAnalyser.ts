@@ -1,6 +1,4 @@
 
-import { errorString } from '../../shared/errorHelpers'
-import { logger } from '../../shared/logger'
 import { patternsStore } from '../state/patternsStore'
 
 import { getAnalyser } from './analyzer'

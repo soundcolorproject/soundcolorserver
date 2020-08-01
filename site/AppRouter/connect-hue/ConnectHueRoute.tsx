@@ -1,5 +1,5 @@
 
-import { redirectTo, RouteComponentProps, useNavigate } from '@reach/router'
+import { RouteComponentProps, useNavigate } from '@reach/router'
 import * as React from 'react'
 
 import { logger } from '../../../shared/logger'

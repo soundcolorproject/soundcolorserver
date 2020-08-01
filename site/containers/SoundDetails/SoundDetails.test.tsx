@@ -4,7 +4,6 @@ import * as React from 'react'
 
 import { AnalysisStore } from '../../state/analysisStore'
 import { mockUseStores } from '../../state/mockUseStores'
-import { PatternsStore } from '../../state/patternsStore'
 
 import { SoundDetails } from './SoundDetails'
 

@@ -48,7 +48,7 @@ export class RoutingStore {
         subRoutes: this.subRoutes,
       }),
       ({ panelRoute, subRoutes }) => {
-        const screenName = this.subRoutes.length > 0 ? this.subRoutes[0] : this.panelRoute
+        const screenName = subRoutes.length > 0 ? subRoutes[0] : panelRoute
         logger.info('firing screen view event for', screenName)
         gtag('event', 'screen_view', {
           screen_name: screenName,

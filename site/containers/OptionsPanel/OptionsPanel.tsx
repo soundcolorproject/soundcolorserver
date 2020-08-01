@@ -5,7 +5,6 @@ import * as React from 'react'
 
 import { Panel } from '../../components/Panel'
 import { PanelButton } from '../../components/PanelButton'
-import { useStores } from '../../state/useStores'
 
 import { optionsPanel } from './optionsPanel.pcss'
 

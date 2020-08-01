@@ -1,5 +1,6 @@
 
 import * as yargs from 'yargs'
+
 import { config, init } from '../server/config'
 import { logger } from '../shared/logger'
 

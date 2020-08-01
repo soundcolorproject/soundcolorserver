@@ -3,7 +3,6 @@ import { Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
 
 import { config } from '../config'
-import { deleteRemoteCredentials } from '../db/remoteCredentials'
 import { getApi } from '../hue-helpers/getApi'
 
 import { apiRouter } from './api'
@@ -18,7 +17,7 @@ if (config.remoteApi) {
     }
   }))
 
-  router.get('/logout', asyncHandler(async (req, res) => {
+  router.get('/logout', asyncHandler(async (_req, res) => {
     await res.clearSession()
     res.redirect('/sovis')
   }))

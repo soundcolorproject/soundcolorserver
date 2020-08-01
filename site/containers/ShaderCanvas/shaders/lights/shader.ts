@@ -1,5 +1,5 @@
 
-import { buildProgram, BuiltProgramWithUniforms } from '../../helpers/buildProgram'
+import { buildProgram } from '../../helpers/buildProgram'
 import {
   CommonShaderBuilder,
   COMMON_META,

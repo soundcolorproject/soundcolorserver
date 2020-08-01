@@ -1,8 +1,6 @@
 
 import { useMemo } from 'react'
 
-import { logger } from '../../shared/logger'
-
 import { AnalysisProp, analysisStore } from './analysisStore'
 import { ApiStatusProp, apiStatusStore } from './apiStatusStore'
 import { introStore, IntroStoreProp } from './introStore'

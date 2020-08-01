@@ -1,8 +1,9 @@
 
-import { join } from 'path'
 import { app, BrowserWindow } from 'electron'
-import { sleep } from './helpers'
+import { join } from 'path'
+
 import { args } from './args'
+import { sleep } from './helpers'
 
 let loadingWindow: BrowserWindow | null = null
 

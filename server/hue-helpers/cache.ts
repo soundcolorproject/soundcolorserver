@@ -2,7 +2,6 @@
 import * as Cache from 'node-cache'
 
 import { HueApi } from '../hue/api'
-import { OAuthTokens, RemoteCredentials } from '../hue/api/remote'
 
 const localCache = new Cache({
   checkperiod: 30,  // check for expired items every 30 seconds

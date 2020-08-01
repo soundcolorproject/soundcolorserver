@@ -1,5 +1,4 @@
 
-import { logger } from '../../shared/logger'
 import { dBtoVolume, MAX_TONES, ToneInfo } from '../audio/getAnalysis'
 import { getLuminance } from '../pcss-functions'
 import { HSLa } from '../pcss-functions/toHsl'

@@ -8,8 +8,6 @@ import { PanelButton } from '../../components/PanelButton'
 import { PanelDetail } from '../../components/PanelDetail'
 import { useStores } from '../../state/useStores'
 
-import { hueGroupSelector } from './hueGroupSelector.pcss'
-
 export interface HueGroupSelectorProps extends RouteComponentProps {
   'data-testid'?: string
 }

@@ -1,7 +1,8 @@
 
-import { bootstrap } from './bootstrap'
 import { FatalError } from '../server/errors/FatalError'
 import { logger } from '../shared/logger'
+
+import { bootstrap } from './bootstrap'
 
 bootstrap().catch(e => {
   logger.fatal(e)

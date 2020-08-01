@@ -1,8 +1,6 @@
 
 import { RefObject, useLayoutEffect, useRef, useState } from 'react'
 
-import { logger } from '../../shared/logger'
-
 export interface DimensionObject {
   readonly width: number
   readonly height: number

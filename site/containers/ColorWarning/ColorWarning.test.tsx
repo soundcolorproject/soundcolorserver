@@ -4,7 +4,6 @@ import * as React from 'react'
 
 import { IntroStore } from '../../state/introStore'
 import { mockUseStores } from '../../state/mockUseStores'
-import { PatternsStore } from '../../state/patternsStore'
 
 import { ColorWarning } from './ColorWarning'
 

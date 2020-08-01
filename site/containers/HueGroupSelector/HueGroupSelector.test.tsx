@@ -4,7 +4,6 @@ import * as React from 'react'
 
 import { ApiStatusStore } from '../../state/apiStatusStore'
 import { mockUseStores } from '../../state/mockUseStores'
-import { PatternsStore } from '../../state/patternsStore'
 import { RoutingStore } from '../../state/routingStore'
 
 import { HueGroupSelector } from './HueGroupSelector'

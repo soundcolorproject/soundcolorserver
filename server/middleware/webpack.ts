@@ -59,7 +59,7 @@ export function webpackHotMiddleware (): express.RequestHandler {
     })
   } catch (e) {
 
-    return (req, res, next) => next()
+    return (_req, _res, next) => next()
   }
 }
 

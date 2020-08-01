@@ -1,7 +1,7 @@
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as webpack from 'webpack'
 
 import * as pcssFunctions from '../../site/pcss-functions'
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export const styleRules = (dev: boolean, onlyTypes = false): webpack.RuleSetRule[] => [
   {

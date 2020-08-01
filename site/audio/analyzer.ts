@@ -10,7 +10,6 @@ let analyser: AnalyserNode
 let fftArray: Float32Array
 let analyserPromise: Promise<AnalyserNode>
 let prevSource: AudioNode | null = null
-let userMedia: MediaStream | null = null
 
 export async function getAnalyser () {
   if (!analyserPromise) {

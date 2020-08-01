@@ -1,17 +1,16 @@
 
-import * as webpack from 'webpack'
-import * as path from 'path'
-
-import * as HtmlWebpackPlugin from 'html-webpack-plugin'
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import * as CopyWebpackPlugin from 'copy-webpack-plugin'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import * as path from 'path'
+import * as webpack from 'webpack'
 import { InjectManifest } from 'workbox-webpack-plugin'
-import { WatchMissingNodeModulesPlugin } from './WatchMissingNodeModulesPlugin'
-
-import { Constants } from './constants'
 
 import { config } from '../../server/config'
+
+import { Constants } from './constants'
+import { WatchMissingNodeModulesPlugin } from './WatchMissingNodeModulesPlugin'
 
 export function buildDefinePlugin (appMode = false) {
   return new webpack.DefinePlugin({

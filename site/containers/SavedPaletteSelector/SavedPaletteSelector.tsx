@@ -3,7 +3,6 @@ import { RouteComponentProps } from '@reach/router'
 import { useObserver } from 'mobx-react'
 import * as React from 'react'
 
-import { Button } from '../../components/Button'
 import { Panel } from '../../components/Panel'
 import { PanelButton } from '../../components/PanelButton'
 import { PanelDetail } from '../../components/PanelDetail'
@@ -11,9 +10,7 @@ import { togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
 import {
-  deleteButton,
   favoriteButton,
-  favoriteText,
   savedPaletteSelector,
 } from './savedPaletteSelector.pcss'
 

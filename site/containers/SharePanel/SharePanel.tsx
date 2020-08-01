@@ -5,7 +5,6 @@ import { useObserver } from 'mobx-react'
 import * as React from 'react'
 
 import { Button } from '../../components/Button'
-import { LinkButton } from '../../components/LinkButton'
 import { fullShareText, shareImage, shareText, shareTitle, shareUrl } from '../../helpers/share'
 import { useStores } from '../../state/useStores'
 

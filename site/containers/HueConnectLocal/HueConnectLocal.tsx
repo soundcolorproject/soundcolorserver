@@ -1,5 +1,5 @@
 
-import { Redirect, RouteComponentProps } from '@reach/router'
+import { RouteComponentProps } from '@reach/router'
 import { useObserver } from 'mobx-react'
 import * as React from 'react'
 

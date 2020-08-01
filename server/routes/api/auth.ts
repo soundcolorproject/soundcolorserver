@@ -7,7 +7,6 @@ import { logger } from '../../../shared/logger'
 import { config } from '../../config'
 import { OAuthProvider, verifyOauthState } from '../../db/oauthState'
 import { InvalidOauthCallbackError } from '../../errors/InvalidOauthCallbackError'
-import { NoHeaderError } from '../../errors/NoHeaderError'
 import { NoLocalBridgesError } from '../../errors/NoLocalBridgesError'
 import { createApiFromAccessCode, getApi, getLocalApi } from '../../hue-helpers/getApi'
 
@@ -70,7 +69,7 @@ if (config.remoteApi) {
     res.status(400).send('Something went wrong, please try again.')
   }))
 } else {
-  authRouter.get('/connect', asyncHandler(async (req, res) => {
+  authRouter.get('/connect', asyncHandler(async (_req, res) => {
     let status: ConnectionStatus = 'not connected'
     try {
       const api = await getLocalApi()

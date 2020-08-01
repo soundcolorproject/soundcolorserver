@@ -1,14 +1,13 @@
 
-import * as webpack from 'webpack'
-import * as path from 'path'
-
-import * as TerserPlugin from 'terser-webpack-plugin'
 import * as OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import * as path from 'path'
+import * as TerserPlugin from 'terser-webpack-plugin'
+import * as webpack from 'webpack'
 
 import { codeRules, glslRule } from './code'
-import { styleRules } from './styles'
 import { buildConstants } from './constants'
 import { buildPlugins } from './plugins'
+import { styleRules } from './styles'
 
 function createConfig ({ prod = false, appMode = false } = {}): webpack.Configuration & { devServer: { [k: string]: any } } {
   const dev = !prod

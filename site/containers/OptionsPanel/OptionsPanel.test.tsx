@@ -3,7 +3,6 @@ import { render } from '@testing-library/react'
 import * as React from 'react'
 
 import { mockUseStores } from '../../state/mockUseStores'
-import { PatternsStore } from '../../state/patternsStore'
 
 import { OptionsPanel } from './OptionsPanel'
 

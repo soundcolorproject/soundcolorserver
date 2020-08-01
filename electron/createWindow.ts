@@ -1,7 +1,9 @@
 
-import { BrowserWindow, app, screen } from 'electron'
+import { BrowserWindow, screen } from 'electron'
+
 import { config } from '../server/config'
 import { logger } from '../shared/logger'
+
 import { args } from './args'
 
 export async function createWindow () {

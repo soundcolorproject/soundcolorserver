@@ -1,7 +1,6 @@
 
 import { action, observable } from 'mobx'
 
-import { logger } from '../../../shared/logger'
 import { Analysis, getAnalysis } from '../../audio/getAnalysis'
 import { getMiniFft } from '../../audio/miniAnalyser'
 

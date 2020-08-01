@@ -4,7 +4,6 @@ import * as React from 'react'
 
 import { MediaStore } from '../../state/mediaStore'
 import { mockUseStores } from '../../state/mockUseStores'
-import { PatternsStore } from '../../state/patternsStore'
 import { RoutingStore } from '../../state/routingStore'
 
 import { AudioSourceSelector } from './AudioSourceSelector'

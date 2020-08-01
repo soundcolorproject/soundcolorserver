@@ -9,8 +9,18 @@ import { useStores } from '../../state/useStores'
 
 import { hidden, shareLink } from './shareLink.pcss'
 
-interface Navigator {
+interface ShareArgs {
+  title?: string
+  text?: string
+  url?: string
+  files?: ReadonlyArray<any>
+}
 
+declare global {
+  interface Navigator {
+    canShare (args: ShareArgs): boolean
+    share (args: ShareArgs): Promise<void>
+  }
 }
 
 export interface ShareLinkProps extends RouteComponentProps {
@@ -25,11 +35,11 @@ export const ShareLink: React.FunctionComponent<ShareLinkProps> = function Share
 
   const handleClick = () => {
     if ('share' in navigator) {
-      (navigator as any).share({
+      navigator.share({
         title: shareTitle,
         text: shareText,
         url: shareUrl,
-      })
+      }).catch()
     } else {
       routing.showSharePanel = true
     }

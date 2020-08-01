@@ -9,13 +9,11 @@ import { PatternName } from '../../state/patternsStore'
 import { togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
-import { patternSelector } from './patternSelector.pcss'
-
 export interface PatternSelectorProps extends RouteComponentProps {
 }
 
 export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = function PatternSelector (_props) {
-  const { patterns, routing, renderState } = useStores()
+  const { patterns, renderState } = useStores()
   const setPattern = (name: PatternName) => React.useCallback(() => {
     patterns.currentPattern = name
     if (!renderState.showColors) {

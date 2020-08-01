@@ -7,7 +7,7 @@ import { AnalysisProp } from '../../state/analysisStore'
 import { RenderStateProp } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
-import { bar, miniAnalyser } from './miniAnalyser.pcss'
+import { miniAnalyser } from './miniAnalyser.pcss'
 
 interface OwnProps {
 }

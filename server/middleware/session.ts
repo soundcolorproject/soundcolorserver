@@ -27,7 +27,7 @@ export const sessionMiddleware: RequestHandler = config.remoteApi
 
   next()
 })
-: (req, res, next) => {
+: (req, _res, next) => {
   req.getSessionId = () => 'dummy session'
   next()
 }

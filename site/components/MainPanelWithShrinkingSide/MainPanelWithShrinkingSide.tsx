@@ -2,7 +2,6 @@
 import * as cn from 'classnames'
 import * as React from 'react'
 
-import { logger } from '../../../shared/logger'
 import { useTransition } from '../../hooks/useTransition'
 
 import {

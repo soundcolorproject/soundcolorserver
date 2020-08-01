@@ -6,7 +6,7 @@ import { getLocalBridges } from '../../hue-helpers/getLocalBridges'
 
 export const localRouter = Router()
 
-localRouter.get('/bridges', asyncHandler(async (req, res) => {
+localRouter.get('/bridges', asyncHandler(async (_req, res) => {
   const bridges = await getLocalBridges()
   res.json(bridges)
 }))

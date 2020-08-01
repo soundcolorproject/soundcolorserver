@@ -1,12 +1,14 @@
 /// <reference path="../server/globals.d.ts" />
 
-import { app, BrowserWindow, Menu, MenuItemConstructorOptions, MenuItem } from 'electron'
+import { app, BrowserWindow, Menu, MenuItem, MenuItemConstructorOptions } from 'electron'
+
+import { config } from '../server/config'
 import { startup } from '../server/startup'
 import { logger } from '../shared/logger'
-import { createWindow } from './createWindow'
-import { config } from '../server/config'
-import { createLoadingWindow, destroyLoadingWindow } from './createLoadingWindow'
+
 import { args } from './args'
+import { createLoadingWindow, destroyLoadingWindow } from './createLoadingWindow'
+import { createWindow } from './createWindow'
 
 const isMac = process.platform === 'darwin'
 async function prepareApplication () {
