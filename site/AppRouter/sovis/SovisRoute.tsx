@@ -178,7 +178,7 @@ export function SovisRoute (props: SovisRouteProps) {
     if (routing.subRoutes.length > 0) {
       routing.popSubroute()
     } else {
-      routing.panelRoute = 'home'
+      routing.setPanelRoute('home', 'none')
     }
   }, [routing])
 

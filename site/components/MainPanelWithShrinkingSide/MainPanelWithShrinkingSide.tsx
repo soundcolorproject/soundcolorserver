@@ -11,6 +11,7 @@ import {
   transitionLeft,
   transitionUp,
   transitionDown,
+  transitionNone,
   prev,
   next,
   current,
@@ -18,7 +19,7 @@ import {
 import { useTransition } from '../../hooks/useTransition'
 import { logger } from '../../../shared/logger'
 
-export type TransitionDirection = 'up' | 'down' | 'left' | 'right'
+export type TransitionDirection = 'up' | 'down' | 'left' | 'right' | 'none'
 
 export interface Props {
   prePanel?: React.ReactNode
@@ -87,6 +88,9 @@ export function MainPanelWithShrinkingSide (props: Props) {
       break
     case 'down':
       transitionClass = transitionDown
+      break
+    case 'none':
+      transitionClass = transitionNone
       break
   }
 
