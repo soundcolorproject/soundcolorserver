@@ -1,8 +1,12 @@
 
-declare const __REMOTE_API__: boolean
+///<reference types="gtag.js" />
+
+declare const __JEST__: boolean
 declare const __LOG_LEVEL__: 'debug' | 'info' | 'log' | 'warn' | 'error' | 'fatal' | 'none'
 declare const __DEV__: boolean
 declare const __BUILD_VERSION__: string
+declare const __APP_MODE__: boolean
+declare const __FORCED_FULLSCREEN__: boolean
 
 declare module '*.webm' {
   const result: string
@@ -48,4 +52,12 @@ interface Navigator {
 declare const gtagPatched: typeof gtag
 interface Window {
   gtagPatched: typeof gtag
+}
+
+declare type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T[P] extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : DeepPartial<T[P]>
 }

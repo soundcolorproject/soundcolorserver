@@ -1,93 +1,65 @@
 
+import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { AnalysisProp } from '../../state/analysisStore'
-import { PatternsProp } from '../../state/patternsStore'
-import { RenderStateProp } from '../../state/renderStateStore'
+
 import { ToneInfo } from '../../audio/getAnalysis'
+import { Panel } from '../../components/Panel'
+import { PanelDetail } from '../../components/PanelDetail'
+import { useStores } from '../../state/useStores'
 
-import { soundDetails, detail, name, value } from './soundDetails.pcss'
+import { detailName, soundDetails } from './soundDetails.pcss'
 
-interface OwnProps {
-  height?: number
-  domRef?: React.Ref<HTMLDivElement>
+export interface SoundDetailsProps extends RouteComponentProps {
+  'data-testid'?: string
 }
 
-type StateProps =
-  & AnalysisProp
+export const SoundDetails: React.FunctionComponent<SoundDetailsProps> = function SoundDetails (props: SoundDetailsProps) {
+  const {
+    'data-testid': testid = 'sound-details',
+  } = props
+  const { analysis } = useStores()
 
-export type SoundDetailsProps = OwnProps & StateProps
+  const renderDetails = (info?: ToneInfo) => {
+    const noiseVolume = info && analysis.noise ? `${analysis.noise.toFixed(2)} dB` : '•'
+    const toneVolume = info ? `${info.dB.toFixed(0)} dB` : '•'
+    const frequency = info ? `${info.frequency.toFixed(2)} hz` : '•'
+    const note = info ? `${info.note.note} ${info.note.octave}` : '•'
+    const cents = info ? `${info.note.cents.toFixed(2)}` : '•'
 
-export const SoundDetails = injectAndObserve<StateProps, OwnProps>(
-  ({ analysis }) => ({ analysis }),
-  class SoundDetails extends React.Component<SoundDetailsProps> {
-    renderDetails = ({ dB, frequency, note: { note, cents, octave } }: ToneInfo, idx: number) => {
-      return (
-        <>
-          <div className={detail}>
-            <span className={name}>Tone volume: </span>
-            <span className={value}>{dB.toFixed(0)} dB</span>
-          </div>
-          <div className={detail}>
-            <span className={name}>Frequency: </span>
-            <span className={value}>{frequency.toFixed(2)} hz</span>
-          </div>
-          <div className={detail}>
-            <span className={name}>Note: </span>
-            <span className={value}>{note} {octave}</span>
-          </div>
-          <div className={detail}>
-            <span className={name}>Cents ♭: </span>
-            <span className={value}>{cents.toFixed(2)}</span>
-          </div>
-        </>
-      )
-    }
-
-    renderEmptyDetails = () => (
+    return (
       <>
-        <div className={detail}>
-          <span className={name}>Tone volume: </span>
-          <span className={value}>•</span>
-        </div>
-        <div className={detail}>
-          <span className={name}>Frequency: </span>
-          <span className={value}>•</span>
-        </div>
-        <div className={detail}>
-          <span className={name}>Note: </span>
-          <span className={value}>•</span>
-        </div>
-        <div className={detail}>
-          <span className={name}>Cents ♭: </span>
-          <span className={value}>•</span>
-        </div>
+        <PanelDetail data-testid={`${testid}-noise`}>
+          <span className={detailName}>Noise volume: </span>
+          <span>{noiseVolume}</span>
+        </PanelDetail>
+        <PanelDetail data-testid={`${testid}-tone`}>
+          <span className={detailName}>Primary Tone Volume: </span>
+          <span>{toneVolume}</span>
+        </PanelDetail>
+        <PanelDetail data-testid={`${testid}-freq`}>
+          <span className={detailName}>Primary Frequency: </span>
+          <span>{frequency}</span>
+        </PanelDetail>
+        <PanelDetail data-testid={`${testid}-note`}>
+          <span className={detailName}>Primary Note: </span>
+          <span>{note}</span>
+        </PanelDetail>
+        <PanelDetail data-testid={`${testid}-cents`}>
+          <span className={detailName}>Cents ♭: </span>
+          <span>{cents}</span>
+        </PanelDetail>
       </>
     )
+  }
 
-    render () {
-      const { analysis, domRef } = this.props
-      const { noise, tones } = analysis
-
-      return (
-        <div ref={domRef} className={soundDetails}>
-          <div className={detail}>
-            <span className={name}>Noise volume: </span>
-            <span className={value}>
-              {
-                Number.isFinite(noise) && noise !== 0
-                  ? `${noise.toFixed(0)} dB`
-                  : '•'
-              }
-            </span>
-          </div>
-          {
-            tones.length > 0
-              ? this.renderDetails(tones[0], 0)
-              : this.renderEmptyDetails()
-          }
-        </div>
-      )
-    }
-  },
-)
+  return useObserver(() => (
+    <Panel title='Sound Details' className={soundDetails} data-testid={testid}>
+      {
+        analysis.tones.length >= 1
+          ? renderDetails(analysis.tones[0])
+          : renderDetails()
+      }
+    </Panel>
+  ))
+}

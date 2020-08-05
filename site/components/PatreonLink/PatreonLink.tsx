@@ -1,8 +1,9 @@
 
 import * as React from 'react'
 
-import { patreonLink, icon } from './patreonLink.pcss'
 import { Icon } from '../Icon'
+
+import { icon, patreonLink } from './patreonLink.pcss'
 
 export interface PatreonLinkProps {
   className?: string

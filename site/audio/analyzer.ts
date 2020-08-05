@@ -1,15 +1,15 @@
 
-import { context } from './context'
-import { getAudioSource } from './microphoneSource'
-import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
+import { patternsStore } from '../state/patternsStore'
+
+import { getContext } from './context'
+import { getAudioSource } from './microphoneSource'
 
 export const fftSize = 32768 // maximum size allowed
 let analyser: AnalyserNode
 let fftArray: Float32Array
 let analyserPromise: Promise<AnalyserNode>
 let prevSource: AudioNode | null = null
-let userMedia: MediaStream | null = null
 
 export async function getAnalyser () {
   if (!analyserPromise) {
@@ -17,7 +17,7 @@ export async function getAnalyser () {
       const source = prevSource || await getAudioSource()
       prevSource = source
 
-      analyser = context.createAnalyser()
+      analyser = getContext().createAnalyser()
       analyser.fftSize = fftSize
       analyser.smoothingTimeConstant = patternsStore.timeSmoothing
 

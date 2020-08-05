@@ -1,10 +1,13 @@
 
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { AnalysisProp } from '../../state/analysisStore'
 
-import { miniAnalyser, bar } from './miniAnalyser.pcss'
+import { useCanvasContext } from '../../hooks/useCanvasContext'
+import { AnalysisProp } from '../../state/analysisStore'
 import { RenderStateProp } from '../../state/renderStateStore'
+import { useStores } from '../../state/useStores'
+
+import { miniAnalyser } from './miniAnalyser.pcss'
 
 interface OwnProps {
 }
@@ -30,39 +33,25 @@ function renderAnalyser (context: CanvasRenderingContext2D, fft: Float32Array, w
   context.fill(path)
 }
 
-function useContext (): [React.RefObject<HTMLCanvasElement>, CanvasRenderingContext2D | null] {
-  const ref = React.useRef<HTMLCanvasElement>(null)
-  const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null)
+export function CanvasMiniAnalyser () {
+  const { analysis, renderState } = useStores()
+  const [canvasRef, context] = useCanvasContext('2d')
 
-  React.useEffect(() => {
-    if (ref.current) {
-      setContext(ref.current.getContext('2d'))
-    } else {
-      setContext(null)
-    }
-  }, [ref.current])
-
-  return [ref, context]
-}
-
-export const CanvasMiniAnalyser = injectAndObserve<StateProps, OwnProps>(
-  ({ analysis, renderState }) => ({ analysis, renderState }),
-  function CanvasMiniAnalyser (props: CanvasMiniAnalyserProps) {
-    const { analysis, renderState } = props
-    const [ref, context] = useContext()
+  return useObserver(() => {
     // tslint:disable-next-line: no-unused-expression
     analysis.tones // required in order to force-re-render on update
 
     if (context) {
-      const width = ref.current?.width || window.innerWidth
+      const width = canvasRef.current?.width || window.innerWidth
       if (!renderState.showColors) {
         context.clearRect(0, 0, width, 500)
       } else {
         renderAnalyser(context, analysis.miniFft, width, 500)
       }
     }
+
     return (
-      <canvas ref={ref} id={miniAnalyser} height={500} width={window.innerWidth} />
+      <canvas ref={canvasRef} id={miniAnalyser} height={500} width={window.innerWidth} />
     )
-  },
-)
+  })
+}

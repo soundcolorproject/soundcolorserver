@@ -1,11 +1,10 @@
 
 import { printDigits } from '../helpers/numbers'
+
 import { colorConversion } from './constants'
 import { parseColor } from './parseColor'
-
-import { toRgb, RGBa } from './toRgb'
 import { HSLa } from './toHsl'
-
+import { RGBa, toRgb } from './toRgb'
 import { Color } from './types'
 
 export function toSRgb (color: Color): SRGBa {

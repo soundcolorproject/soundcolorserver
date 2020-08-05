@@ -1,8 +1,7 @@
 
-import { RGBa } from './toRgb'
 import { HSLa } from './toHsl'
-
-import { Color, ParsedColor } from './types'
+import { RGBa } from './toRgb'
+import { ParsedColor } from './types'
 
 const hexDigit = '[0-9a-f]'
 const num = '[\-+]?[0-9\.]+'

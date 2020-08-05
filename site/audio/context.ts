@@ -1,10 +1,18 @@
 
-import { renderStateStore } from '../state/renderStateStore'
 import { logger } from '../../shared/logger'
+import { renderStateStore } from '../state/renderStateStore'
 
-export const context = new AudioContext({
-  latencyHint: 'playback',
-})
+let context: AudioContext | null = null
+
+export function getContext () {
+  if (!context) {
+    context = new AudioContext({
+      latencyHint: 'playback',
+    })
+  }
+
+  return context
+}
 
 let onResume: () => void
 export const resumePromise = new Promise(resolve => {
@@ -16,7 +24,7 @@ export function resume () {
   logger.info('resume called')
   if (!internalResumePromise) {
     renderStateStore.showColors = true
-    internalResumePromise = context.resume().then(onResume)
+    internalResumePromise = getContext().resume().then(onResume)
   }
 
   return internalResumePromise

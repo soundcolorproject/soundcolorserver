@@ -1,7 +1,7 @@
 
-import * as webpack from 'webpack'
-import * as path from 'path'
 import * as glob from 'glob'
+import * as path from 'path'
+import * as webpack from 'webpack'
 
 // This has to be done because there aren't typings for disable-output-webpack-plugin
 const DisableOutputWebpackPlugin = require('disable-output-webpack-plugin')

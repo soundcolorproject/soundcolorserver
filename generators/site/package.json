@@ -1,0 +1,10 @@
+{
+  "name": "generator-site",
+  "version": "1.0.0",
+  "private": true,
+  "author": "kgroat",
+  "license": "ISC",
+  "scripts": {
+    "postinstall": "./jakefile.js build"
+  }
+}

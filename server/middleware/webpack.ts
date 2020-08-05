@@ -1,9 +1,11 @@
 
-import * as path from 'path'
 import * as express from 'express'
+import * as path from 'path'
 import * as wp from 'webpack'
 import * as wdm from 'webpack-dev-middleware'
 import * as whm from 'webpack-hot-middleware'
+
+import { config } from '../config'
 
 let compiler: wp.Compiler | null = null
 let compilerError: Error | null = null
@@ -13,7 +15,7 @@ function getCompiler () {
   } else if (!compiler) {
     try {
       const webpack = require('webpack') as typeof wp
-      compiler = webpack(require('../../config/webpack').default())
+      compiler = webpack(require('../../config/webpack').default({ appMode: config.standaloneApp }))
       // tslint:disable-next-line: no-console
       console.info('Using webpack middleware')
     } catch (e) {
@@ -57,7 +59,7 @@ export function webpackHotMiddleware (): express.RequestHandler {
     })
   } catch (e) {
 
-    return (req, res, next) => next()
+    return (_req, _res, next) => next()
   }
 }
 

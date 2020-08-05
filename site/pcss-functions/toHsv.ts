@@ -1,9 +1,7 @@
 
-import { printDigits } from '../helpers/numbers'
 import { parseColor } from './parseColor'
-
-import { toRgb, RGBa } from './toRgb'
-
+import { RGBa, toRgb } from './toRgb'
+import { SRGBa, toSRgb } from './toSRgb'
 import { Color } from './types'
 
 export function toHsv (color: Color): HSVa {
@@ -15,7 +13,7 @@ export function toHsv (color: Color): HSVa {
     return color
   }
 
-  return HSVa.fromRgb(toRgb(color))
+  return HSVa.fromRgb(toSRgb(color))
 }
 
 export class HSVa {
@@ -29,10 +27,11 @@ export class HSVa {
   ) {}
 
   toString () {
+    // TODO: Fix translation back to hex code
     return toRgb(this).toString()
   }
 
-  valueOf () {
+  valueOf (): [number, number, number, number] {
     return [this.h,this.s,this.v,this.a]
   }
 
@@ -40,8 +39,8 @@ export class HSVa {
     return new HSVa(this.h, this.s, this.v, this.a)
   }
 
-  static fromRgb (orig: RGBa) {
-    if (orig.type !== 'RGBa') {
+  static fromRgb (orig: RGBa | SRGBa) {
+    if (orig.type !== 'RGBa' && orig.type !== 'SRGBa') {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 

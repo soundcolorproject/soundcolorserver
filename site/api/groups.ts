@@ -1,5 +1,6 @@
 
 import { ApiGroupInfo, ApiSelectGroup, ApiSetGroupColor } from '../../shared/apiTypes/hue'
+
 import { apiGet, apiPost } from './fetcher'
 
 export async function getGroups (): Promise<ApiGroupInfo[]> {

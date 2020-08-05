@@ -1,9 +1,10 @@
 
-import { Router, Request, Response } from 'express'
+import { Request, Response, Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { sendSimpleEmailWithRetry } from '../../helpers/email'
+
 import { SendEmailRequest, SendEmailResponse } from '../../../shared/apiTypes/email'
 import { logger } from '../../../shared/logger'
+import { sendSimpleEmailWithRetry } from '../../helpers/email'
 
 export const emailRouter = Router()
 

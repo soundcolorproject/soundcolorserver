@@ -1,12 +1,14 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import * as React from 'react'
+
+import { DisplayMapper } from '../../containers/ShaderCanvas/shaderName'
 
 import {
-  sliderLabel,
   sliderDetails,
-  sliderValue,
   sliderInput,
+  sliderLabel,
+  sliderValue,
 } from './slider.pcss'
 
 export interface SliderProps {
@@ -17,8 +19,11 @@ export interface SliderProps {
   max: number
   step?: number
   className?: string
+  displayMapper?: DisplayMapper
+  'data-testid'?: string
 }
 
+const DEFAULT_DISPLAY_MAPPER: DisplayMapper = (value, min, max) => ((value - min) / (max - min)).toFixed(2)
 export function Slider (props: SliderProps) {
   const {
     label,
@@ -28,6 +33,8 @@ export function Slider (props: SliderProps) {
     max,
     step = (max - min) / 100,
     className,
+    displayMapper = DEFAULT_DISPLAY_MAPPER,
+    'data-testid': testid = 'slider',
   } = props
 
   const handleChange = React.useMemo(() => function handleChange (ev: React.ChangeEvent<HTMLInputElement>) {
@@ -40,11 +47,11 @@ export function Slider (props: SliderProps) {
   }, [onChange])
 
   return (
-    <label className={cn(sliderLabel, className)}>
+    <label className={cn(sliderLabel, className)} data-testid={testid}>
       <div className={sliderDetails}>
-        <div>{label}</div>
-        <div className={sliderValue}>
-          {((value - min) / (max - min)).toFixed(2)}
+        <div data-testid={`${testid}-label`}>{label}</div>
+        <div className={sliderValue} data-testid={`${testid}-value`}>
+          {displayMapper(value, min, max)}
         </div>
       </div>
       <input

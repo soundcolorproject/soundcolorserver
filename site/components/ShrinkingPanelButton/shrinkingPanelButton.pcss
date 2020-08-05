@@ -1,0 +1,91 @@
+
+.shrinking-panel-button {
+  padding: 8px;
+  background: var(--grey-05);
+  color: var(--black);
+  transition: background 0.3s;
+
+  &.shrunk {
+    cursor: pointer;
+
+    &.active-style {
+      background: var(--white);
+    }
+
+    &:hover {
+      background: var(--grey-10);
+    }
+    &:active {
+      background: var(--grey-30);
+    }
+
+    .hover-color, .hover-color:hover {
+      background: transparent !important;
+      color: var(--black);
+
+      .button-icon {
+        fill: var(--black) !important;
+      }
+    }
+
+    .text {
+      opacity: 0;
+      flex-grow: 0 !important;
+      flex-shrink: 1 !important;
+      flex-basis: 0 !important;
+
+      & + .button-icon {
+        flex-grow: 0;
+        flex-shrink: 1;
+        opacity: 0;
+        flex-basis: 0;
+      }
+    }
+  }
+
+  .hover-color {
+    color: var(--black);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    padding: 6px 8px;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+
+    .button-icon {
+      flex-shrink: 0;
+      fill: var(--black);
+      transition: fill 0.3s, opacity 0.3s, flex-grow 0.3s, flex-shrink 0.3s;
+    }
+
+    .text {
+      flex-grow: 1;
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity 0.3s, flex-grow 0.3s, flex-shrink 0.3s;
+    }
+
+    &:hover {
+      background-color: var(--black);
+      color: var(--white);
+
+      .button-icon {
+        fill: var(--white);
+      }
+    }
+
+    &:active {
+      background: var(--grey-80);
+      color: var(--white);
+
+      .button-icon {
+        fill: var(--white);
+      }
+    }
+  }
+}

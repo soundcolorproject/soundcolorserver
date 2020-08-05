@@ -1,26 +1,24 @@
 
-import { observable, reaction, action } from 'mobx'
-import { isLoggedIn } from '../../api/isLoggedIn'
+import { action, observable, reaction, runInAction } from 'mobx'
+
+import { ApiGroupInfo, ConnectionStatus, GroupColorMode } from '../../../shared/apiTypes/hue'
+import { errorString } from '../../../shared/errorHelpers'
 import { logger } from '../../../shared/logger'
-import { selectGroup, setColor, getGroups } from '../../api/groups'
+import { connectToLocalApi } from '../../api/connect'
+import { getGroups, selectGroup, setColor } from '../../api/groups'
+import { isLoggedIn } from '../../api/isLoggedIn'
 import { getColorsFromAnalysis } from '../../helpers/analysisColors'
-import { GroupColorMode, ApiGroupInfo } from '../../../shared/apiTypes/hue'
 import { patternsStore } from '../patternsStore'
 import { renderStateStore } from '../renderStateStore'
-import { errorString } from '../../../shared/errorHelpers'
 
 export interface ApiStatusProp {
   apiStatus: ApiStatusStore
 }
 
-const TEN_SECONDS = 1000 * 10
+declare const __REMOTE_API__: boolean
+const ALLOW_COOKIES_KEY = 'allow-cookies'
 export class ApiStatusStore {
   constructor () {
-    reaction(
-      () => this.offline,
-      this._testOnlineStatus,
-    )
-
     reaction(
       () => this.lightGroupId,
       this._setLightGroup,
@@ -35,33 +33,56 @@ export class ApiStatusStore {
       this._transmitColorData,
     )
 
-    isLoggedIn().then(loggedIn => {
-      this.authenticated = loggedIn
-      if (loggedIn) {
-        this.fetchLightGroups().catch(e => {
-          logger.error('Failed to fetch light groups:', e)
+    reaction(
+      () => this.allowCookies,
+      (allow) => {
+        localStorage.setItem(ALLOW_COOKIES_KEY, allow ? 'true' : 'false')
+      },
+    )
+
+    setTimeout(() => {
+      this.checkLoginStatus().catch(e => {
+        logger.warn('Failed to check if the user is logged in:', e)
+        gtag('event', 'exception', {
+          description: 'Failed to verify hue login status: ' + errorString(e),
+          event_label: 'hue login status exception',
         })
-      }
-    }).catch(e => {
-      logger.warn('Failed to check if the user is logged in:', e)
-      gtag('event', 'exception', {
-        description: 'Failed to verify hue login status: ' + errorString(e),
-        event_label: 'hue login status exception',
       })
+    }, 500)
+
+    window.addEventListener('offline', () => {
+      this.offline = true
+    })
+
+    window.addEventListener('online', () => {
+      this.offline = false
     })
   }
 
-  readonly remoteApi = !__REMOTE_API__
+  readonly remoteApi = __REMOTE_API__
   @observable authenticated = false
-  @observable offline = false
+  @observable offline = !navigator.onLine
+  @observable connectingLocal = false
+  @observable localConnectionStatus: ConnectionStatus = 'not connected'
 
   @observable loadingLightGroups = false
   @observable lightGroups: ApiGroupInfo[] | null = null
   @observable lightGroupId: number | undefined = undefined
   @observable lightGroupFetchError: Error | null = null
 
-  @observable transmitToLightGroup = false
+  @observable transmitToLightGroup = true
   @observable transmitMode: GroupColorMode = 'group'
+  @observable allowCookies = localStorage.getItem(ALLOW_COOKIES_KEY) === 'true'
+
+  checkLoginStatus = async () => {
+    const loggedIn = await isLoggedIn()
+    this.authenticated = loggedIn
+    if (loggedIn) {
+      this.fetchLightGroups().catch(e => {
+        logger.error('Failed to fetch light groups:', e)
+      })
+    }
+  }
 
   @action
   fetchLightGroups = async () => {
@@ -77,10 +98,40 @@ export class ApiStatusStore {
     } catch (error) {
       this._setLightGroupError(error)
       gtag('event', 'exception', {
-        description: 'Failed to fetch hue light groups: ' + errorString(e),
+        description: 'Failed to fetch hue light groups: ' + errorString(error),
         event_label: 'hue light group fetch exception',
       })
     }
+  }
+
+  @action
+  connectLocal = async () => {
+    this.connectingLocal = true
+    try {
+      const response = await connectToLocalApi()
+      runInAction(() => {
+        this.localConnectionStatus = response.status
+        this.authenticated = response.status === 'connected'
+        this.connectingLocal = false
+      })
+    } catch (e) {
+      runInAction(() => {
+        this.authenticated = false
+        this.connectingLocal = false
+      })
+    }
+  }
+
+  @action
+  setCookiePolicy = async (allow: boolean) => {
+    this.allowCookies = allow
+    await this.checkLoginStatus()
+  }
+
+  @action
+  logout = async () => {
+    this.authenticated = false
+    await fetch('/logout')
   }
 
   @action
@@ -93,27 +144,6 @@ export class ApiStatusStore {
   private _setLightGroupError = (error: Error | null) => {
     this.lightGroupFetchError = error
     this.loadingLightGroups = false
-  }
-
-  private _onlineTester: any = null
-  private _testOnlineStatus = (offline: boolean) => {
-    if (!offline) {
-      if (this._onlineTester) {
-        clearInterval(this._onlineTester)
-        this._onlineTester = null
-      }
-      return
-    }
-
-    if (this._onlineTester) {
-      return
-    }
-
-    this._onlineTester = setInterval(() => {
-      isLoggedIn().catch(e => {
-        logger.info('Still offline:', e)
-      })
-    }, TEN_SECONDS)
   }
 
   private _setLightGroup = (groupId: number | undefined) => {

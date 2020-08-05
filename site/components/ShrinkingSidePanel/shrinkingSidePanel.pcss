@@ -1,0 +1,14 @@
+
+.shrinking-side-panel {
+  position: relative;
+  background: var(--grey-05);
+  color: var(--black);
+  width: var(--main-panel-layout-width);
+  transition: width 0.3s;
+  z-index: 1;
+  flex-shrink: 0;
+
+  &.shrunk {
+    width: 48px;
+  }
+}

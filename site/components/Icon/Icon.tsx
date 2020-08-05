@@ -1,10 +1,9 @@
 
-import * as React from 'react'
 import * as cn from 'classnames'
+import * as React from 'react'
 
 import { icon } from './icon.pcss'
-
-import { IconSize, IconName, iconSizes, iconOptions, iconProperties, IconProperties, IconViewBox } from './iconOptions'
+import { IconName, iconOptions, iconProperties, IconProperties, IconSize, iconSizes, IconViewBox } from './iconOptions'
 
 export interface IconProps {
   name: IconName
@@ -12,6 +11,7 @@ export interface IconProps {
   size?: IconSize
   className?: string
   style?: React.CSSProperties
+  'data-testid'?: string
 }
 
 function defaultSizeDetails (size: IconSize): IconProperties {
@@ -28,7 +28,15 @@ const defautViewBox: IconViewBox = {
   viewHeight: 24,
 }
 
-export function Icon ({ name, color, size = 'med', className, style }: IconProps) {
+export function Icon (props: IconProps) {
+  const {
+    name,
+    color,
+    size = 'med',
+    className,
+    style,
+    'data-testid': testid = 'icon',
+  } = props
   const properties = iconProperties[name]
   const sizeDetails = properties && properties[size] || defaultSizeDetails(size)
   const viewBox = properties || defautViewBox
@@ -44,12 +52,13 @@ export function Icon ({ name, color, size = 'med', className, style }: IconProps
       style={{
         marginTop: -sizeDetails.marginHeight || undefined,
         marginBottom: -sizeDetails.marginHeight || undefined,
-        marginLeft: -sizeDetails.marginWidth || undefined,
-        marginRight: -sizeDetails.marginWidth || undefined,
+        marginLeft: sizeDetails.marginWidth ? `calc(var(--pre-icon-padding) - ${sizeDetails.marginWidth}px)` : undefined,
+        marginRight: sizeDetails.marginWidth ? `calc(var(--post-icon-padding) - ${sizeDetails.marginWidth}px)` : undefined,
         ...style,
       }}
+      data-testid={testid}
     >
-      <use href={iconOptions[name]} fill={color} />
+      <use href={iconOptions[name]} fill={color} data-testid={`${testid}-use-statement`} />
     </svg>
   )
 }

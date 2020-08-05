@@ -1,7 +1,7 @@
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as webpack from 'webpack'
 
-import * as pcssFunctions from '../../site/pcss-functions'
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { pcssPlugins } from '../pcssPlugins'
 
 export const styleRules = (dev: boolean, onlyTypes = false): webpack.RuleSetRule[] => [
   {
@@ -24,24 +24,7 @@ export const styleRules = (dev: boolean, onlyTypes = false): webpack.RuleSetRule
         loader: 'postcss-loader',
         options: {
           ident: 'postcss',
-          plugins: () => [
-            require('postcss-import'),
-            require('postcss-mixins'),
-            require('postcss-each'),
-            require('postcss-for'),
-            require('postcss-simple-vars'),
-            require('postcss-calc'),
-            require('postcss-flexbugs-fixes'),
-            require('postcss-functions')({
-              functions: pcssFunctions,
-            }),
-            require('postcss-color-function'),
-            require('postcss-preset-env'),
-            require('postcss-nested'),
-            require('autoprefixer')({
-              flexbox: 'no-2009',
-            }),
-          ],
+          plugins: () => pcssPlugins,
         },
       },
     ].filter(l => l),

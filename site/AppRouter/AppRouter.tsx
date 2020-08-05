@@ -1,8 +1,10 @@
 
+import { Redirect, Router } from '@reach/router'
 import * as React from 'react'
-import { Router, Redirect } from '@reach/router'
-import { RootRoute } from './root'
+
+import { ConnectHueRoute } from './connect-hue'
 import { InfoRoute } from './info'
+import { SovisRoute } from './sovis'
 
 export class AppRouter extends React.Component {
   render () {
@@ -10,7 +12,8 @@ export class AppRouter extends React.Component {
       <div>
         <Router>
           <InfoRoute path='/' />
-          <RootRoute path='/sovis' />
+          <SovisRoute path='/sovis' />
+          <ConnectHueRoute path='/return-from-hue' />
           <Redirect default from='/*' to='/' />
         </Router>
       </div>

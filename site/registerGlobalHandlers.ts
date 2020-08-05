@@ -1,7 +1,8 @@
 
-import { renderStateStore, togglePattern, toggleFullscreen } from './state/renderStateStore'
-import { logger } from '../shared/logger'
 import { errorString } from '../shared/errorHelpers'
+import { logger } from '../shared/logger'
+
+import { renderStateStore, toggleFullscreen, togglePattern } from './state/renderStateStore'
 
 window.addEventListener('unhandledrejection', (evt) => {
   logger.error('Unhandled rejection:', evt.reason)

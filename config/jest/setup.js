@@ -1,5 +1,7 @@
 
-const { configure } = require('enzyme')
-const Adapter = require('enzyme-adapter-react-16')
+const { join } = require('path')
+require('@testing-library/jest-dom')
 
-configure({ adapter: new Adapter() })
+require.context = (prePath) => {
+  return (additionalPath) => require(join(prePath, additionalPath))
+}

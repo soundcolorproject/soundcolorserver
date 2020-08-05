@@ -1,10 +1,11 @@
 
 import * as React from 'react'
+
 import {
   infoSection,
+  sectionBody,
   sectionHeader,
   sectionSpacer,
-  sectionBody,
 } from './infoSection.pcss'
 
 export interface InfoSectionProps {

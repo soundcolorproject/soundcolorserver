@@ -1,6 +1,8 @@
 
-import { join } from 'path'
 import { readdirSync } from 'fs'
+import { join } from 'path'
+
+import { config } from './config'
 import { initClient } from './db/connection'
 
 interface InittableCollection {
@@ -21,6 +23,9 @@ async function initFile (filename: string) {
 
 const dbDir = join(__dirname, 'db')
 export async function initDb () {
+  if (!config.remoteApi) {
+    return
+  }
   await initClient()
   const filepaths = readdirSync(dbDir)
     .map(file => join(dbDir, file))

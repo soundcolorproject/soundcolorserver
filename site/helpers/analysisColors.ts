@@ -1,12 +1,11 @@
 
 import { dBtoVolume, MAX_TONES, ToneInfo } from '../audio/getAnalysis'
-import { patternsStore } from '../state/patternsStore'
-import { HSVa, toHsv } from '../pcss-functions/toHsv'
-import { RGBa, toRgb } from '../pcss-functions/toRgb'
 import { getLuminance } from '../pcss-functions'
 import { HSLa } from '../pcss-functions/toHsl'
+import { HSVa, toHsv } from '../pcss-functions/toHsv'
+import { RGBa, toRgb } from '../pcss-functions/toRgb'
 import { analysisStore } from '../state/analysisStore'
-import { logger } from '../../shared/logger'
+import { patternsStore } from '../state/patternsStore'
 
 interface SmoothValues {
   s: number

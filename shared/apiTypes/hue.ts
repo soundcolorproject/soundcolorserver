@@ -25,3 +25,8 @@ export interface ApiSetGroupColor {
   color: LightColor
   mode?: GroupColorMode
 }
+
+export type ConnectionStatus = 'connected' | 'not connected' | 'no bridges'
+export interface ConnectResponse {
+  status: ConnectionStatus
+}

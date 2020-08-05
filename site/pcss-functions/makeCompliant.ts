@@ -1,12 +1,12 @@
 
-import { wcag, colorConversion } from './constants'
-import { getLuminance } from './getLuminance'
+import { logger } from '../../shared/logger'
+
+import { colorConversion, wcag } from './constants'
 import { getContrast } from './getContrast'
 import { getContrastingColor } from './getContrastingColor'
+import { getLuminance } from './getLuminance'
 import { toHsl } from './toHsl'
-
 import { Color } from './types'
-import { logger } from '../../shared/logger'
 
 export function makeCompliant (variableColor: Color, staticColor: Color, useAAA = USE_AAA) {
   const { contrastRatio, minLumOnBlack, maxLumOnWhite } = useAAA ? wcag.aaa : wcag.aa

@@ -32,7 +32,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', 'IBM Plex Sans', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--app-font);
   text-align: left;
   font-size: 12px;
   padding: 0;
@@ -69,12 +69,12 @@ h2 {
   font-weight: 700;
 }
 
-span {
-  font-weight: 700;
-}
-
 li {
   margin: 4px 0;
+}
+
+button, input, :input {
+  font-family: var(--app-font);
 }
 
 button, :global(.btn) {
@@ -87,7 +87,6 @@ button, :global(.btn) {
   transition: 0.25s;
   color: var(--grey-90);
   font-size: 0.8rem;
-  font-family: 'IBM Plex Sans', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
   &:hover {
     cursor: pointer;

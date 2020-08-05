@@ -1,7 +1,6 @@
 
 import { toRgb } from './toRgb'
-import { toSRgb, SRGBa } from './toSRgb'
-
+import { SRGBa } from './toSRgb'
 import { Color } from './types'
 
 export function getLuminance (color: Color) {

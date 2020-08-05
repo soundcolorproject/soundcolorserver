@@ -1,6 +1,6 @@
 
-import { UnauthenticatedApi } from './unauthenticatedApi'
 import { HueApi } from './api'
+import { UnauthenticatedApi } from './unauthenticatedApi'
 
 export interface LocalBootstrap {
   connect (): Promise<UnauthenticatedApi>

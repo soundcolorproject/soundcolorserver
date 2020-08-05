@@ -1,11 +1,11 @@
 
-import * as React from 'react'
 import { Link } from '@reach/router'
+import * as React from 'react'
 
-import { getContrastingColor, lighten, darken } from '../../pcss-functions'
+import { darken, getContrastingColor, lighten } from '../../pcss-functions'
+import { Color } from '../../pcss-functions/types'
 
 import { linkButton } from './linkButton.pcss'
-import { Color } from '../../pcss-functions/types'
 
 export interface LinkButtonProps {
   color?: Color
@@ -14,6 +14,7 @@ export interface LinkButtonProps {
   className?: string
   style?: React.CSSProperties
   onClick?: (ev: React.MouseEvent<HTMLAnchorElement>) => void
+  'data-testid'?: string
 }
 
 interface CssVariables {
@@ -22,7 +23,16 @@ interface CssVariables {
   '--active-background'?: string
 }
 
-export function LinkButton ({ color, to, children, className, style: customStyle, onClick }: LinkButtonProps) {
+export function LinkButton (props: LinkButtonProps) {
+  const {
+    color,
+    to,
+    children,
+    className,
+    style: customStyle,
+    onClick,
+    'data-testid': testid = 'link-button',
+  } = props
   const style: React.CSSProperties & CssVariables = { ...customStyle }
 
   if (color) {
@@ -40,6 +50,14 @@ export function LinkButton ({ color, to, children, className, style: customStyle
   }
 
   return (
-    <Link to={to} className={`${linkButton} ${className}`} onClick={onClick} style={style}>{children}</Link>
+    <Link
+      to={to}
+      className={`${linkButton} ${className}`}
+      onClick={onClick}
+      style={style}
+      data-testid={testid}
+    >
+      {children}
+    </Link>
   )
 }

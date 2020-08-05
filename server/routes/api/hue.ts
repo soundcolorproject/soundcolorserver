@@ -1,11 +1,6 @@
 
 import { Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { getApi } from '../../hue-helpers/getApi'
-import { InputValidationError } from '../../errors/InputValidationError'
-import { HueApi } from '../../hue/api'
-import { GroupLightState, LightState } from '../../hue'
-import { CommonLightState } from '../../hue/LightState'
 
 import {
   ApiGroupInfo,
@@ -14,9 +9,14 @@ import {
   LightColor,
 } from '../../../shared/apiTypes/hue'
 import { logger } from '../../../shared/logger'
+import { config } from '../../config'
 import { getNextLightId, setupRoundRobin } from '../../db/groupRoundRobin'
 import { DbWriteError } from '../../errors/DbWriteError'
-import { config } from '../../config'
+import { InputValidationError } from '../../errors/InputValidationError'
+import { GroupLightState, LightState } from '../../hue'
+import { getApi } from '../../hue-helpers/getApi'
+import { HueApi } from '../../hue/api'
+import { CommonLightState } from '../../hue/LightState'
 
 export const hueRouter = Router()
 

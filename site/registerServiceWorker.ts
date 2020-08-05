@@ -1,5 +1,6 @@
 
 import { logger } from '../shared/logger'
+
 import { renderStateStore } from './state/renderStateStore'
 
 let registration: ServiceWorkerRegistration | null = null
@@ -74,6 +75,9 @@ export async function promptInstall () {
 }
 
 export function registerServiceWorker () {
+  if (__APP_MODE__) {
+    return
+  }
   if ('serviceWorker' in navigator) {
     renderStateStore.pushSubscriptionState = 'pending service worker'
     window.addEventListener('load', () => {

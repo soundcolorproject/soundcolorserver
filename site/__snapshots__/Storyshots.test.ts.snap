@@ -1,0 +1,3049 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots ActionsPanel Example 1`] = `
+<div
+  className="panel actions-panel"
+  data-testid="actions-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Actions
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-button"
+      data-testid="actions-panel-install-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Install SOVIS App
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="actions-panel-screenshot-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button disabled-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Take a screenshot
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots AudioSourceSelector Example 1`] = `
+<div
+  className="panel audio-source-selector"
+  data-testid="audio-source-selector"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Audio Source
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    Please allow microphone access to view audio sources.
+  </div>
+</div>
+`;
+
+exports[`Storyshots Button Example 1`] = `
+<button
+  className="button"
+  data-testid="button"
+  onClick={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`Storyshots ColorOptionsPanel Example 1`] = `
+<div
+  className="panel color-options-panel"
+  data-testid="color-options-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Color
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <label
+      className="slider-label"
+      data-testid="color-options-panel-slider-vibranceMultiplier"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="color-options-panel-slider-vibranceMultiplier-label"
+        >
+          Vibrance
+        </div>
+        <div
+          className="slider-value"
+          data-testid="color-options-panel-slider-vibranceMultiplier-value"
+        >
+          0.50
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={5}
+        min={0}
+        onChange={[Function]}
+        step={0.05}
+        type="range"
+        value={2.5}
+      />
+    </label>
+    <label
+      className="slider-label"
+      data-testid="color-options-panel-slider-noiseMultiplier"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="color-options-panel-slider-noiseMultiplier-label"
+        >
+          Saturation
+        </div>
+        <div
+          className="slider-value"
+          data-testid="color-options-panel-slider-noiseMultiplier-value"
+        >
+          0.90
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={10}
+        min={0}
+        onChange={[Function]}
+        step={0.1}
+        type="range"
+        value={9}
+      />
+    </label>
+    <label
+      className="slider-label"
+      data-testid="color-options-panel-slider-minimumBrightness"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="color-options-panel-slider-minimumBrightness-label"
+        >
+          Minimum Brightness
+        </div>
+        <div
+          className="slider-value"
+          data-testid="color-options-panel-slider-minimumBrightness-value"
+        >
+          0.00
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={1}
+        min={0}
+        onChange={[Function]}
+        step={0.01}
+        type="range"
+        value={0}
+      />
+    </label>
+    <label
+      className="checkbox-label"
+      data-testid="checkbox"
+      onClick={[Function]}
+    >
+      <div
+        className="checkbox-details"
+        data-testid="checkbox-label"
+      >
+        Monochromacy
+        <div
+          className="checkbox-value"
+          data-testid="checkbox-vaue"
+        >
+          Off
+        </div>
+      </div>
+      <input
+        checked={false}
+        className="checkbox-input"
+        data-testid="checkbox-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <div
+        className="switch-mark"
+        data-testid="checkbox-mark"
+        onKeyDown={[Function]}
+        tabIndex={0}
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots ColorPicker Stateful Example 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <button
+    className="color-picker"
+    data-testid="color-picker"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#baa3fa",
+        "color": "var(--black)",
+      }
+    }
+    type="button"
+  >
+    C
+  </button>
+</div>
+`;
+
+exports[`Storyshots ColorWarning Example 1`] = `
+<div
+  className="color-warning"
+  data-testid="color-warning"
+>
+  <h1>
+    Warning:
+  </h1>
+  <p>
+    SOVIS displays varying degrees of flashing lights and color, and may potentially trigger seizures for people with photosensitive epilepsy.
+  </p>
+  <p>
+    Viewer discretion is advised.
+  </p>
+  <button
+    className="button button"
+    data-testid="button"
+    onClick={[Function]}
+    style={
+      Object {
+        "--button-active-background": "#fcfcfc",
+        "--button-active-color": "var(--black)",
+        "--button-background": "#ffffff",
+        "--button-color": "var(--black)",
+        "--button-hover-background": "#fafafa",
+        "--button-hover-color": "var(--black)",
+      }
+    }
+    type="button"
+  >
+    Proceed
+  </button>
+</div>
+`;
+
+exports[`Storyshots ConnectionsPanel Example 1`] = `
+<div
+  className="panel"
+  data-testid="connections-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Connections
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-button"
+      data-testid="connections-panel-audio-source-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Audio Source
+          <span
+            className="suffix-text"
+          >
+             - 
+            None
+          </span>
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="connections-panel-philips-hue-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Philips Hue
+          <span
+            className="suffix-text"
+          >
+             - 
+            Login
+          </span>
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots CookiePolicyPanel Example 1`] = `
+<div
+  className="panel"
+  data-testid="cookie-policy-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Cookie Policy
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="cookie-policy-panel"
+    >
+      <div
+        className="panel-detail"
+        data-testid="cookie-policy-panel-desc-1"
+      >
+        In order to use our Hue functionality, you need to accept the use of cookies.
+      </div>
+      <div
+        className="panel-detail"
+        data-testid="cookie-policy-panel-desc-2"
+      >
+        We only use your cookie to connect your browser with your Hue login, and never for advertising or marketing purposes.
+      </div>
+      <div
+        className="panel-detail buttons"
+        data-testid="cookie-policy-panel-buttons"
+      >
+        <button
+          className="button"
+          data-testid="cookie-policy-panel-button-back"
+          onClick={[Function]}
+          style={Object {}}
+          type="button"
+        >
+          Go Back
+        </button>
+        <button
+          className="button"
+          data-testid="cookie-policy-panel-button-accept"
+          onClick={[Function]}
+          style={
+            Object {
+              "--button-active-background": "#a2b3c4",
+              "--button-active-color": "var(--black)",
+              "--button-background": "#1B2128",
+              "--button-color": "var(--white)",
+              "--button-hover-background": "#8a97a6",
+              "--button-hover-color": "var(--black)",
+            }
+          }
+          type="button"
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots CustomPatternSelector Example 1`] = `
+<div
+  className="panel"
+  data-testid="panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Custom
+    </div>
+    <button
+      className="button title-button"
+      data-testid="button"
+      onClick={[Function]}
+      style={Object {}}
+      type="button"
+    >
+      Reset
+    </button>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="custom-pattern-selector"
+      data-testid="custom-pattern-selector"
+    >
+      <div
+        className="color-pickers"
+        data-testid="custom-pattern-selector-color-pickers"
+      >
+        <div
+          className="picker-row"
+          data-testid="custom-pattern-selector-pickers-row-0"
+        >
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-A"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#efe2dd",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            A
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-A#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#e7dede",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            A#
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-B"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#dddbdf",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            B
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-C"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#d4d7e0",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            C
+          </button>
+        </div>
+        <div
+          className="picker-row"
+          data-testid="custom-pattern-selector-pickers-row-1"
+        >
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-C#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#c9d4e1",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            C#
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-D"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#bed0e2",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            D
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-D#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#b2cde2",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            D#
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-E"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a5c9e3",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            E
+          </button>
+        </div>
+        <div
+          className="picker-row"
+          data-testid="custom-pattern-selector-pickers-row-2"
+        >
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-F"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#96c5e4",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            F
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-F#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#86c1e5",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            F#
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-G"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#71bce6",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            G
+          </button>
+          <button
+            className="color-picker picker"
+            data-testid="custom-pattern-selector-picker-G#"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#57b8e7",
+                "color": "var(--black)",
+              }
+            }
+            type="button"
+          >
+            G#
+          </button>
+        </div>
+      </div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="text-input pattern-name"
+          data-testid="text-input"
+        >
+          <div
+            className="input-wrapper"
+          >
+            <input
+              data-testid="text-input-input"
+              onChange={[Function]}
+              value=""
+            />
+            <div
+              className="placeholder-text"
+              data-testid="text-input-placeholder"
+            >
+              Custom Pattern Name
+            </div>
+          </div>
+          <button
+            className="button"
+            data-testid="button"
+            onClick={[Function]}
+            style={Object {}}
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots HowItWorks Example 1`] = `
+<div
+  className="how-it-works hidden"
+  data-testid="how-it-works"
+>
+  <h1>
+    How it works:
+  </h1>
+  <ol
+    className="list"
+  >
+    <li>
+      Start SOVIS
+    </li>
+    <li>
+      Allow microphone access if prompted
+    </li>
+    <li>
+      Make any noise or sound and watch the light and color react.
+    </li>
+    <li>
+      Change color patterns, connections, and options according to your liking.
+    </li>
+  </ol>
+  <button
+    className="button button"
+    data-testid="how-it-works-button"
+    onClick={[Function]}
+    style={
+      Object {
+        "--button-active-background": "#0d1116",
+        "--button-active-color": "var(--white)",
+        "--button-background": "#1B2128",
+        "--button-color": "var(--white)",
+        "--button-hover-background": "#12171c",
+        "--button-hover-color": "var(--white)",
+      }
+    }
+    type="button"
+  >
+    Start SOVIS
+  </button>
+</div>
+`;
+
+exports[`Storyshots HueConnectLocal Example 1`] = `
+<div
+  className="panel hue-connect-local"
+  data-testid="hue-connect-local"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Philips Hue
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-detail"
+      data-testid="panel-detail"
+    >
+      Unable to connect to a Hue Bridge on the current network.  You may have to press the button on your Hue Bridge, then try connecting again.
+    </div>
+    <div
+      className="panel-button"
+      data-testid="panel-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Retry connecting to Hue Bridge
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots HueGroupSelector Example 1`] = `
+<div
+  className="panel"
+  data-testid="hue-group-selector"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Philips Hue
+    </div>
+    <button
+      className="button title-button"
+      data-testid="button"
+      onClick={[Function]}
+      style={Object {}}
+      type="button"
+    >
+      Logout
+    </button>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-detail"
+      data-testid="panel-detail"
+    >
+      Finding light groups...
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Icon Specific Icon 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "background": "var(--black)",
+      "display": "flex",
+      "height": "100vh",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "borderColor": "transparent",
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "lineHeight": 0,
+      }
+    }
+  >
+    <svg
+      className="icon"
+      data-testid="icon"
+      fill="var(--white)"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+        fill="var(--white)"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="main-panel-with-shrinking-side"
+    data-testid="main-panel-with-shrinking-side"
+    style={
+      Object {
+        "height": 288,
+      }
+    }
+  >
+    <div
+      className="shrinking-side-panel"
+      data-testid="shrinking-side-panel"
+    >
+      <div
+        className="shrinking-panel-button active-style"
+        data-testid="shrinking-panel-button"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="hover-color"
+          href="/"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "normal",
+              }
+            }
+          >
+            Sound Color Project
+          </div>
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        className="shrinking-panel-button"
+        data-testid="shrinking-panel-button"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="hover-color"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Color Patterns
+          </div>
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        className="shrinking-panel-button"
+        data-testid="shrinking-panel-button"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="hover-color"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Connections
+          </div>
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        className="shrinking-panel-button"
+        data-testid="shrinking-panel-button"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="hover-color"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Options
+          </div>
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        className="shrinking-panel-button"
+        data-testid="shrinking-panel-button"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="hover-color"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Sound Details
+          </div>
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        className="shrinking-panel-button"
+        data-testid="shrinking-panel-button"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="hover-color"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        >
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={24}
+            style={
+              Object {
+                "marginBottom": -4,
+                "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+                "marginRight": 6,
+                "marginTop": -4,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+          <div
+            className="text"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Actions
+          </div>
+          <svg
+            className="icon button-icon"
+            data-testid="icon"
+            height={30}
+            style={
+              Object {
+                "marginBottom": -5,
+                "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+                "marginRight": "calc(var(--post-icon-padding) - 5px)",
+                "marginTop": -5,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={30}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use
+              data-testid="icon-use-statement"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div
+      className="panel-content-wrapper"
+    >
+      <div
+        className="swapper"
+      >
+        <div
+          className="panel-content current"
+          style={
+            Object {
+              "width": 0,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots OptionsPanel Example 1`] = `
+<div
+  className="panel options-panel"
+  data-testid="options-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Options
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-button"
+      data-testid="options-panel-color-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Color
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="options-panel-visualization-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Visualization
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="options-panel-timing-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Timing
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Panel Example 1`] = `
+<div
+  className="panel"
+  data-testid="panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      My Panel
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-button"
+      data-testid="panel-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          This button should have ellipses due to it being very long text and when the panel is contained (or the window small enough), it is not wide enough to show it all
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="panel-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          This is a panel button
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="panel-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          So is this
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PanelButton Example 1`] = `
+<div
+  className="panel-button"
+  data-testid="panel-button"
+  style={Object {}}
+>
+  <a
+    className="hover-button"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    <span
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    />
+  </a>
+</div>
+`;
+
+exports[`Storyshots PanelDetail Example 1`] = `
+<div
+  className="panel-detail"
+  data-testid="panel-detail"
+/>
+`;
+
+exports[`Storyshots PatternSelector Example 1`] = `
+<div
+  className="panel"
+  data-testid="pattern-selector"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Color Patterns
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-button"
+      data-testid="panel-button"
+      style={Object {}}
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Saved
+          <span
+            className="suffix-text"
+          >
+             - 
+            0
+          </span>
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="panel-button"
+      style={
+        Object {
+          "--panel-button-active-background": "#cebebe",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#e7dede",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Custom
+        </span>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="pattern-button-chakras"
+      style={
+        Object {
+          "--panel-button-active-background": "#009fd9",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#00b6f7",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Chakras
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="pattern-button-chromesthesia"
+      style={
+        Object {
+          "--panel-button-active-background": "#d1c199",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#e3d8be",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Chromesthesia
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="pattern-button-emotion"
+      style={
+        Object {
+          "--panel-button-active-background": "#c700c8",
+          "--panel-button-active-color": "var(--white)",
+          "--panel-button-hover-background": "#e300e4",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Emotion
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="pattern-button-chromotherapy"
+      style={
+        Object {
+          "--panel-button-active-background": "#d78548",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#f59955",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Chromotherapy
+        </span>
+      </a>
+    </div>
+    <div
+      className="panel-button"
+      data-testid="pattern-button-adolescence"
+      style={
+        Object {
+          "--panel-button-active-background": "#49bdb1",
+          "--panel-button-active-color": "var(--black)",
+          "--panel-button-hover-background": "#55d8ca",
+          "--panel-button-hover-color": "var(--black)",
+        }
+      }
+    >
+      <a
+        className="hover-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <span
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Adolescence
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SavedPaletteSelector Example 1`] = `
+<div
+  className="panel saved-palette-selector"
+  data-testid="saved-palette-selector"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Saved
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-detail"
+      data-testid="panel-detail"
+    >
+      You have no custom patterns saved yet.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots ShareLink Example 1`] = `
+<div
+  className="share-link hidden"
+  data-testid="share-link"
+>
+  <button
+    className="button"
+    onClick={[Function]}
+    role="button"
+    type="button"
+  >
+    Share Sound Color Project
+  </button>
+</div>
+`;
+
+exports[`Storyshots SharePanel Example 1`] = `
+<div
+  className="share-panel show"
+  data-testid="share-panel"
+>
+  <div
+    className="inner-panel"
+  >
+    <div
+      data-testid="share-panel-start-text"
+    >
+      Share Sound Color Project on:
+    </div>
+    <div>
+      <button
+        className="button big-button"
+        data-testid="share-panel-facebook-button"
+        onClick={[Function]}
+        style={
+          Object {
+            "--button-active-background": "#0b4a9b",
+            "--button-active-color": "var(--white)",
+            "--button-background": "#1877F2",
+            "--button-color": "var(--white)",
+            "--button-hover-background": "#105abb",
+            "--button-hover-color": "var(--white)",
+          }
+        }
+        type="button"
+      >
+        <svg
+          className="icon icon-before-text"
+          data-testid="share-panel-facebook-button-pre-icon"
+          height={12}
+          style={
+            Object {
+              "marginBottom": undefined,
+              "marginLeft": undefined,
+              "marginRight": undefined,
+              "marginTop": undefined,
+            }
+          }
+          viewBox="0 0 1365.3333 1365.3333"
+          width={12}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="share-panel-facebook-button-pre-icon-use-statement"
+          />
+        </svg>
+        Facebook
+      </button>
+    </div>
+    <div>
+      <button
+        className="button big-button"
+        data-testid="share-panel-twitter-button"
+        onClick={[Function]}
+        style={
+          Object {
+            "--button-active-background": "#0e669b",
+            "--button-active-color": "var(--white)",
+            "--button-background": "#1DA1F2",
+            "--button-color": "var(--white)",
+            "--button-hover-background": "#147bbb",
+            "--button-hover-color": "var(--white)",
+          }
+        }
+        type="button"
+      >
+        <svg
+          className="icon icon-before-text"
+          data-testid="share-panel-twitter-button-pre-icon"
+          height={19.200000000000003}
+          style={
+            Object {
+              "marginBottom": -3.6000000000000014,
+              "marginLeft": "calc(var(--pre-icon-padding) - 3.6000000000000014px)",
+              "marginRight": "calc(var(--post-icon-padding) - 3.6000000000000014px)",
+              "marginTop": -3.6000000000000014,
+            }
+          }
+          viewBox="0 0 400 400"
+          width={19.200000000000003}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="share-panel-twitter-button-pre-icon-use-statement"
+          />
+        </svg>
+        Twitter
+      </button>
+    </div>
+    <div>
+      <a
+        data-testid="share-panel-copy-link"
+        href="/sovis"
+        onClick={[Function]}
+      >
+        Copy Link
+      </a>
+    </div>
+    <div
+      className="last-button"
+    >
+      <button
+        className="button"
+        data-testid="share-panel-cancel-button"
+        onClick={[Function]}
+        style={Object {}}
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
+<div
+  className="shrinking-panel-button"
+  data-testid="shrinking-panel-button"
+  onKeyDown={[Function]}
+>
+  <a
+    className="hover-color"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      className="icon button-icon"
+      data-testid="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": -4,
+          "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+          "marginRight": 6,
+          "marginTop": -4,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+      />
+    </svg>
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Options
+    </div>
+    <svg
+      className="icon button-icon"
+      data-testid="icon"
+      height={30}
+      style={
+        Object {
+          "marginBottom": -5,
+          "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+          "marginRight": "calc(var(--post-icon-padding) - 5px)",
+          "marginTop": -5,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={30}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`Storyshots ShrinkingPanelButton Example 1`] = `
+<div
+  className="shrinking-panel-button"
+  data-testid="shrinking-panel-button"
+  onKeyDown={[Function]}
+>
+  <a
+    className="hover-color"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      className="icon button-icon"
+      data-testid="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": -4,
+          "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+          "marginRight": 6,
+          "marginTop": -4,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+      />
+    </svg>
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Color Patterns
+    </div>
+    <svg
+      className="icon button-icon"
+      data-testid="icon"
+      height={30}
+      style={
+        Object {
+          "marginBottom": -5,
+          "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+          "marginRight": "calc(var(--post-icon-padding) - 5px)",
+          "marginTop": -5,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={30}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
+<div
+  className="shrinking-panel-button"
+  data-testid="shrinking-panel-button"
+  onKeyDown={[Function]}
+>
+  <a
+    className="hover-color"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      className="icon button-icon"
+      data-testid="icon"
+      height={24}
+      style={
+        Object {
+          "marginBottom": -4,
+          "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+          "marginRight": 6,
+          "marginTop": -4,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+      />
+    </svg>
+    <div
+      className="text"
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+    </div>
+    <svg
+      className="icon button-icon"
+      data-testid="icon"
+      height={30}
+      style={
+        Object {
+          "marginBottom": -5,
+          "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+          "marginRight": "calc(var(--post-icon-padding) - 5px)",
+          "marginTop": -5,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={30}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`Storyshots ShrinkingSidePanel Example 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="shrinking-side-panel"
+    data-testid="shrinking-side-panel"
+  >
+    ShrinkingSidePanel Component Content
+  </div>
+</div>
+`;
+
+exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="shrinking-side-panel"
+    data-testid="shrinking-side-panel"
+  >
+    <div
+      className="shrinking-panel-button"
+      data-testid="shrinking-panel-button"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="hover-color"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Color Patterns
+        </div>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="shrinking-panel-button"
+      data-testid="shrinking-panel-button"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="hover-color"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Connections
+        </div>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="shrinking-panel-button"
+      data-testid="shrinking-panel-button"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="hover-color"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Options
+        </div>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="shrinking-panel-button"
+      data-testid="shrinking-panel-button"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="hover-color"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Sound Details
+        </div>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="shrinking-panel-button"
+      data-testid="shrinking-panel-button"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="hover-color"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={24}
+          style={
+            Object {
+              "marginBottom": -4,
+              "marginLeft": "calc(var(--pre-icon-padding) - 4px)",
+              "marginRight": 6,
+              "marginTop": -4,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+        <div
+          className="text"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Actions
+        </div>
+        <svg
+          className="icon button-icon"
+          data-testid="icon"
+          height={30}
+          style={
+            Object {
+              "marginBottom": -5,
+              "marginLeft": "calc(var(--pre-icon-padding) - 5px)",
+              "marginRight": "calc(var(--post-icon-padding) - 5px)",
+              "marginTop": -5,
+            }
+          }
+          viewBox="0 0 24 24"
+          width={30}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use
+            data-testid="icon-use-statement"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SoundDetails Example 1`] = `
+<div
+  className="panel sound-details"
+  data-testid="sound-details"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Sound Details
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <div
+      className="panel-detail"
+      data-testid="sound-details-noise"
+    >
+      <span
+        className="detail-name"
+      >
+        Noise volume: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panel-detail"
+      data-testid="sound-details-tone"
+    >
+      <span
+        className="detail-name"
+      >
+        Primary Tone Volume: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panel-detail"
+      data-testid="sound-details-freq"
+    >
+      <span
+        className="detail-name"
+      >
+        Primary Frequency: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panel-detail"
+      data-testid="sound-details-note"
+    >
+      <span
+        className="detail-name"
+      >
+        Primary Note: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+    <div
+      className="panel-detail"
+      data-testid="sound-details-cents"
+    >
+      <span
+        className="detail-name"
+      >
+        Cents ♭: 
+      </span>
+      <span>
+        •
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput Knobs With Icon 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "var(--white)",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="text-input"
+    data-testid="text-input"
+    style={
+      Object {
+        "maxWidth": "85vw",
+        "width": 400,
+      }
+    }
+  >
+    <div
+      className="input-wrapper"
+    >
+      <input
+        data-testid="text-input-input"
+        onChange={[Function]}
+        value="I am a value"
+      />
+      <div
+        className="placeholder-text"
+        data-testid="text-input-placeholder"
+      >
+        I am a placeholder
+      </div>
+    </div>
+    <svg
+      className="icon"
+      data-testid="icon"
+      fill="var(--black)"
+      height={24}
+      style={
+        Object {
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use
+        data-testid="icon-use-statement"
+        fill="var(--black)"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput Plain Knobs 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "var(--white)",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="text-input"
+    data-testid="text-input"
+    style={
+      Object {
+        "maxWidth": "85vw",
+        "width": 400,
+      }
+    }
+  >
+    <div
+      className="input-wrapper"
+    >
+      <input
+        data-testid="text-input-input"
+        onChange={[Function]}
+        value="I am a value"
+      />
+      <div
+        className="placeholder-text"
+        data-testid="text-input-placeholder"
+      >
+        I am a placeholder
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput Stateful 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "var(--white)",
+      "display": "flex",
+      "height": "100%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="text-input"
+    data-testid="text-input"
+    style={
+      Object {
+        "maxWidth": "85vw",
+        "width": 400,
+      }
+    }
+  >
+    <div
+      className="input-wrapper"
+    >
+      <input
+        data-testid="text-input-input"
+        onChange={[Function]}
+        value=""
+      />
+      <div
+        className="placeholder-text"
+        data-testid="text-input-placeholder"
+      >
+        I am a placeholder
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TimingOptionsPanel Example 1`] = `
+<div
+  className="panel timing-options-panel"
+  data-testid="timing-options-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Timing
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <label
+      className="slider-label"
+      data-testid="timing-options-panel-slider-transitionSpeed"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="timing-options-panel-slider-transitionSpeed-label"
+        >
+          Color Transition Speed
+        </div>
+        <div
+          className="slider-value"
+          data-testid="timing-options-panel-slider-transitionSpeed-value"
+        >
+          0.89
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={1}
+        min={0.1}
+        onChange={[Function]}
+        step={0.009000000000000001}
+        type="range"
+        value={0.9}
+      />
+    </label>
+    <label
+      className="slider-label"
+      data-testid="timing-options-panel-slider-timeSmoothing"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="timing-options-panel-slider-timeSmoothing-label"
+        >
+          Time Smoothing
+        </div>
+        <div
+          className="slider-value"
+          data-testid="timing-options-panel-slider-timeSmoothing-value"
+        >
+          0.81
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={0.99}
+        min={0}
+        onChange={[Function]}
+        step={0.009899999999999999}
+        type="range"
+        value={0.8}
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
+<div
+  className="panel visualization-options-panel"
+  data-testid="visualization-options-panel"
+>
+  <div
+    className="panel-title"
+  >
+    <div
+      className="title-text"
+    >
+      Visualization
+    </div>
+  </div>
+  <div
+    className="panel-content"
+  >
+    <label
+      className="slider-label"
+      data-testid="visualization-options-panel-slider-u_lightCount"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_lightCount-label"
+        >
+          Lights
+        </div>
+        <div
+          className="slider-value"
+          data-testid="visualization-options-panel-slider-u_lightCount-value"
+        >
+          3
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={5}
+        min={2}
+        onChange={[Function]}
+        step={1}
+        type="range"
+        value={3}
+      />
+    </label>
+    <label
+      className="slider-label"
+      data-testid="visualization-options-panel-slider-u_diffusion"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_diffusion-label"
+        >
+          Spread
+        </div>
+        <div
+          className="slider-value"
+          data-testid="visualization-options-panel-slider-u_diffusion-value"
+        >
+          0.33
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={3}
+        min={0}
+        onChange={[Function]}
+        step={0.03}
+        type="range"
+        value={1}
+      />
+    </label>
+    <label
+      className="slider-label"
+      data-testid="visualization-options-panel-slider-u_lightRotation"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_lightRotation-label"
+        >
+          Rotation Speed
+        </div>
+        <div
+          className="slider-value"
+          data-testid="visualization-options-panel-slider-u_lightRotation-value"
+        >
+          0.11
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={3}
+        min={0}
+        onChange={[Function]}
+        step={0.03}
+        type="range"
+        value={0.3333333333333333}
+      />
+    </label>
+    <label
+      className="slider-label"
+      data-testid="visualization-options-panel-slider-u_noise"
+    >
+      <div
+        className="slider-details"
+      >
+        <div
+          data-testid="visualization-options-panel-slider-u_noise-label"
+        >
+          Texture
+        </div>
+        <div
+          className="slider-value"
+          data-testid="visualization-options-panel-slider-u_noise-value"
+        >
+          0.10
+        </div>
+      </div>
+      <input
+        className="slider-input"
+        max={1}
+        min={0}
+        onChange={[Function]}
+        step={0.01}
+        type="range"
+        value={0.1}
+      />
+    </label>
+  </div>
+</div>
+`;

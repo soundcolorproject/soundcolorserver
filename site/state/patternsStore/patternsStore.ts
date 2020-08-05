@@ -1,10 +1,11 @@
 
-import { observable, reaction, action } from 'mobx'
+import { action, observable, reaction } from 'mobx'
+
+import { errorString } from '../../../shared/errorHelpers'
 import { getAnalyser } from '../../audio/analyzer'
 import { getMiniAnalyser } from '../../audio/miniAnalyser'
-import { toHsv, HSVa } from '../../pcss-functions/toHsv'
 import { randStr } from '../../helpers/random'
-import { errorString } from '../../../shared/errorHelpers'
+import { HSVa, toHsv } from '../../pcss-functions/toHsv'
 
 const defaultCustomColors = {
   'C': toHsv('#B4BBCC'),
@@ -97,9 +98,10 @@ function deleteFavorite (key: string) {
   localStorage.setItem(`custom:favorites`, JSON.stringify(faves))
 }
 
-function saveFavorite () {
-  const name = randStr()
-
+function saveFavorite (name: string) {
+  if (!name) {
+    name = randStr()
+  }
   const colors = patternsStore.patternData.custom.colors
   notes.forEach(note => {
     saveCustomColorValue(name, note, colors[note])
@@ -189,6 +191,7 @@ export const patternsStore = observable({
   timeSmoothing: 0.8,
   monochrome: false,
   currentPattern: '' as PatternName,
+  patternNames: [ 'custom', 'chakras', 'chromesthesia', 'emotion', 'chromotherapy', 'adolescence'] as PatternName[],
   patternData: {
     chakras: {
       label: 'Chakras',
@@ -324,8 +327,8 @@ export const patternsStore = observable({
     },
   },
   favorites: getFavorites(),
-  saveFavorite: action('saveFavorite', () => {
-    patternsStore.favoriteKey = saveFavorite()
+  saveFavorite: action('saveFavorite', (name: string) => {
+    patternsStore.favoriteKey = saveFavorite(name)
     patternsStore.favorites = getFavorites()
     patternsStore.hasNewFavorite = true
   }),

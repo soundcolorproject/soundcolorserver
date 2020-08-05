@@ -1,10 +1,6 @@
 
-import { hot, setConfig } from 'react-hot-loader'
+import { hot } from 'react-hot-loader/root'
 
-import OrigApp from './App'
+import App from './App'
 
-setConfig({
-  logLevel: 'warn',
-})
-
-export default hot(module)(OrigApp)
+export default hot(App)

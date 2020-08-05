@@ -1,71 +1,58 @@
 
-@import '../../global-css/mixins.pcss';
-
-:root {
-  --panel-default-width: 216px;
-  --panel-width: 100vw;
-  --panel-transition-time: 0.625s;
-  --panel-max-height: 100vh;
-
-  @mixin breakpoint mobile {
-    --panel-max-height: 85vh;
-  }
-}
-
 .panel {
-  color: var(--grey-90);
-  min-width: var(--panel-default-width);
+  display: flex;
+  flex-direction: column;
   background: var(--white);
-  position: relative;
-  flex-shrink: 1;
+  color: var(--black);
+  font-size: 12px;
+  height: 100%;
+  overflow: hidden;
 
-  .swapper {
-    position: relative;
-    max-height: calc(var(--panel-max-height) - 134px - var(--panel-layout-margin));
-    transition: right 0s, height var(--panel-transition-time);
-    right: 0;
+  .panel-title {
+    display: flex;
+    flex-direction: row;
+    margin: 14px 16px;
+    line-height: 20px;
 
-    .scrollable {
-      height: 100%;
-      overflow-y: auto;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        width: 0px;
-        background: transparent;
-      }
+    .title-text {
+      flex: 1;
     }
 
-    .current {
-      position: relative;
+    .title-button {
+      margin: -6px -8px;
+      margin-left: 8px;
+    }
+  }
+
+  .panel-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--grey-50) var(--grey-10);
+
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      overflow: visible;
     }
 
-    .prev {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
+    &::-webkit-scrollbar-track {
+      background: var(--grey-10);
     }
 
-    .next {
-      position: relative;
-      right: -100%;
-      top: 0;
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--grey-50);
+      cursor: ns-resize;
     }
 
-    &.transition {
-      right: 100%;
-      transition: right var(--panel-transition-time), height var(--panel-transition-time);
-    }
-
-    &.transition-back {
-      right: -100%;
-      transition: right var(--panel-transition-time), height var(--panel-transition-time);
-
-      .next {
-        right: 100%;
-      }
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--grey-70);
     }
   }
 }

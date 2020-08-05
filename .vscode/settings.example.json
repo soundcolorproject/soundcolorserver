@@ -3,5 +3,5 @@
     "tmp": true,
     "uglify-cache": true
   },
-  "glsllint.glslangValidatorPath": "./glslangValidator"
+  "glsllint.glslangValidatorPath": "./bin/glslangValidator"
 }

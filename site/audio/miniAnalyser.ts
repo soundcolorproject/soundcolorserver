@@ -1,9 +1,8 @@
 
-import { context } from './context'
-import { getAnalyser } from './analyzer'
 import { patternsStore } from '../state/patternsStore'
-import { logger } from '../../shared/logger'
-import { errorString } from '../../shared/errorHelpers'
+
+import { getAnalyser } from './analyzer'
+import { getContext } from './context'
 
 export const fftSize = 1024
 let analyser: AnalyserNode
@@ -17,7 +16,7 @@ export async function getMiniAnalyser () {
       const source = prevSource || await getAnalyser()
       prevSource = source
 
-      analyser = context.createAnalyser()
+      analyser = getContext().createAnalyser()
       analyser.fftSize = fftSize
       analyser.smoothingTimeConstant = patternsStore.timeSmoothing
 
@@ -28,17 +27,6 @@ export async function getMiniAnalyser () {
     })()
   }
   return analyserPromise
-}
-
-export function setSource (newSource: AudioNode) {
-  if (prevSource && analyser) {
-    prevSource.disconnect(analyser)
-  }
-  if (analyser) {
-    newSource.connect(analyser)
-  }
-
-  prevSource = newSource
 }
 
 const emptyArray = new Float32Array(0)

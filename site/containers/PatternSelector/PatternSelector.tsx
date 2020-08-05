@@ -1,71 +1,67 @@
 
+import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
-import * as cn from 'classnames'
 
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { PatternsProp, PatternName } from '../../state/patternsStore'
-import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
-import { RoutingProp } from '../../state/routingStore'
+import { Panel } from '../../components/Panel'
+import { PanelButton } from '../../components/PanelButton'
+import { PatternName } from '../../state/patternsStore'
+import { togglePattern } from '../../state/renderStateStore'
+import { useStores } from '../../state/useStores'
 
-import { patternSelector, patternOption, selected } from './patternSelector.pcss'
-
-interface OwnProps {
-  height?: number
-  domRef?: React.Ref<HTMLDivElement>
+export interface PatternSelectorProps extends RouteComponentProps {
 }
 
-type StateProps =
-  & PatternsProp
-  & RenderStateProp
-  & RoutingProp
-
-export type PatternSelectorProps = OwnProps & StateProps
-
-export const PatternSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ patterns, renderState, routing }) => ({ patterns, renderState, routing }),
-  class PatternSelector extends React.Component<PatternSelectorProps> {
-    setPattern = (pattern: PatternName) => {
-      const { patterns, renderState, routing } = this.props
-      patterns.currentPattern = pattern
-      if (pattern === 'custom') {
-        routing.goToSubroute('customPalette')
-      }
-      if (!renderState.showColors) {
-        togglePattern(patterns, renderState)
-      }
+export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = function PatternSelector (_props) {
+  const { patterns, renderState } = useStores()
+  const setPattern = (name: PatternName) => React.useCallback(() => {
+    patterns.currentPattern = name
+    if (!renderState.showColors) {
+      togglePattern(patterns, renderState)
     }
+  }, [patterns, name])
 
-    renderPatternOption = (pattern: PatternName) => {
-      const { patterns: { patternData, currentPattern } } = this.props
-      return (
-        <button
-          key={pattern}
-          type='button'
-          role='button'
-          className={cn({
-            [patternOption]: true,
-            [selected]: currentPattern === pattern,
-          })}
-          onClick={(ev) => {
-            ev.preventDefault()
-            this.setPattern(pattern)
-          }}
-        >
-          {patternData[pattern].label}
-        </button>
-      )
-    }
-
-    render () {
-      const { patterns: { patternData }, domRef } = this.props
-      const possiblePatterns = Object.keys(patternData) as PatternName[]
-      return (
-        <div ref={domRef} className={patternSelector}>
-          {
-            possiblePatterns.map(this.renderPatternOption)
+  return useObserver(() => (
+    <Panel title='Color Patterns' data-testid='pattern-selector'>
+      <PanelButton
+        toRoute='favoriteCusom'
+        endIcon='play'
+        suffix={Object.keys(patterns.favorites).length}
+      >
+        Saved
+      </PanelButton>
+      {
+        patterns.patternNames.map(name => {
+          if (name === 'custom') {
+            const data = patterns.patternData.custom
+            return (
+              <PanelButton
+                key={name}
+                onClick={setPattern('custom')}
+                toRoute='customPalette'
+                active={patterns.currentPattern === name}
+                hoverColor={data.defaultColors[data.buttonNoteColor].toString()}
+                endIcon='play'
+              >
+                {data.label}
+              </PanelButton>
+            )
           }
-        </div>
-      )
-    }
-  },
-)
+
+          const data = patterns.patternData[name]
+          return (
+            <PanelButton
+              key={name}
+              onClick={setPattern(name)}
+              active={patterns.currentPattern === name}
+              hoverColor={data.colors[data.buttonNoteColor].toString()}
+              data-testid={`pattern-button-${name}`}
+            >
+              {data.label}
+            </PanelButton>
+          )
+        })
+      }
+    </Panel>
+  ))
+}

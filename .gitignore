@@ -4,13 +4,15 @@ node_modules
 node_modules.old
 
 # built
-dist
+/apps
+/dist
+/storybook-static
 *.pcss.d.ts
 
 # local config
-.env
-.npmrc
-local
+/.env
+/.npmrc
+/local
 
 # temporary
 tmp
@@ -19,3 +21,4 @@ uglify-cache
 # tooling
 /.vscode/*
 !/.vscode/*.example.json
+/coverage

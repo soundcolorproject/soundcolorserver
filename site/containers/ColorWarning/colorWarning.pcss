@@ -1,0 +1,37 @@
+
+.color-warning {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: var(--grey-90);
+  color: var(--white);
+  font-size: 12px;
+  line-height: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  padding: 32px;
+
+  h1 {
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 20px;
+  }
+
+  h1, p {
+    margin: 0;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .button {
+    padding: 10px 24px;
+  }
+}

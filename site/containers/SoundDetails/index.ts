@@ -1,2 +1,2 @@
 
-export * from './SoundDetails'
+export { SoundDetails } from './SoundDetails'

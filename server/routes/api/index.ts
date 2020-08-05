@@ -1,5 +1,6 @@
 
 import { Router } from 'express'
+
 import { authRouter } from './auth'
 import { emailRouter } from './email'
 import { hueRouter } from './hue'

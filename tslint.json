@@ -1,6 +1,15 @@
 {
   "extends": "tslint-config-standard",
   "rules": {
+    "ordered-imports": {
+      "severity": "error",
+      "options": {
+        "grouped-imports": true
+      }
+    },
+    "deprecation": {
+      "severity": "warn"
+    },
     "trailing-comma": {
       "options": [{
           "multiline": {

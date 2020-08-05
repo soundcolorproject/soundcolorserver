@@ -1,5 +1,5 @@
 
-import { context, resumePromise } from './context'
+import { getContext, resumePromise } from './context'
 
 let currentMedia: MediaStream | null = null
 
@@ -31,6 +31,6 @@ export function stopUserMedia () {
 export async function getAudioSource (deviceId = 'default') {
   const stream = await getUserMedia(deviceId)
   await resumePromise
-  const source = context.createMediaStreamSource(stream)
+  const source = getContext().createMediaStreamSource(stream)
   return source
 }

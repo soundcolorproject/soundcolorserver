@@ -1,6 +1,6 @@
 
 import { buildProgram } from '../../helpers/buildProgram'
-import { COMMON_UNIFORMS, CommonMeta, CommonShaderBuilder, COMMON_META, defaultShaderRenderer } from '../../helpers/common'
+import { CommonMeta, CommonShaderBuilder, COMMON_META, COMMON_UNIFORMS, defaultShaderRenderer } from '../../helpers/common'
 // import { logger } from '../../../../../shared/logger'
 
 import fragSrc from './flat.frag'

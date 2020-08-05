@@ -1,8 +1,7 @@
 
+import { calculateCentralLuminance } from './calculateCentralLuminance'
 import { colorConversion, defaultColors } from './constants'
 import { getLuminance } from './getLuminance'
-import { calculateCentralLuminance } from './calculateCentralLuminance'
-
 import { Color } from './types'
 
 const VAR_BLACK = 'var(--black)'

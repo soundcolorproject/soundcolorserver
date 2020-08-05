@@ -1,12 +1,13 @@
 
-import { context } from './context'
-import { getFft, fftSize } from './analyzer'
-import { getNoteInformation, NoteInfo } from './getNoteInformation'
-import { patternsStore } from '../state/patternsStore'
 import { logger } from '../../shared/logger'
+import { patternsStore } from '../state/patternsStore'
+
+import { fftSize, getFft } from './analyzer'
+import { getContext } from './context'
+import { getNoteInformation, NoteInfo } from './getNoteInformation'
 
 export const MIN_FOR_STATS = -100
-export const MAX_TONES = 3
+export const MAX_TONES = 5
 const MAX_STRENGTHS = MAX_TONES * 10
 const DEFAULT_STATS = {
   dB: {
@@ -21,7 +22,7 @@ const DEFAULT_STATS = {
 }
 
 function getStats (fft: Float32Array) {
-  const meanStats = fft.reduce((val, curr, idx) => {
+  const meanStats = fft.reduce((val, curr) => {
     if (curr > MIN_FOR_STATS) {
       val.total += curr
       val.count++
@@ -33,7 +34,7 @@ function getStats (fft: Float32Array) {
   }
   const meandB = meanStats.total / meanStats.count
 
-  const varianceStats = fft.reduce((val, curr, idx) => {
+  const varianceStats = fft.reduce((val, curr) => {
     if (curr > MIN_FOR_STATS) {
       val.total += (curr - meandB) ** 2
       val.count++
@@ -109,7 +110,7 @@ function getStrongestValues (fft: Float32Array, minToCount: number) {
   fft.forEach(addIfHigher)
 
   logger.info('getStrongestValues output', strongest.map(({ idx, value }) => {
-    const frequency = idx * (context.sampleRate) / fftSize
+    const frequency = idx * (getContext().sampleRate) / fftSize
     return {
       frequency,
       dB: value,
@@ -121,7 +122,7 @@ function getStrongestValues (fft: Float32Array, minToCount: number) {
 
 function getTones (strengths: ToneStrength[]): ToneInfo[] {
   let tones = strengths.map(({ value, idx }) => {
-    const frequency = idx * (context.sampleRate) / fftSize
+    const frequency = idx * (getContext().sampleRate) / fftSize
 
     return {
       dB: value,
@@ -195,8 +196,8 @@ export function getAnalysis (): Analysis {
   const noise = volumeTodB(noiseVolume)
 
   return {
-    noise: noise,
-    tones: tones,
+    noise,
+    tones,
     fft,
   }
 }

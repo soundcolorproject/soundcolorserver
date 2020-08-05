@@ -1,10 +1,11 @@
 
-import { getAnalyser, setSource } from './analyzer'
-import { logger } from '../../shared/logger'
 import { errorString } from '../../shared/errorHelpers'
-import { getMiniAnalyser } from './miniAnalyser'
-import { getAudioSource, stopUserMedia } from './microphoneSource'
+import { logger } from '../../shared/logger'
 import { mediaStore } from '../state/mediaStore'
+
+import { getAnalyser, setSource } from './analyzer'
+import { getAudioSource, stopUserMedia } from './microphoneSource'
+import { getMiniAnalyser } from './miniAnalyser'
 
 export async function startAudio () {
   try {

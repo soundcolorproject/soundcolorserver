@@ -1,16 +1,15 @@
 
-import * as webpack from 'webpack'
-import * as path from 'path'
-
-import * as TerserPlugin from 'terser-webpack-plugin'
 import * as OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import * as path from 'path'
+import * as TerserPlugin from 'terser-webpack-plugin'
+import * as webpack from 'webpack'
 
-import { codeRule, glslRule } from './code'
-import { styleRules } from './styles'
+import { codeRules, glslRule } from './code'
 import { buildConstants } from './constants'
 import { buildPlugins } from './plugins'
+import { styleRules } from './styles'
 
-function createConfig ({ prod = false } = {}): webpack.Configuration & { devServer: { [k: string]: any } } {
+function createConfig ({ prod = false, appMode = false } = {}): webpack.Configuration & { devServer: { [k: string]: any } } {
   const dev = !prod
   const constants = buildConstants(dev)
 
@@ -63,7 +62,7 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
       rules: [
         {
           oneOf: [
-            codeRule(dev),
+            ...codeRules(dev),
             glslRule(),
             ...styleRules(dev),
             {
@@ -87,7 +86,7 @@ function createConfig ({ prod = false } = {}): webpack.Configuration & { devServ
         },
       ],
     },
-    plugins: buildPlugins(dev, constants),
+    plugins: buildPlugins(dev, appMode, constants),
     performance: {
       hints: dev ? false : 'warning',
     },

@@ -1,12 +1,14 @@
 
-import { Router, Request } from 'express'
+import { Request, Router } from 'express'
 import * as asyncHandler from 'express-async-handler'
-import { config } from '../../config'
-import { createApiFromAccessCode, getLocalApi, getApi } from '../../hue-helpers/getApi'
+
+import { ConnectionStatus, ConnectResponse } from '../../../shared/apiTypes/hue'
 import { logger } from '../../../shared/logger'
+import { config } from '../../config'
 import { OAuthProvider, verifyOauthState } from '../../db/oauthState'
-import { NoHeaderError } from '../../errors/NoHeaderError'
 import { InvalidOauthCallbackError } from '../../errors/InvalidOauthCallbackError'
+import { NoLocalBridgesError } from '../../errors/NoLocalBridgesError'
+import { createApiFromAccessCode, getApi, getLocalApi } from '../../hue-helpers/getApi'
 
 export const authRouter = Router()
 
@@ -61,17 +63,30 @@ if (config.remoteApi) {
 
     const api = await createApiFromAccessCode(session, code)
     if (api) {
-      return res.redirect('/')
+      return res.redirect('/return-from-hue')
     }
 
     res.status(400).send('Something went wrong, please try again.')
   }))
 } else {
-  authRouter.get('/connect', asyncHandler(async (req, res) => {
-    await getLocalApi()
-    res.json({
-      status: 'connected',
-    })
+  authRouter.get('/connect', asyncHandler(async (_req, res) => {
+    let status: ConnectionStatus = 'not connected'
+    try {
+      const api = await getLocalApi()
+      if (api) {
+        status = 'connected'
+      }
+    } catch (err) {
+      if (err instanceof NoLocalBridgesError) {
+        status = 'no bridges'
+      }
+    }
+
+    const response: ConnectResponse = {
+      status,
+    }
+
+    res.json(response)
   }))
 }
 

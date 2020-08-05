@@ -13,14 +13,20 @@
     "jsx": "react",
     "lib": ["es2015", "es2016", "es2017", "esnext.asynciterable", "dom", "dom.iterable"],
     "moduleResolution": "node",
-    "outDir": "tmp"
+    "outDir": "tmp",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
+    "config",
+    "cypress",
+    "electron",
     "server",
     "shared",
     "site"
   ],
   "exclude": [
+    "generators",
     "node_modules"
   ]
 }

@@ -6,7 +6,9 @@ require('ts-node').register({
 })
 
 const origConfig = require('../config/webpack').default()
-const { definePlugin } = require('../config/webpack/plugins')
+const { buildDefinePlugin } = require('../config/webpack/plugins')
+
+const IS_BUILD = process.env.BUILD === 'true'
 
 module.exports = {
   stories: ['./includes.ts', '../site/**/*.stories.[j|t]sx'],
@@ -15,10 +17,28 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-knobs',
   ],
+
   webpackFinal: (config) => {
-    return {
+    const result =  {
       ...config,
+      entry: !IS_BUILD 
+        ? config.entry
+        : config.entry.map(e => {
+          if (e.includes('webpack-hot-middleware')) {
+            return `${e}&path=/storybook/__webpack_hmr`
+          } else {
+            return e
+          }
+        }),
+      output: {
+        ...config.output,
+        publicPath: IS_BUILD ? '/storybook/' : '/',
+      },
       devtool: 'eval-source-map',
+      devServer: {
+        ...config.devServer,
+        publicPath: IS_BUILD ? '/storybook/' : '/',
+      },
       resolve: {
         ...config.resolve,
         extensions: [
@@ -37,8 +57,10 @@ module.exports = {
       },
       plugins: [
         ...config.plugins,
-        definePlugin,
+        buildDefinePlugin(),
       ],
     }
+
+    return result
   },
 };

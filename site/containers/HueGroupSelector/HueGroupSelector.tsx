@@ -1,77 +1,74 @@
 
+import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { RoutingProp } from '../../state/routingStore'
-import { ApiStatusProp } from '../../state/apiStatusStore'
 
-import { hueGroupSelector } from './hueGroupSelector.pcss'
-import { BackOption } from '../BackOption'
-import { MenuOption, ClickableMenuOption } from '../../components/MenuOption'
+import { Panel } from '../../components/Panel'
+import { PanelButton } from '../../components/PanelButton'
+import { PanelDetail } from '../../components/PanelDetail'
+import { useStores } from '../../state/useStores'
 
-interface OwnProps {
+export interface HueGroupSelectorProps extends RouteComponentProps {
+  'data-testid'?: string
 }
 
-type StateProps = ApiStatusProp & RoutingProp
+export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = function HueGroupSelector (props: HueGroupSelectorProps) {
+  const {
+    'data-testid': testid = 'hue-group-selector',
+  } = props
+  const { apiStatus, routing } = useStores()
 
-export type HueGroupSelectorProps = OwnProps & StateProps
+  const onClick = (lightGroupId: number | undefined) => () => {
+    apiStatus.lightGroupId = lightGroupId
+    routing.popSubrouteToRoot()
+  }
 
-export const HueGroupSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ apiStatus, routing }) => ({ apiStatus, routing }),
-  class HueGroupSelector extends React.Component<HueGroupSelectorProps> {
-    onClick = (lightGroupId: number | undefined) => () => {
-      const { apiStatus, routing } = this.props
-      apiStatus.lightGroupId = lightGroupId
-      routing.popSubrouteTo('hueRoot')
-    }
-
-    renderContent = () => {
-      const { apiStatus } = this.props
-
-      if (apiStatus.lightGroupFetchError) {
-        return (
-          <MenuOption>
-            Failed to fetch light groups!
-          </MenuOption>
-        )
-      }
-
-      if (apiStatus.loadingLightGroups || !apiStatus.lightGroups) {
-        return (
-          <MenuOption>
-            Finding light groups...
-          </MenuOption>
-        )
-      }
-
-      if (apiStatus.lightGroups.length < 1) {
-        return (
-          <MenuOption>
-            No light groups found
-          </MenuOption>
-        )
-      }
-
+  const renderContent = () => {
+    if (apiStatus.lightGroupFetchError) {
       return (
-        <>
-          {
-            apiStatus.lightGroups.map(group => (
-              <ClickableMenuOption key={group.id} onClick={this.onClick(group.id)}>
-                {group.name}
-              </ClickableMenuOption>
-            ))
-          }
-        </>
+        <PanelDetail>
+          Failed to fetch light groups!
+        </PanelDetail>
       )
     }
 
-    render () {
-
+    if (apiStatus.loadingLightGroups || !apiStatus.lightGroups) {
       return (
-        <div className={hueGroupSelector}>
-          <BackOption name='Light Group' />
-          {this.renderContent()}
-        </div>
+        <PanelDetail>
+          Finding light groups...
+        </PanelDetail>
       )
     }
-  },
-)
+
+    if (apiStatus.lightGroups.length < 1) {
+      return (
+        <PanelDetail>
+          No light groups found
+        </PanelDetail>
+      )
+    }
+
+    return (
+      apiStatus.lightGroups.map(group => (
+        <PanelButton key={group.id} active={group.id === apiStatus.lightGroupId} onClick={onClick(group.id)}>
+          {group.name}
+        </PanelButton>
+      ))
+    )
+  }
+
+  const logout = () => {
+    apiStatus.logout().catch()
+    routing.popSubroute()
+  }
+
+  return useObserver(() => (
+    <Panel
+      title='Philips Hue'
+      button={apiStatus.remoteApi ? { text: 'Logout', onClick: logout } : undefined}
+      data-testid={testid}
+    >
+      {renderContent()}
+    </Panel>
+  ))
+}

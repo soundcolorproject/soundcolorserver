@@ -1,0 +1,27 @@
+
+@import '../../global-css/mixins.pcss';
+
+#sovis {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  transition: height 0.3s;
+
+  @mixin breakpoint mobile, min {
+    height: calc(100vh - 32px);
+  }
+
+  #sovis-panel {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    z-index: 1;
+  }
+}

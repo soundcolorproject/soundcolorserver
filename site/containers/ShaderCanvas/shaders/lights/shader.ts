@@ -1,11 +1,11 @@
 
-import { buildProgram, BuiltProgramWithUniforms } from '../../helpers/buildProgram'
+import { buildProgram } from '../../helpers/buildProgram'
 import {
-  COMMON_UNIFORMS,
-  typesafeUniformMap,
   CommonShaderBuilder,
   COMMON_META,
+  COMMON_UNIFORMS,
   defaultShaderRenderer,
+  typesafeUniformMap,
 } from '../../helpers/common'
 // import { logger } from '../../../../../shared/logger'
 
@@ -38,6 +38,7 @@ const buildSimpleShader: Builder = function buildSimpleShader (gl: WebGLRenderin
       u_lightRotation: 'float',
       u_diffusion: 'float',
       u_noise: 'float',
+      u_lightCount: 'int',
     },
     meta: {
       ...COMMON_META,

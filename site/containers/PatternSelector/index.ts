@@ -1,2 +1,2 @@
 
-export * from './PatternSelector'
+export { PatternSelector } from './PatternSelector'

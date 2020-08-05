@@ -1,2 +1,2 @@
 
-export * from './AudioSourceSelector'
+export { AudioSourceSelector } from './AudioSourceSelector'

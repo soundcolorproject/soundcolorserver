@@ -1,7 +1,8 @@
-import { UniformMap, UniformSetter } from './buildUniformMap'
-import { BuiltProgramWithUniforms } from './buildProgram'
-import { ShaderName, shaderInfo } from '..'
 import { renderStateStore } from '../../../state/renderStateStore'
+import { shaderInfo, ShaderName } from '../shaderName'
+
+import { BuiltProgramWithUniforms } from './buildProgram'
+import { UniformMap, UniformSetter } from './buildUniformMap'
 
 export interface CommonMeta {
   render: (gl: WebGLRenderingContext, program: WebGLProgram) => void
@@ -55,6 +56,8 @@ export const COMMON_UNIFORMS = typesafeUniformMap({
   u_color1: 'vec4',
   u_color2: 'vec4',
   u_color3: 'vec4',
+  u_color4: 'vec4',
+  u_color5: 'vec4',
 })
 
 export type CommonUniforms = typeof COMMON_UNIFORMS

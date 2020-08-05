@@ -29,7 +29,7 @@ export const wcag = {
 }
 
 export const defaultColors = {
-  black: '#1B2128',
+  'black': '#1B2128',
   'grey-90': '#29333E',
   'grey-80': '#3A4857',
   'grey-70': '#4E5D6D',
@@ -41,7 +41,7 @@ export const defaultColors = {
   'grey-10': '#CED1D5',
   'grey-05': '#EBECEE',
   'grey-03': '#F5F6F6',
-  white: '#FFFFFF',
+  'white': '#FFFFFF',
 }
 
 export const modularScale = {

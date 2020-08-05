@@ -1,113 +1,114 @@
 
+import { RouteComponentProps } from '@reach/router'
+import { useObserver } from 'mobx-react'
 import * as React from 'react'
-import { injectAndObserve } from '../../state/injectAndObserve'
-import { PatternsProp, Note } from '../../state/patternsStore'
 
-import {
-  customPatternSelector,
-  navigation,
-  navigationButton,
-  colorButtons,
-  colorButton,
-} from './customPatternSelector.pcss'
-import { RoutingProp } from '../../state/routingStore'
-import { Icon } from '../../components/Icon'
-import { ColorPicker } from '../ColorPicker'
+import { logger } from '../../../shared/logger'
+import { Button } from '../../components/Button'
+import { ColorPicker } from '../../components/ColorPicker'
+import { Panel } from '../../components/Panel'
+import { TextInput } from '../../components/TextInput'
+import { HSVa } from '../../pcss-functions'
+import { Note } from '../../state/patternsStore'
+import { useStores } from '../../state/useStores'
 
-interface OwnProps {
-  height?: number
-  domRef?: React.Ref<HTMLDivElement>
+import { colorPickers, customPatternSelector, patternName, picker, pickerRow } from './customPatternSelector.pcss'
+
+export interface CustomPatternSelectorProps extends RouteComponentProps {
+  'data-testid'?: string
 }
 
-type StateProps =
-  & PatternsProp
-  & RoutingProp
+export const CustomPatternSelector: React.FunctionComponent<CustomPatternSelectorProps> = function CustomPatternSelector (props: CustomPatternSelectorProps) {
+  const {
+    'data-testid': testid = 'custom-pattern-selector',
+  } = props
 
-export type CustomPatternSelectorProps = OwnProps & StateProps
+  const { patterns } = useStores()
+  const [customName, setCustomName] = React.useState('')
+  const [favoriteSaved, setFavoriteSaved] = React.useState(false)
 
-export const CustomPatternSelector = injectAndObserve<StateProps, OwnProps>(
-  ({ patterns, routing }) => ({ patterns, routing }),
-  class CustomPatternSelector extends React.Component<CustomPatternSelectorProps> {
-    goBack = (ev: React.MouseEvent) => {
-      ev.preventDefault()
-      this.props.routing.popSubroute()
+  React.useEffect(() => {
+    if (favoriteSaved) {
+      setTimeout(() => {
+        setFavoriteSaved(false)
+      }, 3000)
     }
+  }, [favoriteSaved])
 
-    toggleFavorite = (ev: React.MouseEvent) => {
-      const { patterns } = this.props
-      ev.preventDefault()
-      if (patterns.favoriteKey === null) {
-        this.props.patterns.saveFavorite()
-      } else {
-        patterns.deleteFavorite(patterns.favoriteKey)
-      }
-    }
+  const getColor = (note: Note) => {
+    return patterns.patternData.custom.colors[note]
+  }
 
-    resetColors = (ev: React.MouseEvent) => {
-      ev.preventDefault()
-      this.props.patterns.patternData.custom.colors.reset()
-    }
+  const setColor = (note: Note) => (color: HSVa) => {
+    patterns.patternData.custom.colors[note] = color
+  }
 
-    renderNavigation = () => (
-      <div className={navigation}>
-        <button
-          type='button'
-          role='button'
-          className={navigationButton}
-          onClick={this.goBack}
-        >
-          <Icon color='var(--grey-60)' name='arrow_back' />
-        </button>
-        <button
-          type='button'
-          role='button'
-          className={navigationButton}
-          onClick={this.toggleFavorite}
-        >
-          <Icon
-            color='var(--grey-60)'
-            name={
-              this.props.patterns.favoriteKey === null
-                ? 'favorite_border'
-                : 'favorite'
-            }
-          />
-        </button>
-        <button
-          type='button'
-          role='button'
-          className={navigationButton}
-          onClick={this.resetColors}
-        >
-          <Icon color='var(--grey-60)' name='refresh' />
-        </button>
-      </div>
-    )
+  const renderPickers = () => {
+    const noteRows = [
+      patterns.notes.slice(0, 4),
+      patterns.notes.slice(4, 8),
+      patterns.notes.slice(8, 12),
+    ]
 
-    renderColorButton = (note: Note) => (
-      <ColorPicker
-        key={note}
-        className={colorButton}
-        note={note}
-      />
-    )
-
-    renderColorButtons = () => (
-      <div className={colorButtons}>
+    return (
+      <div className={colorPickers} data-testid={`${testid}-color-pickers`}>
         {
-          this.props.patterns.notes.map(this.renderColorButton)
+          noteRows.map((notes, i) => (
+            <div key={i} className={pickerRow} data-testid={`${testid}-pickers-row-${i}`}>
+              {
+                notes.map(note => (
+                  <ColorPicker
+                    key={note}
+                    className={picker}
+                    value={getColor(note)}
+                    onChange={setColor(note)}
+                    data-testid={`${testid}-picker-${note}`}
+                  >
+                    {note}
+                  </ColorPicker>
+                ))
+              }
+            </div>
+          ))
         }
       </div>
     )
+  }
 
-    render () {
-      const { domRef } = this.props
-      return (
-        <div ref={domRef} className={customPatternSelector}>
-          {this.renderNavigation()}
-          {this.renderColorButtons()}
-        </div>
-      )
-    }
-  },
-)
+  const saveCustom = (ev: React.FormEvent) => {
+    ev.preventDefault()
+    logger.info(`Saving pattern`, customName)
+    patterns.saveFavorite(customName)
+    setFavoriteSaved(true)
+  }
+
+  return useObserver(() => (
+    <Panel title='Custom' button={{
+      text: 'Reset',
+      onClick: patterns.patternData.custom.colors.reset,
+    }}>
+      <div
+        className={customPatternSelector}
+        data-testid={testid}
+      >
+        {renderPickers()}
+        <form onSubmit={saveCustom}>
+          <TextInput
+            className={patternName}
+            placeholder='Custom Pattern Name'
+            value={customName}
+            onChange={setCustomName}
+          >
+            {
+              favoriteSaved
+                ? <div>Saved</div>
+                : <Button type='submit'>
+                    Save
+                  </Button>
+            }
+          </TextInput>
+        </form>
+      </div>
+    </Panel>
+  ))
+}

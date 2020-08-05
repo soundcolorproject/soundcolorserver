@@ -1,4 +1,6 @@
 
+import { requireSvg } from './requireSvg'
+
 export type IconSize = keyof typeof iconSizes
 
 export const iconSizes = {
@@ -12,10 +14,11 @@ export const iconSizes = {
 }
 
 const container = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs')
+container.appendChild(defs)
 container.id = 'svg-container'
 document.body.appendChild(container)
 
-const requireSvg = require.context('./svg', true, /\.svg/)
 function buildSvgContainer (name: string) {
   const svgStr: string = requireSvg(`./${name}.svg`).default
   const svgContainer = document.createElement('div')
@@ -29,7 +32,13 @@ function buildSvgContainer (name: string) {
   const group = document.createElementNS('http://www.w3.org/2000/svg', 'g')
   group.id = name
   Array.from(svg.children).forEach(child => {
-    group.appendChild(child)
+    if (child.nodeName === 'defs') {
+      Array.from(child.children).forEach(def => {
+        defs.appendChild(def)
+      })
+    } else {
+      group.appendChild(child)
+    }
   })
 
   container.appendChild(group)
@@ -40,18 +49,20 @@ function buildSvgContainer (name: string) {
 export type IconName = keyof typeof iconOptions
 
 export const iconOptions = {
-  about: buildSvgContainer('about'),
   arrow_back: buildSvgContainer('arrow_back'),
   arrow_forward: buildSvgContainer('arrow_forward'),
   colors: buildSvgContainer('colors'),
   connections: buildSvgContainer('connections'),
   delete: buildSvgContainer('delete'),
+  download: buildSvgContainer('download'),
+  facebook: buildSvgContainer('facebook'),
   favorite_border: buildSvgContainer('favorite_border'),
   favorite: buildSvgContainer('favorite'),
   fullscreen: buildSvgContainer('fullscreen'),
   home: buildSvgContainer('home'),
   info: buildSvgContainer('info'),
   launch: buildSvgContainer('launch'),
+  logo: buildSvgContainer('logo'),
   minimize: buildSvgContainer('minimize'),
   music_note: buildSvgContainer('music_note'),
   palette: buildSvgContainer('palette'),
@@ -64,6 +75,7 @@ export const iconOptions = {
   settings: buildSvgContainer('settings'),
   stop_circle: buildSvgContainer('stop_circle'),
   tune: buildSvgContainer('tune'),
+  twitter: buildSvgContainer('twitter'),
   visibility_off: buildSvgContainer('visibility_off'),
 }
 
@@ -85,7 +97,7 @@ export type IconSizeProperties = {
 
 export type IconViewProperties = IconViewBox & IconSizeProperties
 
-const iconSizeNames = Object.keys(iconSizes) as IconSize[]
+export const iconSizeNames = Object.keys(iconSizes) as IconSize[]
 function buildIconSizes (iconWidth: number, iconTrueWidth: number, iconHeight = iconWidth, iconTrueHeight = iconTrueWidth) {
   const widthRatio = iconTrueWidth / iconWidth
   const heightRatio = iconTrueHeight / iconHeight
@@ -111,9 +123,6 @@ function buildIconSizes (iconWidth: number, iconTrueWidth: number, iconHeight = 
 
 const newIconSizes = buildIconSizes(16, 24)
 export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
-  about: {
-    ...newIconSizes,
-  },
   arrow_back: {
     ...newIconSizes,
   },
@@ -123,7 +132,19 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
   connections: {
     ...newIconSizes,
   },
+  download: {
+    ...newIconSizes,
+  },
+  facebook: {
+    ...buildIconSizes(1365.3333, 1365.3333),
+  },
   fullscreen: {
+    ...newIconSizes,
+  },
+  launch: {
+    ...newIconSizes,
+  },
+  logo: {
     ...newIconSizes,
   },
   minimize: {
@@ -149,6 +170,9 @@ export const iconProperties: { [icon in IconName]?: IconViewProperties } = {
   },
   tune: {
     ...newIconSizes,
+  },
+  twitter: {
+    ...buildIconSizes(250, 400),
   },
   visibility_off: {
     ...newIconSizes,

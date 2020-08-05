@@ -1,18 +1,21 @@
 
 :root {
   --icon-color: var(--white);
+  --pre-icon-padding: 0px;
+  --post-icon-padding: 0px;
 }
 
 .icon {
   display: inline-block;
   fill: var(--icon-color);
+  margin-left: var(--pre-icon-padding);
+  margin-right: var(--post-icon-padding);
 }
 
 :global(#svg-container) {
   position: fixed;
   left: -10000px;
   top: -10000px;
-  display: none;
   opacity: 0;
   width: 0;
   height: 0;
