@@ -7,7 +7,7 @@ import * as React from 'react'
 import { shareText, shareTitle, shareUrl } from '../../helpers/share'
 import { useStores } from '../../state/useStores'
 
-import { hidden, shareLink, button } from './shareLink.pcss'
+import { button, hidden, shareLink } from './shareLink.pcss'
 
 interface ShareArgs {
   title?: string
