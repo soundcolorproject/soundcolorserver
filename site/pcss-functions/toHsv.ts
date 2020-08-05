@@ -27,6 +27,7 @@ export class HSVa {
   ) {}
 
   toString () {
+    // TODO: Fix translation back to hex code
     return toRgb(this).toString()
   }
 

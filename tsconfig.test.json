@@ -4,5 +4,16 @@
     "module": "commonjs",
     "inlineSourceMap": false,
     "sourceMap": false
-  }
+  },
+  "include": [
+    "config",
+    "electron",
+    "server",
+    "shared",
+    "site"
+  ],
+  "exclude": [
+    "generators",
+    "node_modules"
+  ]
 }

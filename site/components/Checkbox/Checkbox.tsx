@@ -10,19 +10,21 @@ import {
   switchMark,
 } from './checkbox.pcss'
 
-export interface SliderProps {
+export interface CheckboxProps {
   label: string
   checked: boolean
   onChange: (checked: boolean) => void
   className?: string
+  'data-testid'?: string
 }
 
-export function Checkbox (props: SliderProps) {
+export function Checkbox (props: CheckboxProps) {
   const {
     label,
     checked,
     onChange,
     className,
+    'data-testid': testid = 'checkbox',
   } = props
 
   const switchRef = React.useRef<HTMLDivElement>(null)
@@ -49,22 +51,24 @@ export function Checkbox (props: SliderProps) {
   }, [onChange, checked])
 
   return (
-    <label className={cn(checkboxLabel, className)} onClick={handleLabelClick}>
-      <div className={checkboxDetails}>
+    <label className={cn(checkboxLabel, className)} onClick={handleLabelClick} data-testid={testid}>
+      <div className={checkboxDetails} data-testid={`${testid}-label`}>
         {label}
-        <div className={checkboxValue}>{checked ? 'On' : 'Off'}</div>
+        <div className={checkboxValue} data-testid={`${testid}-vaue`}>{checked ? 'On' : 'Off'}</div>
       </div>
       <input
         className={checkboxInput}
         type='checkbox'
         checked={checked}
         onChange={handleChange}
+        data-testid={`${testid}-input`}
       />
       <div
         ref={switchRef}
         className={switchMark}
         tabIndex={0}
         onKeyDown={handleKeydown}
+        data-testid={`${testid}-mark`}
       />
     </label>
   )

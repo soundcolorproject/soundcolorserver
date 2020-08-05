@@ -17,7 +17,14 @@ self.addEventListener('push', (event) => {
   event.waitUntil(self.registration.showNotification(title, options))
 })
 
-workbox.precaching.precacheAndRoute(self.__WB_MANIFEST)
+workbox.routing.registerRoute(
+  /\.(js|css|.map)/g,
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'general-cache',
+  }),
+)
+
+workbox.precaching.precache(self.__WB_MANIFEST)
 
 // This is necessary to put TS in module mode rather than ambient mode
 // Otherwise TS will start yelling about redefining `self` from the definition in `lib.dom`

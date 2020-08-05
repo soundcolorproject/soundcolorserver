@@ -19,6 +19,7 @@
   },
   "include": [
     "config",
+    "cypress",
     "electron",
     "server",
     "shared",

@@ -38,7 +38,7 @@ export const HueConnectLocal: React.FunctionComponent<HueConnectLocalProps> = fu
     if (apiStatus.localConnectionStatus === 'no bridges') {
       return (
         <PanelDetail>
-          There appear to be no hue bridges on your local network.
+          No Hue Bridges found.  Please make sure your Hue Bridge is on the same network/Wifi as this device.
         </PanelDetail>
       )
     }
@@ -46,10 +46,10 @@ export const HueConnectLocal: React.FunctionComponent<HueConnectLocalProps> = fu
       return (
         <>
           <PanelDetail>
-            Unable to connect to a hue bridge on the current network.  You may have to press the button on your hue bridge, then try connecting again.
+            Unable to connect to a Hue Bridge on the current network.  You may have to press the button on your Hue Bridge, then try connecting again.
           </PanelDetail>
           <PanelButton onClick={apiStatus.connectLocal}>
-            Retry connecting to hue bridge
+            Retry connecting to Hue Bridge
           </PanelButton>
         </>
       )
@@ -57,7 +57,7 @@ export const HueConnectLocal: React.FunctionComponent<HueConnectLocalProps> = fu
 
     return (
       <PanelDetail>
-        You are already connected to your hue bridge.
+        You are already connected to your Hue Bridge.
       </PanelDetail>
     )
   }

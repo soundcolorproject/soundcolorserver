@@ -90,6 +90,7 @@ export function MainPanelWithShrinkingSide (props: Props) {
       transitionClass = transitionDown
       break
     case 'none':
+    default:
       transitionClass = transitionNone
       break
   }

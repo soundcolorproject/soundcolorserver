@@ -23,8 +23,6 @@ const defaultDims = Object.freeze<DimensionObject>({
   y: 0,
 })
 
-let prevRef: any
-let prevDim: any
 export function useDimensions<T extends HTMLElement> (recompute?: any): [RefObject<T>, DimensionObject] {
   const ref = useRef<T>(null)
   const [dimensions, setDimensions] = useState<DimensionObject>(defaultDims)
@@ -44,9 +42,6 @@ export function useDimensions<T extends HTMLElement> (recompute?: any): [RefObje
     ref.current?.clientLeft,
     ref.current?.clientTop,
   ])
-
-  prevRef = ref.current
-  prevDim = dimensions
 
   return [ref, dimensions]
 }

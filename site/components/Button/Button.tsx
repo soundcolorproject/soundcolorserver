@@ -24,6 +24,8 @@ export interface ButtonProps {
   forceDarkText?: boolean
   type?: 'button' | 'submit'
   color?: Color
+  lighten?: boolean
+  darken?: boolean
   hoverColor?: Color
   preventDefault?: boolean
   className?: string
@@ -55,6 +57,8 @@ export function Button (props: ButtonProps) {
     forceDarkText,
     type = 'button',
     color,
+    lighten: forceLighten,
+    darken: forceDarken,
     hoverColor,
     preventDefault = type !== 'submit',
     className,
@@ -80,10 +84,10 @@ export function Button (props: ButtonProps) {
     fullStyle['--button-color'] = contrastingColor
 
     if (!hoverColor) {
-      const hoverColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
+      const hoverColor = forceDarken || contrastingColor === '#fff' || contrastingColor === 'var(--white)' && !forceLighten
       ? darken(color, 0.4)
       : lighten(color, 0.4)
-      const activeColor = contrastingColor === '#fff' || contrastingColor === 'var(--white)'
+      const activeColor = forceDarken || contrastingColor === '#fff' || contrastingColor === 'var(--white)' && !forceLighten
       ? darken(color, 0.6)
       : lighten(color, 0.6)
 
@@ -115,7 +119,7 @@ export function Button (props: ButtonProps) {
       style={fullStyle}
       data-testid={testid}
     >
-      {preIcon && <Icon size='xxs' name={preIcon} className={iconBeforeText} />}
+      {preIcon && <Icon size='xxs' name={preIcon} className={iconBeforeText} data-testid={`${testid}-pre-icon`} />}
       {children}
     </button>
   )

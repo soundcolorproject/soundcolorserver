@@ -1,19 +1,39 @@
 
 .share-link {
   background: transparent;
-  color: var(--white);
-  text-decoration: underline;
-  padding: 16px;
+  padding: 8px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   font-size: 12px;
   line-height: 20px;
   opacity: 1;
   transition: opacity 0.3s;
-  font-weight: bold;
-  text-shadow: 0 0 2px var(--black), 0 0 2px var(--black),  0 0 4px var(--black);
+  /* font-weight: bold; */
+
+  .button {
+    padding: 6px 8px;
+    color: var(--white);
+    text-decoration: underline;
+    font-weight: normal;
+    display: flex;
+    font-family: var(--app-font);
+    justify-content: center;
+    align-items: center;
+    background: var(--black);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: var(--grey-90);
+    }
+
+    &:active {
+      background: var(--grey-80);
+    }
+  }
 
   &.hidden {
     opacity: 0;

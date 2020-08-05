@@ -7,7 +7,7 @@ import * as React from 'react'
 import { shareText, shareTitle, shareUrl } from '../../helpers/share'
 import { useStores } from '../../state/useStores'
 
-import { hidden, shareLink } from './shareLink.pcss'
+import { hidden, shareLink, button } from './shareLink.pcss'
 
 interface ShareArgs {
   title?: string
@@ -33,7 +33,8 @@ export const ShareLink: React.FunctionComponent<ShareLinkProps> = function Share
   } = props
   const { intro, routing } = useStores()
 
-  const handleClick = () => {
+  const handleClick = (ev: React.MouseEvent) => {
+    ev.preventDefault()
     if ('share' in navigator) {
       navigator.share({
         title: shareTitle,
@@ -47,11 +48,12 @@ export const ShareLink: React.FunctionComponent<ShareLinkProps> = function Share
 
   return useObserver(() => (
     <div
-      onClick={handleClick}
       className={cn(shareLink, { [hidden]: routing.showSharePanel || !intro.seenHowItWorks || !intro.warningAccepted })}
       data-testid={testid}
     >
-      Share Sound Color Project
+      <button type='button' role='button' onClick={handleClick} className={button}>
+        Share Sound Color Project
+      </button>
     </div>
   ))
 }

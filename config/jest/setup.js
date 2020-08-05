@@ -1,6 +1,5 @@
 
 const { join } = require('path')
-
 require('@testing-library/jest-dom')
 
 require.context = (prePath) => {

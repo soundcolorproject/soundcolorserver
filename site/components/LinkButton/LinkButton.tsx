@@ -14,6 +14,7 @@ export interface LinkButtonProps {
   className?: string
   style?: React.CSSProperties
   onClick?: (ev: React.MouseEvent<HTMLAnchorElement>) => void
+  'data-testid'?: string
 }
 
 interface CssVariables {
@@ -22,7 +23,16 @@ interface CssVariables {
   '--active-background'?: string
 }
 
-export function LinkButton ({ color, to, children, className, style: customStyle, onClick }: LinkButtonProps) {
+export function LinkButton (props: LinkButtonProps) {
+  const {
+    color,
+    to,
+    children,
+    className,
+    style: customStyle,
+    onClick,
+    'data-testid': testid = 'link-button',
+  } = props
   const style: React.CSSProperties & CssVariables = { ...customStyle }
 
   if (color) {
@@ -40,6 +50,14 @@ export function LinkButton ({ color, to, children, className, style: customStyle
   }
 
   return (
-    <Link to={to} className={`${linkButton} ${className}`} onClick={onClick} style={style}>{children}</Link>
+    <Link
+      to={to}
+      className={`${linkButton} ${className}`}
+      onClick={onClick}
+      style={style}
+      data-testid={testid}
+    >
+      {children}
+    </Link>
   )
 }

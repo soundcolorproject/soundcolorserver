@@ -11,6 +11,7 @@ export interface IconProps {
   size?: IconSize
   className?: string
   style?: React.CSSProperties
+  'data-testid'?: string
 }
 
 function defaultSizeDetails (size: IconSize): IconProperties {
@@ -27,7 +28,15 @@ const defautViewBox: IconViewBox = {
   viewHeight: 24,
 }
 
-export function Icon ({ name, color, size = 'med', className, style }: IconProps) {
+export function Icon (props: IconProps) {
+  const {
+    name,
+    color,
+    size = 'med',
+    className,
+    style,
+    'data-testid': testid = 'icon',
+  } = props
   const properties = iconProperties[name]
   const sizeDetails = properties && properties[size] || defaultSizeDetails(size)
   const viewBox = properties || defautViewBox
@@ -47,8 +56,9 @@ export function Icon ({ name, color, size = 'med', className, style }: IconProps
         marginRight: sizeDetails.marginWidth ? `calc(var(--post-icon-padding) - ${sizeDetails.marginWidth}px)` : undefined,
         ...style,
       }}
+      data-testid={testid}
     >
-      <use href={iconOptions[name]} fill={color} />
+      <use href={iconOptions[name]} fill={color} data-testid={`${testid}-use-statement`} />
     </svg>
   )
 }

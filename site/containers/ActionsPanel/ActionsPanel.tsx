@@ -30,7 +30,7 @@ export const ActionsPanel: React.FunctionComponent<ActionsPanelProps> = function
   }
 
   return useObserver(() => (
-    <Panel title='Ations' className={actionsPanel} data-testid={testid}>
+    <Panel title='Actions' className={actionsPanel} data-testid={testid}>
       <PanelButton onClick={promptInstall} data-testid={`${testid}-install-button`}>
         Install SOVIS App
       </PanelButton>

@@ -205,14 +205,17 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
     </label>
     <label
       className="checkboxLabel"
+      data-testid="checkbox"
       onClick={[Function]}
     >
       <div
         className="checkboxDetails"
+        data-testid="checkbox-label"
       >
         Monochromacy
         <div
           className="checkboxValue"
+          data-testid="checkbox-vaue"
         >
           Off
         </div>
@@ -220,11 +223,13 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
       <input
         checked={false}
         className="checkboxInput"
+        data-testid="checkbox-input"
         onChange={[Function]}
         type="checkbox"
       />
       <div
         className="switchMark"
+        data-testid="checkbox-mark"
         onKeyDown={[Function]}
         tabIndex={0}
       />
@@ -342,6 +347,7 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -355,7 +361,9 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -388,6 +396,7 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -401,7 +410,9 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -889,6 +900,7 @@ exports[`Storyshots Icon Specific Icon 1`] = `
   >
     <svg
       className="icon"
+      data-testid="icon"
       fill="var(--white)"
       height={24}
       style={
@@ -904,6 +916,7 @@ exports[`Storyshots Icon Specific Icon 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <use
+        data-testid="icon-use-statement"
         fill="var(--white)"
       />
     </svg>
@@ -949,6 +962,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         >
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={24}
             style={
               Object {
@@ -962,7 +976,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={24}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
           <div
             className="text"
@@ -976,6 +992,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           </div>
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={30}
             style={
               Object {
@@ -989,7 +1006,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={30}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
         </a>
       </div>
@@ -1006,6 +1025,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         >
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={24}
             style={
               Object {
@@ -1019,7 +1039,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={24}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
           <div
             className="text"
@@ -1033,6 +1055,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           </div>
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={30}
             style={
               Object {
@@ -1046,7 +1069,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={30}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
         </a>
       </div>
@@ -1063,6 +1088,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         >
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={24}
             style={
               Object {
@@ -1076,7 +1102,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={24}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
           <div
             className="text"
@@ -1090,6 +1118,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           </div>
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={30}
             style={
               Object {
@@ -1103,7 +1132,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={30}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
         </a>
       </div>
@@ -1120,6 +1151,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         >
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={24}
             style={
               Object {
@@ -1133,7 +1165,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={24}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
           <div
             className="text"
@@ -1147,6 +1181,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           </div>
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={30}
             style={
               Object {
@@ -1160,7 +1195,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={30}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
         </a>
       </div>
@@ -1177,6 +1214,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         >
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={24}
             style={
               Object {
@@ -1190,7 +1228,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={24}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
           <div
             className="text"
@@ -1204,6 +1244,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           </div>
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={30}
             style={
               Object {
@@ -1217,7 +1258,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={30}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
         </a>
       </div>
@@ -1234,6 +1277,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         >
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={24}
             style={
               Object {
@@ -1247,7 +1291,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={24}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
           <div
             className="text"
@@ -1261,6 +1307,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           </div>
           <svg
             className="icon buttonIcon"
+            data-testid="icon"
             height={30}
             style={
               Object {
@@ -1274,7 +1321,9 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             width={30}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <use />
+            <use
+              data-testid="icon-use-statement"
+            />
           </svg>
         </a>
       </div>
@@ -1339,6 +1388,7 @@ exports[`Storyshots OptionsPanel Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -1352,7 +1402,9 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -1379,6 +1431,7 @@ exports[`Storyshots OptionsPanel Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -1392,7 +1445,9 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -1419,6 +1474,7 @@ exports[`Storyshots OptionsPanel Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -1432,7 +1488,9 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -1607,6 +1665,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -1620,7 +1679,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -1654,6 +1715,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
         </span>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -1667,7 +1729,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -1894,6 +1958,7 @@ exports[`Storyshots SharePanel Example 1`] = `
       >
         <svg
           className="icon iconBeforeText"
+          data-testid="share-panel-facebook-button-pre-icon"
           height={12}
           style={
             Object {
@@ -1907,7 +1972,9 @@ exports[`Storyshots SharePanel Example 1`] = `
           width={12}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="share-panel-facebook-button-pre-icon-use-statement"
+          />
         </svg>
         Facebook
       </button>
@@ -1931,6 +1998,7 @@ exports[`Storyshots SharePanel Example 1`] = `
       >
         <svg
           className="icon iconBeforeText"
+          data-testid="share-panel-twitter-button-pre-icon"
           height={19.200000000000003}
           style={
             Object {
@@ -1944,7 +2012,9 @@ exports[`Storyshots SharePanel Example 1`] = `
           width={19.200000000000003}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="share-panel-twitter-button-pre-icon-use-statement"
+          />
         </svg>
         Twitter
       </button>
@@ -1989,6 +2059,7 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
   >
     <svg
       className="icon buttonIcon"
+      data-testid="icon"
       height={24}
       style={
         Object {
@@ -2002,7 +2073,9 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
       width={24}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <use />
+      <use
+        data-testid="icon-use-statement"
+      />
     </svg>
     <div
       className="text"
@@ -2016,6 +2089,7 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
     </div>
     <svg
       className="icon buttonIcon"
+      data-testid="icon"
       height={30}
       style={
         Object {
@@ -2029,7 +2103,9 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
       width={30}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <use />
+      <use
+        data-testid="icon-use-statement"
+      />
     </svg>
   </a>
 </div>
@@ -2049,6 +2125,7 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
   >
     <svg
       className="icon buttonIcon"
+      data-testid="icon"
       height={24}
       style={
         Object {
@@ -2062,7 +2139,9 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
       width={24}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <use />
+      <use
+        data-testid="icon-use-statement"
+      />
     </svg>
     <div
       className="text"
@@ -2076,6 +2155,7 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
     </div>
     <svg
       className="icon buttonIcon"
+      data-testid="icon"
       height={30}
       style={
         Object {
@@ -2089,7 +2169,9 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
       width={30}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <use />
+      <use
+        data-testid="icon-use-statement"
+      />
     </svg>
   </a>
 </div>
@@ -2109,6 +2191,7 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
   >
     <svg
       className="icon buttonIcon"
+      data-testid="icon"
       height={24}
       style={
         Object {
@@ -2122,7 +2205,9 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
       width={24}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <use />
+      <use
+        data-testid="icon-use-statement"
+      />
     </svg>
     <div
       className="text"
@@ -2136,6 +2221,7 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
     </div>
     <svg
       className="icon buttonIcon"
+      data-testid="icon"
       height={30}
       style={
         Object {
@@ -2149,7 +2235,9 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
       width={30}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <use />
+      <use
+        data-testid="icon-use-statement"
+      />
     </svg>
   </a>
 </div>
@@ -2201,6 +2289,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       >
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={24}
           style={
             Object {
@@ -2214,7 +2303,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={24}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
         <div
           className="text"
@@ -2228,6 +2319,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         </div>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -2241,7 +2333,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -2258,6 +2352,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       >
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={24}
           style={
             Object {
@@ -2271,7 +2366,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={24}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
         <div
           className="text"
@@ -2285,6 +2382,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         </div>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -2298,7 +2396,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -2315,6 +2415,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       >
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={24}
           style={
             Object {
@@ -2328,7 +2429,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={24}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
         <div
           className="text"
@@ -2342,6 +2445,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         </div>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -2355,7 +2459,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -2372,6 +2478,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       >
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={24}
           style={
             Object {
@@ -2385,7 +2492,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={24}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
         <div
           className="text"
@@ -2399,6 +2508,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         </div>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -2412,7 +2522,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -2429,6 +2541,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       >
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={24}
           style={
             Object {
@@ -2442,7 +2555,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={24}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
         <div
           className="text"
@@ -2456,6 +2571,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
         </div>
         <svg
           className="icon buttonIcon"
+          data-testid="icon"
           height={30}
           style={
             Object {
@@ -2469,7 +2585,9 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           width={30}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <use />
+          <use
+            data-testid="icon-use-statement"
+          />
         </svg>
       </a>
     </div>
@@ -2602,6 +2720,7 @@ exports[`Storyshots TextInput Knobs With Icon 1`] = `
     </div>
     <svg
       className="icon"
+      data-testid="icon"
       fill="var(--black)"
       height={24}
       style={
@@ -2617,6 +2736,7 @@ exports[`Storyshots TextInput Knobs With Icon 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <use
+        data-testid="icon-use-statement"
         fill="var(--black)"
       />
     </svg>
