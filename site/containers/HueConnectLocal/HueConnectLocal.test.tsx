@@ -16,7 +16,7 @@ describe(HueConnectLocal.name, () => {
   })
 
   it('should render', () => {
-    const expected = 'You are already connected to your hue bridge.'
+    const expected = 'You are already connected to your Hue Bridge.'
 
     const apiStatus: DeepPartial<ApiStatusStore> = {
       offline: false,

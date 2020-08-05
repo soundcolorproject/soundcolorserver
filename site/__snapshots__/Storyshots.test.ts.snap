@@ -2,28 +2,28 @@
 
 exports[`Storyshots ActionsPanel Example 1`] = `
 <div
-  className="panel actionsPanel"
+  className="panel actions-panel"
   data-testid="actions-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
-      Ations
+      Actions
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="actions-panel-install-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -41,12 +41,12 @@ exports[`Storyshots ActionsPanel Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="actions-panel-screenshot-button"
       style={Object {}}
     >
       <a
-        className="hoverButton disabledButton"
+        className="hover-button disabled-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -69,20 +69,20 @@ exports[`Storyshots ActionsPanel Example 1`] = `
 
 exports[`Storyshots AudioSourceSelector Example 1`] = `
 <div
-  className="panel audioSourceSelector"
+  className="panel audio-source-selector"
   data-testid="audio-source-selector"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Audio Source
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     Please allow microphone access to view audio sources.
   </div>
@@ -101,27 +101,27 @@ exports[`Storyshots Button Example 1`] = `
 
 exports[`Storyshots ColorOptionsPanel Example 1`] = `
 <div
-  className="panel colorOptionsPanel"
+  className="panel color-options-panel"
   data-testid="color-options-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Color
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="color-options-panel-slider-vibranceMultiplier"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="color-options-panel-slider-vibranceMultiplier-label"
@@ -129,14 +129,14 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
           Vibrance
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="color-options-panel-slider-vibranceMultiplier-value"
         >
           0.50
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={5}
         min={0}
         onChange={[Function]}
@@ -146,11 +146,11 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="color-options-panel-slider-noiseMultiplier"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="color-options-panel-slider-noiseMultiplier-label"
@@ -158,14 +158,14 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
           Saturation
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="color-options-panel-slider-noiseMultiplier-value"
         >
           0.90
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={10}
         min={0}
         onChange={[Function]}
@@ -175,11 +175,11 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="color-options-panel-slider-minimumBrightness"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="color-options-panel-slider-minimumBrightness-label"
@@ -187,14 +187,14 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
           Minimum Brightness
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="color-options-panel-slider-minimumBrightness-value"
         >
           0.00
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={1}
         min={0}
         onChange={[Function]}
@@ -204,17 +204,17 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="checkboxLabel"
+      className="checkbox-label"
       data-testid="checkbox"
       onClick={[Function]}
     >
       <div
-        className="checkboxDetails"
+        className="checkbox-details"
         data-testid="checkbox-label"
       >
         Monochromacy
         <div
-          className="checkboxValue"
+          className="checkbox-value"
           data-testid="checkbox-vaue"
         >
           Off
@@ -222,13 +222,13 @@ exports[`Storyshots ColorOptionsPanel Example 1`] = `
       </div>
       <input
         checked={false}
-        className="checkboxInput"
+        className="checkbox-input"
         data-testid="checkbox-input"
         onChange={[Function]}
         type="checkbox"
       />
       <div
-        className="switchMark"
+        className="switch-mark"
         data-testid="checkbox-mark"
         onKeyDown={[Function]}
         tabIndex={0}
@@ -250,7 +250,7 @@ exports[`Storyshots ColorPicker Stateful Example 1`] = `
   }
 >
   <button
-    className="colorPicker"
+    className="color-picker"
     data-testid="color-picker"
     onClick={[Function]}
     style={
@@ -268,7 +268,7 @@ exports[`Storyshots ColorPicker Stateful Example 1`] = `
 
 exports[`Storyshots ColorWarning Example 1`] = `
 <div
-  className="colorWarning"
+  className="color-warning"
   data-testid="color-warning"
 >
   <h1>
@@ -307,24 +307,24 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
   data-testid="connections-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Connections
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="connections-panel-audio-source-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -339,14 +339,14 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         >
           Audio Source
           <span
-            className="suffixText"
+            className="suffix-text"
           >
              - 
             None
           </span>
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -368,12 +368,12 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="connections-panel-philips-hue-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -388,14 +388,14 @@ exports[`Storyshots ConnectionsPanel Example 1`] = `
         >
           Philips Hue
           <span
-            className="suffixText"
+            className="suffix-text"
           >
              - 
             Login
           </span>
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -426,34 +426,34 @@ exports[`Storyshots CookiePolicyPanel Example 1`] = `
   data-testid="cookie-policy-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Cookie Policy
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="cookiePolicyPanel"
+      className="cookie-policy-panel"
     >
       <div
-        className="panelDetail"
+        className="panel-detail"
         data-testid="cookie-policy-panel-desc-1"
       >
         In order to use our Hue functionality, you need to accept the use of cookies.
       </div>
       <div
-        className="panelDetail"
+        className="panel-detail"
         data-testid="cookie-policy-panel-desc-2"
       >
-        We only use your cookie to connect your browser with your hue login, and never for advertising or marketing purposes.
+        We only use your cookie to connect your browser with your Hue login, and never for advertising or marketing purposes.
       </div>
       <div
-        className="panelDetail buttons"
+        className="panel-detail buttons"
         data-testid="cookie-policy-panel-buttons"
       >
         <button
@@ -471,11 +471,11 @@ exports[`Storyshots CookiePolicyPanel Example 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "--button-active-background": "#00b9fc",
+              "--button-active-background": "#a2b3c4",
               "--button-active-color": "var(--black)",
-              "--button-background": "#0080FF",
-              "--button-color": "var(--black)",
-              "--button-hover-background": "#00b8fa",
+              "--button-background": "#1B2128",
+              "--button-color": "var(--white)",
+              "--button-hover-background": "#8a97a6",
               "--button-hover-color": "var(--black)",
             }
           }
@@ -495,15 +495,15 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
   data-testid="panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Custom
     </div>
     <button
-      className="button titleButton"
+      className="button title-button"
       data-testid="button"
       onClick={[Function]}
       style={Object {}}
@@ -513,22 +513,22 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
     </button>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="customPatternSelector"
+      className="custom-pattern-selector"
       data-testid="custom-pattern-selector"
     >
       <div
-        className="colorPickers"
+        className="color-pickers"
         data-testid="custom-pattern-selector-color-pickers"
       >
         <div
-          className="pickerRow"
+          className="picker-row"
           data-testid="custom-pattern-selector-pickers-row-0"
         >
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-A"
             onClick={[Function]}
             style={
@@ -542,7 +542,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             A
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-A#"
             onClick={[Function]}
             style={
@@ -556,7 +556,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             A#
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-B"
             onClick={[Function]}
             style={
@@ -570,7 +570,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             B
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-C"
             onClick={[Function]}
             style={
@@ -585,11 +585,11 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
           </button>
         </div>
         <div
-          className="pickerRow"
+          className="picker-row"
           data-testid="custom-pattern-selector-pickers-row-1"
         >
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-C#"
             onClick={[Function]}
             style={
@@ -603,7 +603,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             C#
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-D"
             onClick={[Function]}
             style={
@@ -617,7 +617,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             D
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-D#"
             onClick={[Function]}
             style={
@@ -631,7 +631,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             D#
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-E"
             onClick={[Function]}
             style={
@@ -646,11 +646,11 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
           </button>
         </div>
         <div
-          className="pickerRow"
+          className="picker-row"
           data-testid="custom-pattern-selector-pickers-row-2"
         >
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-F"
             onClick={[Function]}
             style={
@@ -664,7 +664,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             F
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-F#"
             onClick={[Function]}
             style={
@@ -678,7 +678,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             F#
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-G"
             onClick={[Function]}
             style={
@@ -692,7 +692,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             G
           </button>
           <button
-            className="colorPicker picker"
+            className="color-picker picker"
             data-testid="custom-pattern-selector-picker-G#"
             onClick={[Function]}
             style={
@@ -711,11 +711,11 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
         onSubmit={[Function]}
       >
         <div
-          className="textInput patternName"
+          className="text-input pattern-name"
           data-testid="text-input"
         >
           <div
-            className="inputWrapper"
+            className="input-wrapper"
           >
             <input
               data-testid="text-input-input"
@@ -723,7 +723,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
               value=""
             />
             <div
-              className="placeholderText"
+              className="placeholder-text"
               data-testid="text-input-placeholder"
             >
               Custom Pattern Name
@@ -747,7 +747,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
 
 exports[`Storyshots HowItWorks Example 1`] = `
 <div
-  className="howItWorks hidden"
+  className="how-it-works hidden"
   data-testid="how-it-works"
 >
   <h1>
@@ -792,34 +792,34 @@ exports[`Storyshots HowItWorks Example 1`] = `
 
 exports[`Storyshots HueConnectLocal Example 1`] = `
 <div
-  className="panel hueConnectLocal"
+  className="panel hue-connect-local"
   data-testid="hue-connect-local"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Philips Hue
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="panel-detail"
     >
-      Unable to connect to a hue bridge on the current network.  You may have to press the button on your hue bridge, then try connecting again.
+      Unable to connect to a Hue Bridge on the current network.  You may have to press the button on your Hue Bridge, then try connecting again.
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="panel-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -832,7 +832,7 @@ exports[`Storyshots HueConnectLocal Example 1`] = `
             }
           }
         >
-          Retry connecting to hue bridge
+          Retry connecting to Hue Bridge
         </span>
       </a>
     </div>
@@ -846,15 +846,15 @@ exports[`Storyshots HueGroupSelector Example 1`] = `
   data-testid="hue-group-selector"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Philips Hue
     </div>
     <button
-      className="button titleButton"
+      className="button title-button"
       data-testid="button"
       onClick={[Function]}
       style={Object {}}
@@ -864,10 +864,10 @@ exports[`Storyshots HueGroupSelector Example 1`] = `
     </button>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="panel-detail"
     >
       Finding light groups...
@@ -935,7 +935,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
   }
 >
   <div
-    className="mainPanelWithShrinkingSide"
+    className="main-panel-with-shrinking-side"
     data-testid="main-panel-with-shrinking-side"
     style={
       Object {
@@ -944,16 +944,16 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
     }
   >
     <div
-      className="shrinkingSidePanel"
+      className="shrinking-side-panel"
       data-testid="shrinking-side-panel"
     >
       <div
-        className="shrinkingPanelButton activeStyle"
+        className="shrinking-panel-button active-style"
         data-testid="shrinking-panel-button"
         onKeyDown={[Function]}
       >
         <a
-          className="hoverColor"
+          className="hover-color"
           href="/"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -961,7 +961,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
           target="_blank"
         >
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={24}
             style={
@@ -991,7 +991,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             Sound Color Project
           </div>
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={30}
             style={
@@ -1013,18 +1013,18 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         </a>
       </div>
       <div
-        className="shrinkingPanelButton"
+        className="shrinking-panel-button"
         data-testid="shrinking-panel-button"
         onKeyDown={[Function]}
       >
         <a
-          className="hoverColor"
+          className="hover-color"
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
         >
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={24}
             style={
@@ -1054,7 +1054,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             Color Patterns
           </div>
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={30}
             style={
@@ -1076,18 +1076,18 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         </a>
       </div>
       <div
-        className="shrinkingPanelButton"
+        className="shrinking-panel-button"
         data-testid="shrinking-panel-button"
         onKeyDown={[Function]}
       >
         <a
-          className="hoverColor"
+          className="hover-color"
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
         >
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={24}
             style={
@@ -1117,7 +1117,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             Connections
           </div>
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={30}
             style={
@@ -1139,18 +1139,18 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         </a>
       </div>
       <div
-        className="shrinkingPanelButton"
+        className="shrinking-panel-button"
         data-testid="shrinking-panel-button"
         onKeyDown={[Function]}
       >
         <a
-          className="hoverColor"
+          className="hover-color"
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
         >
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={24}
             style={
@@ -1180,7 +1180,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             Options
           </div>
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={30}
             style={
@@ -1202,18 +1202,18 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         </a>
       </div>
       <div
-        className="shrinkingPanelButton"
+        className="shrinking-panel-button"
         data-testid="shrinking-panel-button"
         onKeyDown={[Function]}
       >
         <a
-          className="hoverColor"
+          className="hover-color"
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
         >
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={24}
             style={
@@ -1243,7 +1243,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             Sound Details
           </div>
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={30}
             style={
@@ -1265,18 +1265,18 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
         </a>
       </div>
       <div
-        className="shrinkingPanelButton"
+        className="shrinking-panel-button"
         data-testid="shrinking-panel-button"
         onKeyDown={[Function]}
       >
         <a
-          className="hoverColor"
+          className="hover-color"
           onClick={[Function]}
           onKeyDown={[Function]}
           tabIndex={0}
         >
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={24}
             style={
@@ -1306,7 +1306,7 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
             Actions
           </div>
           <svg
-            className="icon buttonIcon"
+            className="icon button-icon"
             data-testid="icon"
             height={30}
             style={
@@ -1329,13 +1329,13 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
       </div>
     </div>
     <div
-      className="panelContentWrapper"
+      className="panel-content-wrapper"
     >
       <div
         className="swapper"
       >
         <div
-          className="panelContent current"
+          className="panel-content current"
           style={
             Object {
               "width": 0,
@@ -1350,28 +1350,28 @@ exports[`Storyshots MainPanelWithShrinkingSide Stateful Example 1`] = `
 
 exports[`Storyshots OptionsPanel Example 1`] = `
 <div
-  className="panel optionsPanel"
+  className="panel options-panel"
   data-testid="options-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Options
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="options-panel-color-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1387,7 +1387,7 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           Color
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -1409,12 +1409,12 @@ exports[`Storyshots OptionsPanel Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="options-panel-visualization-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1430,7 +1430,7 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           Visualization
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -1452,12 +1452,12 @@ exports[`Storyshots OptionsPanel Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="options-panel-timing-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1473,7 +1473,7 @@ exports[`Storyshots OptionsPanel Example 1`] = `
           Timing
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -1504,24 +1504,24 @@ exports[`Storyshots Panel Example 1`] = `
   data-testid="panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       My Panel
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="panel-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1539,12 +1539,12 @@ exports[`Storyshots Panel Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="panel-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1562,12 +1562,12 @@ exports[`Storyshots Panel Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="panel-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1590,12 +1590,12 @@ exports[`Storyshots Panel Example 1`] = `
 
 exports[`Storyshots PanelButton Example 1`] = `
 <div
-  className="panelButton"
+  className="panel-button"
   data-testid="panel-button"
   style={Object {}}
 >
   <a
-    className="hoverButton"
+    className="hover-button"
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
@@ -1614,7 +1614,7 @@ exports[`Storyshots PanelButton Example 1`] = `
 
 exports[`Storyshots PanelDetail Example 1`] = `
 <div
-  className="panelDetail"
+  className="panel-detail"
   data-testid="panel-detail"
 />
 `;
@@ -1625,24 +1625,24 @@ exports[`Storyshots PatternSelector Example 1`] = `
   data-testid="pattern-selector"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Color Patterns
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="panel-button"
       style={Object {}}
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1657,14 +1657,14 @@ exports[`Storyshots PatternSelector Example 1`] = `
         >
           Saved
           <span
-            className="suffixText"
+            className="suffix-text"
           >
              - 
             0
           </span>
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -1686,7 +1686,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="panel-button"
       style={
         Object {
@@ -1698,7 +1698,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       }
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1714,7 +1714,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
           Custom
         </span>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -1736,7 +1736,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="pattern-button-chakras"
       style={
         Object {
@@ -1748,7 +1748,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       }
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1766,7 +1766,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="pattern-button-chromesthesia"
       style={
         Object {
@@ -1778,7 +1778,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       }
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1796,7 +1796,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="pattern-button-emotion"
       style={
         Object {
@@ -1808,7 +1808,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       }
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1826,7 +1826,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="pattern-button-chromotherapy"
       style={
         Object {
@@ -1838,7 +1838,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       }
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1856,7 +1856,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       </a>
     </div>
     <div
-      className="panelButton"
+      className="panel-button"
       data-testid="pattern-button-adolescence"
       style={
         Object {
@@ -1868,7 +1868,7 @@ exports[`Storyshots PatternSelector Example 1`] = `
       }
     >
       <a
-        className="hoverButton"
+        className="hover-button"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -1891,23 +1891,23 @@ exports[`Storyshots PatternSelector Example 1`] = `
 
 exports[`Storyshots SavedPaletteSelector Example 1`] = `
 <div
-  className="panel savedPaletteSelector"
+  className="panel saved-palette-selector"
   data-testid="saved-palette-selector"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Saved
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="panel-detail"
     >
       You have no custom patterns saved yet.
@@ -1918,21 +1918,27 @@ exports[`Storyshots SavedPaletteSelector Example 1`] = `
 
 exports[`Storyshots ShareLink Example 1`] = `
 <div
-  className="shareLink hidden"
+  className="share-link hidden"
   data-testid="share-link"
-  onClick={[Function]}
 >
-  Share Sound Color Project
+  <button
+    className="button"
+    onClick={[Function]}
+    role="button"
+    type="button"
+  >
+    Share Sound Color Project
+  </button>
 </div>
 `;
 
 exports[`Storyshots SharePanel Example 1`] = `
 <div
-  className="sharePanel show"
+  className="share-panel show"
   data-testid="share-panel"
 >
   <div
-    className="innerPanel"
+    className="inner-panel"
   >
     <div
       data-testid="share-panel-start-text"
@@ -1941,7 +1947,7 @@ exports[`Storyshots SharePanel Example 1`] = `
     </div>
     <div>
       <button
-        className="button bigButton"
+        className="button big-button"
         data-testid="share-panel-facebook-button"
         onClick={[Function]}
         style={
@@ -1957,7 +1963,7 @@ exports[`Storyshots SharePanel Example 1`] = `
         type="button"
       >
         <svg
-          className="icon iconBeforeText"
+          className="icon icon-before-text"
           data-testid="share-panel-facebook-button-pre-icon"
           height={12}
           style={
@@ -1981,7 +1987,7 @@ exports[`Storyshots SharePanel Example 1`] = `
     </div>
     <div>
       <button
-        className="button bigButton"
+        className="button big-button"
         data-testid="share-panel-twitter-button"
         onClick={[Function]}
         style={
@@ -1997,7 +2003,7 @@ exports[`Storyshots SharePanel Example 1`] = `
         type="button"
       >
         <svg
-          className="icon iconBeforeText"
+          className="icon icon-before-text"
           data-testid="share-panel-twitter-button-pre-icon"
           height={19.200000000000003}
           style={
@@ -2029,7 +2035,7 @@ exports[`Storyshots SharePanel Example 1`] = `
       </a>
     </div>
     <div
-      className="lastButton"
+      className="last-button"
     >
       <button
         className="button"
@@ -2047,18 +2053,18 @@ exports[`Storyshots SharePanel Example 1`] = `
 
 exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
 <div
-  className="shrinkingPanelButton"
+  className="shrinking-panel-button"
   data-testid="shrinking-panel-button"
   onKeyDown={[Function]}
 >
   <a
-    className="hoverColor"
+    className="hover-color"
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
   >
     <svg
-      className="icon buttonIcon"
+      className="icon button-icon"
       data-testid="icon"
       height={24}
       style={
@@ -2088,7 +2094,7 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
       Options
     </div>
     <svg
-      className="icon buttonIcon"
+      className="icon button-icon"
       data-testid="icon"
       height={30}
       style={
@@ -2113,18 +2119,18 @@ exports[`Storyshots ShrinkingPanelButton Custom Text 1`] = `
 
 exports[`Storyshots ShrinkingPanelButton Example 1`] = `
 <div
-  className="shrinkingPanelButton"
+  className="shrinking-panel-button"
   data-testid="shrinking-panel-button"
   onKeyDown={[Function]}
 >
   <a
-    className="hoverColor"
+    className="hover-color"
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
   >
     <svg
-      className="icon buttonIcon"
+      className="icon button-icon"
       data-testid="icon"
       height={24}
       style={
@@ -2154,7 +2160,7 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
       Color Patterns
     </div>
     <svg
-      className="icon buttonIcon"
+      className="icon button-icon"
       data-testid="icon"
       height={30}
       style={
@@ -2179,18 +2185,18 @@ exports[`Storyshots ShrinkingPanelButton Example 1`] = `
 
 exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
 <div
-  className="shrinkingPanelButton"
+  className="shrinking-panel-button"
   data-testid="shrinking-panel-button"
   onKeyDown={[Function]}
 >
   <a
-    className="hoverColor"
+    className="hover-color"
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}
   >
     <svg
-      className="icon buttonIcon"
+      className="icon button-icon"
       data-testid="icon"
       height={24}
       style={
@@ -2220,7 +2226,7 @@ exports[`Storyshots ShrinkingPanelButton Long Text 1`] = `
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     </div>
     <svg
-      className="icon buttonIcon"
+      className="icon button-icon"
       data-testid="icon"
       height={30}
       style={
@@ -2254,7 +2260,7 @@ exports[`Storyshots ShrinkingSidePanel Example 1`] = `
   }
 >
   <div
-    className="shrinkingSidePanel"
+    className="shrinking-side-panel"
     data-testid="shrinking-side-panel"
   >
     ShrinkingSidePanel Component Content
@@ -2273,22 +2279,22 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
   }
 >
   <div
-    className="shrinkingSidePanel"
+    className="shrinking-side-panel"
     data-testid="shrinking-side-panel"
   >
     <div
-      className="shrinkingPanelButton"
+      className="shrinking-panel-button"
       data-testid="shrinking-panel-button"
       onKeyDown={[Function]}
     >
       <a
-        className="hoverColor"
+        className="hover-color"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
       >
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={24}
           style={
@@ -2318,7 +2324,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           Color Patterns
         </div>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -2340,18 +2346,18 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       </a>
     </div>
     <div
-      className="shrinkingPanelButton"
+      className="shrinking-panel-button"
       data-testid="shrinking-panel-button"
       onKeyDown={[Function]}
     >
       <a
-        className="hoverColor"
+        className="hover-color"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
       >
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={24}
           style={
@@ -2381,7 +2387,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           Connections
         </div>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -2403,18 +2409,18 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       </a>
     </div>
     <div
-      className="shrinkingPanelButton"
+      className="shrinking-panel-button"
       data-testid="shrinking-panel-button"
       onKeyDown={[Function]}
     >
       <a
-        className="hoverColor"
+        className="hover-color"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
       >
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={24}
           style={
@@ -2444,7 +2450,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           Options
         </div>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -2466,18 +2472,18 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       </a>
     </div>
     <div
-      className="shrinkingPanelButton"
+      className="shrinking-panel-button"
       data-testid="shrinking-panel-button"
       onKeyDown={[Function]}
     >
       <a
-        className="hoverColor"
+        className="hover-color"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
       >
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={24}
           style={
@@ -2507,7 +2513,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           Sound Details
         </div>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -2529,18 +2535,18 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
       </a>
     </div>
     <div
-      className="shrinkingPanelButton"
+      className="shrinking-panel-button"
       data-testid="shrinking-panel-button"
       onKeyDown={[Function]}
     >
       <a
-        className="hoverColor"
+        className="hover-color"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
       >
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={24}
           style={
@@ -2570,7 +2576,7 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
           Actions
         </div>
         <svg
-          className="icon buttonIcon"
+          className="icon button-icon"
           data-testid="icon"
           height={30}
           style={
@@ -2597,27 +2603,27 @@ exports[`Storyshots ShrinkingSidePanel With Shinking Buttons 1`] = `
 
 exports[`Storyshots SoundDetails Example 1`] = `
 <div
-  className="panel soundDetails"
+  className="panel sound-details"
   data-testid="sound-details"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Sound Details
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="sound-details-noise"
     >
       <span
-        className="detailName"
+        className="detail-name"
       >
         Noise volume: 
       </span>
@@ -2626,11 +2632,11 @@ exports[`Storyshots SoundDetails Example 1`] = `
       </span>
     </div>
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="sound-details-tone"
     >
       <span
-        className="detailName"
+        className="detail-name"
       >
         Primary Tone Volume: 
       </span>
@@ -2639,11 +2645,11 @@ exports[`Storyshots SoundDetails Example 1`] = `
       </span>
     </div>
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="sound-details-freq"
     >
       <span
-        className="detailName"
+        className="detail-name"
       >
         Primary Frequency: 
       </span>
@@ -2652,11 +2658,11 @@ exports[`Storyshots SoundDetails Example 1`] = `
       </span>
     </div>
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="sound-details-note"
     >
       <span
-        className="detailName"
+        className="detail-name"
       >
         Primary Note: 
       </span>
@@ -2665,11 +2671,11 @@ exports[`Storyshots SoundDetails Example 1`] = `
       </span>
     </div>
     <div
-      className="panelDetail"
+      className="panel-detail"
       data-testid="sound-details-cents"
     >
       <span
-        className="detailName"
+        className="detail-name"
       >
         Cents ♭: 
       </span>
@@ -2694,7 +2700,7 @@ exports[`Storyshots TextInput Knobs With Icon 1`] = `
   }
 >
   <div
-    className="textInput"
+    className="text-input"
     data-testid="text-input"
     style={
       Object {
@@ -2704,7 +2710,7 @@ exports[`Storyshots TextInput Knobs With Icon 1`] = `
     }
   >
     <div
-      className="inputWrapper"
+      className="input-wrapper"
     >
       <input
         data-testid="text-input-input"
@@ -2712,7 +2718,7 @@ exports[`Storyshots TextInput Knobs With Icon 1`] = `
         value="I am a value"
       />
       <div
-        className="placeholderText"
+        className="placeholder-text"
         data-testid="text-input-placeholder"
       >
         I am a placeholder
@@ -2757,7 +2763,7 @@ exports[`Storyshots TextInput Plain Knobs 1`] = `
   }
 >
   <div
-    className="textInput"
+    className="text-input"
     data-testid="text-input"
     style={
       Object {
@@ -2767,7 +2773,7 @@ exports[`Storyshots TextInput Plain Knobs 1`] = `
     }
   >
     <div
-      className="inputWrapper"
+      className="input-wrapper"
     >
       <input
         data-testid="text-input-input"
@@ -2775,7 +2781,7 @@ exports[`Storyshots TextInput Plain Knobs 1`] = `
         value="I am a value"
       />
       <div
-        className="placeholderText"
+        className="placeholder-text"
         data-testid="text-input-placeholder"
       >
         I am a placeholder
@@ -2798,7 +2804,7 @@ exports[`Storyshots TextInput Stateful 1`] = `
   }
 >
   <div
-    className="textInput"
+    className="text-input"
     data-testid="text-input"
     style={
       Object {
@@ -2808,7 +2814,7 @@ exports[`Storyshots TextInput Stateful 1`] = `
     }
   >
     <div
-      className="inputWrapper"
+      className="input-wrapper"
     >
       <input
         data-testid="text-input-input"
@@ -2816,7 +2822,7 @@ exports[`Storyshots TextInput Stateful 1`] = `
         value=""
       />
       <div
-        className="placeholderText"
+        className="placeholder-text"
         data-testid="text-input-placeholder"
       >
         I am a placeholder
@@ -2828,27 +2834,27 @@ exports[`Storyshots TextInput Stateful 1`] = `
 
 exports[`Storyshots TimingOptionsPanel Example 1`] = `
 <div
-  className="panel timingOptionsPanel"
+  className="panel timing-options-panel"
   data-testid="timing-options-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Timing
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="timing-options-panel-slider-transitionSpeed"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="timing-options-panel-slider-transitionSpeed-label"
@@ -2856,14 +2862,14 @@ exports[`Storyshots TimingOptionsPanel Example 1`] = `
           Color Transition Speed
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="timing-options-panel-slider-transitionSpeed-value"
         >
           0.89
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={1}
         min={0.1}
         onChange={[Function]}
@@ -2873,11 +2879,11 @@ exports[`Storyshots TimingOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="timing-options-panel-slider-timeSmoothing"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="timing-options-panel-slider-timeSmoothing-label"
@@ -2885,14 +2891,14 @@ exports[`Storyshots TimingOptionsPanel Example 1`] = `
           Time Smoothing
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="timing-options-panel-slider-timeSmoothing-value"
         >
           0.81
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={0.99}
         min={0}
         onChange={[Function]}
@@ -2907,27 +2913,27 @@ exports[`Storyshots TimingOptionsPanel Example 1`] = `
 
 exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
 <div
-  className="panel visualizationOptionsPanel"
+  className="panel visualization-options-panel"
   data-testid="visualization-options-panel"
 >
   <div
-    className="panelTitle"
+    className="panel-title"
   >
     <div
-      className="titleText"
+      className="title-text"
     >
       Visualization
     </div>
   </div>
   <div
-    className="panelContent"
+    className="panel-content"
   >
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="visualization-options-panel-slider-u_lightCount"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="visualization-options-panel-slider-u_lightCount-label"
@@ -2935,14 +2941,14 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
           Lights
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="visualization-options-panel-slider-u_lightCount-value"
         >
           3
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={5}
         min={2}
         onChange={[Function]}
@@ -2952,11 +2958,11 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="visualization-options-panel-slider-u_diffusion"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="visualization-options-panel-slider-u_diffusion-label"
@@ -2964,14 +2970,14 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
           Spread
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="visualization-options-panel-slider-u_diffusion-value"
         >
           0.33
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={3}
         min={0}
         onChange={[Function]}
@@ -2981,11 +2987,11 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="visualization-options-panel-slider-u_lightRotation"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="visualization-options-panel-slider-u_lightRotation-label"
@@ -2993,14 +2999,14 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
           Rotation Speed
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="visualization-options-panel-slider-u_lightRotation-value"
         >
           0.11
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={3}
         min={0}
         onChange={[Function]}
@@ -3010,11 +3016,11 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
       />
     </label>
     <label
-      className="sliderLabel"
+      className="slider-label"
       data-testid="visualization-options-panel-slider-u_noise"
     >
       <div
-        className="sliderDetails"
+        className="slider-details"
       >
         <div
           data-testid="visualization-options-panel-slider-u_noise-label"
@@ -3022,14 +3028,14 @@ exports[`Storyshots VisualizationOptionsPanel Example 1`] = `
           Texture
         </div>
         <div
-          className="sliderValue"
+          className="slider-value"
           data-testid="visualization-options-panel-slider-u_noise-value"
         >
           0.10
         </div>
       </div>
       <input
-        className="sliderInput"
+        className="slider-input"
         max={1}
         min={0}
         onChange={[Function]}
