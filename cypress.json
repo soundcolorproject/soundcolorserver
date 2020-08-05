@@ -1,0 +1,4 @@
+{
+  "ignoreTestFiles": ["*.steps.js", "*.steps.ts", "*.md"],
+  "testFiles": "**/*.{feature,features,ts}"
+}

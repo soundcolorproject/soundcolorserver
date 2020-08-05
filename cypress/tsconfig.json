@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.site.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "baseUrl": "..",
+    "target": "es5",
+    "inlineSourceMap": false,
+    "sourceMap": false
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "../node_modules"
+  ]
+}
