@@ -32,15 +32,16 @@ const patternNames: PatternName[] = [
 ]
 
 export function InfoRoute (_props: OwnProps) {
-  const { patterns, renderState } = useStores()
+  const { intro, patterns, renderState } = useStores()
   const { patternData } = patterns
   const setPattern = (newPattern: PatternName) => React.useCallback((ev: React.MouseEvent<HTMLAnchorElement>) => {
     if (ev.metaKey || ev.ctrlKey) {
       ev.preventDefault()
     }
 
+    intro.seenHowItWorks = true
     patterns.currentPattern = newPattern
-    if (!renderState.showColors) {
+    if (!renderState.showColors && intro.warningAccepted) {
       togglePattern(patterns, renderState)
     }
 
@@ -186,6 +187,7 @@ export function InfoRoute (_props: OwnProps) {
 
       <div className={footer}>
         <div>Sound Color Project © {new Date().getFullYear()}</div>
+        <div><a className={link} href='/privacy'>Privacy</a> / <a className={link} href='/cookies'>Cookies</a></div>
       </div>
     </div>
   )
