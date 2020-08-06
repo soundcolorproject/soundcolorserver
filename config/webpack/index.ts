@@ -36,14 +36,14 @@ function createConfig ({ prod = false, appMode = false } = {}): webpack.Configur
       chunkFilename: constants.outputJsChunkFiles,
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: dev
-        ? (info: any) =>
-            path
-              .resolve(info.absoluteResourcePath)
-              .replace(/\\/g, '/')
-        : (info: any) =>
-            path
-              .relative(constants.srcDir, info.absoluteResourcePath)
-              .replace(/\\/g, '/'),
+      ? (info) =>
+          path
+            .resolve(info.absoluteResourcePath)
+            .replace(/\\/g, '/')
+      : (info) =>
+          path
+            .relative(constants.srcDir, info.absoluteResourcePath)
+            .replace(/\\/g, '/'),
     },
     resolve: {
       extensions: [

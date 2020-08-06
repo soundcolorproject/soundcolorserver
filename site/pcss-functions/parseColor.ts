@@ -1,6 +1,7 @@
 
 import { HSLa } from './toHsl'
-import { RGBa } from './toRgb'
+// import { RGBa } from './toRgb'
+import { SRGBa } from './toSRgb'
 import { ParsedColor } from './types'
 
 const hexDigit = '[0-9a-f]'
@@ -17,16 +18,16 @@ export function parseColor (color: string): ParsedColor {
   color = color.trim()
   if (color256Rgx.test(color)) {
     const [, r, g, b] = color256Rgx.exec(color)!.map(c => parseInt(c, 16) / 255)
-    return new RGBa(r, g, b)
+    return new SRGBa(r, g, b)
   } else if (color16Rgx.test(color)) {
     const [, r, g, b] = color16Rgx.exec(color)!.map(c => parseInt(c, 16) / 15)
-    return new RGBa(r, g, b)
+    return new SRGBa(r, g, b)
   } else if (colorRgbRgx.test(color)) {
     const [, r, g, b] = colorRgbRgx.exec(color)!.map(c => parseFloat(c) / 255)
-    return new RGBa(r, g, b)
+    return new SRGBa(r, g, b)
   } else if (colorRgbaRgx.test(color)) {
     const [, r, g, b, a] = colorRgbaRgx.exec(color)!.map(c => parseFloat(c))
-    return new RGBa(r / 255, g / 255, b / 255, a)
+    return new SRGBa(r / 255, g / 255, b / 255, a)
   } else if (colorHslRgx.test(color)) {
     const [, h, s, l] = colorHslRgx.exec(color)!
     return new HSLa(parseFloat(h), parseFloat(s) / 100, parseFloat(l) / 100)

@@ -2,7 +2,7 @@
 import { printDigits } from '../helpers/numbers'
 
 import { parseColor } from './parseColor'
-import { RGBa, toRgb } from './toRgb'
+import { SRGBa, toSRgb } from './toSRgb'
 import { Color } from './types'
 
 export function toHsl (color: Color): HSLa {
@@ -14,7 +14,7 @@ export function toHsl (color: Color): HSLa {
     return color
   }
 
-  return HSLa.fromRgb(toRgb(color))
+  return HSLa.fromSRgb(toSRgb(color))
 }
 
 export class HSLa {
@@ -43,7 +43,7 @@ export class HSLa {
     if (useHsl) {
       return this.toHslString()
     } else {
-      return toRgb(this).toString()
+      return toSRgb(this).toString()
     }
   }
 
@@ -55,8 +55,8 @@ export class HSLa {
     return new HSLa(this.h, this.s, this.l, this.a)
   }
 
-  static fromRgb (orig: RGBa) {
-    if (orig.type !== 'RGBa') {
+  static fromSRgb (orig: SRGBa) {
+    if (orig.type !== 'SRGBa') {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 

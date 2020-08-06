@@ -1,9 +1,12 @@
 
 const path = require('path')
 
-require('ts-node').register({
-  project: path.join(__dirname, '../tsconfig.server.json'),
-})
+const tsNode = require('ts-node')
+if (!process[tsNode.REGISTER_INSTANCE]) {
+  require('ts-node').register({
+    project: path.join(__dirname, '../tsconfig.server.json'),
+  })
+}
 
 const origConfig = require('../config/webpack').default()
 const { buildDefinePlugin } = require('../config/webpack/plugins')

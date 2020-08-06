@@ -1,7 +1,6 @@
 
 import { dBtoVolume, MAX_TONES, ToneInfo } from '../audio/getAnalysis'
-import { getLuminance } from '../pcss-functions'
-import { HSLa } from '../pcss-functions/toHsl'
+import { greyScale } from '../pcss-functions/getLuminance'
 import { HSVa, toHsv } from '../pcss-functions/toHsv'
 import { RGBa, toRgb } from '../pcss-functions/toRgb'
 import { analysisStore } from '../state/analysisStore'
@@ -103,8 +102,8 @@ export function getColorsFromAnalysis (
     )
 
     if (monochrome) {
-      const luminance = getLuminance(hsva)
-      return toHsv(new HSLa(0, 0, luminance))
+      // const luminance = getLuminance(hsva)
+      return toHsv(greyScale(hsva))
     }
 
     return hsva

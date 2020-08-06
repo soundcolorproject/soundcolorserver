@@ -286,11 +286,11 @@ exports[`Storyshots ColorWarning Example 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "--button-active-background": "#fcfcfc",
+        "--button-active-background": "#ffffff",
         "--button-active-color": "var(--black)",
         "--button-background": "#ffffff",
         "--button-color": "var(--black)",
-        "--button-hover-background": "#fafafa",
+        "--button-hover-background": "#ffffff",
         "--button-hover-color": "var(--black)",
       }
     }
@@ -471,12 +471,12 @@ exports[`Storyshots CookiePolicyPanel Example 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "--button-active-background": "#a2b3c4",
+              "--button-active-background": "#728ba9",
               "--button-active-color": "var(--black)",
               "--button-background": "#1B2128",
               "--button-color": "var(--white)",
-              "--button-hover-background": "#8a97a6",
-              "--button-hover-color": "var(--black)",
+              "--button-hover-background": "#55687e",
+              "--button-hover-color": "var(--white)",
             }
           }
           type="button"
@@ -533,7 +533,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#efe2dd",
+                "backgroundColor": "#eed0c6",
                 "color": "var(--black)",
               }
             }
@@ -547,7 +547,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#e7dede",
+                "backgroundColor": "#dbc9c8",
                 "color": "var(--black)",
               }
             }
@@ -561,7 +561,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#dddbdf",
+                "backgroundColor": "#c7c2ca",
                 "color": "var(--black)",
               }
             }
@@ -575,7 +575,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#d4d7e0",
+                "backgroundColor": "#b4bbcc",
                 "color": "var(--black)",
               }
             }
@@ -594,7 +594,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#c9d4e1",
+                "backgroundColor": "#a1b4ce",
                 "color": "var(--black)",
               }
             }
@@ -608,7 +608,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#bed0e2",
+                "backgroundColor": "#8eadd0",
                 "color": "var(--black)",
               }
             }
@@ -622,7 +622,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#b2cde2",
+                "backgroundColor": "#7aa7d2",
                 "color": "var(--black)",
               }
             }
@@ -636,7 +636,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#a5c9e3",
+                "backgroundColor": "#67a0d4",
                 "color": "var(--black)",
               }
             }
@@ -655,7 +655,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#96c5e4",
+                "backgroundColor": "#5499d6",
                 "color": "var(--black)",
               }
             }
@@ -669,7 +669,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#86c1e5",
+                "backgroundColor": "#4192d8",
                 "color": "var(--black)",
               }
             }
@@ -683,7 +683,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#71bce6",
+                "backgroundColor": "#2d8bda",
                 "color": "var(--black)",
               }
             }
@@ -697,7 +697,7 @@ exports[`Storyshots CustomPatternSelector Example 1`] = `
             onClick={[Function]}
             style={
               Object {
-                "backgroundColor": "#57b8e7",
+                "backgroundColor": "#1a84dc",
                 "color": "var(--black)",
               }
             }
@@ -1690,9 +1690,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="panel-button"
       style={
         Object {
-          "--panel-button-active-background": "#cebebe",
+          "--panel-button-active-background": "#c2a8a7",
           "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#e7dede",
+          "--panel-button-hover-background": "#dbc9c8",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1740,9 +1740,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-chakras"
       style={
         Object {
-          "--panel-button-active-background": "#009fd9",
-          "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#00b6f7",
+          "--panel-button-active-background": "#006ddc",
+          "--panel-button-active-color": "var(--white)",
+          "--panel-button-hover-background": "#0080ff",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1770,9 +1770,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-chromesthesia"
       style={
         Object {
-          "--panel-button-active-background": "#d1c199",
+          "--panel-button-active-background": "#b6a379",
           "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#e3d8be",
+          "--panel-button-hover-background": "#d3bd8d",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1800,10 +1800,10 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-emotion"
       style={
         Object {
-          "--panel-button-active-background": "#c700c8",
+          "--panel-button-active-background": "#b700b9",
           "--panel-button-active-color": "var(--white)",
-          "--panel-button-hover-background": "#e300e4",
-          "--panel-button-hover-color": "var(--black)",
+          "--panel-button-hover-background": "#d400d6",
+          "--panel-button-hover-color": "var(--white)",
         }
       }
     >
@@ -1830,9 +1830,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-chromotherapy"
       style={
         Object {
-          "--panel-button-active-background": "#d78548",
-          "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#f59955",
+          "--panel-button-active-background": "#da4914",
+          "--panel-button-active-color": "var(--white)",
+          "--panel-button-hover-background": "#fc5719",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1860,9 +1860,9 @@ exports[`Storyshots PatternSelector Example 1`] = `
       data-testid="pattern-button-adolescence"
       style={
         Object {
-          "--panel-button-active-background": "#49bdb1",
+          "--panel-button-active-background": "#14a38b",
           "--panel-button-active-color": "var(--black)",
-          "--panel-button-hover-background": "#55d8ca",
+          "--panel-button-hover-background": "#19bda2",
           "--panel-button-hover-color": "var(--black)",
         }
       }
@@ -1952,11 +1952,11 @@ exports[`Storyshots SharePanel Example 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "--button-active-background": "#0b4a9b",
+            "--button-active-background": "#0b4999",
             "--button-active-color": "var(--white)",
             "--button-background": "#1877F2",
             "--button-color": "var(--white)",
-            "--button-hover-background": "#105abb",
+            "--button-hover-background": "#1058b8",
             "--button-hover-color": "var(--white)",
           }
         }
@@ -1992,11 +1992,11 @@ exports[`Storyshots SharePanel Example 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "--button-active-background": "#0e669b",
+            "--button-active-background": "#0e6499",
             "--button-active-color": "var(--white)",
             "--button-background": "#1DA1F2",
             "--button-color": "var(--white)",
-            "--button-hover-background": "#147bbb",
+            "--button-hover-background": "#1479b8",
             "--button-hover-color": "var(--white)",
           }
         }

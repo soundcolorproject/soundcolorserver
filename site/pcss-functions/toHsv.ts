@@ -1,6 +1,5 @@
 
 import { parseColor } from './parseColor'
-import { RGBa, toRgb } from './toRgb'
 import { SRGBa, toSRgb } from './toSRgb'
 import { Color } from './types'
 
@@ -13,7 +12,11 @@ export function toHsv (color: Color): HSVa {
     return color
   }
 
-  return HSVa.fromRgb(toSRgb(color))
+  return HSVa.fromSRgb(toSRgb(color))
+}
+
+function clamp (min: number, value: number, max: number) {
+  return Math.max(min, Math.min(value, max))
 }
 
 export class HSVa {
@@ -24,11 +27,17 @@ export class HSVa {
     public s: number,
     public v: number,
     public a = 1,
-  ) {}
+  ) {
+    this.h = clamp(0, h, 360)
+    this.s = clamp(0, s, 1)
+    this.v = clamp(0, v, 1)
+    this.a = clamp(0, a, 1)
+  }
 
   toString () {
     // TODO: Fix translation back to hex code
-    return toRgb(this).toString()
+    // return toRgb(this).fixSRgb().toString()
+    return toSRgb(this).toString()
   }
 
   valueOf (): [number, number, number, number] {
@@ -39,8 +48,8 @@ export class HSVa {
     return new HSVa(this.h, this.s, this.v, this.a)
   }
 
-  static fromRgb (orig: RGBa | SRGBa) {
-    if (orig.type !== 'RGBa' && orig.type !== 'SRGBa') {
+  static fromSRgb (orig: SRGBa) {
+    if (orig.type !== 'SRGBa') {
       throw new Error('input to fromRgb must be of type Rgba')
     }
 
