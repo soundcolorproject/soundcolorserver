@@ -17,6 +17,7 @@ node_modules.old
 # temporary
 tmp
 uglify-cache
+cypress/videos
 
 # tooling
 /.vscode/*
