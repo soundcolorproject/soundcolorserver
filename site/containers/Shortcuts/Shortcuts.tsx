@@ -11,12 +11,9 @@ import { useStores } from '../../state/useStores'
 
 import { hidden, iconButton, shortcuts } from './shortcuts.pcss'
 
-interface OwnProps {
+interface ShortcutsProps {
+  'data-testid'?: string
 }
-
-type StateProps = RenderStateProp & PatternsProp
-
-export type ShortcutsProps = OwnProps & StateProps
 
 const stopBubblingEnterAndSpace = (handler: () => void) => (ev: React.KeyboardEvent | React.MouseEvent) => {
   const key = (ev as React.KeyboardEvent).key
@@ -31,16 +28,20 @@ const stopBubblingEnterAndSpace = (handler: () => void) => (ev: React.KeyboardEv
   }
 }
 
-export function Shortcuts () {
+export function Shortcuts (props: ShortcutsProps) {
+  const {
+    'data-testid': testid = 'shortcuts'
+  } = props
   const { intro, renderState, patterns } = useStores()
 
-  const renderIconButton = (icon: IconName, action: (ev: React.KeyboardEvent | React.MouseEvent) => void) => (
+  const renderIconButton = (icon: IconName, testid: string, action: (ev: React.KeyboardEvent | React.MouseEvent) => void) => (
     <button
       className={iconButton}
       type='button'
       role='button'
       onClick={action}
       onKeyDown={action}
+      data-testid={testid}
     >
       <Icon name={icon} size='xs' />
     </button>
@@ -63,16 +64,18 @@ export function Shortcuts () {
       {
         renderIconButton(
           renderState.showColors ? 'pause_circle' : 'play_circle',
+          renderState.showColors ? `${testid}-pause` : `${testid}-play`,
           _togglePattern,
         )
       }
       {
-        renderIconButton('visibility_off', _hideText)
+        renderIconButton('visibility_off', `${testid}-visibility`, _hideText)
       }
       {
         !__FORCED_FULLSCREEN__ && document.fullscreenEnabled
         && renderIconButton(
           renderState.isFullscreen ? 'minimize' : 'fullscreen',
+          renderState.isFullscreen ? `${testid}-minimize` : `${testid}-fullscreen'`,
           _toggleFullscreen,
         )
       }

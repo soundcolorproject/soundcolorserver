@@ -19,4 +19,4 @@
 // import './step_definitions/info.steps'
 
 // Alternatively you can use CommonJS syntax:
-// require('./commands')
+require('./commands')

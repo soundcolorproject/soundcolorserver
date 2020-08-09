@@ -244,7 +244,7 @@ export function SovisRoute (props: SovisRouteProps) {
             transitionDirection={routing.transitionDirection}
             open={shrink()}
             overtop={introPanes()}
-            onlyOvertop={!(intro.seenHowItWorks || intro.warningAccepted)}
+            onlyOvertop={!(intro.seenHowItWorks && intro.warningAccepted)}
           >
             {getPanelChild(routing)}
           </MainPanelWithShrinkingSide>

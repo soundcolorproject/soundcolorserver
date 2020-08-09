@@ -3,5 +3,10 @@
     "tmp": true,
     "uglify-cache": true
   },
-  "glsllint.glslangValidatorPath": "./bin/glslangValidator"
+  "glsllint.glslangValidatorPath": "./bin/glslangValidator",
+  "editor.tabSize": 2,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cucumberautocomplete.steps": [
+    "cypress/support/step_definitions/**/*.steps.ts"
+  ]
 }

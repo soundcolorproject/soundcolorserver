@@ -3,7 +3,6 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "module": "commonjs",
-    "baseUrl": "..",
     "target": "es5",
     "inlineSourceMap": false,
     "sourceMap": false

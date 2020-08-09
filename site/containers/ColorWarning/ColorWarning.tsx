@@ -44,7 +44,7 @@ export const ColorWarning: React.FunctionComponent<ColorWarningProps> = function
         <p>
           Viewer discretion is advised.
         </p>
-        <Button color='#ffffff' className={button} onClick={handleClick}>
+        <Button color='#ffffff' className={button} onClick={handleClick} data-testid={`${testid}-button`}>
           Proceed
         </Button>
       </div>

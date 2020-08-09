@@ -326,6 +326,9 @@ export const patternsStore = observable({
       defaultColors: defaultCustomColors,
     },
   },
+  resetPattern: () => {
+    patternsStore.currentPattern = '' as PatternName
+  },
   favorites: getFavorites(),
   saveFavorite: action('saveFavorite', (name: string) => {
     patternsStore.favoriteKey = saveFavorite(name)

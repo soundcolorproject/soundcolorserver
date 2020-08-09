@@ -32,6 +32,7 @@ export function useStores () {
   return useMemo<MobxStoresProps>(() => stores, [])
 }
 
-if (__DEV__) {
-  (window as any).stores = stores
+const win = window as any
+if (__DEV__ || win.Cypress) {
+  win.stores = stores
 }

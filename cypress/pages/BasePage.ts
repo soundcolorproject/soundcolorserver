@@ -1,8 +1,9 @@
 
 import { InfoPage } from './InfoPage'
+import { HomePanel } from './panels/HomePanel'
 import { SovisPage } from './SovisPage'
 
-export type AnyPage = InfoPage | SovisPage
+export type AnyPage = InfoPage | SovisPage | HomePanel
 
 export abstract class Page<Name extends string> {
   abstract readonly name: Name

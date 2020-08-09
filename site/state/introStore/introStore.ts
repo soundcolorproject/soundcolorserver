@@ -1,5 +1,5 @@
 
-import { observable, reaction } from 'mobx'
+import { action, observable, reaction } from 'mobx'
 
 import { patternsStore } from '../patternsStore'
 import { renderStateStore, togglePattern } from '../renderStateStore'
@@ -7,6 +7,8 @@ import { renderStateStore, togglePattern } from '../renderStateStore'
 export interface IntroStoreProp {
   intro: IntroStore
 }
+
+const win = window as any
 
 export class IntroStore {
   constructor () {
@@ -29,17 +31,32 @@ export class IntroStore {
       },
     )
     reaction(
-      () => [this.warningAccepted, this.seenHowItWorks],
-      ([a, b]) => {
-        if (a && b && !renderStateStore.showColors) {
+      () => [this.startPattern, this.warningAccepted, this.seenHowItWorks],
+      ([a, b, c]) => {
+        if (a && b && c && !renderStateStore.showColors) {
           togglePattern(patternsStore, renderStateStore)
         }
       },
     )
   }
 
+  @observable startPattern = true
   @observable warningAccepted: boolean
   @observable seenHowItWorks: boolean
+
+  @action
+  _resolveAllPanels () {
+    this.startPattern = false
+    this.warningAccepted = true
+    this.seenHowItWorks = true
+  }
+
+  @action
+  _showPanels () {
+    this.startPattern = true
+    this.warningAccepted = false
+    this.seenHowItWorks = false
+  }
 }
 
 export const introStore = new IntroStore()
