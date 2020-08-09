@@ -8,8 +8,6 @@ export interface IntroStoreProp {
   intro: IntroStore
 }
 
-const win = window as any
-
 export class IntroStore {
   constructor () {
     const warningAccepted = sessionStorage.getItem('warningAccepted')

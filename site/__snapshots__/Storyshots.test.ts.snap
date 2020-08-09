@@ -282,7 +282,7 @@ exports[`Storyshots ColorWarning Example 1`] = `
   </p>
   <button
     className="button button"
-    data-testid="button"
+    data-testid="color-warning-button"
     onClick={[Function]}
     style={
       Object {

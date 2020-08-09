@@ -30,7 +30,7 @@ const stopBubblingEnterAndSpace = (handler: () => void) => (ev: React.KeyboardEv
 
 export function Shortcuts (props: ShortcutsProps) {
   const {
-    'data-testid': testid = 'shortcuts'
+    'data-testid': testid = 'shortcuts',
   } = props
   const { intro, renderState, patterns } = useStores()
 
