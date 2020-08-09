@@ -118,7 +118,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "css-vars-ponyfill": "^2.2.1",
-    "cypress": "4.10.0",
+    "cypress": "^4.12.1",
     "cypress-cucumber-preprocessor": "git+https://github.com/TheBrainFamily/cypress-cucumber-preprocessor.git",
     "disable-output-webpack-plugin": "^1.0.1",
     "dotenv": "^8.2.0",
