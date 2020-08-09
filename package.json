@@ -43,7 +43,7 @@
     "storybook": "start-storybook -p 6006 -s ./static",
     "cy": "start-server-and-test dev:watch :${PORT:-9000} cy:open",
     "cy:ci": "start-server-and-test start:local :${PORT:-9000} cy:run",
-    "cy:run": "cypress run",
+    "cy:run": "if [ \"${CYPRESS_KEY}\" = '' ]; then cypress run; else echo 'Recording cypress run...'; cypress run --record --key ${CYPRESS_KEY}; fi",
     "cy:open": "cypress open",
     "build-generators": "run-p build-generators:*",
     "build-generators:site": "cd generators/site && jake build",

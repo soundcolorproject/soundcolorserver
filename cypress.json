@@ -1,4 +1,9 @@
 {
-  "ignoreTestFiles": ["*.steps.js", "*.steps.ts", "*.md"],
+  "projectId": "68725n",
+  "ignoreTestFiles": [
+    "*.steps.js",
+    "*.steps.ts",
+    "*.md"
+  ],
   "testFiles": "**/*.{feature,features,ts}"
 }

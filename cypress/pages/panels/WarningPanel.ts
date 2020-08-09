@@ -18,7 +18,6 @@ export class WarningPanel extends Page<'Panel:Warning'> {
     cy.get('body', { log: false }).then($body => {
       if ($body.find(selector).length) {
         cy.get(selector).click()
-        cy.wait(1000)
         cy.window().its('stores').its('patterns').invoke('resetPattern')
       }
     })
