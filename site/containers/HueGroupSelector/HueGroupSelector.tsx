@@ -8,6 +8,8 @@ import { PanelButton } from '../../components/PanelButton'
 import { PanelDetail } from '../../components/PanelDetail'
 import { useStores } from '../../state/useStores'
 
+import { groupButton, hueGroupSelector } from './hueGroupSelector.pcss'
+
 export interface HueGroupSelectorProps extends RouteComponentProps {
   'data-testid'?: string
 }
@@ -19,8 +21,12 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
   const { apiStatus, routing } = useStores()
 
   const onClick = (lightGroupId: number | undefined) => () => {
-    apiStatus.lightGroupId = lightGroupId
-    routing.popSubrouteToRoot()
+    if (apiStatus.lightGroupId === lightGroupId) {
+      apiStatus.lightGroupId = undefined
+    } else {
+      apiStatus.lightGroupId = lightGroupId
+      routing.popSubrouteToRoot()
+    }
   }
 
   const renderContent = () => {
@@ -51,7 +57,10 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
     return (
       apiStatus.lightGroups.map(group => (
         <PanelButton key={group.id} active={group.id === apiStatus.lightGroupId} onClick={onClick(group.id)}>
-          {group.name}
+          <span className={groupButton}>
+            <span>{group.name}</span>
+            <span>{group.id === apiStatus.lightGroupId ? 'Stop' : 'Start'}</span>
+          </span>
         </PanelButton>
       ))
     )
@@ -64,6 +73,7 @@ export const HueGroupSelector: React.FunctionComponent<HueGroupSelectorProps> = 
 
   return useObserver(() => (
     <Panel
+      className={hueGroupSelector}
       title='Philips Hue'
       button={apiStatus.remoteApi ? { text: 'Logout', onClick: logout } : undefined}
       data-testid={testid}
