@@ -842,7 +842,7 @@ exports[`Storyshots HueConnectLocal Example 1`] = `
 
 exports[`Storyshots HueGroupSelector Example 1`] = `
 <div
-  className="panel"
+  className="panel hue-group-selector"
   data-testid="hue-group-selector"
 >
   <div

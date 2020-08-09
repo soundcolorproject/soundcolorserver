@@ -76,7 +76,7 @@ const defaultValues: { [name in UniformType]: ArgForUniform<name> } = {
 }
 
 function defaultValueFor<T extends UniformType> (type: T): ArgForUniform<T> {
-  return defaultValues[type] as ArgForUniform<T>
+  return defaultValues[type] as any as ArgForUniform<T>
 }
 
 export function buildUniformMap<T extends UniformMap> (gl: WebGLRenderingContext, program: WebGLProgram, map?: T): BuiltUniformMap<T> {

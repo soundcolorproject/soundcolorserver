@@ -5,8 +5,7 @@ import * as React from 'react'
 
 import { logger } from '../../../shared/logger'
 import { Icon, IconName } from '../../components/Icon'
-import { PatternsProp } from '../../state/patternsStore'
-import { RenderStateProp, toggleFullscreen, togglePattern } from '../../state/renderStateStore'
+import { toggleFullscreen, togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
 import { hidden, iconButton, shortcuts } from './shortcuts.pcss'
