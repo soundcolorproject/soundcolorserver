@@ -3,10 +3,13 @@
 
 [![Codeship Status for soundcolorproject/soundcolorserver](https://app.codeship.com/projects/1de96a30-597c-0138-9d4f-324044434575/status?branch=master)](https://app.codeship.com/projects/391460)
 
+[![soundcolorserver](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/68725n/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/68725n/runs)
+
 This is the Philips Hue integrated soundcolorproject implementation.
 
 * [Getting started]
   * [Quickstart]
+  * [Verify Code]
 
 [Getting started]: #getting-started
 ## Getting started
