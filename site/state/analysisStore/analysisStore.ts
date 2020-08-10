@@ -1,44 +1,49 @@
 
 import { action, observable } from 'mobx'
 
-import { Analysis, getAnalysis } from '../../audio/getAnalysis'
+import { Analysis, getAnalysis, ToneInfo } from '../../audio/getAnalysis'
 import { getMiniFft } from '../../audio/miniAnalyser'
 
-export type AnalysisStore = typeof analysisStore
 export interface AnalysisProp {
   analysis: AnalysisStore
 }
 
-export const analysisStore = observable<Analysis & { miniFft: Float32Array, paused: boolean }>({
-  noise: 0,
-  tones: [],
-  miniFft: new Float32Array(0),
-  fft: new Float32Array(0),
-  paused: false,
-})
+export class AnalysisStore implements Analysis {
+  private _animationFrame = 0
 
-const setAnalysis = action('setAnalysis', ({ noise, tones, fft }: Analysis, miniFft: Float32Array) => {
-  analysisStore.noise = noise
-  analysisStore.tones = tones
-  analysisStore.miniFft = miniFft
-  analysisStore.fft = fft
-})
+  @observable noise = 0
+  @observable tones: ToneInfo[] = []
+  @observable miniFft = new Float32Array(0)
+  @observable fft = new Float32Array(0)
+  @observable paused = false
 
-let animationFrame = 0
-export function startAnalysis () {
-  analysisStore.paused = false
-  requestAnalysis()
-}
-
-export function pauseAnalysis () {
-  analysisStore.paused = true
-  cancelAnimationFrame(animationFrame)
-}
-
-function requestAnalysis () {
-  if (analysisStore.paused) {
-    return
+  @action
+  setAnalysis ({ noise, tones, fft }: Analysis, miniFft: Float32Array) {
+    this.noise = noise
+    this.tones = tones
+    this.fft = fft
+    this.miniFft = miniFft
   }
-  setAnalysis(getAnalysis(), getMiniFft())
-  animationFrame = requestAnimationFrame(requestAnalysis)
+
+  @action
+  startAnalysis () {
+    this.paused = false
+    this._requestAnalysis()
+  }
+
+  @action
+  pauseAnalysis () {
+    this.paused = true
+    cancelAnimationFrame(this._animationFrame)
+  }
+
+  private _requestAnalysis = () => {
+    if (this.paused) {
+      return
+    }
+    this.setAnalysis(getAnalysis(), getMiniFft())
+    this._animationFrame = requestAnimationFrame(this._requestAnalysis)
+  }
 }
+
+export const analysisStore = new AnalysisStore()

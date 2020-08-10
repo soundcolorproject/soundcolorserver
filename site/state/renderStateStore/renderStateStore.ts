@@ -6,7 +6,7 @@ import { logger } from '../../../shared/logger'
 import { startAudio, stopAudio } from '../../audio'
 import { resume } from '../../audio/context'
 import { ShaderName } from '../../containers/ShaderCanvas/shaderName'
-import { pauseAnalysis, startAnalysis } from '../analysisStore'
+import { analysisStore } from '../analysisStore'
 import { patternsStore, PatternsStore } from '../patternsStore'
 
 export type RenderStateStore = typeof renderStateStore
@@ -49,7 +49,7 @@ reaction(
   async (show) => {
     if (show) {
       await startAudio()
-      startAnalysis()
+      analysisStore.startAnalysis()
       if (navigator.wakeLock?.request) {
         navigator.wakeLock.request('screen').then(wakeLock => {
           renderStateStore.wakeLock = wakeLock
@@ -62,7 +62,7 @@ reaction(
         })
       }
     } else {
-      pauseAnalysis()
+      analysisStore.pauseAnalysis()
       await stopAudio()
       if (renderStateStore.wakeLock) {
         renderStateStore.wakeLock.release().then(() => {

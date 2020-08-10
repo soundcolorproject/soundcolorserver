@@ -1,58 +1,59 @@
 
-import { observable, reaction } from 'mobx'
+import { observable, reaction, action } from 'mobx'
 
 import { logger } from '../../../shared/logger'
 import { setSource } from '../../audio/analyzer'
 import { getAudioSource } from '../../audio/microphoneSource'
 
-export type MediaStore = typeof mediaStore
+// export type MediaStore = typeof mediaStore
 
 export interface MediaProp {
   media: MediaStore
 }
 
-export const mediaStore = observable({
-  ready: false,
-  error: false,
-  possibleDevices: [] as MediaDeviceInfo[],
-  currentDeviceId: 'default',
-})
+export class MediaStore {
+  constructor () {
+    reaction(
+      () => this.currentDeviceId,
+      this._setDevice,
+      {
+        fireImmediately: false,
+      },
+    )
 
-async function setDevice (newDeviceId: string) {
-  const newAudioSource = await getAudioSource(newDeviceId)
-  setSource(newAudioSource)
-}
-
-reaction(
-  () => mediaStore.currentDeviceId,
-  setDevice,
-  {
-    fireImmediately: false,
-  },
-)
-
-export async function updateDevices () {
-  try {
-    const devices = await navigator.mediaDevices.enumerateDevices()
-    logger.debug('audio devices', devices)
-    const possibleDevices = devices.filter(({ kind }) => kind === 'audioinput')
-    mediaStore.possibleDevices = possibleDevices
-    const currentDeviceId = mediaStore.currentDeviceId
-    if (currentDeviceId !== 'default' && !devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
-      mediaStore.currentDeviceId = 'default'
+    if (navigator.mediaDevices) {
+      navigator.mediaDevices.addEventListener('devicechange', () => this.updateDevices().catch(e => {
+        logger.error('Failed to fetch media devices:', e)
+      }))
     }
-    mediaStore.ready = true
-  } catch (err) {
-    mediaStore.error = !!err
+  }
+
+  ready = false
+  error = false
+  possibleDevices: MediaDeviceInfo[] = []
+  currentDeviceId = 'default'
+
+  @action
+  async updateDevices () {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices()
+      logger.debug('audio devices', devices)
+      const possibleDevices = devices.filter(({ kind }) => kind === 'audioinput')
+      this.possibleDevices = possibleDevices
+      const currentDeviceId = this.currentDeviceId
+      if (currentDeviceId !== 'default' && !devices.some(({ deviceId }) => deviceId === currentDeviceId)) {
+        this.currentDeviceId = 'default'
+      }
+      this.ready = true
+    } catch (err) {
+      this.error = !!err
+    }
+  }
+
+  private async _setDevice (newDeviceId: string) {
+    const newAudioSource = await getAudioSource(newDeviceId)
+    setSource(newAudioSource)
   }
 }
 
-if (navigator.mediaDevices) {
-  navigator.mediaDevices.addEventListener('devicechange', () => updateDevices().catch(e => {
-    logger.error('Failed to fetch media devices:', e)
-  }))
-}
-
-// updateDevices().catch(e => {
-//   logger.error('Failed to fetch media devices:', e)
-// })
+export const mediaStore = new MediaStore()

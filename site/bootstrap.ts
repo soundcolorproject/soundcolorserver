@@ -1,6 +1,6 @@
 
-import { updateDevices } from './state/mediaStore'
+import { mediaStore } from './state/mediaStore'
 
 export async function bootstrap () {
-  await Promise.all([updateDevices()])
+  await Promise.all([mediaStore.updateDevices()])
 }
