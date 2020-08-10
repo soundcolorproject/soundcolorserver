@@ -1,5 +1,5 @@
 
-import { observable, reaction, action } from 'mobx'
+import { action, reaction } from 'mobx'
 
 import { logger } from '../../../shared/logger'
 import { setSource } from '../../audio/analyzer'
