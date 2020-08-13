@@ -19,7 +19,7 @@ export function TextHider ({ children }: TextHiderProps) {
   return useObserver(() => (
     <>
       { renderState.showText || <div id={clickReshow} onClick={reshow} /> }
-      <div id={textHider} className={renderState.showText ? '' : hidden}>
+      <div id={textHider} className={renderState.showText ? '' : hidden} data-testid='text-hider'>
         {children}
       </div>
     </>

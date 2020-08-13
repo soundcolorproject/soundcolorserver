@@ -33,6 +33,6 @@ export function useStores () {
 }
 
 const win = window as any
-if (__DEV__ || win.Cypress) {
+if (__DEV__ || window.Cypress) {
   win.stores = stores
 }

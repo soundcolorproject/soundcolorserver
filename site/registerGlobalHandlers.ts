@@ -2,7 +2,7 @@
 import { errorString } from '../shared/errorHelpers'
 import { logger } from '../shared/logger'
 
-import { renderStateStore, toggleFullscreen, togglePattern } from './state/renderStateStore'
+import { renderStateStore } from './state/renderStateStore'
 
 window.addEventListener('unhandledrejection', (evt) => {
   logger.error('Unhandled rejection:', evt.reason)
@@ -36,9 +36,9 @@ export function registerGlobalHandlers () {
     if (ev.key === ' ') {
       renderStateStore.showText = !renderStateStore.showText
     } else if (ev.key === 'Enter') {
-      togglePattern()
+      renderStateStore.togglePattern()
     } else if (ev.key === 'f') {
-      toggleFullscreen()
+      renderStateStore.toggleFullscreen()
     }
   })
 }

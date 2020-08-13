@@ -6,7 +6,6 @@ import * as React from 'react'
 import { Panel } from '../../components/Panel'
 import { PanelButton } from '../../components/PanelButton'
 import { PatternName } from '../../state/patternsStore'
-import { togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
 export interface PatternSelectorProps extends RouteComponentProps {
@@ -16,9 +15,7 @@ export const PatternSelector: React.FunctionComponent<PatternSelectorProps> = fu
   const { patterns, renderState } = useStores()
   const setPattern = (name: PatternName) => React.useCallback(() => {
     patterns.currentPattern = name
-    if (!renderState.showColors) {
-      togglePattern(patterns, renderState)
-    }
+    renderState.startPattern(patterns)
   }, [patterns, name])
 
   return useObserver(() => (

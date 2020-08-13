@@ -86,7 +86,7 @@ export const CustomPatternSelector: React.FunctionComponent<CustomPatternSelecto
     <Panel title='Custom' button={{
       text: 'Reset',
       onClick: patterns.patternData.custom.colors.reset,
-    }}>
+    }} data-testid='custom-pattern'>
       <div
         className={customPatternSelector}
         data-testid={testid}

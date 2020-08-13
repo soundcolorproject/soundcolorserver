@@ -6,10 +6,12 @@ Scenario: I can share SOVIS
   When I click on "Share Sound Color Project"
   Then I should be on the share panel
 
+
 Scenario: I can play SOVIS
   Given I am on any panel in SOVIS
   When I click on the play icon
   Then SOVIS should start
+
 
 Scenario: I can pause SOVIS
   Given I am on any panel in SOVIS
@@ -22,11 +24,13 @@ Scenario: I can hide the panel
   When I click on the eye icon
   Then the panel should disappear
 
+@skip
 Scenario: I can enter fullscreen mode
   Given I am on any panel in SOVIS
   When I click on the maximize icon
   Then SOVIS should enter fullscreen mode
 
+@skip
 Scenario: I can exit fullscreen mode
   Given I am on any panel in SOVIS
   And SOVIS is in fullscreen mode
@@ -34,9 +38,9 @@ Scenario: I can exit fullscreen mode
   Then SOVIS should exit fullscreen mode
 
 Scenario: I can get back
-  Given I am on any panel in SOVIS
+  Given I am on any main panel in SOVIS
   When I click on the back icon
-  Then I should navigate to the previous panel
+  Then I should be on the home panel
 
 Scenario: I can get to the color patterns panel
   Given I am on any panel in SOVIS
@@ -46,19 +50,19 @@ Scenario: I can get to the color patterns panel
 Scenario: I can get to the connections panel
   Given I am on any panel in SOVIS
   When I click on the connections icon
-  Then I should be on the the connections panel
+  Then I should be on the connections panel
 
 Scenario: I can get to the options panel
   Given I am on any panel in SOVIS
   When I click on the options icon
-  Then I should be on the the options panel
+  Then I should be on the options panel
 
 Scenario: I can get to the sound details panel
   Given I am on any panel in SOVIS
   When I click on the sound details icon
-  Then I should be on the the sound details panel
+  Then I should be on the sound details panel
 
 Scenario: I can get to the actions panel
   Given I am on any panel in SOVIS
   When I click on the actions icon
-  Then I should be on the the actions panel
+  Then I should be on the actions panel

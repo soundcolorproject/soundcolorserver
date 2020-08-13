@@ -212,6 +212,7 @@ export function SovisRoute (props: SovisRouteProps) {
         href={shrink() ? undefined : '/'}
         newTab
         onClick={shrink() ? goBack : undefined}
+        data-testid={shrink() ? 'panel-back' : 'soundcolor-info'}
       >
         Sound Color Project
       </ShrinkingPanelButton>
@@ -223,6 +224,7 @@ export function SovisRoute (props: SovisRouteProps) {
             shrink={shrink()}
             active={panel() === name}
             onClick={setPanelRoute(name)}
+            data-testid={`panel-${name}`}
           >
             {panelDetails[name].title}
           </ShrinkingPanelButton>

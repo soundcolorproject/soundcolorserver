@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+import { PanelRoute, SubRoute } from "../../site/state/routingStore"
+
 function isWrapped<El extends HTMLElement> (el: JQuery<El> | El): el is JQuery<El> {
   return !!(el as JQuery<El>).jquery
 }
@@ -107,4 +109,46 @@ Cypress.Commands.add('hideIntroPanels', () => {
 
 Cypress.Commands.add('showIntroPanels', () => {
   cy.window().its('stores').its('intro').invoke('_showPanels')
+})
+
+Cypress.Commands.add('goToPanelRoute', (route: PanelRoute) => {
+  cy.window().its('stores').its('routing').invoke('setPanelRoute', route)
+})
+
+Cypress.Commands.add('goToSubRoute', (route: SubRoute) => {
+  cy.window().its('stores').its('routing').invoke('goToSubroute', route)
+})
+
+Cypress.Commands.add('patternSelected', (pattern: string) => {
+  cy.window().its('stores').its('patterns').then(patterns => {
+    if (patterns.currentPattern !== pattern) {
+      throw new Error(`Pattern was expected to be "${pattern}", but instead was "${patterns.currentPattern}"`)
+    }
+  })
+})
+
+Cypress.Commands.add('verifyMainRoute', (route: PanelRoute, testid: string) => {
+  cy.window().its('stores').its('routing').then(routing => {
+    if (routing.subRoutes.length !== 0) {
+      throw new Error(`Expected to be on the main-panel "${route}" but instead was on a sub-panel`)
+    }
+    if (routing.panelRoute !== route) {
+      throw new Error(`Expected to be on the main-panel "${route}" but instead was on the "${routing.panelRoute}" main-panel`)
+    }
+  })
+
+  cy.get(`[data-testid="${testid}"]`)
+})
+
+Cypress.Commands.add('verifySubroute', (route: SubRoute, testid: string) => {
+  cy.window().its('stores').its('routing').then(routing => {
+    if (routing.subRoutes.length === 0) {
+      throw new Error(`Expected to be on the sub-panel "${route}" but instead was on a main panel`)
+    }
+    if (routing.subRoutes[0] !== route) {
+      throw new Error(`Expected to be on the sub-panel "${route}" but instead was on the "${routing.subRoutes[0]}" sub-panel`)
+    }
+  })
+
+  cy.get(`[data-testid="${testid}"]`)
 })

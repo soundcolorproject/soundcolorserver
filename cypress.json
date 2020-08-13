@@ -1,4 +1,7 @@
 {
+  "env": {
+      "TAGS": "not @skip"
+  },
   "projectId": "68725n",
   "ignoreTestFiles": [
     "*.steps.js",
