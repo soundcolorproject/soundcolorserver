@@ -6,7 +6,6 @@ import * as React from 'react'
 import { Panel } from '../../components/Panel'
 import { PanelButton } from '../../components/PanelButton'
 import { PanelDetail } from '../../components/PanelDetail'
-import { togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
 import {
@@ -26,9 +25,7 @@ export const SavedPaletteSelector: React.FunctionComponent<SavedPaletteSelectorP
 
   const setCustomColors = (name: string) => () => {
     patterns.loadFavorite(name)
-    if (!renderState.showColors) {
-      togglePattern(patterns, renderState)
-    }
+    renderState.startPattern(patterns)
   }
 
   const deleteFavorite = (name: string) => () => {

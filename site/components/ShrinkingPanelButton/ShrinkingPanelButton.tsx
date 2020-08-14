@@ -26,6 +26,7 @@ export interface Props {
   active?: boolean
   className?: string
   style?: React.CSSProperties
+  'data-testid'?: string
 }
 
 const noop = () => undefined
@@ -43,6 +44,7 @@ export function ShrinkingPanelButton (props: Props) {
     active = false,
     className,
     style,
+    'data-testid': testid = 'shrinking-panel-button',
   } = props
 
   const cn = classNames(
@@ -69,7 +71,7 @@ export function ShrinkingPanelButton (props: Props) {
     <div
       className={cn}
       style={style}
-      data-testid='shrinking-panel-button'
+      data-testid={testid}
       onClick={shrink ? handleClick : undefined}
       tabIndex={shrink ? 0 : undefined}
       onKeyDown={handleKeypress}
@@ -80,11 +82,12 @@ export function ShrinkingPanelButton (props: Props) {
         onClick={shrink ? undefined : handleClick}
         tabIndex={shrink ? undefined : 0}
         onKeyDown={handleKeypress}
-        target={newTab ? '_blank' : undefined}
+        target={newTab && !window.Cypress ? '_blank' : undefined}
+        data-testid={`${testid}-link`}
       >
-        <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} />
-        <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }}>{children}</div>
-        {endIcon && <Icon size='sm' name={endIcon} className={buttonIcon} />}
+        <Icon size={iconSize} name={icon} className={buttonIcon} style={{ marginRight: 6 }} data-testid={`${testid}-icon`} />
+        <div className={text} style={{ fontWeight: noBold ? 'normal' : 'bold' }} data-testid={`${testid}-text`}>{children}</div>
+        {endIcon && <Icon size='sm' name={endIcon} className={buttonIcon} data-testid={`${testid}-end-icon`} />}
       </a>
     </div>
   )

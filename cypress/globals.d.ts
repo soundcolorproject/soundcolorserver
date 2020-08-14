@@ -5,6 +5,11 @@ declare namespace Cypress {
     visible (selector?: string): Chainable<Subject>
     hideIntroPanels (): void
     showIntroPanels (): void
+    goToPanelRoute (route: import('../site/state/routingStore').PanelRoute): void
+    goToSubRoute (route: import('../site/state/routingStore').SubRoute): void
+    patternSelected (pattern: string): void
+    verifyMainRoute (route: import('../site/state/routingStore').PanelRoute, testid: string): void
+    verifySubroute (route: import('../site/state/routingStore').SubRoute, testid: string): void
   }
 }
 

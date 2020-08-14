@@ -4,8 +4,7 @@ import * as React from 'react'
 
 import { LinkButton } from '../../components/LinkButton'
 import { PatreonLink } from '../../components/PatreonLink'
-import { PatternName, PatternsProp } from '../../state/patternsStore'
-import { RenderStateProp, togglePattern } from '../../state/renderStateStore'
+import { PatternName } from '../../state/patternsStore'
 import { useStores } from '../../state/useStores'
 
 import hirshhornLogo from './hirshhorn.svg'
@@ -17,10 +16,6 @@ import { PatternInfo } from './subcomponents/PatternInfo'
 
 export interface OwnProps extends RouteComponentProps {
 }
-
-type StateProps = PatternsProp & RenderStateProp
-
-export type InfoRouteProps = OwnProps & StateProps
 
 const patternNames: PatternName[] = [
   'chromesthesia',
@@ -41,15 +36,15 @@ export function InfoRoute (_props: OwnProps) {
 
     intro.seenHowItWorks = true
     patterns.currentPattern = newPattern
-    if (!renderState.showColors && intro.warningAccepted) {
-      togglePattern(patterns, renderState)
+    if (intro.warningAccepted) {
+      renderState.startPattern(patterns)
     }
 
     navigate('/sovis').catch()
   }, [patterns, renderState])
 
   return (
-    <div className={infoBody}>
+    <div className={infoBody} data-testid='info-page'>
       <InfoHeader />
 
       <InfoSection

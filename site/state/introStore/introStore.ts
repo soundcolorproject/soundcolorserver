@@ -2,7 +2,7 @@
 import { action, observable, reaction } from 'mobx'
 
 import { patternsStore } from '../patternsStore'
-import { renderStateStore, togglePattern } from '../renderStateStore'
+import { renderStateStore } from '../renderStateStore'
 
 export interface IntroStoreProp {
   intro: IntroStore
@@ -31,8 +31,8 @@ export class IntroStore {
     reaction(
       () => [this.startPattern, this.warningAccepted, this.seenHowItWorks],
       ([a, b, c]) => {
-        if (a && b && c && !renderStateStore.showColors) {
-          togglePattern(patternsStore, renderStateStore)
+        if (a && b && c) {
+          renderStateStore.startPattern(patternsStore)
         }
       },
     )

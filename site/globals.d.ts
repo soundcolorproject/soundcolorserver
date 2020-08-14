@@ -61,3 +61,7 @@ declare type DeepPartial<T> = {
       ? ReadonlyArray<DeepPartial<U>>
       : DeepPartial<T[P]>
 }
+
+interface Window {
+  Cypress?: {}
+}

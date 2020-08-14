@@ -5,7 +5,6 @@ import * as React from 'react'
 
 import { logger } from '../../../shared/logger'
 import { Icon, IconName } from '../../components/Icon'
-import { toggleFullscreen, togglePattern } from '../../state/renderStateStore'
 import { useStores } from '../../state/useStores'
 
 import { hidden, iconButton, shortcuts } from './shortcuts.pcss'
@@ -51,11 +50,11 @@ export function Shortcuts (props: ShortcutsProps) {
   })
 
   const _togglePattern = stopBubblingEnterAndSpace(() => {
-    togglePattern(patterns, renderState)
+    renderState.togglePattern(patterns)
   })
 
   const _toggleFullscreen = stopBubblingEnterAndSpace(() => {
-    toggleFullscreen(renderState)
+    renderState.toggleFullscreen()
   })
 
   return useObserver(() => (
@@ -74,7 +73,7 @@ export function Shortcuts (props: ShortcutsProps) {
         !__FORCED_FULLSCREEN__ && document.fullscreenEnabled
         && renderIconButton(
           renderState.isFullscreen ? 'minimize' : 'fullscreen',
-          renderState.isFullscreen ? `${testid}-minimize` : `${testid}-fullscreen'`,
+          renderState.isFullscreen ? `${testid}-minimize` : `${testid}-fullscreen`,
           _toggleFullscreen,
         )
       }
